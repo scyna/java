@@ -1,15 +1,11 @@
 syntax = "proto3";
-package io.velo.proto;
+
+package scyna;
+option java_package = "io.scyna.proto";
 option java_multiple_files = true;
 
 option optimize_for = CODE_SIZE;
-option go_package = ".;velo";
-
-message Error
-{
-  int32 Code = 1;
-  string Message = 2;
-}
+option go_package = ".;scyna";
 
 message Request 
 {
@@ -23,5 +19,7 @@ message Response
 {
   int32 Code = 1;
   bytes Body = 2;
-  uint64 SesionID = 3;
+  uint64 SessionID = 3;
+  string Token = 4;
+  uint64 Expired = 5;
 }

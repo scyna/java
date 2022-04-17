@@ -1,9 +1,11 @@
 syntax = "proto3";
 
-package io.velo.proto;
+package scyna;
+option java_package = "io.scyna.proto";
 option java_multiple_files = true;
+
 option  optimize_for = CODE_SIZE;
-option  go_package = ".;velo";
+option  go_package = ".;scyna";
 
 message Configuration {
   string NatsUrl = 1;
@@ -16,12 +18,12 @@ message Configuration {
 }
 
 /*session*/
-message AuthenticationRequest {
+message CreateSessionRequest {
   string Module = 1;
   string Secret = 2;
 }
 
-message AuthenticationResponse {
+message CreateSessionResponse {
   uint64        SessionID = 1;
   Configuration Config = 5;
 }
@@ -63,11 +65,6 @@ message WriteLogSignal {
 }
 
 /*SETTING*/
-message Setting {
-  string Key = 1;
-  string Value = 2;
-}
-
 message WriteSettingRequest {
   string Module = 1;
   string Key = 2;
@@ -106,4 +103,35 @@ message WriteCallSignal {
   uint32 status = 8;
   uint64 time = 9;
   uint32 day = 10;
+}
+
+/*Authentication*/
+message CreateAuthRequest {
+  string Organization = 1;
+  string Secret = 2;
+  string UserID = 3;
+  repeated string Apps = 4;
+}
+
+message CreateAuthResponse {
+  string Token = 1;
+  uint64 Expired = 2;
+}
+
+message GetAuthRequest {
+  string Token = 1;
+  string App = 2;
+}
+
+message GetAuthResponse {
+  string Token = 1;
+  uint64 Expired = 2;
+  string UserID = 3;
+}
+
+message LogoutRequest {
+  string Organization = 1;
+  string Secret = 2;
+  string UserID = 3;
+  string Token = 4;
 }
