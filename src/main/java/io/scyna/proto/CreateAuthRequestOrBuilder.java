@@ -4,7 +4,7 @@
 package io.scyna.proto;
 
 public interface CreateAuthRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.proto.CreateAuthRequest)
+    // @@protoc_insertion_point(interface_extends:scyna.CreateAuthRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**

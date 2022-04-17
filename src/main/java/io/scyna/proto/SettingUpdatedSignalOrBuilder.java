@@ -4,7 +4,7 @@
 package io.scyna.proto;
 
 public interface SettingUpdatedSignalOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.proto.SettingUpdatedSignal)
+    // @@protoc_insertion_point(interface_extends:scyna.SettingUpdatedSignal)
     com.google.protobuf.MessageOrBuilder {
 
   /**

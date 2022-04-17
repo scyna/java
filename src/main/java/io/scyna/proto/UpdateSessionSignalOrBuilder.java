@@ -4,7 +4,7 @@
 package io.scyna.proto;
 
 public interface UpdateSessionSignalOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.proto.UpdateSessionSignal)
+    // @@protoc_insertion_point(interface_extends:scyna.UpdateSessionSignal)
     com.google.protobuf.MessageOrBuilder {
 
   /**

@@ -4,7 +4,7 @@
 package io.scyna.proto;
 
 public interface WriteLogSignalOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.proto.WriteLogSignal)
+    // @@protoc_insertion_point(interface_extends:scyna.WriteLogSignal)
     com.google.protobuf.MessageOrBuilder {
 
   /**

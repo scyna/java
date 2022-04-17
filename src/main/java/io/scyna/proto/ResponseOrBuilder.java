@@ -4,7 +4,7 @@
 package io.scyna.proto;
 
 public interface ResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.proto.Response)
+    // @@protoc_insertion_point(interface_extends:scyna.Response)
     com.google.protobuf.MessageOrBuilder {
 
   /**

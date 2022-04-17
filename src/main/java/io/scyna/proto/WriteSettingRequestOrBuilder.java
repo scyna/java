@@ -4,7 +4,7 @@
 package io.scyna.proto;
 
 public interface WriteSettingRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.proto.WriteSettingRequest)
+    // @@protoc_insertion_point(interface_extends:scyna.WriteSettingRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**

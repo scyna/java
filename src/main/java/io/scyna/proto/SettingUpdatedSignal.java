@@ -4,11 +4,11 @@
 package io.scyna.proto;
 
 /**
- * Protobuf type {@code io.scyna.proto.SettingUpdatedSignal}
+ * Protobuf type {@code scyna.SettingUpdatedSignal}
  */
 public final class SettingUpdatedSignal extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:io.scyna.proto.SettingUpdatedSignal)
+    // @@protoc_insertion_point(message_implements:scyna.SettingUpdatedSignal)
     SettingUpdatedSignalOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use SettingUpdatedSignal.newBuilder() to construct.
@@ -35,13 +35,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.scyna.proto.Engine.internal_static_io_scyna_proto_SettingUpdatedSignal_descriptor;
+    return io.scyna.proto.Engine.internal_static_scyna_SettingUpdatedSignal_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.scyna.proto.Engine.internal_static_io_scyna_proto_SettingUpdatedSignal_fieldAccessorTable
+    return io.scyna.proto.Engine.internal_static_scyna_SettingUpdatedSignal_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             io.scyna.proto.SettingUpdatedSignal.class, io.scyna.proto.SettingUpdatedSignal.Builder.class);
   }
@@ -251,21 +251,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code io.scyna.proto.SettingUpdatedSignal}
+   * Protobuf type {@code scyna.SettingUpdatedSignal}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:io.scyna.proto.SettingUpdatedSignal)
+      // @@protoc_insertion_point(builder_implements:scyna.SettingUpdatedSignal)
       io.scyna.proto.SettingUpdatedSignalOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_SettingUpdatedSignal_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_SettingUpdatedSignal_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_SettingUpdatedSignal_fieldAccessorTable
+      return io.scyna.proto.Engine.internal_static_scyna_SettingUpdatedSignal_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               io.scyna.proto.SettingUpdatedSignal.class, io.scyna.proto.SettingUpdatedSignal.Builder.class);
     }
@@ -300,7 +300,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_SettingUpdatedSignal_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_SettingUpdatedSignal_descriptor;
     }
 
     @java.lang.Override
@@ -600,10 +600,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:io.scyna.proto.SettingUpdatedSignal)
+    // @@protoc_insertion_point(builder_scope:scyna.SettingUpdatedSignal)
   }
 
-  // @@protoc_insertion_point(class_scope:io.scyna.proto.SettingUpdatedSignal)
+  // @@protoc_insertion_point(class_scope:scyna.SettingUpdatedSignal)
   private static final io.scyna.proto.SettingUpdatedSignal DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new io.scyna.proto.SettingUpdatedSignal();

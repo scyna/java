@@ -8,11 +8,11 @@ package io.scyna.proto;
  *LOG
  * </pre>
  *
- * Protobuf type {@code io.scyna.proto.WriteLogSignal}
+ * Protobuf type {@code scyna.WriteLogSignal}
  */
 public final class WriteLogSignal extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:io.scyna.proto.WriteLogSignal)
+    // @@protoc_insertion_point(message_implements:scyna.WriteLogSignal)
     WriteLogSignalOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use WriteLogSignal.newBuilder() to construct.
@@ -37,13 +37,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.scyna.proto.Engine.internal_static_io_scyna_proto_WriteLogSignal_descriptor;
+    return io.scyna.proto.Engine.internal_static_scyna_WriteLogSignal_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.scyna.proto.Engine.internal_static_io_scyna_proto_WriteLogSignal_fieldAccessorTable
+    return io.scyna.proto.Engine.internal_static_scyna_WriteLogSignal_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             io.scyna.proto.WriteLogSignal.class, io.scyna.proto.WriteLogSignal.Builder.class);
   }
@@ -236,21 +236,21 @@ private static final long serialVersionUID = 0L;
    *LOG
    * </pre>
    *
-   * Protobuf type {@code io.scyna.proto.WriteLogSignal}
+   * Protobuf type {@code scyna.WriteLogSignal}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:io.scyna.proto.WriteLogSignal)
+      // @@protoc_insertion_point(builder_implements:scyna.WriteLogSignal)
       io.scyna.proto.WriteLogSignalOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_WriteLogSignal_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_WriteLogSignal_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_WriteLogSignal_fieldAccessorTable
+      return io.scyna.proto.Engine.internal_static_scyna_WriteLogSignal_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               io.scyna.proto.WriteLogSignal.class, io.scyna.proto.WriteLogSignal.Builder.class);
     }
@@ -291,7 +291,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_WriteLogSignal_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_WriteLogSignal_descriptor;
     }
 
     @java.lang.Override
@@ -597,10 +597,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:io.scyna.proto.WriteLogSignal)
+    // @@protoc_insertion_point(builder_scope:scyna.WriteLogSignal)
   }
 
-  // @@protoc_insertion_point(class_scope:io.scyna.proto.WriteLogSignal)
+  // @@protoc_insertion_point(class_scope:scyna.WriteLogSignal)
   private static final io.scyna.proto.WriteLogSignal DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new io.scyna.proto.WriteLogSignal();

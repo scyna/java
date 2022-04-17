@@ -8,11 +8,11 @@ package io.scyna.proto;
  *SETTING
  * </pre>
  *
- * Protobuf type {@code io.scyna.proto.WriteSettingRequest}
+ * Protobuf type {@code scyna.WriteSettingRequest}
  */
 public final class WriteSettingRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:io.scyna.proto.WriteSettingRequest)
+    // @@protoc_insertion_point(message_implements:scyna.WriteSettingRequest)
     WriteSettingRequestOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use WriteSettingRequest.newBuilder() to construct.
@@ -39,13 +39,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.scyna.proto.Engine.internal_static_io_scyna_proto_WriteSettingRequest_descriptor;
+    return io.scyna.proto.Engine.internal_static_scyna_WriteSettingRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.scyna.proto.Engine.internal_static_io_scyna_proto_WriteSettingRequest_fieldAccessorTable
+    return io.scyna.proto.Engine.internal_static_scyna_WriteSettingRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             io.scyna.proto.WriteSettingRequest.class, io.scyna.proto.WriteSettingRequest.Builder.class);
   }
@@ -259,21 +259,21 @@ private static final long serialVersionUID = 0L;
    *SETTING
    * </pre>
    *
-   * Protobuf type {@code io.scyna.proto.WriteSettingRequest}
+   * Protobuf type {@code scyna.WriteSettingRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:io.scyna.proto.WriteSettingRequest)
+      // @@protoc_insertion_point(builder_implements:scyna.WriteSettingRequest)
       io.scyna.proto.WriteSettingRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_WriteSettingRequest_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_WriteSettingRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_WriteSettingRequest_fieldAccessorTable
+      return io.scyna.proto.Engine.internal_static_scyna_WriteSettingRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               io.scyna.proto.WriteSettingRequest.class, io.scyna.proto.WriteSettingRequest.Builder.class);
     }
@@ -308,7 +308,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_WriteSettingRequest_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_WriteSettingRequest_descriptor;
     }
 
     @java.lang.Override
@@ -608,10 +608,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:io.scyna.proto.WriteSettingRequest)
+    // @@protoc_insertion_point(builder_scope:scyna.WriteSettingRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:io.scyna.proto.WriteSettingRequest)
+  // @@protoc_insertion_point(class_scope:scyna.WriteSettingRequest)
   private static final io.scyna.proto.WriteSettingRequest DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new io.scyna.proto.WriteSettingRequest();

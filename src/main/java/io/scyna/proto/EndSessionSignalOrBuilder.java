@@ -4,7 +4,7 @@
 package io.scyna.proto;
 
 public interface EndSessionSignalOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.proto.EndSessionSignal)
+    // @@protoc_insertion_point(interface_extends:scyna.EndSessionSignal)
     com.google.protobuf.MessageOrBuilder {
 
   /**

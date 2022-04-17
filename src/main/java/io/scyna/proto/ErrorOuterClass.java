@@ -15,10 +15,10 @@ public final class ErrorOuterClass {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_io_scyna_proto_Error_descriptor;
+    internal_static_scyna_Error_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_io_scyna_proto_Error_fieldAccessorTable;
+      internal_static_scyna_Error_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -28,19 +28,19 @@ public final class ErrorOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013error.proto\022\016io.scyna.proto\"&\n\005Error\022\014" +
-      "\n\004Code\030\001 \001(\005\022\017\n\007Message\030\002 \001(\tB\rH\002P\001Z\007.;s" +
-      "cynab\006proto3"
+      "\n\013error.proto\022\005scyna\"&\n\005Error\022\014\n\004Code\030\001 " +
+      "\001(\005\022\017\n\007Message\030\002 \001(\tB\035\n\016io.scyna.protoH\002" +
+      "P\001Z\007.;scynab\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_io_scyna_proto_Error_descriptor =
+    internal_static_scyna_Error_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_io_scyna_proto_Error_fieldAccessorTable = new
+    internal_static_scyna_Error_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_io_scyna_proto_Error_descriptor,
+        internal_static_scyna_Error_descriptor,
         new java.lang.String[] { "Code", "Message", });
   }
 

@@ -4,7 +4,7 @@
 package io.scyna.proto;
 
 public interface ReadSettingResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.proto.ReadSettingResponse)
+    // @@protoc_insertion_point(interface_extends:scyna.ReadSettingResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**

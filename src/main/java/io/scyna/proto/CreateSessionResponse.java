@@ -4,11 +4,11 @@
 package io.scyna.proto;
 
 /**
- * Protobuf type {@code io.scyna.proto.CreateSessionResponse}
+ * Protobuf type {@code scyna.CreateSessionResponse}
  */
 public final class CreateSessionResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:io.scyna.proto.CreateSessionResponse)
+    // @@protoc_insertion_point(message_implements:scyna.CreateSessionResponse)
     CreateSessionResponseOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use CreateSessionResponse.newBuilder() to construct.
@@ -32,13 +32,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.scyna.proto.Engine.internal_static_io_scyna_proto_CreateSessionResponse_descriptor;
+    return io.scyna.proto.Engine.internal_static_scyna_CreateSessionResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.scyna.proto.Engine.internal_static_io_scyna_proto_CreateSessionResponse_fieldAccessorTable
+    return io.scyna.proto.Engine.internal_static_scyna_CreateSessionResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             io.scyna.proto.CreateSessionResponse.class, io.scyna.proto.CreateSessionResponse.Builder.class);
   }
@@ -57,7 +57,7 @@ private static final long serialVersionUID = 0L;
   public static final int CONFIG_FIELD_NUMBER = 5;
   private io.scyna.proto.Configuration config_;
   /**
-   * <code>.io.scyna.proto.Configuration Config = 5;</code>
+   * <code>.scyna.Configuration Config = 5;</code>
    * @return Whether the config field is set.
    */
   @java.lang.Override
@@ -65,7 +65,7 @@ private static final long serialVersionUID = 0L;
     return config_ != null;
   }
   /**
-   * <code>.io.scyna.proto.Configuration Config = 5;</code>
+   * <code>.scyna.Configuration Config = 5;</code>
    * @return The config.
    */
   @java.lang.Override
@@ -73,7 +73,7 @@ private static final long serialVersionUID = 0L;
     return config_ == null ? io.scyna.proto.Configuration.getDefaultInstance() : config_;
   }
   /**
-   * <code>.io.scyna.proto.Configuration Config = 5;</code>
+   * <code>.scyna.Configuration Config = 5;</code>
    */
   @java.lang.Override
   public io.scyna.proto.ConfigurationOrBuilder getConfigOrBuilder() {
@@ -171,21 +171,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code io.scyna.proto.CreateSessionResponse}
+   * Protobuf type {@code scyna.CreateSessionResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:io.scyna.proto.CreateSessionResponse)
+      // @@protoc_insertion_point(builder_implements:scyna.CreateSessionResponse)
       io.scyna.proto.CreateSessionResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_CreateSessionResponse_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_CreateSessionResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_CreateSessionResponse_fieldAccessorTable
+      return io.scyna.proto.Engine.internal_static_scyna_CreateSessionResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               io.scyna.proto.CreateSessionResponse.class, io.scyna.proto.CreateSessionResponse.Builder.class);
     }
@@ -222,7 +222,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_CreateSessionResponse_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_CreateSessionResponse_descriptor;
     }
 
     @java.lang.Override
@@ -320,14 +320,14 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         io.scyna.proto.Configuration, io.scyna.proto.Configuration.Builder, io.scyna.proto.ConfigurationOrBuilder> configBuilder_;
     /**
-     * <code>.io.scyna.proto.Configuration Config = 5;</code>
+     * <code>.scyna.Configuration Config = 5;</code>
      * @return Whether the config field is set.
      */
     public boolean hasConfig() {
       return configBuilder_ != null || config_ != null;
     }
     /**
-     * <code>.io.scyna.proto.Configuration Config = 5;</code>
+     * <code>.scyna.Configuration Config = 5;</code>
      * @return The config.
      */
     public io.scyna.proto.Configuration getConfig() {
@@ -338,7 +338,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.io.scyna.proto.Configuration Config = 5;</code>
+     * <code>.scyna.Configuration Config = 5;</code>
      */
     public Builder setConfig(io.scyna.proto.Configuration value) {
       if (configBuilder_ == null) {
@@ -354,7 +354,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.io.scyna.proto.Configuration Config = 5;</code>
+     * <code>.scyna.Configuration Config = 5;</code>
      */
     public Builder setConfig(
         io.scyna.proto.Configuration.Builder builderForValue) {
@@ -368,7 +368,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.io.scyna.proto.Configuration Config = 5;</code>
+     * <code>.scyna.Configuration Config = 5;</code>
      */
     public Builder mergeConfig(io.scyna.proto.Configuration value) {
       if (configBuilder_ == null) {
@@ -386,7 +386,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.io.scyna.proto.Configuration Config = 5;</code>
+     * <code>.scyna.Configuration Config = 5;</code>
      */
     public Builder clearConfig() {
       if (configBuilder_ == null) {
@@ -400,7 +400,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.io.scyna.proto.Configuration Config = 5;</code>
+     * <code>.scyna.Configuration Config = 5;</code>
      */
     public io.scyna.proto.Configuration.Builder getConfigBuilder() {
       
@@ -408,7 +408,7 @@ private static final long serialVersionUID = 0L;
       return getConfigFieldBuilder().getBuilder();
     }
     /**
-     * <code>.io.scyna.proto.Configuration Config = 5;</code>
+     * <code>.scyna.Configuration Config = 5;</code>
      */
     public io.scyna.proto.ConfigurationOrBuilder getConfigOrBuilder() {
       if (configBuilder_ != null) {
@@ -419,7 +419,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.io.scyna.proto.Configuration Config = 5;</code>
+     * <code>.scyna.Configuration Config = 5;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         io.scyna.proto.Configuration, io.scyna.proto.Configuration.Builder, io.scyna.proto.ConfigurationOrBuilder> 
@@ -447,10 +447,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:io.scyna.proto.CreateSessionResponse)
+    // @@protoc_insertion_point(builder_scope:scyna.CreateSessionResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:io.scyna.proto.CreateSessionResponse)
+  // @@protoc_insertion_point(class_scope:scyna.CreateSessionResponse)
   private static final io.scyna.proto.CreateSessionResponse DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new io.scyna.proto.CreateSessionResponse();

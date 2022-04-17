@@ -4,11 +4,11 @@
 package io.scyna.proto;
 
 /**
- * Protobuf type {@code io.scyna.proto.GetSNResponse}
+ * Protobuf type {@code scyna.GetSNResponse}
  */
 public final class GetSNResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:io.scyna.proto.GetSNResponse)
+    // @@protoc_insertion_point(message_implements:scyna.GetSNResponse)
     GetSNResponseOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use GetSNResponse.newBuilder() to construct.
@@ -32,13 +32,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.scyna.proto.Engine.internal_static_io_scyna_proto_GetSNResponse_descriptor;
+    return io.scyna.proto.Engine.internal_static_scyna_GetSNResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.scyna.proto.Engine.internal_static_io_scyna_proto_GetSNResponse_fieldAccessorTable
+    return io.scyna.proto.Engine.internal_static_scyna_GetSNResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             io.scyna.proto.GetSNResponse.class, io.scyna.proto.GetSNResponse.Builder.class);
   }
@@ -167,21 +167,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code io.scyna.proto.GetSNResponse}
+   * Protobuf type {@code scyna.GetSNResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:io.scyna.proto.GetSNResponse)
+      // @@protoc_insertion_point(builder_implements:scyna.GetSNResponse)
       io.scyna.proto.GetSNResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_GetSNResponse_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_GetSNResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_GetSNResponse_fieldAccessorTable
+      return io.scyna.proto.Engine.internal_static_scyna_GetSNResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               io.scyna.proto.GetSNResponse.class, io.scyna.proto.GetSNResponse.Builder.class);
     }
@@ -216,7 +216,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_GetSNResponse_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_GetSNResponse_descriptor;
     }
 
     @java.lang.Override
@@ -381,10 +381,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:io.scyna.proto.GetSNResponse)
+    // @@protoc_insertion_point(builder_scope:scyna.GetSNResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:io.scyna.proto.GetSNResponse)
+  // @@protoc_insertion_point(class_scope:scyna.GetSNResponse)
   private static final io.scyna.proto.GetSNResponse DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new io.scyna.proto.GetSNResponse();

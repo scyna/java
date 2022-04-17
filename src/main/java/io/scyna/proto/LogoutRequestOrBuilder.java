@@ -4,7 +4,7 @@
 package io.scyna.proto;
 
 public interface LogoutRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.proto.LogoutRequest)
+    // @@protoc_insertion_point(interface_extends:scyna.LogoutRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**

@@ -4,7 +4,7 @@
 package io.scyna.proto;
 
 public interface CreateSessionResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.proto.CreateSessionResponse)
+    // @@protoc_insertion_point(interface_extends:scyna.CreateSessionResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -14,17 +14,17 @@ public interface CreateSessionResponseOrBuilder extends
   long getSessionID();
 
   /**
-   * <code>.io.scyna.proto.Configuration Config = 5;</code>
+   * <code>.scyna.Configuration Config = 5;</code>
    * @return Whether the config field is set.
    */
   boolean hasConfig();
   /**
-   * <code>.io.scyna.proto.Configuration Config = 5;</code>
+   * <code>.scyna.Configuration Config = 5;</code>
    * @return The config.
    */
   io.scyna.proto.Configuration getConfig();
   /**
-   * <code>.io.scyna.proto.Configuration Config = 5;</code>
+   * <code>.scyna.Configuration Config = 5;</code>
    */
   io.scyna.proto.ConfigurationOrBuilder getConfigOrBuilder();
 }

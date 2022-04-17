@@ -4,7 +4,7 @@
 package io.scyna.proto;
 
 public interface CreateSessionRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.proto.CreateSessionRequest)
+    // @@protoc_insertion_point(interface_extends:scyna.CreateSessionRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**

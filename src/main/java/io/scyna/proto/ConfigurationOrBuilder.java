@@ -4,7 +4,7 @@
 package io.scyna.proto;
 
 public interface ConfigurationOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.proto.Configuration)
+    // @@protoc_insertion_point(interface_extends:scyna.Configuration)
     com.google.protobuf.MessageOrBuilder {
 
   /**

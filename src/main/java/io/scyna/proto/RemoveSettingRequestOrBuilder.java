@@ -4,7 +4,7 @@
 package io.scyna.proto;
 
 public interface RemoveSettingRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.proto.RemoveSettingRequest)
+    // @@protoc_insertion_point(interface_extends:scyna.RemoveSettingRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**

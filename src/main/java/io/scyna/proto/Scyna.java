@@ -15,15 +15,15 @@ public final class Scyna {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_io_scyna_proto_Request_descriptor;
+    internal_static_scyna_Request_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_io_scyna_proto_Request_fieldAccessorTable;
+      internal_static_scyna_Request_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_io_scyna_proto_Response_descriptor;
+    internal_static_scyna_Response_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_io_scyna_proto_Response_fieldAccessorTable;
+      internal_static_scyna_Response_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -33,28 +33,28 @@ public final class Scyna {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013scyna.proto\022\016io.scyna.proto\"C\n\007Request" +
-      "\022\016\n\006CallID\030\001 \001(\004\022\014\n\004Body\030\002 \001(\014\022\014\n\004JSON\030\003" +
-      " \001(\010\022\014\n\004Data\030\004 \001(\t\"Y\n\010Response\022\014\n\004Code\030\001" +
-      " \001(\005\022\014\n\004Body\030\002 \001(\014\022\021\n\tSessionID\030\003 \001(\004\022\r\n" +
-      "\005Token\030\004 \001(\t\022\017\n\007Expired\030\005 \001(\004B\rH\002P\001Z\007.;s" +
-      "cynab\006proto3"
+      "\n\013scyna.proto\022\005scyna\"C\n\007Request\022\016\n\006CallI" +
+      "D\030\001 \001(\004\022\014\n\004Body\030\002 \001(\014\022\014\n\004JSON\030\003 \001(\010\022\014\n\004D" +
+      "ata\030\004 \001(\t\"Y\n\010Response\022\014\n\004Code\030\001 \001(\005\022\014\n\004B" +
+      "ody\030\002 \001(\014\022\021\n\tSessionID\030\003 \001(\004\022\r\n\005Token\030\004 " +
+      "\001(\t\022\017\n\007Expired\030\005 \001(\004B\035\n\016io.scyna.protoH\002" +
+      "P\001Z\007.;scynab\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_io_scyna_proto_Request_descriptor =
+    internal_static_scyna_Request_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_io_scyna_proto_Request_fieldAccessorTable = new
+    internal_static_scyna_Request_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_io_scyna_proto_Request_descriptor,
+        internal_static_scyna_Request_descriptor,
         new java.lang.String[] { "CallID", "Body", "JSON", "Data", });
-    internal_static_io_scyna_proto_Response_descriptor =
+    internal_static_scyna_Response_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_io_scyna_proto_Response_fieldAccessorTable = new
+    internal_static_scyna_Response_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_io_scyna_proto_Response_descriptor,
+        internal_static_scyna_Response_descriptor,
         new java.lang.String[] { "Code", "Body", "SessionID", "Token", "Expired", });
   }
 

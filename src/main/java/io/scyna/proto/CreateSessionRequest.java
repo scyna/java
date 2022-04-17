@@ -8,11 +8,11 @@ package io.scyna.proto;
  *session
  * </pre>
  *
- * Protobuf type {@code io.scyna.proto.CreateSessionRequest}
+ * Protobuf type {@code scyna.CreateSessionRequest}
  */
 public final class CreateSessionRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:io.scyna.proto.CreateSessionRequest)
+    // @@protoc_insertion_point(message_implements:scyna.CreateSessionRequest)
     CreateSessionRequestOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use CreateSessionRequest.newBuilder() to construct.
@@ -38,13 +38,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.scyna.proto.Engine.internal_static_io_scyna_proto_CreateSessionRequest_descriptor;
+    return io.scyna.proto.Engine.internal_static_scyna_CreateSessionRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.scyna.proto.Engine.internal_static_io_scyna_proto_CreateSessionRequest_fieldAccessorTable
+    return io.scyna.proto.Engine.internal_static_scyna_CreateSessionRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             io.scyna.proto.CreateSessionRequest.class, io.scyna.proto.CreateSessionRequest.Builder.class);
   }
@@ -220,21 +220,21 @@ private static final long serialVersionUID = 0L;
    *session
    * </pre>
    *
-   * Protobuf type {@code io.scyna.proto.CreateSessionRequest}
+   * Protobuf type {@code scyna.CreateSessionRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:io.scyna.proto.CreateSessionRequest)
+      // @@protoc_insertion_point(builder_implements:scyna.CreateSessionRequest)
       io.scyna.proto.CreateSessionRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_CreateSessionRequest_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_CreateSessionRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_CreateSessionRequest_fieldAccessorTable
+      return io.scyna.proto.Engine.internal_static_scyna_CreateSessionRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               io.scyna.proto.CreateSessionRequest.class, io.scyna.proto.CreateSessionRequest.Builder.class);
     }
@@ -267,7 +267,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.scyna.proto.Engine.internal_static_io_scyna_proto_CreateSessionRequest_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_CreateSessionRequest_descriptor;
     }
 
     @java.lang.Override
@@ -490,10 +490,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:io.scyna.proto.CreateSessionRequest)
+    // @@protoc_insertion_point(builder_scope:scyna.CreateSessionRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:io.scyna.proto.CreateSessionRequest)
+  // @@protoc_insertion_point(class_scope:scyna.CreateSessionRequest)
   private static final io.scyna.proto.CreateSessionRequest DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new io.scyna.proto.CreateSessionRequest();

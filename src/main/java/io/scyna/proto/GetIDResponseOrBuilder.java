@@ -4,7 +4,7 @@
 package io.scyna.proto;
 
 public interface GetIDResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.proto.GetIDResponse)
+    // @@protoc_insertion_point(interface_extends:scyna.GetIDResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**

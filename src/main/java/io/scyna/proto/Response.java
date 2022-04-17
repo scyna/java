@@ -4,11 +4,11 @@
 package io.scyna.proto;
 
 /**
- * Protobuf type {@code io.scyna.proto.Response}
+ * Protobuf type {@code scyna.Response}
  */
 public final class Response extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:io.scyna.proto.Response)
+    // @@protoc_insertion_point(message_implements:scyna.Response)
     ResponseOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use Response.newBuilder() to construct.
@@ -34,13 +34,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.scyna.proto.Scyna.internal_static_io_scyna_proto_Response_descriptor;
+    return io.scyna.proto.Scyna.internal_static_scyna_Response_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.scyna.proto.Scyna.internal_static_io_scyna_proto_Response_fieldAccessorTable
+    return io.scyna.proto.Scyna.internal_static_scyna_Response_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             io.scyna.proto.Response.class, io.scyna.proto.Response.Builder.class);
   }
@@ -218,21 +218,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code io.scyna.proto.Response}
+   * Protobuf type {@code scyna.Response}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:io.scyna.proto.Response)
+      // @@protoc_insertion_point(builder_implements:scyna.Response)
       io.scyna.proto.ResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.scyna.proto.Scyna.internal_static_io_scyna_proto_Response_descriptor;
+      return io.scyna.proto.Scyna.internal_static_scyna_Response_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.scyna.proto.Scyna.internal_static_io_scyna_proto_Response_fieldAccessorTable
+      return io.scyna.proto.Scyna.internal_static_scyna_Response_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               io.scyna.proto.Response.class, io.scyna.proto.Response.Builder.class);
     }
@@ -271,7 +271,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.scyna.proto.Scyna.internal_static_io_scyna_proto_Response_descriptor;
+      return io.scyna.proto.Scyna.internal_static_scyna_Response_descriptor;
     }
 
     @java.lang.Override
@@ -548,10 +548,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:io.scyna.proto.Response)
+    // @@protoc_insertion_point(builder_scope:scyna.Response)
   }
 
-  // @@protoc_insertion_point(class_scope:io.scyna.proto.Response)
+  // @@protoc_insertion_point(class_scope:scyna.Response)
   private static final io.scyna.proto.Response DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new io.scyna.proto.Response();

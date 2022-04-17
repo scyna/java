@@ -4,7 +4,7 @@
 package io.scyna.proto;
 
 public interface ErrorOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.proto.Error)
+    // @@protoc_insertion_point(interface_extends:scyna.Error)
     com.google.protobuf.MessageOrBuilder {
 
   /**
