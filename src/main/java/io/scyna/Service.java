@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 public abstract class Service implements MessageHandler {
-    protected Log log = new Log(0, false);
+    protected Logger log = new Logger(0, false);
     protected boolean json;
     protected ByteString requestBody;
     protected String requestSource;

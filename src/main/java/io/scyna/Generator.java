@@ -18,23 +18,22 @@ public class Generator {
     private long value;
     private long end;
 
-    public static class SerialNumber
-    {
+    public static class SerialNumber {
         private final String key;
         private int prefix = 0;
         private long last = 0;
         private long next = 0;
-    
+
         public SerialNumber(String key) {
             this.key = key;
         }
-    
+
         public synchronized String next() throws InvalidProtocolBufferException {
             if (next < last) {
                 next++;
             } else {
                 var request = GetSNRequest.newBuilder().setKey(key).build();
-                var response = Service.sendRequest("/velo/generator/sn", request);
+                var response = Service.sendRequest(Path.GEN_GET_SN_URL, request);
                 if (response != null && response.getCode() == 200) {
                     var r = GetSNResponse.parseFrom(response.getBody());
                     prefix = r.getPrefix();
@@ -44,14 +43,14 @@ public class Generator {
             }
             return String.format("%d%07d", prefix, next);
         }
-    
     }
 
     public synchronized long next() {
-        if (value < end){
+        if (value < end) {
             value++;
         } else {
-            if (!getID()) System.exit(1);
+            if (!getID())
+                System.exit(1);
         }
         return Utils.calculateGID(prefix, value);
     }
@@ -60,7 +59,7 @@ public class Generator {
         var nc = Engine.connection();
         var request = Request.newBuilder().setCallID(0).setJSON(false).build();
         try {
-            Future<Message> incoming = nc.request(Utils.publishURL("/velo/generator/id"), request.toByteArray());
+            Future<Message> incoming = nc.request(Utils.publishURL(Path.GEN_GET_ID_URL), request.toByteArray());
             var msg = incoming.get(5, TimeUnit.SECONDS);
             var response = Response.parseFrom(msg.getData());
             if (response.getCode() != 200)

@@ -22,7 +22,7 @@ public class Engine {
     private final Connection connection;
     private final Session session;
     private final Generator id;
-    private final Log logger;
+    private final Logger logger;
     private String module;
     private final JetStream stream;
     private Settings settings;
@@ -33,7 +33,7 @@ public class Engine {
         this.module = module;
         id = new Generator();
         session = new Session(sessionID);
-        logger = new Log(sessionID, true);
+        logger = new Logger(sessionID, true);
 
         /* NATS */
         connection = Nats.connect(config.getNatsUrl());
@@ -83,7 +83,7 @@ public class Engine {
         return instance.session;
     }
 
-    public static Log LOG() {
+    public static Logger LOG() {
         return instance.logger;
     }
 
@@ -103,7 +103,7 @@ public class Engine {
         return instance.settings;
     }
 
-    public static com.datastax.driver.core.Session db() {
+    public static com.datastax.driver.core.Session DB() {
         return instance.db.session();
     }
 

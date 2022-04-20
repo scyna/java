@@ -2,7 +2,7 @@ package io.scyna;
 
 import io.scyna.proto.WriteLogSignal;
 
-public class Log {
+public class Logger {
     final int LOG_INFO = 1;
     final int LOG_ERROR = 2;
     final int LOG_WARNING = 3;
@@ -11,7 +11,7 @@ public class Log {
     private long id;
     private final boolean session;
 
-    Log(long id, boolean session) {
+    Logger(long id, boolean session) {
         this.id = id;
         this.session = session;
     }
@@ -30,7 +30,7 @@ public class Log {
                 .setText(messgage)
                 .setSession(session)
                 .build();
-        Signal.emit("velo.log", event);
+        Signal.emit(Path.LOG_WRITE_CHANNEL, event);
     }
 
     public void info(String message) {

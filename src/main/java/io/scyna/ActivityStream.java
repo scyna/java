@@ -17,18 +17,18 @@ public class ActivityStream {
         String[] parts = entity.split("[.]");
         tableName = parts[0] + ".es_" + parts[1] + "_" + stream;
         var insertQuery = String.format("INSERT INTO %s(entity_id, type, time, data) VALUES (?, ?, ?, ?)", tableName);
-        addStm = Engine.db().prepare(insertQuery);
+        addStm = Engine.DB().prepare(insertQuery);
 
         var getQuery = String.format(
                 "SELECT entity_id, type, time, data FROM vf_profile.es_account_activity WHERE entity_id = ? ALLOW FILTERING");
-        getStm = Engine.db().prepare(getQuery);
+        getStm = Engine.DB().prepare(getQuery);
     }
 
     public void add(long entityID, int type, Message message) {
         var now = System.currentTimeMillis();
         try {
             var boundStm = addStm.bind(entityID, type, now, ByteBuffer.wrap(message.toByteArray()));
-            var rs = Engine.db().execute(boundStm);
+            var rs = Engine.DB().execute(boundStm);
             if (!rs.wasApplied()) {
                 Engine.LOG().error("Cannot insert new event: " + entityID);
             }
@@ -41,7 +41,7 @@ public class ActivityStream {
         // Select event from data base
         var events = new ArrayList<EventObject>();
         try {
-            var rEvents = Engine.db().execute(getStm.bind(entityID));
+            var rEvents = Engine.DB().execute(getStm.bind(entityID));
 
             for (Row row : rEvents) {
                 EventObject event = new EventObject(row.getLong("entity_id"), row.getShort("type"), row.getLong("time"),
