@@ -3,6 +3,8 @@ package io.scyna;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import io.scyna.proto.UpdateSessionSignal;
+
 public class Session {
     private final long id;
     private long sequence;
@@ -12,7 +14,8 @@ public class Session {
 
         TimerTask task = new TimerTask() {
             public void run() {
-                /* TODO: send update session here */
+                var sig = UpdateSessionSignal.newBuilder().setID(id).build();
+                Signal.emit(Path.SESSION_UPDATE_CHANNEL, sig);
             }
         };
 
