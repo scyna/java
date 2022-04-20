@@ -13,7 +13,7 @@ public class CreateUserService extends Service.Base<CreateUserRequest> {
         if (request == null)
             return;
 
-        var id = Engine.id().next();
+        var id = Engine.ID().next();
         var mapper = Engine.mapping().mapper(io.scyna.ex.user.dao.User.class);
         var user = new io.scyna.ex.user.dao.User(id, request.getUser().getEmail(), request.getUser().getName());
         if (mapper.get(user.getEmail()) != null) {

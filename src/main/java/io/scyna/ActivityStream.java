@@ -30,10 +30,10 @@ public class ActivityStream {
             var boundStm = addStm.bind(entityID, type, now, ByteBuffer.wrap(message.toByteArray()));
             var rs = Engine.db().execute(boundStm);
             if (!rs.wasApplied()) {
-                Engine.log().error("Cannot insert new event: " + entityID);
+                Engine.LOG().error("Cannot insert new event: " + entityID);
             }
         } catch (Exception ex) {
-            Engine.log().error(ex.getMessage());
+            Engine.LOG().error(ex.getMessage());
         }
     }
 
@@ -49,7 +49,7 @@ public class ActivityStream {
                 events.add(event);
             }
         } catch (Exception ex) {
-            Engine.log().error(ex.getMessage());
+            Engine.LOG().error(ex.getMessage());
             return null;
         }
         return events;

@@ -50,10 +50,10 @@ public class Sync {
             if (response.statusCode() == 500)
                 return false;
         } catch (IOException | InterruptedException e) {
-            Engine.log().error(e.getMessage());
+            Engine.LOG().error(e.getMessage());
             return false;
         }
-        Engine.log().debug("Sent to: " + request.uri().toString() + " - " + request.method());
+        Engine.LOG().debug("Sent to: " + request.uri().toString() + " - " + request.method());
         return true;
     }
 

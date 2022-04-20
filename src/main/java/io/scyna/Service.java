@@ -29,7 +29,7 @@ public abstract class Service implements MessageHandler {
     }
 
     public static Response sendRequest(String url, Message request) {
-        var callID = Engine.id().next();
+        var callID = Engine.ID().next();
         var req = Request.newBuilder().setCallID(callID).setJSON(false);
         if (request != null)
             req.setBody(request.toByteString());

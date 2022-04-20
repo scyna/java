@@ -31,12 +31,15 @@ public class Engine {
 
     private Engine(String module, long sessionID, Configuration config) throws IOException, InterruptedException {
         this.module = module;
-        connection = Nats.connect(config.getNatsUrl());
-        stream = connection.jetStream();
         id = new Generator();
         session = new Session(sessionID);
         logger = new Log(sessionID, true);
-        /* Database: ScyllaDB */
+
+        /* NATS */
+        connection = Nats.connect(config.getNatsUrl());
+        stream = connection.jetStream();
+
+        /* ScyllaDB */
         var hosts = config.getDBHost().split(",");
         db = DB.init(hosts, config.getDBUsername(), config.getDBPassword(), config.getDBLocation());
         settings = new Settings();
@@ -58,8 +61,7 @@ public class Engine {
         }
         var res = CreateSessionResponse.parseFrom(response.body());
         instance = new Engine(module, res.getSessionID(), res.getConfig());
-        System.out.println("Engine Created for module:" + module);
-        System.out.println(instance.id.next());
+        System.out.println("Engine created for module:" + module);
 
         /* registration */
         Signal.register(Path.SETTING_UPDATE_CHANNEL + module, new Settings.UpdateHandler());
@@ -73,7 +75,7 @@ public class Engine {
         return new SerialNumber(key);
     }
 
-    public static Generator id() {
+    public static Generator ID() {
         return instance.id;
     }
 
@@ -81,7 +83,7 @@ public class Engine {
         return instance.session;
     }
 
-    public static Log log() {
+    public static Log LOG() {
         return instance.logger;
     }
 
