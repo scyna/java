@@ -20,12 +20,6 @@ public interface RequestOrBuilder extends
   com.google.protobuf.ByteString getBody();
 
   /**
-   * <code>bool JSON = 3;</code>
-   * @return The jSON.
-   */
-  boolean getJSON();
-
-  /**
    * <code>string Data = 4;</code>
    * @return The data.
    */
@@ -36,4 +30,20 @@ public interface RequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getDataBytes();
+
+  /**
+   * <code>bool JSON = 3;</code>
+   * @return The jSON.
+   */
+  boolean getJSON();
+
+  /**
+   * <pre>
+   *enable/disable logging
+   * </pre>
+   *
+   * <code>bool LogDisable = 5;</code>
+   * @return The logDisable.
+   */
+  boolean getLogDisable();
 }

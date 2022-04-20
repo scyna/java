@@ -78,7 +78,7 @@ public abstract class Service implements MessageHandler {
             }
             var response = Response.newBuilder()
                     .setCode(status)
-                    .setSesionID(Engine.session()
+                    .setSessionID(Engine.session()
                             .ID())
                     .setBody(ByteString.copyFrom(body)).build();
             Engine.connection().publish(reply, response.toByteArray());

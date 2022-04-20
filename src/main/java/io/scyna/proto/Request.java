@@ -67,17 +67,6 @@ private static final long serialVersionUID = 0L;
     return body_;
   }
 
-  public static final int JSON_FIELD_NUMBER = 3;
-  private boolean jSON_;
-  /**
-   * <code>bool JSON = 3;</code>
-   * @return The jSON.
-   */
-  @java.lang.Override
-  public boolean getJSON() {
-    return jSON_;
-  }
-
   public static final int DATA_FIELD_NUMBER = 4;
   private volatile java.lang.Object data_;
   /**
@@ -114,6 +103,32 @@ private static final long serialVersionUID = 0L;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
+  }
+
+  public static final int JSON_FIELD_NUMBER = 3;
+  private boolean jSON_;
+  /**
+   * <code>bool JSON = 3;</code>
+   * @return The jSON.
+   */
+  @java.lang.Override
+  public boolean getJSON() {
+    return jSON_;
+  }
+
+  public static final int LOGDISABLE_FIELD_NUMBER = 5;
+  private boolean logDisable_;
+  /**
+   * <pre>
+   *enable/disable logging
+   * </pre>
+   *
+   * <code>bool LogDisable = 5;</code>
+   * @return The logDisable.
+   */
+  @java.lang.Override
+  public boolean getLogDisable() {
+    return logDisable_;
   }
 
   public static io.scyna.proto.Request parseFrom(
@@ -248,9 +263,11 @@ private static final long serialVersionUID = 0L;
 
       body_ = com.google.protobuf.ByteString.EMPTY;
 
+      data_ = "";
+
       jSON_ = false;
 
-      data_ = "";
+      logDisable_ = false;
 
       return this;
     }
@@ -280,8 +297,9 @@ private static final long serialVersionUID = 0L;
       io.scyna.proto.Request result = new io.scyna.proto.Request(this);
       result.callID_ = callID_;
       result.body_ = body_;
-      result.jSON_ = jSON_;
       result.data_ = data_;
+      result.jSON_ = jSON_;
+      result.logDisable_ = logDisable_;
       onBuilt();
       return result;
     }
@@ -384,37 +402,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private boolean jSON_ ;
-    /**
-     * <code>bool JSON = 3;</code>
-     * @return The jSON.
-     */
-    @java.lang.Override
-    public boolean getJSON() {
-      return jSON_;
-    }
-    /**
-     * <code>bool JSON = 3;</code>
-     * @param value The jSON to set.
-     * @return This builder for chaining.
-     */
-    public Builder setJSON(boolean value) {
-      
-      jSON_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>bool JSON = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearJSON() {
-      
-      jSON_ = false;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object data_ = "";
     /**
      * <code>string Data = 4;</code>
@@ -487,6 +474,80 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       data_ = value;
+      onChanged();
+      return this;
+    }
+
+    private boolean jSON_ ;
+    /**
+     * <code>bool JSON = 3;</code>
+     * @return The jSON.
+     */
+    @java.lang.Override
+    public boolean getJSON() {
+      return jSON_;
+    }
+    /**
+     * <code>bool JSON = 3;</code>
+     * @param value The jSON to set.
+     * @return This builder for chaining.
+     */
+    public Builder setJSON(boolean value) {
+      
+      jSON_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bool JSON = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearJSON() {
+      
+      jSON_ = false;
+      onChanged();
+      return this;
+    }
+
+    private boolean logDisable_ ;
+    /**
+     * <pre>
+     *enable/disable logging
+     * </pre>
+     *
+     * <code>bool LogDisable = 5;</code>
+     * @return The logDisable.
+     */
+    @java.lang.Override
+    public boolean getLogDisable() {
+      return logDisable_;
+    }
+    /**
+     * <pre>
+     *enable/disable logging
+     * </pre>
+     *
+     * <code>bool LogDisable = 5;</code>
+     * @param value The logDisable to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLogDisable(boolean value) {
+      
+      logDisable_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *enable/disable logging
+     * </pre>
+     *
+     * <code>bool LogDisable = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLogDisable() {
+      
+      logDisable_ = false;
       onChanged();
       return this;
     }
