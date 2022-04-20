@@ -10,27 +10,30 @@ public class Logger {
     final int LOG_FATAL = 5;
     private long id;
     private final boolean session;
+    private boolean enable = true;
 
     Logger(long id, boolean session) {
         this.id = id;
         this.session = session;
     }
 
-    public void reset(long id) {
+    public void reset(long id, boolean enable) {
         this.id = id;
     }
 
     private void add(int level, String messgage) {
         messgage = convertLog(messgage);
         System.out.println(messgage);
-        var event = WriteLogSignal.newBuilder()
-                .setId(id)
-                .setTime(System.nanoTime() / 1000)
-                .setLevel(level)
-                .setText(messgage)
-                .setSession(session)
-                .build();
-        Signal.emit(Path.LOG_WRITE_CHANNEL, event);
+        if (enable) {
+            var event = WriteLogSignal.newBuilder()
+                    .setId(id)
+                    .setTime(System.nanoTime() / 1000)
+                    .setLevel(level)
+                    .setText(messgage)
+                    .setSession(session)
+                    .build();
+            Signal.emit(Path.LOG_WRITE_CHANNEL, event);
+        }
     }
 
     public void info(String message) {

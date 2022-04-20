@@ -49,7 +49,7 @@ public abstract class Service implements MessageHandler {
     public void onMessage(io.nats.client.Message msg) throws InterruptedException {
         try {
             var request = Request.parseFrom(msg.getData());
-            log.reset(request.getCallID());
+            log.reset(request.getCallID(), !request.getLogDisable()); // TODO: verify
             reply = msg.getReplyTo();
             json = request.getJSON();
             requestBody = request.getBody();
