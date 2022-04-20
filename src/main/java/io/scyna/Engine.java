@@ -13,9 +13,9 @@ import io.nats.client.Connection;
 import io.nats.client.JetStream;
 import io.nats.client.Nats;
 import io.scyna.Generator.SerialNumber;
-import io.scyna.proto.AuthenticationRequest;
-import io.scyna.proto.AuthenticationResponse;
 import io.scyna.proto.Configuration;
+import io.scyna.proto.CreateSessionRequest;
+import io.scyna.proto.CreateSessionResponse;
 
 public class Engine {
     private static Engine instance;
@@ -45,9 +45,10 @@ public class Engine {
 
     public static void init(String managerURL, String module, String secret)
             throws URISyntaxException, IOException, InterruptedException {
-        var req = AuthenticationRequest.newBuilder().setModule(module).setSecret(secret).build();
+
+        var req = CreateSessionRequest.newBuilder().setModule(module).setSecret(secret).build();
         var request = HttpRequest.newBuilder()
-                .uri(new URI(managerURL + "/velo/session/auth"))
+                .uri(new URI(managerURL + Path.SESSION_CREATE_URL))
                 .POST(HttpRequest.BodyPublishers.ofByteArray(req.toByteArray()))
                 .build();
 
@@ -55,13 +56,13 @@ public class Engine {
         if (response.statusCode() != 200) {
             throw new IOException();
         }
-        var res = AuthenticationResponse.parseFrom(response.body());
+        var res = CreateSessionResponse.parseFrom(response.body());
         instance = new Engine(module, res.getSessionID(), res.getConfig());
         System.out.println("Engine Created for module:" + module);
         System.out.println(instance.id.next());
 
         /* registration */
-        Signal.register("velo.setting.updated." + module, new Settings.UpdateHandler());
+        Signal.register(Path.SETTING_UPDATE_CHANNEL + module, new Settings.UpdateHandler());
     }
 
     public static Engine instance() {
