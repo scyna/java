@@ -70,7 +70,7 @@ public class Engine {
         return instance;
     }
 
-    public static SerialNumber initSerialNumber(String key) {
+    public static SerialNumber initSN(String key) {
         return new SerialNumber(key);
     }
 
