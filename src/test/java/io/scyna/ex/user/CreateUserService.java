@@ -13,7 +13,7 @@ public class CreateUserService extends Service.Base<CreateUserRequest> {
         if (request == null)
             return;
 
-        if (!User.exist(request.getUser().getEmail())) {
+        if (User.get(request.getUser().getEmail()) != null) {
             error(io.scyna.ex.user.Error.ACCOUNT_EXISTED);
             return;
         }

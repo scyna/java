@@ -37,14 +37,14 @@ public class User {
         return mapper;
     }
 
-    public static boolean exist(String email) {
-        return (mapper().get(email) != null);
-    }
-
     public static long create(User user) {
         var id = Engine.ID().next();
         user.id = id;
         mapper().save(user);
         return id;
+    }
+
+    public static User get(String email) {
+        return mapper().get(email);
     }
 }
