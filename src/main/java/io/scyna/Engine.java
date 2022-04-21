@@ -12,7 +12,6 @@ import com.datastax.driver.mapping.MappingManager;
 import io.nats.client.Connection;
 import io.nats.client.JetStream;
 import io.nats.client.Nats;
-import io.scyna.Generator.SerialNumber;
 import io.scyna.proto.Configuration;
 import io.scyna.proto.CreateSessionRequest;
 import io.scyna.proto.CreateSessionResponse;
