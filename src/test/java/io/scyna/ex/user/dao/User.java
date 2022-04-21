@@ -9,14 +9,6 @@ import io.scyna.Engine;
 
 @Table(keyspace = "ex", name = "user", caseSensitiveKeyspace = false, caseSensitiveTable = false)
 public class User {
-    public static Mapper<User> mapper() {
-        if (mapper == null) {
-            mapper = Engine.mapping().mapper(io.scyna.ex.user.dao.User.class);
-        }
-        return mapper;
-    }
-
-    private static Mapper<User> mapper = null;
     @PartitionKey
     @Column(name = "id")
     private long id;
@@ -30,18 +22,19 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    private static Mapper<User> mapper = null;
+
     public User(io.scyna.ex.user.proto.User user) {
         this.id = user.getId();
         this.email = user.getEmail();
         this.name = user.getName();
     }
 
-    public String getEmail() {
-        return this.email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public static Mapper<User> mapper() {
+        if (mapper == null) {
+            mapper = Engine.mapping().mapper(io.scyna.ex.user.dao.User.class);
+        }
+        return mapper;
     }
 
     public static boolean exist(String email) {
