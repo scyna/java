@@ -22,7 +22,7 @@ public class Logger {
     }
 
     private void add(int level, String messgage) {
-        messgage = fillLog(messgage);
+        messgage = format(messgage);
         System.out.println(messgage);
         if (enable) {
             var event = WriteLogSignal.newBuilder()
@@ -56,7 +56,7 @@ public class Logger {
         add(FATAL, message);
     }
 
-    private String fillLog(String log) {
+    private String format(String log) {
         StackTraceElement[] elements = Thread.currentThread().getStackTrace();
         String newLog = "[" + elements[4].getFileName() + ":" + elements[4].getLineNumber() + " - "
                 + elements[4].getMethodName() + "] " + log;
