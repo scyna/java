@@ -3,11 +3,11 @@ package io.scyna;
 import io.scyna.proto.WriteLogSignal;
 
 public class Logger {
-    final int LOG_INFO = 1;
-    final int LOG_ERROR = 2;
-    final int LOG_WARNING = 3;
-    final int LOG_DEBUG = 4;
-    final int LOG_FATAL = 5;
+    final int INFO = 1;
+    final int ERROR = 2;
+    final int WARNING = 3;
+    final int DEBUG = 4;
+    final int FATAL = 5;
     private long id;
     private final boolean session;
     private boolean enable = true;
@@ -22,7 +22,7 @@ public class Logger {
     }
 
     private void add(int level, String messgage) {
-        messgage = convertLog(messgage);
+        messgage = fillLog(messgage);
         System.out.println(messgage);
         if (enable) {
             var event = WriteLogSignal.newBuilder()
@@ -37,26 +37,26 @@ public class Logger {
     }
 
     public void info(String message) {
-        add(LOG_INFO, message);
+        add(INFO, message);
     }
 
     public void warning(String message) {
-        add(LOG_WARNING, message);
+        add(WARNING, message);
     }
 
     public void error(String message) {
-        add(LOG_ERROR, message);
+        add(ERROR, message);
     }
 
     public void debug(String message) {
-        add(LOG_DEBUG, message);
+        add(DEBUG, message);
     }
 
     public void fatal(String message) {
-        add(LOG_FATAL, message);
+        add(FATAL, message);
     }
 
-    private String convertLog(String log) {
+    private String fillLog(String log) {
         StackTraceElement[] elements = Thread.currentThread().getStackTrace();
         String newLog = "[" + elements[4].getFileName() + ":" + elements[4].getLineNumber() + " - "
                 + elements[4].getMethodName() + "] " + log;
