@@ -1,7 +1,7 @@
 package io.scyna.ex.user;
 
-import io.scyna.Engine;
 import io.scyna.Service;
+import io.scyna.ex.user.dao.User;
 import io.scyna.ex.user.proto.*;
 
 public class CreateUserService extends Service.Base<CreateUserRequest> {
@@ -13,15 +13,13 @@ public class CreateUserService extends Service.Base<CreateUserRequest> {
         if (request == null)
             return;
 
-        var id = Engine.ID().next();
-        var mapper = Engine.mapping().mapper(io.scyna.ex.user.dao.User.class);
-        var user = new io.scyna.ex.user.dao.User(id, request.getUser().getEmail(), request.getUser().getName());
-        if (mapper.get(user.getEmail()) != null) {
+        if (!User.exist(request.getUser().getEmail())) {
             error(io.scyna.ex.user.Error.ACCOUNT_EXISTED);
             return;
         }
-        mapper.save(user);
+
+        var user = new User(request.getUser());
+        var id = User.create(user);
         done(CreateUserResponse.newBuilder().setId(id).build());
     }
-
 }
