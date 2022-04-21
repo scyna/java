@@ -79,12 +79,16 @@ public class Engine {
         return instance.id;
     }
 
-    public static Session session() {
-        return instance.session;
+    public static com.datastax.driver.core.Session DB() {
+        return instance.db.session();
     }
 
     public static Logger LOG() {
         return instance.logger;
+    }
+
+    public static Session session() {
+        return instance.session;
     }
 
     public static String module() {
@@ -101,10 +105,6 @@ public class Engine {
 
     public static Settings settings() {
         return instance.settings;
-    }
-
-    public static com.datastax.driver.core.Session DB() {
-        return instance.db.session();
     }
 
     public static MappingManager mapping() {

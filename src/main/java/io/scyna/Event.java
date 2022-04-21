@@ -17,6 +17,14 @@ public class Event {
         }
     }
 
+    public static void post(String channel) {
+        try {
+            Engine.stream().publish(channel, null);
+        } catch (IOException | JetStreamApiException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void register(String channel, String consumer, Handler handler)
             throws IOException, JetStreamApiException {
         System.out.println("Register Event:" + channel);
