@@ -18,6 +18,7 @@ public class Logger {
     }
 
     public void reset(long id, boolean enable) {
+        this.enable = enable;
         this.id = id;
     }
 

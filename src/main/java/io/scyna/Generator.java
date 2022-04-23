@@ -23,7 +23,7 @@ public class Generator {
             if (!getID())
                 System.exit(1);
         }
-        return Utils.calculateGID(prefix, value);
+        return Utils.calculateID(prefix, value);
     }
 
     private boolean getID() {
@@ -35,10 +35,10 @@ public class Generator {
             var response = Response.parseFrom(msg.getData());
             if (response.getCode() != 200)
                 return false;
-            var gid = GetIDResponse.parseFrom(response.getBody());
-            this.prefix = gid.getPrefix();
-            this.value = gid.getStart();
-            this.end = gid.getEnd();
+            var id = GetIDResponse.parseFrom(response.getBody());
+            this.prefix = id.getPrefix();
+            this.value = id.getStart();
+            this.end = id.getEnd();
             return true;
         } catch (InterruptedException | ExecutionException | TimeoutException | InvalidProtocolBufferException e) {
             e.printStackTrace();

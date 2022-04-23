@@ -35,7 +35,7 @@ public class Engine {
         logger = new Logger(sessionID, true);
 
         /* NATS */
-        connection = Nats.connect(config.getNatsUrl());
+        connection = Nats.connect(config.getNatsUrl()); // FIXME: hosts list anh auth
         stream = connection.jetStream();
 
         /* ScyllaDB */
@@ -64,6 +64,7 @@ public class Engine {
 
         /* registration */
         Signal.register(Path.SETTING_UPDATE_CHANNEL + module, new Settings.UpdateHandler());
+        Signal.register(Path.SETTING_REMOVE_CHANNEL + module, new Settings.RemoveHandler());
     }
 
     public static Engine instance() {
