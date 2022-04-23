@@ -35,7 +35,7 @@ public class Engine {
         logger = new Logger(sessionID, true);
 
         /* NATS */
-        connection = Nats.connect(config.getNatsUrl());
+        connection = Nats.connect(config.getNatsUrl()); // FIXME: hosts list anh auth
         stream = connection.jetStream();
 
         /* ScyllaDB */
