@@ -11,6 +11,7 @@ class Path {
     public static final String SETTING_READ_URL = "/scyna/setting/read";
     public static final String SETTING_REMOVE_URL = "/scyna/setting/remove";
     public static final String SETTING_UPDATE_CHANNEL = "scyna.setting.updated.";
+    public static final String SETTING_REMOVE_CHANNEL = "scyna.setting.removed.";
     public static final String CALL_WRITE_CHANNEL = "scyna.call.write";
     public static final String APP_UPDATE_CHANNEL = "scyna.application.updated";
     public static final String CLIENT_UPDATE_CHANNEL = "scyna.client.updated";
