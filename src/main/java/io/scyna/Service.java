@@ -73,9 +73,9 @@ public abstract class Service implements MessageHandler {
             byte[] body;
             if (json)
                 body = JsonFormat.printer().print(m).getBytes();
-            else {
+            else
                 body = m.toByteArray();
-            }
+
             var response = Response.newBuilder()
                     .setCode(status)
                     .setSessionID(Engine.session()
