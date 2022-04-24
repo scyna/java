@@ -16,7 +16,7 @@ public class Utils {
         return subURL;
     }
 
-    public static long calculateGID(int prefix, long value) {
+    public static long calculateID(int prefix, long value) {
         return ((long) prefix << 44) + value;
     }
 }
