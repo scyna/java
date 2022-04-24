@@ -15,16 +15,13 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 public abstract class Service implements MessageHandler {
-    protected Logger log = new Logger(0, false);
-    protected boolean json;
-    protected ByteString requestBody;
-    protected String requestSource;
-    protected String reply;
 
-    public static void register(String url, Service service) {
+    public static <T extends Message> void register(String url, ServiceHandler<T> handler, Parser<T> parser,
+            Message.Builder builder) {
         System.out.println("Register Service:" + url);
+        handler.init(parser, builder);
         var nc = Engine.connection();
-        var d = nc.createDispatcher(service);
+        var d = nc.createDispatcher(handler);
         d.subscribe(Utils.subscribeURL(url), "API");
     }
 
@@ -44,62 +41,4 @@ public abstract class Service implements MessageHandler {
         }
     }
 
-    public abstract void execute();
-
-    public void onMessage(io.nats.client.Message msg) throws InterruptedException {
-        try {
-            var request = Request.parseFrom(msg.getData());
-            log.reset(request.getCallID(), !request.getLogDisable()); // TODO: verify
-            reply = msg.getReplyTo();
-            json = request.getJSON();
-            requestBody = request.getBody();
-            requestSource = request.getData();
-            this.execute();
-        } catch (InvalidProtocolBufferException e) {
-            e.printStackTrace();
-        }
-    }
-
-    protected void error(io.scyna.proto.Error error) {
-        flush(400, error);
-    }
-
-    protected void done(Message m) {
-        flush(200, m);
-    }
-
-    protected void flush(int status, Message m) {
-        try {
-            byte[] body;
-            if (json)
-                body = JsonFormat.printer().print(m).getBytes();
-            else
-                body = m.toByteArray();
-
-            var response = Response.newBuilder()
-                    .setCode(status)
-                    .setSessionID(Engine.session()
-                            .ID())
-                    .setBody(ByteString.copyFrom(body)).build();
-            Engine.connection().publish(reply, response.toByteArray());
-        } catch (InvalidProtocolBufferException e) {
-            e.printStackTrace();
-        }
-    }
-
-    static public abstract class Base<T extends Message> extends Service {
-        protected Message parse(Parser<T> parser, Message.Builder builder) {
-            try {
-                if (json) {
-                    JsonFormat.parser().merge(requestBody.toStringUtf8(), builder);
-                    return builder.build();
-                } else
-                    return parser.parseFrom(requestBody);
-
-            } catch (InvalidProtocolBufferException e) {
-                flush(400, io.scyna.Error.BAD_REQUEST);
-                return null;
-            }
-        }
-    }
 }

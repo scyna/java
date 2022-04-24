@@ -1,18 +1,14 @@
 package io.scyna.ex.echo;
 
-import io.scyna.Service;
+import io.scyna.ServiceHandler;
 import io.scyna.ex.echo.proto.EchoRequest;
 import io.scyna.ex.echo.proto.EchoResponse;
 
-public class EchoService extends Service.Base<EchoRequest> {
+public class EchoService extends ServiceHandler<EchoRequest> {
     @Override
-    public void execute() {
+    public void execute(EchoRequest request) {
         System.out.println("Receive EchoRequest");
-        var request = (EchoRequest) parse(EchoRequest.parser(), EchoRequest.newBuilder());
-        if (request == null)
-            return;
-
-        log.info("Test Log from echo [JAVA]");
+        LOG.info("Test Log from echo [JAVA]");
         done(EchoResponse.newBuilder().setText(request.getText()).build());
     }
 }
