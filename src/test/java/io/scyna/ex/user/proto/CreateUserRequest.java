@@ -4,34 +4,36 @@
 package io.scyna.ex.user.proto;
 
 /**
- * Protobuf type {@code io.velo.user.proto.CreateUserRequest}
+ * <pre>
+ *CREATE
+ * </pre>
+ *
+ * Protobuf type {@code io.scyna.user.proto.CreateUserRequest}
  */
 public final class CreateUserRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:io.velo.user.proto.CreateUserRequest)
+    // @@protoc_insertion_point(message_implements:io.scyna.user.proto.CreateUserRequest)
     CreateUserRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use CreateUserRequest.newBuilder() to construct.
   private CreateUserRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private CreateUserRequest() {
   }
 
   @java.lang.Override
-  @SuppressWarnings({ "unused" })
+  @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
     return new CreateUserRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
   private CreateUserRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -40,7 +42,8 @@ public final class CreateUserRequest extends
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -81,43 +84,39 @@ public final class CreateUserRequest extends
       makeExtensionsImmutable();
     }
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_CreateUserRequest_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_CreateUserRequest_descriptor;
   }
 
   @java.lang.Override
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_CreateUserRequest_fieldAccessorTable
+  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_CreateUserRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             io.scyna.ex.user.proto.CreateUserRequest.class, io.scyna.ex.user.proto.CreateUserRequest.Builder.class);
   }
 
   public static final int USER_FIELD_NUMBER = 1;
   private io.scyna.ex.user.proto.User user_;
-
   /**
-   * <code>.io.velo.user.proto.User user = 1;</code>
-   * 
+   * <code>.io.scyna.user.proto.User user = 1;</code>
    * @return Whether the user field is set.
    */
   @java.lang.Override
   public boolean hasUser() {
     return user_ != null;
   }
-
   /**
-   * <code>.io.velo.user.proto.User user = 1;</code>
-   * 
+   * <code>.io.scyna.user.proto.User user = 1;</code>
    * @return The user.
    */
   @java.lang.Override
   public io.scyna.ex.user.proto.User getUser() {
     return user_ == null ? io.scyna.ex.user.proto.User.getDefaultInstance() : user_;
   }
-
   /**
-   * <code>.io.velo.user.proto.User user = 1;</code>
+   * <code>.io.scyna.user.proto.User user = 1;</code>
    */
   @java.lang.Override
   public io.scyna.ex.user.proto.UserOrBuilder getUserOrBuilder() {
@@ -125,14 +124,11 @@ public final class CreateUserRequest extends
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
-    if (isInitialized == 1)
-      return true;
-    if (isInitialized == 0)
-      return false;
+    if (isInitialized == 1) return true;
+    if (isInitialized == 0) return false;
 
     memoizedIsInitialized = 1;
     return true;
@@ -140,7 +136,7 @@ public final class CreateUserRequest extends
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
-      throws java.io.IOException {
+                      throws java.io.IOException {
     if (user_ != null) {
       output.writeMessage(1, getUser());
     }
@@ -150,13 +146,12 @@ public final class CreateUserRequest extends
   @java.lang.Override
   public int getSerializedSize() {
     int size = memoizedSize;
-    if (size != -1)
-      return size;
+    if (size != -1) return size;
 
     size = 0;
     if (user_ != null) {
       size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getUser());
+        .computeMessageSize(1, getUser());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -166,22 +161,19 @@ public final class CreateUserRequest extends
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof io.scyna.ex.user.proto.CreateUserRequest)) {
       return super.equals(obj);
     }
     io.scyna.ex.user.proto.CreateUserRequest other = (io.scyna.ex.user.proto.CreateUserRequest) obj;
 
-    if (hasUser() != other.hasUser())
-      return false;
+    if (hasUser() != other.hasUser()) return false;
     if (hasUser()) {
       if (!getUser()
-          .equals(other.getUser()))
-        return false;
+          .equals(other.getUser())) return false;
     }
-    if (!unknownFields.equals(other.unknownFields))
-      return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
 
@@ -206,45 +198,38 @@ public final class CreateUserRequest extends
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static io.scyna.ex.user.proto.CreateUserRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.CreateUserRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static io.scyna.ex.user.proto.CreateUserRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.CreateUserRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static io.scyna.ex.user.proto.CreateUserRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.CreateUserRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-
   public static io.scyna.ex.user.proto.CreateUserRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -252,13 +237,11 @@ public final class CreateUserRequest extends
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.CreateUserRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static io.scyna.ex.user.proto.CreateUserRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -266,14 +249,12 @@ public final class CreateUserRequest extends
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.CreateUserRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-
   public static io.scyna.ex.user.proto.CreateUserRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -283,23 +264,17 @@ public final class CreateUserRequest extends
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(io.scyna.ex.user.proto.CreateUserRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
     return this == DEFAULT_INSTANCE
-        ? new Builder()
-        : new Builder().mergeFrom(this);
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
@@ -308,26 +283,31 @@ public final class CreateUserRequest extends
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
-   * Protobuf type {@code io.velo.user.proto.CreateUserRequest}
+   * <pre>
+   *CREATE
+   * </pre>
+   *
+   * Protobuf type {@code io.scyna.user.proto.CreateUserRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:io.velo.user.proto.CreateUserRequest)
+      // @@protoc_insertion_point(builder_implements:io.scyna.user.proto.CreateUserRequest)
       io.scyna.ex.user.proto.CreateUserRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_CreateUserRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_CreateUserRequest_descriptor;
     }
 
     @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_CreateUserRequest_fieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_CreateUserRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               io.scyna.ex.user.proto.CreateUserRequest.class, io.scyna.ex.user.proto.CreateUserRequest.Builder.class);
     }
 
-    // Construct using io.velo.user.proto.CreateUserRequest.newBuilder()
+    // Construct using io.scyna.ex.user.proto.CreateUserRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -337,12 +317,11 @@ public final class CreateUserRequest extends
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
       }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -356,8 +335,9 @@ public final class CreateUserRequest extends
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_CreateUserRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_CreateUserRequest_descriptor;
     }
 
     @java.lang.Override
@@ -390,44 +370,38 @@ public final class CreateUserRequest extends
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
     public Builder clearField(
         com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
     public Builder clearOneof(
         com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof io.scyna.ex.user.proto.CreateUserRequest) {
-        return mergeFrom((io.scyna.ex.user.proto.CreateUserRequest) other);
+        return mergeFrom((io.scyna.ex.user.proto.CreateUserRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -435,8 +409,7 @@ public final class CreateUserRequest extends
     }
 
     public Builder mergeFrom(io.scyna.ex.user.proto.CreateUserRequest other) {
-      if (other == io.scyna.ex.user.proto.CreateUserRequest.getDefaultInstance())
-        return this;
+      if (other == io.scyna.ex.user.proto.CreateUserRequest.getDefaultInstance()) return this;
       if (other.hasUser()) {
         mergeUser(other.getUser());
       }
@@ -470,20 +443,17 @@ public final class CreateUserRequest extends
     }
 
     private io.scyna.ex.user.proto.User user_;
-    private com.google.protobuf.SingleFieldBuilderV3<io.scyna.ex.user.proto.User, io.scyna.ex.user.proto.User.Builder, io.scyna.ex.user.proto.UserOrBuilder> userBuilder_;
-
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.scyna.ex.user.proto.User, io.scyna.ex.user.proto.User.Builder, io.scyna.ex.user.proto.UserOrBuilder> userBuilder_;
     /**
-     * <code>.io.velo.user.proto.User user = 1;</code>
-     * 
+     * <code>.io.scyna.user.proto.User user = 1;</code>
      * @return Whether the user field is set.
      */
     public boolean hasUser() {
       return userBuilder_ != null || user_ != null;
     }
-
     /**
-     * <code>.io.velo.user.proto.User user = 1;</code>
-     * 
+     * <code>.io.scyna.user.proto.User user = 1;</code>
      * @return The user.
      */
     public io.scyna.ex.user.proto.User getUser() {
@@ -493,9 +463,8 @@ public final class CreateUserRequest extends
         return userBuilder_.getMessage();
       }
     }
-
     /**
-     * <code>.io.velo.user.proto.User user = 1;</code>
+     * <code>.io.scyna.user.proto.User user = 1;</code>
      */
     public Builder setUser(io.scyna.ex.user.proto.User value) {
       if (userBuilder_ == null) {
@@ -510,9 +479,8 @@ public final class CreateUserRequest extends
 
       return this;
     }
-
     /**
-     * <code>.io.velo.user.proto.User user = 1;</code>
+     * <code>.io.scyna.user.proto.User user = 1;</code>
      */
     public Builder setUser(
         io.scyna.ex.user.proto.User.Builder builderForValue) {
@@ -525,14 +493,14 @@ public final class CreateUserRequest extends
 
       return this;
     }
-
     /**
-     * <code>.io.velo.user.proto.User user = 1;</code>
+     * <code>.io.scyna.user.proto.User user = 1;</code>
      */
     public Builder mergeUser(io.scyna.ex.user.proto.User value) {
       if (userBuilder_ == null) {
         if (user_ != null) {
-          user_ = io.scyna.ex.user.proto.User.newBuilder(user_).mergeFrom(value).buildPartial();
+          user_ =
+            io.scyna.ex.user.proto.User.newBuilder(user_).mergeFrom(value).buildPartial();
         } else {
           user_ = value;
         }
@@ -543,9 +511,8 @@ public final class CreateUserRequest extends
 
       return this;
     }
-
     /**
-     * <code>.io.velo.user.proto.User user = 1;</code>
+     * <code>.io.scyna.user.proto.User user = 1;</code>
      */
     public Builder clearUser() {
       if (userBuilder_ == null) {
@@ -558,41 +525,41 @@ public final class CreateUserRequest extends
 
       return this;
     }
-
     /**
-     * <code>.io.velo.user.proto.User user = 1;</code>
+     * <code>.io.scyna.user.proto.User user = 1;</code>
      */
     public io.scyna.ex.user.proto.User.Builder getUserBuilder() {
-
+      
       onChanged();
       return getUserFieldBuilder().getBuilder();
     }
-
     /**
-     * <code>.io.velo.user.proto.User user = 1;</code>
+     * <code>.io.scyna.user.proto.User user = 1;</code>
      */
     public io.scyna.ex.user.proto.UserOrBuilder getUserOrBuilder() {
       if (userBuilder_ != null) {
         return userBuilder_.getMessageOrBuilder();
       } else {
-        return user_ == null ? io.scyna.ex.user.proto.User.getDefaultInstance() : user_;
+        return user_ == null ?
+            io.scyna.ex.user.proto.User.getDefaultInstance() : user_;
       }
     }
-
     /**
-     * <code>.io.velo.user.proto.User user = 1;</code>
+     * <code>.io.scyna.user.proto.User user = 1;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<io.scyna.ex.user.proto.User, io.scyna.ex.user.proto.User.Builder, io.scyna.ex.user.proto.UserOrBuilder> getUserFieldBuilder() {
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.scyna.ex.user.proto.User, io.scyna.ex.user.proto.User.Builder, io.scyna.ex.user.proto.UserOrBuilder> 
+        getUserFieldBuilder() {
       if (userBuilder_ == null) {
-        userBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<io.scyna.ex.user.proto.User, io.scyna.ex.user.proto.User.Builder, io.scyna.ex.user.proto.UserOrBuilder>(
-            getUser(),
-            getParentForChildren(),
-            isClean());
+        userBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            io.scyna.ex.user.proto.User, io.scyna.ex.user.proto.User.Builder, io.scyna.ex.user.proto.UserOrBuilder>(
+                getUser(),
+                getParentForChildren(),
+                isClean());
         user_ = null;
       }
       return userBuilder_;
     }
-
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -605,10 +572,11 @@ public final class CreateUserRequest extends
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:io.velo.user.proto.CreateUserRequest)
+
+    // @@protoc_insertion_point(builder_scope:io.scyna.user.proto.CreateUserRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:io.velo.user.proto.CreateUserRequest)
+  // @@protoc_insertion_point(class_scope:io.scyna.user.proto.CreateUserRequest)
   private static final io.scyna.ex.user.proto.CreateUserRequest DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new io.scyna.ex.user.proto.CreateUserRequest();
@@ -618,7 +586,8 @@ public final class CreateUserRequest extends
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<CreateUserRequest> PARSER = new com.google.protobuf.AbstractParser<CreateUserRequest>() {
+  private static final com.google.protobuf.Parser<CreateUserRequest>
+      PARSER = new com.google.protobuf.AbstractParser<CreateUserRequest>() {
     @java.lang.Override
     public CreateUserRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
@@ -643,3 +612,4 @@ public final class CreateUserRequest extends
   }
 
 }
+

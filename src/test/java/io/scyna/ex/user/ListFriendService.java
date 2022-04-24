@@ -1,17 +1,13 @@
 package io.scyna.ex.user;
 
-import io.scyna.Service;
+import io.scyna.ServiceHandler;
 import io.scyna.ex.user.proto.ListFriendRequest;
 
-public class ListFriendService extends Service.Base<ListFriendRequest> {
+public class ListFriendService extends ServiceHandler<ListFriendRequest> {
 
     @Override
-    public void execute() {
+    public void execute(ListFriendRequest request) {
         System.out.println("Receive ListFriendRequest");
-        var request = (ListFriendRequest) parse(ListFriendRequest.parser(), ListFriendRequest.newBuilder());
-        if (request == null)
-            return;
-
         /* TODO */
     }
 }

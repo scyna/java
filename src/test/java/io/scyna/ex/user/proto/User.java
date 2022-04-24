@@ -4,19 +4,17 @@
 package io.scyna.ex.user.proto;
 
 /**
- * Protobuf type {@code io.velo.user.proto.User}
+ * Protobuf type {@code io.scyna.user.proto.User}
  */
 public final class User extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:io.velo.user.proto.User)
+    // @@protoc_insertion_point(message_implements:io.scyna.user.proto.User)
     UserOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use User.newBuilder() to construct.
   private User(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private User() {
     email_ = "";
     name_ = "";
@@ -24,17 +22,17 @@ public final class User extends
   }
 
   @java.lang.Override
-  @SuppressWarnings({ "unused" })
+  @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
     return new User();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
   private User(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -43,7 +41,8 @@ public final class User extends
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -94,24 +93,23 @@ public final class User extends
       makeExtensionsImmutable();
     }
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_User_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_User_descriptor;
   }
 
   @java.lang.Override
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_User_fieldAccessorTable
+  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_User_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             io.scyna.ex.user.proto.User.class, io.scyna.ex.user.proto.User.Builder.class);
   }
 
   public static final int ID_FIELD_NUMBER = 1;
   private long id_;
-
   /**
    * <code>uint64 id = 1;</code>
-   * 
    * @return The id.
    */
   @java.lang.Override
@@ -121,10 +119,8 @@ public final class User extends
 
   public static final int EMAIL_FIELD_NUMBER = 2;
   private volatile java.lang.Object email_;
-
   /**
    * <code>string email = 2;</code>
-   * 
    * @return The email.
    */
   @java.lang.Override
@@ -133,24 +129,25 @@ public final class User extends
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       email_ = s;
       return s;
     }
   }
-
   /**
    * <code>string email = 2;</code>
-   * 
    * @return The bytes for email.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getEmailBytes() {
+  public com.google.protobuf.ByteString
+      getEmailBytes() {
     java.lang.Object ref = email_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8(
-          (java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       email_ = b;
       return b;
     } else {
@@ -160,10 +157,8 @@ public final class User extends
 
   public static final int NAME_FIELD_NUMBER = 3;
   private volatile java.lang.Object name_;
-
   /**
    * <code>string name = 3;</code>
-   * 
    * @return The name.
    */
   @java.lang.Override
@@ -172,24 +167,25 @@ public final class User extends
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       name_ = s;
       return s;
     }
   }
-
   /**
    * <code>string name = 3;</code>
-   * 
    * @return The bytes for name.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getNameBytes() {
+  public com.google.protobuf.ByteString
+      getNameBytes() {
     java.lang.Object ref = name_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8(
-          (java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       name_ = b;
       return b;
     } else {
@@ -199,10 +195,8 @@ public final class User extends
 
   public static final int PASSWORD_FIELD_NUMBER = 4;
   private volatile java.lang.Object password_;
-
   /**
    * <code>string password = 4;</code>
-   * 
    * @return The password.
    */
   @java.lang.Override
@@ -211,24 +205,25 @@ public final class User extends
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       password_ = s;
       return s;
     }
   }
-
   /**
    * <code>string password = 4;</code>
-   * 
    * @return The bytes for password.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getPasswordBytes() {
+  public com.google.protobuf.ByteString
+      getPasswordBytes() {
     java.lang.Object ref = password_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8(
-          (java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       password_ = b;
       return b;
     } else {
@@ -237,14 +232,11 @@ public final class User extends
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
-    if (isInitialized == 1)
-      return true;
-    if (isInitialized == 0)
-      return false;
+    if (isInitialized == 1) return true;
+    if (isInitialized == 0) return false;
 
     memoizedIsInitialized = 1;
     return true;
@@ -252,7 +244,7 @@ public final class User extends
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
-      throws java.io.IOException {
+                      throws java.io.IOException {
     if (id_ != 0L) {
       output.writeUInt64(1, id_);
     }
@@ -271,13 +263,12 @@ public final class User extends
   @java.lang.Override
   public int getSerializedSize() {
     int size = memoizedSize;
-    if (size != -1)
-      return size;
+    if (size != -1) return size;
 
     size = 0;
     if (id_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, id_);
+        .computeUInt64Size(1, id_);
     }
     if (!getEmailBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, email_);
@@ -296,26 +287,22 @@ public final class User extends
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof io.scyna.ex.user.proto.User)) {
       return super.equals(obj);
     }
     io.scyna.ex.user.proto.User other = (io.scyna.ex.user.proto.User) obj;
 
-    if (getId() != other.getId())
-      return false;
+    if (getId()
+        != other.getId()) return false;
     if (!getEmail()
-        .equals(other.getEmail()))
-      return false;
+        .equals(other.getEmail())) return false;
     if (!getName()
-        .equals(other.getName()))
-      return false;
+        .equals(other.getName())) return false;
     if (!getPassword()
-        .equals(other.getPassword()))
-      return false;
-    if (!unknownFields.equals(other.unknownFields))
-      return false;
+        .equals(other.getPassword())) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
 
@@ -345,45 +332,38 @@ public final class User extends
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static io.scyna.ex.user.proto.User parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.User parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static io.scyna.ex.user.proto.User parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.User parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static io.scyna.ex.user.proto.User parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.User parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-
   public static io.scyna.ex.user.proto.User parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -391,13 +371,11 @@ public final class User extends
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.User parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static io.scyna.ex.user.proto.User parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -405,14 +383,12 @@ public final class User extends
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.User parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-
   public static io.scyna.ex.user.proto.User parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -422,23 +398,17 @@ public final class User extends
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(io.scyna.ex.user.proto.User prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
     return this == DEFAULT_INSTANCE
-        ? new Builder()
-        : new Builder().mergeFrom(this);
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
@@ -447,26 +417,27 @@ public final class User extends
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
-   * Protobuf type {@code io.velo.user.proto.User}
+   * Protobuf type {@code io.scyna.user.proto.User}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:io.velo.user.proto.User)
+      // @@protoc_insertion_point(builder_implements:io.scyna.user.proto.User)
       io.scyna.ex.user.proto.UserOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_User_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_User_descriptor;
     }
 
     @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_User_fieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_User_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               io.scyna.ex.user.proto.User.class, io.scyna.ex.user.proto.User.Builder.class);
     }
 
-    // Construct using io.velo.user.proto.User.newBuilder()
+    // Construct using io.scyna.ex.user.proto.User.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -476,12 +447,11 @@ public final class User extends
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
       }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -497,8 +467,9 @@ public final class User extends
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_User_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_User_descriptor;
     }
 
     @java.lang.Override
@@ -530,44 +501,38 @@ public final class User extends
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
     public Builder clearField(
         com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
     public Builder clearOneof(
         com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof io.scyna.ex.user.proto.User) {
-        return mergeFrom((io.scyna.ex.user.proto.User) other);
+        return mergeFrom((io.scyna.ex.user.proto.User)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -575,8 +540,7 @@ public final class User extends
     }
 
     public Builder mergeFrom(io.scyna.ex.user.proto.User other) {
-      if (other == io.scyna.ex.user.proto.User.getDefaultInstance())
-        return this;
+      if (other == io.scyna.ex.user.proto.User.getDefaultInstance()) return this;
       if (other.getId() != 0L) {
         setId(other.getId());
       }
@@ -621,54 +585,47 @@ public final class User extends
       return this;
     }
 
-    private long id_;
-
+    private long id_ ;
     /**
      * <code>uint64 id = 1;</code>
-     * 
      * @return The id.
      */
     @java.lang.Override
     public long getId() {
       return id_;
     }
-
     /**
      * <code>uint64 id = 1;</code>
-     * 
      * @param value The id to set.
      * @return This builder for chaining.
      */
     public Builder setId(long value) {
-
+      
       id_ = value;
       onChanged();
       return this;
     }
-
     /**
      * <code>uint64 id = 1;</code>
-     * 
      * @return This builder for chaining.
      */
     public Builder clearId() {
-
+      
       id_ = 0L;
       onChanged();
       return this;
     }
 
     private java.lang.Object email_ = "";
-
     /**
      * <code>string email = 2;</code>
-     * 
      * @return The email.
      */
     public java.lang.String getEmail() {
       java.lang.Object ref = email_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         email_ = s;
         return s;
@@ -676,82 +633,75 @@ public final class User extends
         return (java.lang.String) ref;
       }
     }
-
     /**
      * <code>string email = 2;</code>
-     * 
      * @return The bytes for email.
      */
-    public com.google.protobuf.ByteString getEmailBytes() {
+    public com.google.protobuf.ByteString
+        getEmailBytes() {
       java.lang.Object ref = email_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8(
-            (java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         email_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
     /**
      * <code>string email = 2;</code>
-     * 
      * @param value The email to set.
      * @return This builder for chaining.
      */
     public Builder setEmail(
         java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       email_ = value;
       onChanged();
       return this;
     }
-
     /**
      * <code>string email = 2;</code>
-     * 
      * @return This builder for chaining.
      */
     public Builder clearEmail() {
-
+      
       email_ = getDefaultInstance().getEmail();
       onChanged();
       return this;
     }
-
     /**
      * <code>string email = 2;</code>
-     * 
      * @param value The bytes for email to set.
      * @return This builder for chaining.
      */
     public Builder setEmailBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       email_ = value;
       onChanged();
       return this;
     }
 
     private java.lang.Object name_ = "";
-
     /**
      * <code>string name = 3;</code>
-     * 
      * @return The name.
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         name_ = s;
         return s;
@@ -759,82 +709,75 @@ public final class User extends
         return (java.lang.String) ref;
       }
     }
-
     /**
      * <code>string name = 3;</code>
-     * 
      * @return The bytes for name.
      */
-    public com.google.protobuf.ByteString getNameBytes() {
+    public com.google.protobuf.ByteString
+        getNameBytes() {
       java.lang.Object ref = name_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8(
-            (java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         name_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
     /**
      * <code>string name = 3;</code>
-     * 
      * @param value The name to set.
      * @return This builder for chaining.
      */
     public Builder setName(
         java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       name_ = value;
       onChanged();
       return this;
     }
-
     /**
      * <code>string name = 3;</code>
-     * 
      * @return This builder for chaining.
      */
     public Builder clearName() {
-
+      
       name_ = getDefaultInstance().getName();
       onChanged();
       return this;
     }
-
     /**
      * <code>string name = 3;</code>
-     * 
      * @param value The bytes for name to set.
      * @return This builder for chaining.
      */
     public Builder setNameBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       name_ = value;
       onChanged();
       return this;
     }
 
     private java.lang.Object password_ = "";
-
     /**
      * <code>string password = 4;</code>
-     * 
      * @return The password.
      */
     public java.lang.String getPassword() {
       java.lang.Object ref = password_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         password_ = s;
         return s;
@@ -842,71 +785,64 @@ public final class User extends
         return (java.lang.String) ref;
       }
     }
-
     /**
      * <code>string password = 4;</code>
-     * 
      * @return The bytes for password.
      */
-    public com.google.protobuf.ByteString getPasswordBytes() {
+    public com.google.protobuf.ByteString
+        getPasswordBytes() {
       java.lang.Object ref = password_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8(
-            (java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         password_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
     /**
      * <code>string password = 4;</code>
-     * 
      * @param value The password to set.
      * @return This builder for chaining.
      */
     public Builder setPassword(
         java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       password_ = value;
       onChanged();
       return this;
     }
-
     /**
      * <code>string password = 4;</code>
-     * 
      * @return This builder for chaining.
      */
     public Builder clearPassword() {
-
+      
       password_ = getDefaultInstance().getPassword();
       onChanged();
       return this;
     }
-
     /**
      * <code>string password = 4;</code>
-     * 
      * @param value The bytes for password to set.
      * @return This builder for chaining.
      */
     public Builder setPasswordBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       password_ = value;
       onChanged();
       return this;
     }
-
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -919,10 +855,11 @@ public final class User extends
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:io.velo.user.proto.User)
+
+    // @@protoc_insertion_point(builder_scope:io.scyna.user.proto.User)
   }
 
-  // @@protoc_insertion_point(class_scope:io.velo.user.proto.User)
+  // @@protoc_insertion_point(class_scope:io.scyna.user.proto.User)
   private static final io.scyna.ex.user.proto.User DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new io.scyna.ex.user.proto.User();
@@ -932,7 +869,8 @@ public final class User extends
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<User> PARSER = new com.google.protobuf.AbstractParser<User>() {
+  private static final com.google.protobuf.Parser<User>
+      PARSER = new com.google.protobuf.AbstractParser<User>() {
     @java.lang.Override
     public User parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
@@ -957,3 +895,4 @@ public final class User extends
   }
 
 }
+

@@ -1,10 +1,8 @@
 package io.scyna;
 
-import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
-import com.google.protobuf.util.JsonFormat;
 import io.nats.client.MessageHandler;
 import io.scyna.proto.Request;
 import io.scyna.proto.Response;
@@ -40,5 +38,4 @@ public abstract class Service implements MessageHandler {
             return null;
         }
     }
-
 }

@@ -4,12 +4,11 @@
 package io.scyna.ex.user.proto;
 
 public interface CreateUserResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.velo.user.proto.CreateUserResponse)
+    // @@protoc_insertion_point(interface_extends:io.scyna.user.proto.CreateUserResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>uint64 id = 1;</code>
-   * 
    * @return The id.
    */
   long getId();

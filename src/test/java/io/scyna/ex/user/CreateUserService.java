@@ -1,17 +1,14 @@
 package io.scyna.ex.user;
 
-import io.scyna.Service;
+import io.scyna.ServiceHandler;
 import io.scyna.ex.user.dao.User;
 import io.scyna.ex.user.proto.*;
 
-public class CreateUserService extends Service.Base<CreateUserRequest> {
+public class CreateUserService extends ServiceHandler<CreateUserRequest> {
 
     @Override
-    public void execute() {
+    public void execute(CreateUserRequest request) {
         System.out.println("Receive CreateUserRequest");
-        var request = (CreateUserRequest) parse(CreateUserRequest.parser(), CreateUserRequest.newBuilder());
-        if (request == null)
-            return;
 
         if (User.get(request.getUser().getEmail()) != null) {
             error(io.scyna.ex.user.Error.ACCOUNT_EXISTED);

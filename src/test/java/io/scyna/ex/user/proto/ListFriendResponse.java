@@ -4,35 +4,33 @@
 package io.scyna.ex.user.proto;
 
 /**
- * Protobuf type {@code io.velo.user.proto.ListFriendResponse}
+ * Protobuf type {@code io.scyna.user.proto.ListFriendResponse}
  */
 public final class ListFriendResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:io.velo.user.proto.ListFriendResponse)
+    // @@protoc_insertion_point(message_implements:io.scyna.user.proto.ListFriendResponse)
     ListFriendResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use ListFriendResponse.newBuilder() to construct.
   private ListFriendResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private ListFriendResponse() {
     friends_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
-  @SuppressWarnings({ "unused" })
+  @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
     return new ListFriendResponse();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
   private ListFriendResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -42,7 +40,8 @@ public final class ListFriendResponse extends
       throw new java.lang.NullPointerException();
     }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -82,55 +81,52 @@ public final class ListFriendResponse extends
       makeExtensionsImmutable();
     }
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_ListFriendResponse_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_ListFriendResponse_descriptor;
   }
 
   @java.lang.Override
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_ListFriendResponse_fieldAccessorTable
+  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_ListFriendResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             io.scyna.ex.user.proto.ListFriendResponse.class, io.scyna.ex.user.proto.ListFriendResponse.Builder.class);
   }
 
   public static final int FRIENDS_FIELD_NUMBER = 1;
   private java.util.List<io.scyna.ex.user.proto.User> friends_;
-
   /**
-   * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+   * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
    */
   @java.lang.Override
   public java.util.List<io.scyna.ex.user.proto.User> getFriendsList() {
     return friends_;
   }
-
   /**
-   * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+   * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
    */
   @java.lang.Override
-  public java.util.List<? extends io.scyna.ex.user.proto.UserOrBuilder> getFriendsOrBuilderList() {
+  public java.util.List<? extends io.scyna.ex.user.proto.UserOrBuilder> 
+      getFriendsOrBuilderList() {
     return friends_;
   }
-
   /**
-   * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+   * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
    */
   @java.lang.Override
   public int getFriendsCount() {
     return friends_.size();
   }
-
   /**
-   * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+   * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
    */
   @java.lang.Override
   public io.scyna.ex.user.proto.User getFriends(int index) {
     return friends_.get(index);
   }
-
   /**
-   * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+   * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
    */
   @java.lang.Override
   public io.scyna.ex.user.proto.UserOrBuilder getFriendsOrBuilder(
@@ -139,14 +135,11 @@ public final class ListFriendResponse extends
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
-    if (isInitialized == 1)
-      return true;
-    if (isInitialized == 0)
-      return false;
+    if (isInitialized == 1) return true;
+    if (isInitialized == 0) return false;
 
     memoizedIsInitialized = 1;
     return true;
@@ -154,7 +147,7 @@ public final class ListFriendResponse extends
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
-      throws java.io.IOException {
+                      throws java.io.IOException {
     for (int i = 0; i < friends_.size(); i++) {
       output.writeMessage(1, friends_.get(i));
     }
@@ -164,13 +157,12 @@ public final class ListFriendResponse extends
   @java.lang.Override
   public int getSerializedSize() {
     int size = memoizedSize;
-    if (size != -1)
-      return size;
+    if (size != -1) return size;
 
     size = 0;
     for (int i = 0; i < friends_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, friends_.get(i));
+        .computeMessageSize(1, friends_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -180,7 +172,7 @@ public final class ListFriendResponse extends
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof io.scyna.ex.user.proto.ListFriendResponse)) {
       return super.equals(obj);
@@ -188,10 +180,8 @@ public final class ListFriendResponse extends
     io.scyna.ex.user.proto.ListFriendResponse other = (io.scyna.ex.user.proto.ListFriendResponse) obj;
 
     if (!getFriendsList()
-        .equals(other.getFriendsList()))
-      return false;
-    if (!unknownFields.equals(other.unknownFields))
-      return false;
+        .equals(other.getFriendsList())) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
 
@@ -216,45 +206,38 @@ public final class ListFriendResponse extends
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static io.scyna.ex.user.proto.ListFriendResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.ListFriendResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static io.scyna.ex.user.proto.ListFriendResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.ListFriendResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static io.scyna.ex.user.proto.ListFriendResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.ListFriendResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-
   public static io.scyna.ex.user.proto.ListFriendResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -262,13 +245,11 @@ public final class ListFriendResponse extends
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.ListFriendResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static io.scyna.ex.user.proto.ListFriendResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -276,14 +257,12 @@ public final class ListFriendResponse extends
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.ListFriendResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-
   public static io.scyna.ex.user.proto.ListFriendResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -293,23 +272,17 @@ public final class ListFriendResponse extends
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(io.scyna.ex.user.proto.ListFriendResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
     return this == DEFAULT_INSTANCE
-        ? new Builder()
-        : new Builder().mergeFrom(this);
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
@@ -318,26 +291,27 @@ public final class ListFriendResponse extends
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
-   * Protobuf type {@code io.velo.user.proto.ListFriendResponse}
+   * Protobuf type {@code io.scyna.user.proto.ListFriendResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:io.velo.user.proto.ListFriendResponse)
+      // @@protoc_insertion_point(builder_implements:io.scyna.user.proto.ListFriendResponse)
       io.scyna.ex.user.proto.ListFriendResponseOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_ListFriendResponse_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_ListFriendResponse_descriptor;
     }
 
     @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_ListFriendResponse_fieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_ListFriendResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               io.scyna.ex.user.proto.ListFriendResponse.class, io.scyna.ex.user.proto.ListFriendResponse.Builder.class);
     }
 
-    // Construct using io.velo.user.proto.ListFriendResponse.newBuilder()
+    // Construct using io.scyna.ex.user.proto.ListFriendResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -347,13 +321,12 @@ public final class ListFriendResponse extends
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
         getFriendsFieldBuilder();
       }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -367,8 +340,9 @@ public final class ListFriendResponse extends
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_ListFriendResponse_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_ListFriendResponse_descriptor;
     }
 
     @java.lang.Override
@@ -406,44 +380,38 @@ public final class ListFriendResponse extends
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
     public Builder clearField(
         com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
     public Builder clearOneof(
         com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof io.scyna.ex.user.proto.ListFriendResponse) {
-        return mergeFrom((io.scyna.ex.user.proto.ListFriendResponse) other);
+        return mergeFrom((io.scyna.ex.user.proto.ListFriendResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -451,8 +419,7 @@ public final class ListFriendResponse extends
     }
 
     public Builder mergeFrom(io.scyna.ex.user.proto.ListFriendResponse other) {
-      if (other == io.scyna.ex.user.proto.ListFriendResponse.getDefaultInstance())
-        return this;
+      if (other == io.scyna.ex.user.proto.ListFriendResponse.getDefaultInstance()) return this;
       if (friendsBuilder_ == null) {
         if (!other.friends_.isEmpty()) {
           if (friends_.isEmpty()) {
@@ -471,8 +438,9 @@ public final class ListFriendResponse extends
             friendsBuilder_ = null;
             friends_ = other.friends_;
             bitField0_ = (bitField0_ & ~0x00000001);
-            friendsBuilder_ = com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ? getFriendsFieldBuilder()
-                : null;
+            friendsBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getFriendsFieldBuilder() : null;
           } else {
             friendsBuilder_.addAllMessages(other.friends_);
           }
@@ -506,22 +474,22 @@ public final class ListFriendResponse extends
       }
       return this;
     }
-
     private int bitField0_;
 
-    private java.util.List<io.scyna.ex.user.proto.User> friends_ = java.util.Collections.emptyList();
-
+    private java.util.List<io.scyna.ex.user.proto.User> friends_ =
+      java.util.Collections.emptyList();
     private void ensureFriendsIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
         friends_ = new java.util.ArrayList<io.scyna.ex.user.proto.User>(friends_);
         bitField0_ |= 0x00000001;
-      }
+       }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<io.scyna.ex.user.proto.User, io.scyna.ex.user.proto.User.Builder, io.scyna.ex.user.proto.UserOrBuilder> friendsBuilder_;
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        io.scyna.ex.user.proto.User, io.scyna.ex.user.proto.User.Builder, io.scyna.ex.user.proto.UserOrBuilder> friendsBuilder_;
 
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public java.util.List<io.scyna.ex.user.proto.User> getFriendsList() {
       if (friendsBuilder_ == null) {
@@ -530,9 +498,8 @@ public final class ListFriendResponse extends
         return friendsBuilder_.getMessageList();
       }
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public int getFriendsCount() {
       if (friendsBuilder_ == null) {
@@ -541,9 +508,8 @@ public final class ListFriendResponse extends
         return friendsBuilder_.getCount();
       }
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public io.scyna.ex.user.proto.User getFriends(int index) {
       if (friendsBuilder_ == null) {
@@ -552,9 +518,8 @@ public final class ListFriendResponse extends
         return friendsBuilder_.getMessage(index);
       }
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public Builder setFriends(
         int index, io.scyna.ex.user.proto.User value) {
@@ -570,9 +535,8 @@ public final class ListFriendResponse extends
       }
       return this;
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public Builder setFriends(
         int index, io.scyna.ex.user.proto.User.Builder builderForValue) {
@@ -585,9 +549,8 @@ public final class ListFriendResponse extends
       }
       return this;
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public Builder addFriends(io.scyna.ex.user.proto.User value) {
       if (friendsBuilder_ == null) {
@@ -602,9 +565,8 @@ public final class ListFriendResponse extends
       }
       return this;
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public Builder addFriends(
         int index, io.scyna.ex.user.proto.User value) {
@@ -620,9 +582,8 @@ public final class ListFriendResponse extends
       }
       return this;
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public Builder addFriends(
         io.scyna.ex.user.proto.User.Builder builderForValue) {
@@ -635,9 +596,8 @@ public final class ListFriendResponse extends
       }
       return this;
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public Builder addFriends(
         int index, io.scyna.ex.user.proto.User.Builder builderForValue) {
@@ -650,9 +610,8 @@ public final class ListFriendResponse extends
       }
       return this;
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public Builder addAllFriends(
         java.lang.Iterable<? extends io.scyna.ex.user.proto.User> values) {
@@ -666,9 +625,8 @@ public final class ListFriendResponse extends
       }
       return this;
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public Builder clearFriends() {
       if (friendsBuilder_ == null) {
@@ -680,9 +638,8 @@ public final class ListFriendResponse extends
       }
       return this;
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public Builder removeFriends(int index) {
       if (friendsBuilder_ == null) {
@@ -694,74 +651,70 @@ public final class ListFriendResponse extends
       }
       return this;
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public io.scyna.ex.user.proto.User.Builder getFriendsBuilder(
         int index) {
       return getFriendsFieldBuilder().getBuilder(index);
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public io.scyna.ex.user.proto.UserOrBuilder getFriendsOrBuilder(
         int index) {
       if (friendsBuilder_ == null) {
-        return friends_.get(index);
-      } else {
+        return friends_.get(index);  } else {
         return friendsBuilder_.getMessageOrBuilder(index);
       }
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
-    public java.util.List<? extends io.scyna.ex.user.proto.UserOrBuilder> getFriendsOrBuilderList() {
+    public java.util.List<? extends io.scyna.ex.user.proto.UserOrBuilder> 
+         getFriendsOrBuilderList() {
       if (friendsBuilder_ != null) {
         return friendsBuilder_.getMessageOrBuilderList();
       } else {
         return java.util.Collections.unmodifiableList(friends_);
       }
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public io.scyna.ex.user.proto.User.Builder addFriendsBuilder() {
       return getFriendsFieldBuilder().addBuilder(
           io.scyna.ex.user.proto.User.getDefaultInstance());
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
     public io.scyna.ex.user.proto.User.Builder addFriendsBuilder(
         int index) {
       return getFriendsFieldBuilder().addBuilder(
           index, io.scyna.ex.user.proto.User.getDefaultInstance());
     }
-
     /**
-     * <code>repeated .io.velo.user.proto.User friends = 1;</code>
+     * <code>repeated .io.scyna.user.proto.User friends = 1;</code>
      */
-    public java.util.List<io.scyna.ex.user.proto.User.Builder> getFriendsBuilderList() {
+    public java.util.List<io.scyna.ex.user.proto.User.Builder> 
+         getFriendsBuilderList() {
       return getFriendsFieldBuilder().getBuilderList();
     }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<io.scyna.ex.user.proto.User, io.scyna.ex.user.proto.User.Builder, io.scyna.ex.user.proto.UserOrBuilder> getFriendsFieldBuilder() {
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        io.scyna.ex.user.proto.User, io.scyna.ex.user.proto.User.Builder, io.scyna.ex.user.proto.UserOrBuilder> 
+        getFriendsFieldBuilder() {
       if (friendsBuilder_ == null) {
-        friendsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<io.scyna.ex.user.proto.User, io.scyna.ex.user.proto.User.Builder, io.scyna.ex.user.proto.UserOrBuilder>(
-            friends_,
-            ((bitField0_ & 0x00000001) != 0),
-            getParentForChildren(),
-            isClean());
+        friendsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            io.scyna.ex.user.proto.User, io.scyna.ex.user.proto.User.Builder, io.scyna.ex.user.proto.UserOrBuilder>(
+                friends_,
+                ((bitField0_ & 0x00000001) != 0),
+                getParentForChildren(),
+                isClean());
         friends_ = null;
       }
       return friendsBuilder_;
     }
-
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -774,10 +727,11 @@ public final class ListFriendResponse extends
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:io.velo.user.proto.ListFriendResponse)
+
+    // @@protoc_insertion_point(builder_scope:io.scyna.user.proto.ListFriendResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:io.velo.user.proto.ListFriendResponse)
+  // @@protoc_insertion_point(class_scope:io.scyna.user.proto.ListFriendResponse)
   private static final io.scyna.ex.user.proto.ListFriendResponse DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new io.scyna.ex.user.proto.ListFriendResponse();
@@ -787,7 +741,8 @@ public final class ListFriendResponse extends
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ListFriendResponse> PARSER = new com.google.protobuf.AbstractParser<ListFriendResponse>() {
+  private static final com.google.protobuf.Parser<ListFriendResponse>
+      PARSER = new com.google.protobuf.AbstractParser<ListFriendResponse>() {
     @java.lang.Override
     public ListFriendResponse parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
@@ -812,3 +767,4 @@ public final class ListFriendResponse extends
   }
 
 }
+

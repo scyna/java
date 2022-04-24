@@ -4,55 +4,48 @@
 package io.scyna.ex.user.proto;
 
 public interface UserOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:io.velo.user.proto.User)
-        com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:io.scyna.user.proto.User)
+    com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>uint64 id = 1;</code>
-     * 
-     * @return The id.
-     */
-    long getId();
+  /**
+   * <code>uint64 id = 1;</code>
+   * @return The id.
+   */
+  long getId();
 
-    /**
-     * <code>string email = 2;</code>
-     * 
-     * @return The email.
-     */
-    java.lang.String getEmail();
+  /**
+   * <code>string email = 2;</code>
+   * @return The email.
+   */
+  java.lang.String getEmail();
+  /**
+   * <code>string email = 2;</code>
+   * @return The bytes for email.
+   */
+  com.google.protobuf.ByteString
+      getEmailBytes();
 
-    /**
-     * <code>string email = 2;</code>
-     * 
-     * @return The bytes for email.
-     */
-    com.google.protobuf.ByteString getEmailBytes();
+  /**
+   * <code>string name = 3;</code>
+   * @return The name.
+   */
+  java.lang.String getName();
+  /**
+   * <code>string name = 3;</code>
+   * @return The bytes for name.
+   */
+  com.google.protobuf.ByteString
+      getNameBytes();
 
-    /**
-     * <code>string name = 3;</code>
-     * 
-     * @return The name.
-     */
-    java.lang.String getName();
-
-    /**
-     * <code>string name = 3;</code>
-     * 
-     * @return The bytes for name.
-     */
-    com.google.protobuf.ByteString getNameBytes();
-
-    /**
-     * <code>string password = 4;</code>
-     * 
-     * @return The password.
-     */
-    java.lang.String getPassword();
-
-    /**
-     * <code>string password = 4;</code>
-     * 
-     * @return The bytes for password.
-     */
-    com.google.protobuf.ByteString getPasswordBytes();
+  /**
+   * <code>string password = 4;</code>
+   * @return The password.
+   */
+  java.lang.String getPassword();
+  /**
+   * <code>string password = 4;</code>
+   * @return The bytes for password.
+   */
+  com.google.protobuf.ByteString
+      getPasswordBytes();
 }

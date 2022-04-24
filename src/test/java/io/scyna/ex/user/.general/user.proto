@@ -1,6 +1,7 @@
 syntax = "proto3";
-package io.velo.user.proto;
+package io.scyna.user.proto;
 option java_multiple_files = true;
+option java_package = "io.scyna.ex.user.proto";
 
 message User
 {

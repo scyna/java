@@ -4,20 +4,18 @@
 package io.scyna.ex.user.proto;
 
 public interface GetUserRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.velo.user.proto.GetUserRequest)
+    // @@protoc_insertion_point(interface_extends:io.scyna.user.proto.GetUserRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>string email = 1;</code>
-   * 
    * @return The email.
    */
   java.lang.String getEmail();
-
   /**
    * <code>string email = 1;</code>
-   * 
    * @return The bytes for email.
    */
-  com.google.protobuf.ByteString getEmailBytes();
+  com.google.protobuf.ByteString
+      getEmailBytes();
 }

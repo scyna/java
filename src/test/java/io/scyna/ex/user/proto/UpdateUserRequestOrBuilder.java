@@ -3,8 +3,8 @@
 
 package io.scyna.ex.user.proto;
 
-public interface CreateUserRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.user.proto.CreateUserRequest)
+public interface UpdateUserRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:io.scyna.user.proto.UpdateUserRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**

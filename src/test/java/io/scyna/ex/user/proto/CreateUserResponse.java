@@ -4,34 +4,32 @@
 package io.scyna.ex.user.proto;
 
 /**
- * Protobuf type {@code io.velo.user.proto.CreateUserResponse}
+ * Protobuf type {@code io.scyna.user.proto.CreateUserResponse}
  */
 public final class CreateUserResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:io.velo.user.proto.CreateUserResponse)
+    // @@protoc_insertion_point(message_implements:io.scyna.user.proto.CreateUserResponse)
     CreateUserResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use CreateUserResponse.newBuilder() to construct.
   private CreateUserResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private CreateUserResponse() {
   }
 
   @java.lang.Override
-  @SuppressWarnings({ "unused" })
+  @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
     return new CreateUserResponse();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
   private CreateUserResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -40,7 +38,8 @@ public final class CreateUserResponse extends
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -73,24 +72,23 @@ public final class CreateUserResponse extends
       makeExtensionsImmutable();
     }
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_CreateUserResponse_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_CreateUserResponse_descriptor;
   }
 
   @java.lang.Override
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_CreateUserResponse_fieldAccessorTable
+  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_CreateUserResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             io.scyna.ex.user.proto.CreateUserResponse.class, io.scyna.ex.user.proto.CreateUserResponse.Builder.class);
   }
 
   public static final int ID_FIELD_NUMBER = 1;
   private long id_;
-
   /**
    * <code>uint64 id = 1;</code>
-   * 
    * @return The id.
    */
   @java.lang.Override
@@ -99,14 +97,11 @@ public final class CreateUserResponse extends
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
-    if (isInitialized == 1)
-      return true;
-    if (isInitialized == 0)
-      return false;
+    if (isInitialized == 1) return true;
+    if (isInitialized == 0) return false;
 
     memoizedIsInitialized = 1;
     return true;
@@ -114,7 +109,7 @@ public final class CreateUserResponse extends
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
-      throws java.io.IOException {
+                      throws java.io.IOException {
     if (id_ != 0L) {
       output.writeUInt64(1, id_);
     }
@@ -124,13 +119,12 @@ public final class CreateUserResponse extends
   @java.lang.Override
   public int getSerializedSize() {
     int size = memoizedSize;
-    if (size != -1)
-      return size;
+    if (size != -1) return size;
 
     size = 0;
     if (id_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, id_);
+        .computeUInt64Size(1, id_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -140,17 +134,16 @@ public final class CreateUserResponse extends
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof io.scyna.ex.user.proto.CreateUserResponse)) {
       return super.equals(obj);
     }
     io.scyna.ex.user.proto.CreateUserResponse other = (io.scyna.ex.user.proto.CreateUserResponse) obj;
 
-    if (getId() != other.getId())
-      return false;
-    if (!unknownFields.equals(other.unknownFields))
-      return false;
+    if (getId()
+        != other.getId()) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
 
@@ -174,45 +167,38 @@ public final class CreateUserResponse extends
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static io.scyna.ex.user.proto.CreateUserResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.CreateUserResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static io.scyna.ex.user.proto.CreateUserResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.CreateUserResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static io.scyna.ex.user.proto.CreateUserResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.CreateUserResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-
   public static io.scyna.ex.user.proto.CreateUserResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -220,13 +206,11 @@ public final class CreateUserResponse extends
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.CreateUserResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static io.scyna.ex.user.proto.CreateUserResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -234,14 +218,12 @@ public final class CreateUserResponse extends
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static io.scyna.ex.user.proto.CreateUserResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-
   public static io.scyna.ex.user.proto.CreateUserResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -251,23 +233,17 @@ public final class CreateUserResponse extends
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(io.scyna.ex.user.proto.CreateUserResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
     return this == DEFAULT_INSTANCE
-        ? new Builder()
-        : new Builder().mergeFrom(this);
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
@@ -276,26 +252,27 @@ public final class CreateUserResponse extends
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
-   * Protobuf type {@code io.velo.user.proto.CreateUserResponse}
+   * Protobuf type {@code io.scyna.user.proto.CreateUserResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:io.velo.user.proto.CreateUserResponse)
+      // @@protoc_insertion_point(builder_implements:io.scyna.user.proto.CreateUserResponse)
       io.scyna.ex.user.proto.CreateUserResponseOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_CreateUserResponse_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_CreateUserResponse_descriptor;
     }
 
     @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_CreateUserResponse_fieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_CreateUserResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               io.scyna.ex.user.proto.CreateUserResponse.class, io.scyna.ex.user.proto.CreateUserResponse.Builder.class);
     }
 
-    // Construct using io.velo.user.proto.CreateUserResponse.newBuilder()
+    // Construct using io.scyna.ex.user.proto.CreateUserResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -305,12 +282,11 @@ public final class CreateUserResponse extends
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
       }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -320,8 +296,9 @@ public final class CreateUserResponse extends
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_velo_user_proto_CreateUserResponse_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return io.scyna.ex.user.proto.UserOuterClass.internal_static_io_scyna_user_proto_CreateUserResponse_descriptor;
     }
 
     @java.lang.Override
@@ -350,44 +327,38 @@ public final class CreateUserResponse extends
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
     public Builder clearField(
         com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
     public Builder clearOneof(
         com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof io.scyna.ex.user.proto.CreateUserResponse) {
-        return mergeFrom((io.scyna.ex.user.proto.CreateUserResponse) other);
+        return mergeFrom((io.scyna.ex.user.proto.CreateUserResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -395,8 +366,7 @@ public final class CreateUserResponse extends
     }
 
     public Builder mergeFrom(io.scyna.ex.user.proto.CreateUserResponse other) {
-      if (other == io.scyna.ex.user.proto.CreateUserResponse.getDefaultInstance())
-        return this;
+      if (other == io.scyna.ex.user.proto.CreateUserResponse.getDefaultInstance()) return this;
       if (other.getId() != 0L) {
         setId(other.getId());
       }
@@ -429,43 +399,36 @@ public final class CreateUserResponse extends
       return this;
     }
 
-    private long id_;
-
+    private long id_ ;
     /**
      * <code>uint64 id = 1;</code>
-     * 
      * @return The id.
      */
     @java.lang.Override
     public long getId() {
       return id_;
     }
-
     /**
      * <code>uint64 id = 1;</code>
-     * 
      * @param value The id to set.
      * @return This builder for chaining.
      */
     public Builder setId(long value) {
-
+      
       id_ = value;
       onChanged();
       return this;
     }
-
     /**
      * <code>uint64 id = 1;</code>
-     * 
      * @return This builder for chaining.
      */
     public Builder clearId() {
-
+      
       id_ = 0L;
       onChanged();
       return this;
     }
-
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -478,10 +441,11 @@ public final class CreateUserResponse extends
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:io.velo.user.proto.CreateUserResponse)
+
+    // @@protoc_insertion_point(builder_scope:io.scyna.user.proto.CreateUserResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:io.velo.user.proto.CreateUserResponse)
+  // @@protoc_insertion_point(class_scope:io.scyna.user.proto.CreateUserResponse)
   private static final io.scyna.ex.user.proto.CreateUserResponse DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new io.scyna.ex.user.proto.CreateUserResponse();
@@ -491,7 +455,8 @@ public final class CreateUserResponse extends
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<CreateUserResponse> PARSER = new com.google.protobuf.AbstractParser<CreateUserResponse>() {
+  private static final com.google.protobuf.Parser<CreateUserResponse>
+      PARSER = new com.google.protobuf.AbstractParser<CreateUserResponse>() {
     @java.lang.Override
     public CreateUserResponse parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
@@ -516,3 +481,4 @@ public final class CreateUserResponse extends
   }
 
 }
+
