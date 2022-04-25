@@ -6,7 +6,7 @@ import io.scyna.ex.echo.proto.EchoResponse;
 
 public class EchoService extends ServiceHandler<EchoRequest> {
     @Override
-    public void execute(EchoRequest request) {
+    public void execute() {
         System.out.println("Receive EchoRequest");
         LOG.info("Test Log from echo [JAVA]");
         done(EchoResponse.newBuilder().setText(request.getText()).build());

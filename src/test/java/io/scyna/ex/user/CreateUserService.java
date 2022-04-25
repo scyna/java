@@ -7,7 +7,7 @@ import io.scyna.ex.user.proto.*;
 public class CreateUserService extends ServiceHandler<CreateUserRequest> {
 
     @Override
-    public void execute(CreateUserRequest request) {
+    public void execute() {
         System.out.println("Receive CreateUserRequest");
 
         if (User.get(request.getUser().getEmail()) != null) {

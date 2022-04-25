@@ -15,6 +15,7 @@ public abstract class ServiceHandler<T extends Message> implements MessageHandle
     protected boolean json;
     protected String source;
     protected String reply;
+    protected T request;
 
     protected Parser<T> parser;
     protected Message.Builder builder;
@@ -24,7 +25,7 @@ public abstract class ServiceHandler<T extends Message> implements MessageHandle
         this.builder = builder;
     }
 
-    public abstract void execute(T request);
+    public abstract void execute();
 
     @Override
     public void onMessage(io.nats.client.Message msg) {
@@ -37,9 +38,14 @@ public abstract class ServiceHandler<T extends Message> implements MessageHandle
             source = request.getData();
             if (json) {
                 JsonFormat.parser().merge(requestBody.toStringUtf8(), builder);
-                this.execute((T) builder.build());
-            } else
-                this.execute((T) parser.parseFrom(requestBody));
+                this.request = (T) builder.build();
+                builder.clear();
+                this.execute();
+
+            } else {
+                this.request = parser.parseFrom(requestBody);
+                this.execute();
+            }
         } catch (InvalidProtocolBufferException e) {
             flush(400, io.scyna.Error.BAD_REQUEST);
             e.printStackTrace();
