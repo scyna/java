@@ -3,7 +3,6 @@ package io.scyna;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
-import io.nats.client.MessageHandler;
 import io.scyna.proto.Request;
 import io.scyna.proto.Response;
 
@@ -12,7 +11,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-public abstract class Service implements MessageHandler {
+public abstract class Service {
 
     public static <T extends Message> void register(String url, ServiceHandler<T> handler, Parser<T> parser,
             Message.Builder builder) {

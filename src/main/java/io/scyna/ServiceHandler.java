@@ -31,7 +31,7 @@ public abstract class ServiceHandler<T extends Message> implements MessageHandle
     public void onMessage(io.nats.client.Message msg) {
         try {
             var request = Request.parseFrom(msg.getData());
-            LOG.reset(request.getCallID()); // TODO: verify
+            LOG.reset(request.getCallID());
             reply = msg.getReplyTo();
             json = request.getJSON();
             var requestBody = request.getBody();
