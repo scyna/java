@@ -5,7 +5,7 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import io.nats.client.MessageHandler;
 import io.scyna.proto.EventOrSignal;
 
-public abstract class SimpleSignal {
+public abstract class SignalLite {
     public static void emit(String channel) {
         var msg = EventOrSignal.newBuilder().setCallID(Engine.ID().next()).build();
         var nc = Engine.connection();
