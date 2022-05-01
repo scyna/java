@@ -3,8 +3,8 @@
 
 package io.scyna.proto;
 
-public interface RequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:scyna.Request)
+public interface EventOrSignalOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:scyna.EventOrSignal)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -20,18 +20,12 @@ public interface RequestOrBuilder extends
   com.google.protobuf.ByteString getBody();
 
   /**
-   * <code>bool JSON = 3;</code>
-   * @return The jSON.
-   */
-  boolean getJSON();
-
-  /**
-   * <code>string Data = 4;</code>
+   * <code>string Data = 3;</code>
    * @return The data.
    */
   java.lang.String getData();
   /**
-   * <code>string Data = 4;</code>
+   * <code>string Data = 3;</code>
    * @return The bytes for data.
    */
   com.google.protobuf.ByteString

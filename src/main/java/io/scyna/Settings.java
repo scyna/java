@@ -17,9 +17,7 @@ public class Settings {
     Map<String, String> data = new HashMap<String, String>();
 
     public boolean write(String key, String value) {
-        synchronized (this) {
-            data.put(key, value);
-        }
+        this.update(key, value);
 
         var request = WriteSettingRequest.newBuilder()
                 .setModule(Engine.module())
@@ -52,7 +50,7 @@ public class Settings {
         return null;
     }
 
-    public Message readObject(String key, Message.Builder builder) {
+    public Message read(String key, Message.Builder builder) {
         String value = read(key);
         try {
             JsonFormat.parser().merge(value, builder);

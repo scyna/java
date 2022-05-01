@@ -10,22 +10,20 @@ public class Logger {
     final int FATAL = 5;
     private long id;
     private final boolean session;
-    private boolean enable = true;
 
     Logger(long id, boolean session) {
         this.id = id;
         this.session = session;
     }
 
-    public void reset(long id, boolean enable) {
-        this.enable = enable;
+    public void reset(long id) {
         this.id = id;
     }
 
     private void add(int level, String messgage) {
         messgage = format(messgage);
         System.out.println(messgage);
-        if (enable) {
+        if (id > 0) {
             var event = WriteLogSignal.newBuilder()
                     .setId(id)
                     .setTime(System.nanoTime() / 1000)

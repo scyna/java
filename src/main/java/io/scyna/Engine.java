@@ -7,8 +7,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 
-import com.datastax.driver.mapping.MappingManager;
-
 import io.nats.client.Connection;
 import io.nats.client.JetStream;
 import io.nats.client.Nats;
@@ -32,6 +30,7 @@ public class Engine {
         id = new Generator();
         session = new Session(sessionID);
         logger = new Logger(sessionID, true);
+        settings = new Settings();
 
         /* NATS */
         connection = Nats.connect(config.getNatsUrl()); // FIXME: hosts list anh auth
@@ -44,9 +43,10 @@ public class Engine {
         settings = new Settings();
         System.out.println("Connected to ScyllaDB");
 
-        /* TODO: setting */
+        /* setting */
+        Signal.register(Path.SETTING_UPDATE_CHANNEL + module, new Settings.UpdateHandler());
+        Signal.register(Path.SETTING_REMOVE_CHANNEL + module, new Settings.RemoveHandler());
 
-        System.out.println("Engine created, SessionID:" + sessionID);
     }
 
     public static void init(String managerURL, String module, String secret)
@@ -65,10 +65,6 @@ public class Engine {
         var res = CreateSessionResponse.parseFrom(response.body());
         instance = new Engine(module, res.getSessionID(), res.getConfig());
         System.out.println("Engine created for module:" + module);
-
-        /* registration */
-        Signal.register(Path.SETTING_UPDATE_CHANNEL + module, new Settings.UpdateHandler());
-        Signal.register(Path.SETTING_REMOVE_CHANNEL + module, new Settings.RemoveHandler());
     }
 
     public static Engine instance() {
