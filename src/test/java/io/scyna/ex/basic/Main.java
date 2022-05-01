@@ -1,9 +1,9 @@
-package io.scyna.ex.echo;
+package io.scyna.ex.basic;
 
 import io.scyna.Engine;
 import io.scyna.Service;
-import io.scyna.ex.echo.proto.EchoRequest;
-import io.scyna.ex.echo.proto.EchoResponse;
+import io.scyna.ex.basic.proto.EchoRequest;
+import io.scyna.ex.basic.proto.EchoResponse;
 
 public class Main {
     public static void main(String[] args) throws Exception {

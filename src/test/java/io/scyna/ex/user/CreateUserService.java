@@ -1,14 +1,14 @@
 package io.scyna.ex.user;
 
-import io.scyna.ServiceHandler;
+import io.scyna.ServiceStatefulHandler;
 import io.scyna.ex.user.dao.User;
 import io.scyna.ex.user.proto.*;
 
-public class CreateUserService extends ServiceHandler<CreateUserRequest> {
+public class CreateUserService extends ServiceStatefulHandler<CreateUserRequest> {
 
     @Override
     public void execute() {
-        System.out.println("Receive CreateUserRequest");
+        LOG.info("Receive CreateUserRequest");
 
         if (User.get(request.getUser().getEmail()) != null) {
             error(io.scyna.ex.user.Error.ACCOUNT_EXISTED);
