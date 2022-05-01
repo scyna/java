@@ -73,7 +73,7 @@ public class Settings {
         }
     }
 
-    public static class UpdateHandler implements Signal.Command {
+    public static class UpdateHandler implements Command.Handler {
         @Override
         public void execute(byte[] data) {
             try {
@@ -87,7 +87,7 @@ public class Settings {
         }
     }
 
-    public static class RemoveHandler implements Signal.Command {
+    public static class RemoveHandler implements Command.Handler {
         @Override
         public void execute(byte[] data) {
             try {

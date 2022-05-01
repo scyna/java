@@ -8,7 +8,6 @@ import io.nats.client.MessageHandler;
 import io.scyna.proto.EventOrSignal;
 
 public class Signal {
-    /* stateful */
     public static <T extends Message> void emit(String channel, T data) {
         var msg = EventOrSignal.newBuilder().setCallID(Engine.ID().next()).setBody(data.toByteString()).build();
         var nc = Engine.connection();
@@ -46,24 +45,5 @@ public class Signal {
                 e.printStackTrace();
             }
         }
-    }
-
-    /* Command (aka old Signal) */
-    public static void sendCommand(String channel, Message data) {
-        var nc = Engine.connection();
-        nc.publish(channel, data.toByteArray());
-    }
-
-    public static void register(String channel, Command handler) {
-        System.out.println("Register Signal:" + channel);
-        var nc = Engine.connection();
-        var d = nc.createDispatcher((msg) -> {
-            handler.execute(msg.getData());
-        });
-        d.subscribe(channel, Engine.module());
-    }
-
-    public interface Command {
-        void execute(byte[] data);
     }
 }
