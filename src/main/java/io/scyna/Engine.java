@@ -26,7 +26,6 @@ public class Engine {
     private final JetStream stream;
     private Settings settings;
     private final DB db;
-    private final MappingManager mapping;
 
     private Engine(String module, long sessionID, Configuration config) throws IOException, InterruptedException {
         this.module = module;
@@ -37,12 +36,17 @@ public class Engine {
         /* NATS */
         connection = Nats.connect(config.getNatsUrl()); // FIXME: hosts list anh auth
         stream = connection.jetStream();
+        System.out.println("Connected to NATS");
 
         /* ScyllaDB */
         var hosts = config.getDBHost().split(",");
         db = DB.init(hosts, config.getDBUsername(), config.getDBPassword(), config.getDBLocation());
         settings = new Settings();
-        mapping = new MappingManager(db.session());
+        System.out.println("Connected to ScyllaDB");
+
+        /* TODO: setting */
+
+        System.out.println("Engine created, SessionID:" + sessionID);
     }
 
     public static void init(String managerURL, String module, String secret)
@@ -71,7 +75,7 @@ public class Engine {
         return instance;
     }
 
-    public static SerialNumber initSN(String key) {
+    public static SerialNumber initSerialNumber(String key) {
         return new SerialNumber(key);
     }
 
@@ -79,8 +83,8 @@ public class Engine {
         return instance.id;
     }
 
-    public static com.datastax.driver.core.Session DB() {
-        return instance.db.session();
+    public static DB DB() {
+        return instance.db;
     }
 
     public static Logger LOG() {
@@ -105,9 +109,5 @@ public class Engine {
 
     public static Settings settings() {
         return instance.settings;
-    }
-
-    public static MappingManager mapping() {
-        return instance.mapping;
     }
 }

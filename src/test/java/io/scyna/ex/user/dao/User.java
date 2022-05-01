@@ -32,7 +32,7 @@ public class User {
 
     public static Mapper<User> mapper() {
         if (mapper == null) {
-            mapper = Engine.mapping().mapper(io.scyna.ex.user.dao.User.class);
+            mapper = Engine.DB().mapping().mapper(io.scyna.ex.user.dao.User.class);
         }
         return mapper;
     }
