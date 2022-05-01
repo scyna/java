@@ -42,13 +42,6 @@ public class Engine {
         db = DB.init(hosts, config.getDBUsername(), config.getDBPassword(), config.getDBLocation());
         settings = new Settings();
         System.out.println("Connected to ScyllaDB");
-
-        /* setting */
-        // Signal.register(Path.SETTING_UPDATE_CHANNEL + module, new
-        // Settings.UpdateHandler());
-        // Signal.register(Path.SETTING_REMOVE_CHANNEL + module, new
-        // Settings.RemoveHandler());
-
     }
 
     public static void init(String managerURL, String module, String secret)
@@ -67,6 +60,10 @@ public class Engine {
         var res = CreateSessionResponse.parseFrom(response.body());
         instance = new Engine(module, res.getSessionID(), res.getConfig());
         System.out.println("Engine created for module:" + module);
+
+        /* setting */
+        Signal.register(Path.SETTING_UPDATE_CHANNEL + module, new Settings.UpdateHandler());
+        Signal.register(Path.SETTING_REMOVE_CHANNEL + module, new Settings.RemoveHandler());
     }
 
     public static Engine instance() {
