@@ -1,9 +1,9 @@
 package io.scyna.ex.user;
 
-import io.scyna.ServiceStatefulHandler;
+import io.scyna.Service;
 import io.scyna.ex.user.proto.ListFriendRequest;
 
-public class ListFriendService extends ServiceStatefulHandler<ListFriendRequest> {
+public class ListFriendService extends Service.Handler<ListFriendRequest> {
 
     @Override
     public void execute() {

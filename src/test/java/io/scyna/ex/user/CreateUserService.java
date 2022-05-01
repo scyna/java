@@ -1,10 +1,10 @@
 package io.scyna.ex.user;
 
-import io.scyna.ServiceStatefulHandler;
+import io.scyna.Service;
 import io.scyna.ex.user.dao.User;
 import io.scyna.ex.user.proto.*;
 
-public class CreateUserService extends ServiceStatefulHandler<CreateUserRequest> {
+public class CreateUserService extends Service.Handler<CreateUserRequest> {
 
     @Override
     public void execute() {

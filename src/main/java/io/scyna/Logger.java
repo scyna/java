@@ -31,7 +31,7 @@ public class Logger {
                     .setText(messgage)
                     .setSession(session)
                     .build();
-            Signal.emit(Path.LOG_WRITE_CHANNEL, event);
+            Signal.sendCommand(Path.LOG_WRITE_CHANNEL, event);
         }
     }
 
