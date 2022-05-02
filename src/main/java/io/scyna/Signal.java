@@ -40,7 +40,7 @@ public class Signal {
                 System.out.println(cls.getName());
                 Method m = cls.getMethod("parser");
                 System.out.println(m.getName());
-                this.parser = (Parser<T>) m.invoke(cls);
+                this.parser = (Parser<T>) m.invoke(null);
 
             } catch (Exception e) {
                 e.printStackTrace();
