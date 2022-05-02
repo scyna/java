@@ -90,9 +90,9 @@ public abstract class Service {
                 Class<T> cls = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
                         .getActualTypeArguments()[0];
                 Method m = cls.getMethod("newBuilder");
-                this.builder = (Message.Builder) m.invoke(null);
+                builder = (Message.Builder) m.invoke(null);
                 var tObj = builder.build();
-                this.parser = (Parser<T>) tObj.getParserForType();
+                parser = (Parser<T>) tObj.getParserForType();
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new Exception();
