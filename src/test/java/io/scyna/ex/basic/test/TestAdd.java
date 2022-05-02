@@ -2,13 +2,9 @@ package io.scyna.ex.basic.test;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import io.scyna.Engine;
 import io.scyna.Error;
 import io.scyna.Service;

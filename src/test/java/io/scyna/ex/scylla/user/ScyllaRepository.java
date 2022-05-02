@@ -20,12 +20,11 @@ public class ScyllaRepository implements IRepository {
     public User get(String email) {
         try {
             var session = Engine.DB().session();
-            var qSelect = QueryBuilder
+            var result = session.execute(QueryBuilder
                     .select("id", "email", "name")
                     .from("ex", "user")
                     .where(QueryBuilder.eq("email", email))
-                    .limit(1);
-            var result = session.execute(qSelect);
+                    .limit(1));
             return mapper.map(result).one();
         } catch (Exception e) {
             e.printStackTrace();

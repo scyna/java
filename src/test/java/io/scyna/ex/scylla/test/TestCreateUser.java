@@ -1,10 +1,7 @@
 package io.scyna.ex.scylla.test;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -59,5 +56,31 @@ public class TestCreateUser {
                         .build())
                 .expectSuccess()
                 .run();
+    }
+
+    @Test
+    public void testCreateDuplicate() {
+        ServiceTest.New(Path.CREATE_USER_URL)
+                .withRequest(CreateUserRequest.newBuilder().setUser(
+                        io.scyna.ex.scylla.proto.User.newBuilder()
+                                .setEmail("a@gmail.com")
+                                .setName("Nguyen Van A")
+                                .setPassword("123456")
+                                .build())
+                        .build())
+                .expectSuccess()
+                .run();
+
+        ServiceTest.New(Path.CREATE_USER_URL)
+                .withRequest(CreateUserRequest.newBuilder().setUser(
+                        io.scyna.ex.scylla.proto.User.newBuilder()
+                                .setEmail("a@gmail.com")
+                                .setName("Nguyen Van A")
+                                .setPassword("123456")
+                                .build())
+                        .build())
+                .expectError(io.scyna.ex.scylla.user.Error.USER_EXISTED)
+                .run();
+
     }
 }

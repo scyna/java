@@ -29,11 +29,13 @@ public class User {
     @Column(name = "password")
     public String password;
 
-    public User(io.scyna.ex.scylla.proto.User user) {
-        this.id = user.getId();
-        this.email = user.getEmail();
-        this.name = user.getName();
-        this.password = user.getPassword();
+    public static User fromProto(io.scyna.ex.scylla.proto.User user) {
+        var u = new User();
+        u.id = user.getId();
+        u.email = user.getEmail();
+        u.name = user.getName();
+        u.password = user.getPassword();
+        return u;
     }
 
     public io.scyna.ex.scylla.proto.User toProto() {
