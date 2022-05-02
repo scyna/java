@@ -1,8 +1,5 @@
 package io.scyna.ex.basic.test;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.net.URISyntaxException;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;

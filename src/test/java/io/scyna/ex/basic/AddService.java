@@ -1,7 +1,5 @@
 package io.scyna.ex.basic;
 
-import com.google.protobuf.Message.Builder;
-
 import io.scyna.Error;
 import io.scyna.Service;
 import io.scyna.ex.basic.proto.AddRequest;
