@@ -19,7 +19,7 @@ public class TestAdd {
     @BeforeClass
     public static void setup() throws URISyntaxException, IOException, InterruptedException {
         Engine.init("http://127.0.0.1:8081", "scyna.test", "123456");
-        Service.register(Path.ADD_USER_URL, new AddService(), AddRequest.parser(), AddRequest.newBuilder());
+        Service.register(Path.ADD_USER_URL, new AddService(), AddRequest.newBuilder());
     }
 
     @AfterClass

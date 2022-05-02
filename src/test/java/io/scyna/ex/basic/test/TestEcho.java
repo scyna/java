@@ -22,7 +22,7 @@ public class TestEcho {
     @BeforeClass
     public static void setup() throws URISyntaxException, IOException, InterruptedException {
         Engine.init("http://127.0.0.1:8081", "scyna.test", "123456");
-        Service.register(Path.ECHO_USER_URL, new EchoService(), EchoRequest.parser(), EchoRequest.newBuilder());
+        Service.register(Path.ECHO_USER_URL, new EchoService(), EchoRequest.newBuilder());
     }
 
     @AfterClass

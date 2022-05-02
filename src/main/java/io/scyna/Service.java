@@ -15,10 +15,9 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class Service {
 
-    public static <T extends Message> void register(String url, Handler<T> handler, Parser<T> parser,
-            Message.Builder builder) {
+    public static <T extends Message> void register(String url, Handler<T> handler, Message.Builder builder) {
         System.out.println("Register Service:" + url);
-        handler.init(parser, builder);
+        handler.init(builder);
         var nc = Engine.connection();
         var d = nc.createDispatcher(handler);
         d.subscribe(Utils.subscribeURL(url), "API");
@@ -67,7 +66,6 @@ public abstract class Service {
                 } else {
                     body = m.toByteArray();
                 }
-
                 var response = Response.newBuilder()
                         .setCode(status)
                         .setSessionID(Engine.session().ID())
@@ -84,8 +82,9 @@ public abstract class Service {
         protected Parser<T> parser;
         protected Message.Builder builder;
 
-        public void init(Parser<T> parser, Message.Builder builder) {
-            this.parser = parser;
+        public void init(Message.Builder builder) {
+            var tmp = builder.build();
+            this.parser = (Parser<T>) tmp.getParserForType();
             this.builder = builder;
         }
 

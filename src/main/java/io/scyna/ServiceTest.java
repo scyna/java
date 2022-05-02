@@ -49,9 +49,14 @@ public class ServiceTest {
         assertEquals(status, res.getCode());
 
         if (response != null) {
-            var r1 = res.getBody();
-            var r2 = response.toByteString();
-            assertEquals(r1, r2); // TODO: verify
+
+            try {
+                var parser = response.getParserForType();
+                var o = parser.parseFrom(res.getBody());
+                assertEquals(response, o);
+            } catch (InvalidProtocolBufferException e) {
+                e.printStackTrace();
+            }
         }
     }
 
