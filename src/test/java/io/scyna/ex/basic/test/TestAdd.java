@@ -3,6 +3,7 @@ package io.scyna.ex.basic.test;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,6 +22,11 @@ public class TestAdd {
     public void setup() throws URISyntaxException, IOException, InterruptedException {
         Engine.init("http://127.0.0.1:8081", "scyna.test", "123456");
         Service.register(Path.ADD_USER_URL, new AddService(), AddRequest.parser(), AddRequest.newBuilder());
+    }
+
+    @After
+    public void teardown() {
+        Engine.release();
     }
 
     @Test

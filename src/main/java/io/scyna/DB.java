@@ -35,6 +35,7 @@ public class DB {
     }
 
     public void close() {
+        session.close();
         cluster.close();
     }
 }

@@ -105,4 +105,9 @@ public class Engine {
     public static Settings settings() {
         return instance.settings;
     }
+
+    public static void release() {
+        DB().close();
+        System.out.println("Engine Closed");
+    }
 }
