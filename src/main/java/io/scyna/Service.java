@@ -83,8 +83,8 @@ public abstract class Service {
         protected Message.Builder builder;
 
         public void init(Message.Builder builder) {
-            var tmp = builder.build();
-            this.parser = (Parser<T>) tmp.getParserForType();
+            var tObj = builder.build();
+            this.parser = (Parser<T>) tObj.getParserForType();
             this.builder = builder;
         }
 
