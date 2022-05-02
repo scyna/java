@@ -1,6 +1,5 @@
 package io.scyna.ex.scylla.user;
 
-import com.datastax.driver.mapping.Mapper;
 import com.datastax.driver.mapping.annotations.Column;
 import com.datastax.driver.mapping.annotations.PartitionKey;
 import com.datastax.driver.mapping.annotations.Table;
