@@ -1,7 +1,7 @@
-package io.scyna.ex.user;
+package io.scyna.ex.scylla.user;
 
 import io.scyna.Service;
-import io.scyna.ex.user.proto.ListFriendRequest;
+import io.scyna.ex.scylla.proto.ListFriendRequest;
 
 public class ListFriendService extends Service.Handler<ListFriendRequest> {
 

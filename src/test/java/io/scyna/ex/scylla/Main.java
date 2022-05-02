@@ -1,8 +1,9 @@
-package io.scyna.ex.user;
+package io.scyna.ex.scylla;
 
 import io.scyna.Engine;
 import io.scyna.Service;
-import io.scyna.ex.user.proto.CreateUserRequest;
+import io.scyna.ex.scylla.proto.CreateUserRequest;
+import io.scyna.ex.scylla.user.CreateUserService;
 
 public class Main {
     public static void main(String[] args) throws Exception {
