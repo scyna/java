@@ -10,14 +10,17 @@ import io.nats.client.MessageHandler;
 import io.scyna.proto.Error;
 import io.scyna.proto.Request;
 import io.scyna.proto.Response;
+
+import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 public abstract class Service {
 
-    public static <T extends Message> void register(String url, Handler<T> handler, Message.Builder builder) {
+    public static <T extends Message> void register(String url, Handler<T> handler) throws Exception {
         System.out.println("Register Service:" + url);
-        handler.init(builder);
+        handler.init();
         var nc = Engine.connection();
         var d = nc.createDispatcher(handler);
         d.subscribe(Utils.subscribeURL(url), "API");
@@ -82,10 +85,19 @@ public abstract class Service {
         protected Parser<T> parser;
         protected Message.Builder builder;
 
-        public void init(Message.Builder builder) {
-            var tObj = builder.build();
-            this.parser = (Parser<T>) tObj.getParserForType();
-            this.builder = builder;
+        public void init() throws Exception {
+            try {
+                Class<T> cls = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
+                        .getActualTypeArguments()[0];
+                Method m = cls.getMethod("newBuilder");
+                this.builder = (Message.Builder) m.invoke(cls);
+                var tObj = builder.build();
+                this.parser = (Parser<T>) tObj.getParserForType();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new Exception();
+            }
         }
 
         public abstract void execute();

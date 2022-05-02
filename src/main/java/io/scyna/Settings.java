@@ -2,6 +2,7 @@ package io.scyna;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import com.google.protobuf.Parser;
 import com.google.protobuf.util.JsonFormat;
 
 import io.scyna.proto.ReadSettingRequest;

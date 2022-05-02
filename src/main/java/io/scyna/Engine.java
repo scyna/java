@@ -2,7 +2,6 @@ package io.scyna;
 
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
@@ -13,8 +12,6 @@ import io.nats.client.Nats;
 import io.scyna.proto.Configuration;
 import io.scyna.proto.CreateSessionRequest;
 import io.scyna.proto.CreateSessionResponse;
-import io.scyna.proto.SettingRemovedSignal;
-import io.scyna.proto.SettingUpdatedSignal;
 
 public class Engine {
     private static Engine instance;
@@ -47,7 +44,7 @@ public class Engine {
     }
 
     public static void init(String managerURL, String module, String secret)
-            throws URISyntaxException, IOException, InterruptedException {
+            throws Exception {
 
         var req = CreateSessionRequest.newBuilder().setModule(module).setSecret(secret).build();
         var request = HttpRequest.newBuilder()
@@ -64,10 +61,8 @@ public class Engine {
         System.out.println("Engine created for module:" + module);
 
         /* setting */
-        Signal.register(Path.SETTING_UPDATE_CHANNEL + module, new Settings.UpdateHandler(),
-                SettingUpdatedSignal.parser());
-        Signal.register(Path.SETTING_REMOVE_CHANNEL + module, new Settings.RemoveHandler(),
-                SettingRemovedSignal.parser());
+        Signal.register(Path.SETTING_UPDATE_CHANNEL + module, new Settings.UpdateHandler());
+        Signal.register(Path.SETTING_REMOVE_CHANNEL + module, new Settings.RemoveHandler());
     }
 
     public static Engine instance() {

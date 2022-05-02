@@ -1,5 +1,8 @@
 package io.scyna;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
@@ -14,9 +17,9 @@ public class Signal {
         nc.publish(channel, msg.toByteArray());
     }
 
-    public static <T extends Message> void register(String channel, Handler<T> handler, Parser<T> parser) {
+    public static <T extends Message> void register(String channel, Handler<T> handler) throws Exception {
         System.out.println("Register Signal StatefulHandler:" + channel);
-        handler.init(parser);
+        handler.init();
         var nc = Engine.connection();
         var d = nc.createDispatcher(handler);
         d.subscribe(channel, Engine.module());
@@ -29,8 +32,21 @@ public class Signal {
 
         public abstract void execute();
 
-        public void init(Parser<T> parser) {
-            this.parser = parser;
+        public void init() throws Exception {
+            try {
+                Class<T> cls = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
+                        .getActualTypeArguments()[0];
+
+                System.out.println(cls.getName());
+                Method m = cls.getMethod("parser");
+                System.out.println(m.getName());
+                this.parser = (Parser<T>) m.invoke(cls);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new Exception();
+            }
+
         }
 
         @Override

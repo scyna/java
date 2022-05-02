@@ -1,7 +1,5 @@
 package io.scyna.ex.basic.test;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -16,9 +14,9 @@ import io.scyna.ex.basic.proto.EchoResponse;
 public class TestEcho {
 
     @BeforeClass
-    public static void setup() throws URISyntaxException, IOException, InterruptedException {
+    public static void setup() throws Exception {
         Engine.init("http://127.0.0.1:8081", "scyna.test", "123456");
-        Service.register(Path.ECHO_USER_URL, new EchoService(), EchoRequest.newBuilder());
+        Service.register(Path.ECHO_USER_URL, new EchoService());
     }
 
     @AfterClass
