@@ -3,8 +3,8 @@
 
 package io.scyna.ex.basic.proto;
 
-public interface EchoRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:EchoRequest)
+public interface TestEventOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:TestEvent)
     com.google.protobuf.MessageOrBuilder {
 
   /**

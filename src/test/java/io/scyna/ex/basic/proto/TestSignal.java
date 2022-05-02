@@ -4,18 +4,18 @@
 package io.scyna.ex.basic.proto;
 
 /**
- * Protobuf type {@code EchoRequest}
+ * Protobuf type {@code TestSignal}
  */
-public final class EchoRequest extends
+public final class TestSignal extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:EchoRequest)
-    EchoRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:TestSignal)
+    TestSignalOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use EchoRequest.newBuilder() to construct.
-  private EchoRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use TestSignal.newBuilder() to construct.
+  private TestSignal(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private EchoRequest() {
+  private TestSignal() {
     text_ = "";
   }
 
@@ -23,7 +23,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new EchoRequest();
+    return new TestSignal();
   }
 
   @java.lang.Override
@@ -31,7 +31,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private EchoRequest(
+  private TestSignal(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -76,15 +76,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.scyna.ex.basic.proto.API.internal_static_EchoRequest_descriptor;
+    return io.scyna.ex.basic.proto.API.internal_static_TestSignal_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.scyna.ex.basic.proto.API.internal_static_EchoRequest_fieldAccessorTable
+    return io.scyna.ex.basic.proto.API.internal_static_TestSignal_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            io.scyna.ex.basic.proto.EchoRequest.class, io.scyna.ex.basic.proto.EchoRequest.Builder.class);
+            io.scyna.ex.basic.proto.TestSignal.class, io.scyna.ex.basic.proto.TestSignal.Builder.class);
   }
 
   public static final int TEXT_FIELD_NUMBER = 1;
@@ -164,10 +164,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof io.scyna.ex.basic.proto.EchoRequest)) {
+    if (!(obj instanceof io.scyna.ex.basic.proto.TestSignal)) {
       return super.equals(obj);
     }
-    io.scyna.ex.basic.proto.EchoRequest other = (io.scyna.ex.basic.proto.EchoRequest) obj;
+    io.scyna.ex.basic.proto.TestSignal other = (io.scyna.ex.basic.proto.TestSignal) obj;
 
     if (!getText()
         .equals(other.getText())) return false;
@@ -189,69 +189,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static io.scyna.ex.basic.proto.EchoRequest parseFrom(
+  public static io.scyna.ex.basic.proto.TestSignal parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.ex.basic.proto.EchoRequest parseFrom(
+  public static io.scyna.ex.basic.proto.TestSignal parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.ex.basic.proto.EchoRequest parseFrom(
+  public static io.scyna.ex.basic.proto.TestSignal parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.ex.basic.proto.EchoRequest parseFrom(
+  public static io.scyna.ex.basic.proto.TestSignal parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.ex.basic.proto.EchoRequest parseFrom(byte[] data)
+  public static io.scyna.ex.basic.proto.TestSignal parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.ex.basic.proto.EchoRequest parseFrom(
+  public static io.scyna.ex.basic.proto.TestSignal parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.ex.basic.proto.EchoRequest parseFrom(java.io.InputStream input)
+  public static io.scyna.ex.basic.proto.TestSignal parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.ex.basic.proto.EchoRequest parseFrom(
+  public static io.scyna.ex.basic.proto.TestSignal parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.ex.basic.proto.EchoRequest parseDelimitedFrom(java.io.InputStream input)
+  public static io.scyna.ex.basic.proto.TestSignal parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static io.scyna.ex.basic.proto.EchoRequest parseDelimitedFrom(
+  public static io.scyna.ex.basic.proto.TestSignal parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.ex.basic.proto.EchoRequest parseFrom(
+  public static io.scyna.ex.basic.proto.TestSignal parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.ex.basic.proto.EchoRequest parseFrom(
+  public static io.scyna.ex.basic.proto.TestSignal parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -264,7 +264,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(io.scyna.ex.basic.proto.EchoRequest prototype) {
+  public static Builder newBuilder(io.scyna.ex.basic.proto.TestSignal prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -280,26 +280,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code EchoRequest}
+   * Protobuf type {@code TestSignal}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:EchoRequest)
-      io.scyna.ex.basic.proto.EchoRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:TestSignal)
+      io.scyna.ex.basic.proto.TestSignalOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.scyna.ex.basic.proto.API.internal_static_EchoRequest_descriptor;
+      return io.scyna.ex.basic.proto.API.internal_static_TestSignal_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.scyna.ex.basic.proto.API.internal_static_EchoRequest_fieldAccessorTable
+      return io.scyna.ex.basic.proto.API.internal_static_TestSignal_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              io.scyna.ex.basic.proto.EchoRequest.class, io.scyna.ex.basic.proto.EchoRequest.Builder.class);
+              io.scyna.ex.basic.proto.TestSignal.class, io.scyna.ex.basic.proto.TestSignal.Builder.class);
     }
 
-    // Construct using io.scyna.ex.basic.proto.EchoRequest.newBuilder()
+    // Construct using io.scyna.ex.basic.proto.TestSignal.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -325,17 +325,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.scyna.ex.basic.proto.API.internal_static_EchoRequest_descriptor;
+      return io.scyna.ex.basic.proto.API.internal_static_TestSignal_descriptor;
     }
 
     @java.lang.Override
-    public io.scyna.ex.basic.proto.EchoRequest getDefaultInstanceForType() {
-      return io.scyna.ex.basic.proto.EchoRequest.getDefaultInstance();
+    public io.scyna.ex.basic.proto.TestSignal getDefaultInstanceForType() {
+      return io.scyna.ex.basic.proto.TestSignal.getDefaultInstance();
     }
 
     @java.lang.Override
-    public io.scyna.ex.basic.proto.EchoRequest build() {
-      io.scyna.ex.basic.proto.EchoRequest result = buildPartial();
+    public io.scyna.ex.basic.proto.TestSignal build() {
+      io.scyna.ex.basic.proto.TestSignal result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -343,8 +343,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public io.scyna.ex.basic.proto.EchoRequest buildPartial() {
-      io.scyna.ex.basic.proto.EchoRequest result = new io.scyna.ex.basic.proto.EchoRequest(this);
+    public io.scyna.ex.basic.proto.TestSignal buildPartial() {
+      io.scyna.ex.basic.proto.TestSignal result = new io.scyna.ex.basic.proto.TestSignal(this);
       result.text_ = text_;
       onBuilt();
       return result;
@@ -384,16 +384,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof io.scyna.ex.basic.proto.EchoRequest) {
-        return mergeFrom((io.scyna.ex.basic.proto.EchoRequest)other);
+      if (other instanceof io.scyna.ex.basic.proto.TestSignal) {
+        return mergeFrom((io.scyna.ex.basic.proto.TestSignal)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(io.scyna.ex.basic.proto.EchoRequest other) {
-      if (other == io.scyna.ex.basic.proto.EchoRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(io.scyna.ex.basic.proto.TestSignal other) {
+      if (other == io.scyna.ex.basic.proto.TestSignal.getDefaultInstance()) return this;
       if (!other.getText().isEmpty()) {
         text_ = other.text_;
         onChanged();
@@ -413,11 +413,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      io.scyna.ex.basic.proto.EchoRequest parsedMessage = null;
+      io.scyna.ex.basic.proto.TestSignal parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (io.scyna.ex.basic.proto.EchoRequest) e.getUnfinishedMessage();
+        parsedMessage = (io.scyna.ex.basic.proto.TestSignal) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -515,41 +515,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:EchoRequest)
+    // @@protoc_insertion_point(builder_scope:TestSignal)
   }
 
-  // @@protoc_insertion_point(class_scope:EchoRequest)
-  private static final io.scyna.ex.basic.proto.EchoRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:TestSignal)
+  private static final io.scyna.ex.basic.proto.TestSignal DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new io.scyna.ex.basic.proto.EchoRequest();
+    DEFAULT_INSTANCE = new io.scyna.ex.basic.proto.TestSignal();
   }
 
-  public static io.scyna.ex.basic.proto.EchoRequest getDefaultInstance() {
+  public static io.scyna.ex.basic.proto.TestSignal getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<EchoRequest>
-      PARSER = new com.google.protobuf.AbstractParser<EchoRequest>() {
+  private static final com.google.protobuf.Parser<TestSignal>
+      PARSER = new com.google.protobuf.AbstractParser<TestSignal>() {
     @java.lang.Override
-    public EchoRequest parsePartialFrom(
+    public TestSignal parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new EchoRequest(input, extensionRegistry);
+      return new TestSignal(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<EchoRequest> parser() {
+  public static com.google.protobuf.Parser<TestSignal> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<EchoRequest> getParserForType() {
+  public com.google.protobuf.Parser<TestSignal> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public io.scyna.ex.basic.proto.EchoRequest getDefaultInstanceForType() {
+  public io.scyna.ex.basic.proto.TestSignal getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 
