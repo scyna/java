@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import io.scyna.Engine;
@@ -17,14 +19,14 @@ import io.scyna.ex.basic.proto.EchoResponse;
 
 public class TestEcho {
 
-    @Before
-    public void setup() throws URISyntaxException, IOException, InterruptedException {
+    @BeforeClass
+    public static void setup() throws URISyntaxException, IOException, InterruptedException {
         Engine.init("http://127.0.0.1:8081", "scyna.test", "123456");
         Service.register(Path.ECHO_USER_URL, new EchoService(), EchoRequest.parser(), EchoRequest.newBuilder());
     }
 
-    @After
-    public void teardown() {
+    @AfterClass
+    public static void teardown() {
         Engine.release();
     }
 

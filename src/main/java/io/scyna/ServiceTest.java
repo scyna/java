@@ -9,8 +9,8 @@ import com.google.protobuf.Parser;
 
 public class ServiceTest {
     private String url;
-    private Message request;
-    private Message response;
+    private Message request = null;
+    private Message response = null;
     private int status;
 
     private ServiceTest(String url) {

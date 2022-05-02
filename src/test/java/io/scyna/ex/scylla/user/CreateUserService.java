@@ -1,5 +1,6 @@
 package io.scyna.ex.scylla.user;
 
+import io.scyna.Engine;
 import io.scyna.Service;
 import io.scyna.ex.scylla.proto.*;
 
@@ -11,7 +12,7 @@ public class CreateUserService extends Service.Handler<CreateUserRequest> {
         var repository = User.repository();
 
         if (repository.get(request.getUser().getEmail()) != null) {
-            error(io.scyna.ex.scylla.user.Error.ACCOUNT_EXISTED);
+            error(io.scyna.ex.scylla.user.Error.USER_EXISTED);
             return;
         }
 
