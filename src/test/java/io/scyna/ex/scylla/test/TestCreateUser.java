@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -35,10 +37,10 @@ public class TestCreateUser {
     @AfterClass
     public static void teardown() {
         Engine.release();
-        // cleanUp();
     }
 
     @Before
+    @After
     public void cleanUp() {
         var session = Engine.DB().session();
         var query = session.prepare("TRUNCATE ex.user").bind();

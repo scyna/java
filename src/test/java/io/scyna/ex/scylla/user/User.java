@@ -44,5 +44,4 @@ public class User {
                 .setPassword(password)
                 .build();
     }
-
 }

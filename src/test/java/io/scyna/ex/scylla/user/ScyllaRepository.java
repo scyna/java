@@ -1,5 +1,6 @@
 package io.scyna.ex.scylla.user;
 
+import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.datastax.driver.mapping.Mapper;
 
 import io.scyna.Engine;
@@ -17,6 +18,18 @@ public class ScyllaRepository implements IRepository {
 
     @Override
     public User get(String email) {
-        return mapper.get(email);
+        try {
+            var session = Engine.DB().session();
+            var qSelect = QueryBuilder
+                    .select("id", "email", "name")
+                    .from("ex", "user")
+                    .where(QueryBuilder.eq("email", email))
+                    .limit(1);
+            var result = session.execute(qSelect);
+            return mapper.map(result).one();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
