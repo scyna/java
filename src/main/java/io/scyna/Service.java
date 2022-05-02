@@ -5,12 +5,10 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
 import com.google.protobuf.util.JsonFormat;
-
 import io.nats.client.MessageHandler;
 import io.scyna.proto.Error;
 import io.scyna.proto.Request;
 import io.scyna.proto.Response;
-
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.util.concurrent.Future;
