@@ -13,6 +13,8 @@ import io.nats.client.Nats;
 import io.scyna.proto.Configuration;
 import io.scyna.proto.CreateSessionRequest;
 import io.scyna.proto.CreateSessionResponse;
+import io.scyna.proto.SettingRemovedSignal;
+import io.scyna.proto.SettingUpdatedSignal;
 
 public class Engine {
     private static Engine instance;
@@ -62,8 +64,10 @@ public class Engine {
         System.out.println("Engine created for module:" + module);
 
         /* setting */
-        Command.register(Path.SETTING_UPDATE_CHANNEL + module, new Settings.UpdateHandler());
-        Command.register(Path.SETTING_REMOVE_CHANNEL + module, new Settings.RemoveHandler());
+        Signal.register(Path.SETTING_UPDATE_CHANNEL + module, new Settings.UpdateHandler(),
+                SettingUpdatedSignal.parser());
+        Signal.register(Path.SETTING_REMOVE_CHANNEL + module, new Settings.RemoveHandler(),
+                SettingRemovedSignal.parser());
     }
 
     public static Engine instance() {

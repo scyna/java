@@ -73,30 +73,20 @@ public class Settings {
         }
     }
 
-    public static class UpdateHandler implements Command.Handler {
+    public static class UpdateHandler extends Signal.Handler<SettingUpdatedSignal> {
         @Override
-        public void execute(byte[] data) {
-            try {
-                var s = SettingUpdatedSignal.parseFrom(data);
-                if (s.getModule() == Engine.module()) {
-                    Engine.settings().update(s.getKey(), s.getValue());
-                }
-            } catch (InvalidProtocolBufferException e) {
-                e.printStackTrace();
+        public void execute() {
+            if (data.getModule() == Engine.module()) {
+                Engine.settings().update(data.getKey(), data.getValue());
             }
         }
     }
 
-    public static class RemoveHandler implements Command.Handler {
+    public static class RemoveHandler extends Signal.Handler<SettingRemovedSignal> {
         @Override
-        public void execute(byte[] data) {
-            try {
-                var s = SettingRemovedSignal.parseFrom(data);
-                if (s.getModule() == Engine.module()) {
-                    Engine.settings().remove(s.getKey());
-                }
-            } catch (InvalidProtocolBufferException e) {
-                e.printStackTrace();
+        public void execute() {
+            if (data.getModule() == Engine.module()) {
+                Engine.settings().remove(data.getKey());
             }
         }
     }
