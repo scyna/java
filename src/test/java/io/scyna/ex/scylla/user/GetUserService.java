@@ -15,12 +15,6 @@ public class GetUserService extends Service.Handler<GetUserRequest> {
             error(io.scyna.ex.scylla.user.Error.USER_NOT_EXISTED);
             return;
         }
-        done(GetUserResponse.newBuilder().setUser(io.scyna.ex.scylla.proto.User
-                .newBuilder()
-                .setId(user.id)
-                .setName(user.name)
-                .setEmail(user.email)
-                .build())
-                .build());
+        done(GetUserResponse.newBuilder().setUser(user.toProto()).build());
     }
 }

@@ -43,7 +43,6 @@ public class User {
                 .setId(id)
                 .setEmail(email)
                 .setName(name)
-                .setPassword(password)
                 .build();
     }
 }

@@ -109,6 +109,7 @@ public abstract class Service {
                 var requestBody = request.getBody();
                 source = request.getData();
                 if (JSON) {
+                    builder.clear();
                     JsonFormat.parser().merge(requestBody.toStringUtf8(), builder);
                     this.request = (T) builder.build();
                     builder.clear();
