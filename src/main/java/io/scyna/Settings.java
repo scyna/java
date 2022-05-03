@@ -74,7 +74,7 @@ public class Settings {
         }
     }
 
-    public static class UpdateHandler extends Signal.Handler<SettingUpdatedSignal> {
+    public static class UpdateHandler extends SignalLite.Handler<SettingUpdatedSignal> {
         @Override
         public void execute() {
             if (data.getModule() == Engine.module()) {
@@ -83,7 +83,7 @@ public class Settings {
         }
     }
 
-    public static class RemoveHandler extends Signal.Handler<SettingRemovedSignal> {
+    public static class RemoveHandler extends SignalLite.Handler<SettingRemovedSignal> {
         @Override
         public void execute() {
             if (data.getModule() == Engine.module()) {

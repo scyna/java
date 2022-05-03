@@ -4,7 +4,7 @@ import io.nats.client.MessageHandler;
 import io.scyna.proto.Request;
 import io.scyna.proto.Response;
 
-public abstract class ServiceLite {
+public abstract class Command {
 
     public static void register(String url, Handler handler) {
         System.out.println("Register Service:" + url);
