@@ -13,7 +13,7 @@ public abstract class Command {
         d.subscribe(Utils.subscribeURL(url), "API");
     }
 
-    public static Response sendRequest(String url) {
+    public static Response send(String url) {
         return Service.sendRequest(url, null);
     }
 
