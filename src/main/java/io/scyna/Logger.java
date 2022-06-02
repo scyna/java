@@ -1,6 +1,6 @@
 package io.scyna;
 
-import io.scyna.proto.WriteLogSignal;
+import io.scyna.proto.LogCreatedSignal;
 
 public class Logger {
     final int INFO = 1;
@@ -24,14 +24,14 @@ public class Logger {
         messgage = format(messgage);
         System.out.println(messgage);
         if (id > 0) {
-            var event = WriteLogSignal.newBuilder()
-                    .setId(id)
+            var event = LogCreatedSignal.newBuilder()
+                    .setID(id)
                     .setTime(System.nanoTime() / 1000)
                     .setLevel(level)
                     .setText(messgage)
                     .setSession(session)
                     .build();
-            SignalLite.emit(Path.LOG_WRITE_CHANNEL, event);
+            SignalLite.emit(Path.LOG_CREATED_CHANNEL, event);
         }
     }
 

@@ -16,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private UpdateSessionSignal() {
+    module_ = "";
   }
 
   @java.lang.Override
@@ -52,6 +53,44 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public long getID() {
     return iD_;
+  }
+
+  public static final int MODULE_FIELD_NUMBER = 2;
+  private volatile java.lang.Object module_;
+  /**
+   * <code>string Module = 2;</code>
+   * @return The module.
+   */
+  @java.lang.Override
+  public java.lang.String getModule() {
+    java.lang.Object ref = module_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      module_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string Module = 2;</code>
+   * @return The bytes for module.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getModuleBytes() {
+    java.lang.Object ref = module_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      module_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static io.scyna.proto.UpdateSessionSignal parseFrom(
@@ -184,6 +223,8 @@ private static final long serialVersionUID = 0L;
       super.clear();
       iD_ = 0L;
 
+      module_ = "";
+
       return this;
     }
 
@@ -211,6 +252,7 @@ private static final long serialVersionUID = 0L;
     public io.scyna.proto.UpdateSessionSignal buildPartial() {
       io.scyna.proto.UpdateSessionSignal result = new io.scyna.proto.UpdateSessionSignal(this);
       result.iD_ = iD_;
+      result.module_ = module_;
       onBuilt();
       return result;
     }
@@ -275,6 +317,82 @@ private static final long serialVersionUID = 0L;
     public Builder clearID() {
       
       iD_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object module_ = "";
+    /**
+     * <code>string Module = 2;</code>
+     * @return The module.
+     */
+    public java.lang.String getModule() {
+      java.lang.Object ref = module_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        module_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string Module = 2;</code>
+     * @return The bytes for module.
+     */
+    public com.google.protobuf.ByteString
+        getModuleBytes() {
+      java.lang.Object ref = module_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        module_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string Module = 2;</code>
+     * @param value The module to set.
+     * @return This builder for chaining.
+     */
+    public Builder setModule(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      module_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string Module = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearModule() {
+      
+      module_ = getDefaultInstance().getModule();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string Module = 2;</code>
+     * @param value The bytes for module to set.
+     * @return This builder for chaining.
+     */
+    public Builder setModuleBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      module_ = value;
       onChanged();
       return this;
     }

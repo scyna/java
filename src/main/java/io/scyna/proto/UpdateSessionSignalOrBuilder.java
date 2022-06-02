@@ -12,4 +12,16 @@ public interface UpdateSessionSignalOrBuilder extends
    * @return The iD.
    */
   long getID();
+
+  /**
+   * <code>string Module = 2;</code>
+   * @return The module.
+   */
+  java.lang.String getModule();
+  /**
+   * <code>string Module = 2;</code>
+   * @return The bytes for module.
+   */
+  com.google.protobuf.ByteString
+      getModuleBytes();
 }

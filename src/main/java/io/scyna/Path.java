@@ -6,7 +6,7 @@ class Path {
     public static final String SESSION_CREATE_URL = "/scyna/session/create";
     public static final String SESSION_UPDATE_CHANNEL = "scyna.session.update";
     public static final String SESSION_END_CHANNEL = "scyna.session.end";
-    public static final String LOG_WRITE_CHANNEL = "scyna.log";
+    public static final String LOG_CREATED_CHANNEL = "scyna.log";
     public static final String SETTING_WRITE_URL = "/scyna/setting/write";
     public static final String SETTING_READ_URL = "/scyna/setting/read";
     public static final String SETTING_REMOVE_URL = "/scyna/setting/remove";

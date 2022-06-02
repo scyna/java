@@ -3,48 +3,48 @@
 
 package io.scyna.proto;
 
-public interface WriteLogSignalOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:scyna.WriteLogSignal)
+public interface LogCreatedSignalOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:scyna.LogCreatedSignal)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>uint64 time = 1;</code>
+   * <code>uint64 Time = 1;</code>
    * @return The time.
    */
   long getTime();
 
   /**
-   * <code>uint32 level = 2;</code>
+   * <code>uint32 Level = 2;</code>
    * @return The level.
    */
   int getLevel();
 
   /**
-   * <code>string text = 3;</code>
+   * <code>string Text = 3;</code>
    * @return The text.
    */
   java.lang.String getText();
   /**
-   * <code>string text = 3;</code>
+   * <code>string Text = 3;</code>
    * @return The bytes for text.
    */
   com.google.protobuf.ByteString
       getTextBytes();
 
   /**
-   * <code>uint64 id = 4;</code>
-   * @return The id.
+   * <code>uint64 ID = 4;</code>
+   * @return The iD.
    */
-  long getId();
+  long getID();
 
   /**
-   * <code>uint64 seq = 5;</code>
-   * @return The seq.
+   * <code>uint64 SEQ = 5;</code>
+   * @return The sEQ.
    */
-  long getSeq();
+  long getSEQ();
 
   /**
-   * <code>bool session = 6;</code>
+   * <code>bool Session = 6;</code>
    * @return The session.
    */
   boolean getSession();

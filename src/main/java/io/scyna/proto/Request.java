@@ -45,15 +45,15 @@ private static final long serialVersionUID = 0L;
             io.scyna.proto.Request.class, io.scyna.proto.Request.Builder.class);
   }
 
-  public static final int CALLID_FIELD_NUMBER = 1;
-  private long callID_;
+  public static final int TRACEID_FIELD_NUMBER = 1;
+  private long traceID_;
   /**
-   * <code>uint64 CallID = 1;</code>
-   * @return The callID.
+   * <code>uint64 TraceID = 1;</code>
+   * @return The traceID.
    */
   @java.lang.Override
-  public long getCallID() {
-    return callID_;
+  public long getTraceID() {
+    return traceID_;
   }
 
   public static final int BODY_FIELD_NUMBER = 2;
@@ -65,17 +65,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public com.google.protobuf.ByteString getBody() {
     return body_;
-  }
-
-  public static final int JSON_FIELD_NUMBER = 3;
-  private boolean jSON_;
-  /**
-   * <code>bool JSON = 3;</code>
-   * @return The jSON.
-   */
-  @java.lang.Override
-  public boolean getJSON() {
-    return jSON_;
   }
 
   public static final int DATA_FIELD_NUMBER = 4;
@@ -114,6 +103,17 @@ private static final long serialVersionUID = 0L;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
+  }
+
+  public static final int JSON_FIELD_NUMBER = 3;
+  private boolean jSON_;
+  /**
+   * <code>bool JSON = 3;</code>
+   * @return The jSON.
+   */
+  @java.lang.Override
+  public boolean getJSON() {
+    return jSON_;
   }
 
   public static io.scyna.proto.Request parseFrom(
@@ -244,13 +244,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      callID_ = 0L;
+      traceID_ = 0L;
 
       body_ = com.google.protobuf.ByteString.EMPTY;
 
-      jSON_ = false;
-
       data_ = "";
+
+      jSON_ = false;
 
       return this;
     }
@@ -278,10 +278,10 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public io.scyna.proto.Request buildPartial() {
       io.scyna.proto.Request result = new io.scyna.proto.Request(this);
-      result.callID_ = callID_;
+      result.traceID_ = traceID_;
       result.body_ = body_;
-      result.jSON_ = jSON_;
       result.data_ = data_;
+      result.jSON_ = jSON_;
       onBuilt();
       return result;
     }
@@ -319,33 +319,33 @@ private static final long serialVersionUID = 0L;
       return super.addRepeatedField(field, value);
     }
 
-    private long callID_ ;
+    private long traceID_ ;
     /**
-     * <code>uint64 CallID = 1;</code>
-     * @return The callID.
+     * <code>uint64 TraceID = 1;</code>
+     * @return The traceID.
      */
     @java.lang.Override
-    public long getCallID() {
-      return callID_;
+    public long getTraceID() {
+      return traceID_;
     }
     /**
-     * <code>uint64 CallID = 1;</code>
-     * @param value The callID to set.
+     * <code>uint64 TraceID = 1;</code>
+     * @param value The traceID to set.
      * @return This builder for chaining.
      */
-    public Builder setCallID(long value) {
+    public Builder setTraceID(long value) {
       
-      callID_ = value;
+      traceID_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 CallID = 1;</code>
+     * <code>uint64 TraceID = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearCallID() {
+    public Builder clearTraceID() {
       
-      callID_ = 0L;
+      traceID_ = 0L;
       onChanged();
       return this;
     }
@@ -380,37 +380,6 @@ private static final long serialVersionUID = 0L;
     public Builder clearBody() {
       
       body_ = getDefaultInstance().getBody();
-      onChanged();
-      return this;
-    }
-
-    private boolean jSON_ ;
-    /**
-     * <code>bool JSON = 3;</code>
-     * @return The jSON.
-     */
-    @java.lang.Override
-    public boolean getJSON() {
-      return jSON_;
-    }
-    /**
-     * <code>bool JSON = 3;</code>
-     * @param value The jSON to set.
-     * @return This builder for chaining.
-     */
-    public Builder setJSON(boolean value) {
-      
-      jSON_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>bool JSON = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearJSON() {
-      
-      jSON_ = false;
       onChanged();
       return this;
     }
@@ -487,6 +456,37 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       data_ = value;
+      onChanged();
+      return this;
+    }
+
+    private boolean jSON_ ;
+    /**
+     * <code>bool JSON = 3;</code>
+     * @return The jSON.
+     */
+    @java.lang.Override
+    public boolean getJSON() {
+      return jSON_;
+    }
+    /**
+     * <code>bool JSON = 3;</code>
+     * @param value The jSON to set.
+     * @return This builder for chaining.
+     */
+    public Builder setJSON(boolean value) {
+      
+      jSON_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bool JSON = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearJSON() {
+      
+      jSON_ = false;
       onChanged();
       return this;
     }

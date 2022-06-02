@@ -29,8 +29,8 @@ public final class ErrorOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\013error.proto\022\005scyna\"&\n\005Error\022\014\n\004Code\030\001 " +
-      "\001(\005\022\017\n\007Message\030\002 \001(\tB\035\n\016io.scyna.protoH\002" +
-      "P\001Z\007.;scynab\006proto3"
+      "\001(\005\022\017\n\007Message\030\002 \001(\tB+\n\016io.scyna.protoH\002" +
+      "P\001Z\007.;scyna\252\002\013scyna.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -28,7 +28,7 @@ public class Generator {
 
     private boolean getID() {
         var nc = Engine.connection();
-        var request = Request.newBuilder().setCallID(0).setJSON(false).build();
+        var request = Request.newBuilder().setTraceID(0).setJSON(false).build();
         try {
             Future<Message> incoming = nc.request(Utils.publishURL(Path.GEN_GET_ID_URL), request.toByteArray());
             var msg = incoming.get(5, TimeUnit.SECONDS);

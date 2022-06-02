@@ -8,10 +8,10 @@ public interface EventOrSignalOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>uint64 CallID = 1;</code>
-   * @return The callID.
+   * <code>uint64 ParentID = 1;</code>
+   * @return The parentID.
    */
-  long getCallID();
+  long getParentID();
 
   /**
    * <code>bytes Body = 2;</code>

@@ -14,8 +14,26 @@ public interface EndSessionSignalOrBuilder extends
   long getID();
 
   /**
-   * <code>uint32 Code = 2;</code>
+   * <code>string Code = 2;</code>
    * @return The code.
    */
-  int getCode();
+  java.lang.String getCode();
+  /**
+   * <code>string Code = 2;</code>
+   * @return The bytes for code.
+   */
+  com.google.protobuf.ByteString
+      getCodeBytes();
+
+  /**
+   * <code>string Module = 3;</code>
+   * @return The module.
+   */
+  java.lang.String getModule();
+  /**
+   * <code>string Module = 3;</code>
+   * @return The bytes for module.
+   */
+  com.google.protobuf.ByteString
+      getModuleBytes();
 }

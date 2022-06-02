@@ -15,7 +15,7 @@ public class Event {
 
     public static <T extends Message> void post(String channel, T data) {
         try {
-            var msg = EventOrSignal.newBuilder().setCallID(Engine.ID().next()).setBody(data.toByteString()).build();
+            var msg = EventOrSignal.newBuilder().setBody(data.toByteString()).build();
             Engine.stream().publish(channel, msg.toByteArray());
         } catch (IOException | JetStreamApiException e) {
             e.printStackTrace();
@@ -56,7 +56,7 @@ public class Event {
         public void onMessage(io.nats.client.Message msg) {
             try {
                 var request = EventOrSignal.parseFrom(msg.getData());
-                LOG.reset(request.getCallID());
+                // TODO: LOG.reset(request.getCallID());
                 var requestBody = request.getBody();
                 this.data = parser.parseFrom(requestBody);
                 this.execute();

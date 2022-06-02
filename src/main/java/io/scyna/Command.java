@@ -24,7 +24,7 @@ public abstract class Command {
         public void onMessage(io.nats.client.Message msg) {
             try {
                 var request = Request.parseFrom(msg.getData());
-                LOG.reset(request.getCallID());
+                LOG.reset(request.getTraceID());
                 reply = msg.getReplyTo();
                 JSON = request.getJSON();
                 source = request.getData();

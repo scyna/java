@@ -8,22 +8,16 @@ public interface RequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>uint64 CallID = 1;</code>
-   * @return The callID.
+   * <code>uint64 TraceID = 1;</code>
+   * @return The traceID.
    */
-  long getCallID();
+  long getTraceID();
 
   /**
    * <code>bytes Body = 2;</code>
    * @return The body.
    */
   com.google.protobuf.ByteString getBody();
-
-  /**
-   * <code>bool JSON = 3;</code>
-   * @return The jSON.
-   */
-  boolean getJSON();
 
   /**
    * <code>string Data = 4;</code>
@@ -36,4 +30,10 @@ public interface RequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getDataBytes();
+
+  /**
+   * <code>bool JSON = 3;</code>
+   * @return The jSON.
+   */
+  boolean getJSON();
 }

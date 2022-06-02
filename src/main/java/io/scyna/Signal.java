@@ -12,7 +12,7 @@ import io.scyna.proto.EventOrSignal;
 
 public class Signal {
     public static <T extends Message> void emit(String channel, T data) {
-        var msg = EventOrSignal.newBuilder().setCallID(Engine.ID().next()).setBody(data.toByteString()).build();
+        var msg = EventOrSignal.newBuilder().setBody(data.toByteString()).build();
         var nc = Engine.connection();
         nc.publish(channel, msg.toByteArray());
     }
@@ -50,7 +50,7 @@ public class Signal {
         public void onMessage(io.nats.client.Message msg) {
             try {
                 var request = EventOrSignal.parseFrom(msg.getData());
-                LOG.reset(request.getCallID());
+                // TODO: LOG.reset(request.getCallID());
                 var requestBody = request.getBody();
                 this.data = parser.parseFrom(requestBody);
                 this.execute();

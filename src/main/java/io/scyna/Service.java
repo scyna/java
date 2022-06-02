@@ -27,7 +27,7 @@ public abstract class Service {
     public static Response sendRequest(String url, Message request) {
         try {
             var callID = Engine.ID().next();
-            var req = Request.newBuilder().setCallID(callID).setJSON(false);
+            var req = Request.newBuilder().setTraceID(callID).setJSON(false);
 
             if (request != null) {
                 req.setBody(request.toByteString());
@@ -103,7 +103,7 @@ public abstract class Service {
         public void onMessage(io.nats.client.Message msg) {
             try {
                 var request = Request.parseFrom(msg.getData());
-                LOG.reset(request.getCallID());
+                LOG.reset(request.getTraceID());
                 reply = msg.getReplyTo();
                 JSON = request.getJSON();
                 var requestBody = request.getBody();

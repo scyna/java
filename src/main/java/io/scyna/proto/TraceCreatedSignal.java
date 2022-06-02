@@ -4,27 +4,27 @@
 package io.scyna.proto;
 
 /**
- * Protobuf type {@code scyna.EndSessionSignal}
+ * Protobuf type {@code scyna.TraceCreatedSignal}
  */
-public final class EndSessionSignal extends
+public final class TraceCreatedSignal extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:scyna.EndSessionSignal)
-    EndSessionSignalOrBuilder {
+    // @@protoc_insertion_point(message_implements:scyna.TraceCreatedSignal)
+    TraceCreatedSignalOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use EndSessionSignal.newBuilder() to construct.
-  private EndSessionSignal(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use TraceCreatedSignal.newBuilder() to construct.
+  private TraceCreatedSignal(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private EndSessionSignal() {
-    code_ = "";
-    module_ = "";
+  private TraceCreatedSignal() {
+    path_ = "";
+    source_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new EndSessionSignal();
+    return new TraceCreatedSignal();
   }
 
   @java.lang.Override
@@ -34,15 +34,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.scyna.proto.Engine.internal_static_scyna_EndSessionSignal_descriptor;
+    return io.scyna.proto.Engine.internal_static_scyna_TraceCreatedSignal_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.scyna.proto.Engine.internal_static_scyna_EndSessionSignal_fieldAccessorTable
+    return io.scyna.proto.Engine.internal_static_scyna_TraceCreatedSignal_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            io.scyna.proto.EndSessionSignal.class, io.scyna.proto.EndSessionSignal.Builder.class);
+            io.scyna.proto.TraceCreatedSignal.class, io.scyna.proto.TraceCreatedSignal.Builder.class);
   }
 
   public static final int ID_FIELD_NUMBER = 1;
@@ -56,145 +56,211 @@ private static final long serialVersionUID = 0L;
     return iD_;
   }
 
-  public static final int CODE_FIELD_NUMBER = 2;
-  private volatile java.lang.Object code_;
+  public static final int PARENTID_FIELD_NUMBER = 2;
+  private long parentID_;
   /**
-   * <code>string Code = 2;</code>
-   * @return The code.
+   * <code>uint64 ParentID = 2;</code>
+   * @return The parentID.
    */
   @java.lang.Override
-  public java.lang.String getCode() {
-    java.lang.Object ref = code_;
+  public long getParentID() {
+    return parentID_;
+  }
+
+  public static final int TYPE_FIELD_NUMBER = 3;
+  private int type_;
+  /**
+   * <code>uint32 Type = 3;</code>
+   * @return The type.
+   */
+  @java.lang.Override
+  public int getType() {
+    return type_;
+  }
+
+  public static final int TIME_FIELD_NUMBER = 4;
+  private long time_;
+  /**
+   * <code>uint64 Time = 4;</code>
+   * @return The time.
+   */
+  @java.lang.Override
+  public long getTime() {
+    return time_;
+  }
+
+  public static final int DURATION_FIELD_NUMBER = 5;
+  private long duration_;
+  /**
+   * <code>uint64 Duration = 5;</code>
+   * @return The duration.
+   */
+  @java.lang.Override
+  public long getDuration() {
+    return duration_;
+  }
+
+  public static final int PATH_FIELD_NUMBER = 6;
+  private volatile java.lang.Object path_;
+  /**
+   * <code>string Path = 6;</code>
+   * @return The path.
+   */
+  @java.lang.Override
+  public java.lang.String getPath() {
+    java.lang.Object ref = path_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      code_ = s;
+      path_ = s;
       return s;
     }
   }
   /**
-   * <code>string Code = 2;</code>
-   * @return The bytes for code.
+   * <code>string Path = 6;</code>
+   * @return The bytes for path.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getCodeBytes() {
-    java.lang.Object ref = code_;
+      getPathBytes() {
+    java.lang.Object ref = path_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      code_ = b;
+      path_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int MODULE_FIELD_NUMBER = 3;
-  private volatile java.lang.Object module_;
+  public static final int SOURCE_FIELD_NUMBER = 7;
+  private volatile java.lang.Object source_;
   /**
-   * <code>string Module = 3;</code>
-   * @return The module.
+   * <code>string Source = 7;</code>
+   * @return The source.
    */
   @java.lang.Override
-  public java.lang.String getModule() {
-    java.lang.Object ref = module_;
+  public java.lang.String getSource() {
+    java.lang.Object ref = source_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      module_ = s;
+      source_ = s;
       return s;
     }
   }
   /**
-   * <code>string Module = 3;</code>
-   * @return The bytes for module.
+   * <code>string Source = 7;</code>
+   * @return The bytes for source.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getModuleBytes() {
-    java.lang.Object ref = module_;
+      getSourceBytes() {
+    java.lang.Object ref = source_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      module_ = b;
+      source_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static io.scyna.proto.EndSessionSignal parseFrom(
+  public static final int SESSIONID_FIELD_NUMBER = 8;
+  private long sessionID_;
+  /**
+   * <code>uint64 SessionID = 8;</code>
+   * @return The sessionID.
+   */
+  @java.lang.Override
+  public long getSessionID() {
+    return sessionID_;
+  }
+
+  public static final int STATUS_FIELD_NUMBER = 9;
+  private int status_;
+  /**
+   * <code>int32 Status = 9;</code>
+   * @return The status.
+   */
+  @java.lang.Override
+  public int getStatus() {
+    return status_;
+  }
+
+  public static io.scyna.proto.TraceCreatedSignal parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.proto.EndSessionSignal parseFrom(
+  public static io.scyna.proto.TraceCreatedSignal parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.proto.EndSessionSignal parseFrom(
+  public static io.scyna.proto.TraceCreatedSignal parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.proto.EndSessionSignal parseFrom(
+  public static io.scyna.proto.TraceCreatedSignal parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.proto.EndSessionSignal parseFrom(byte[] data)
+  public static io.scyna.proto.TraceCreatedSignal parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.proto.EndSessionSignal parseFrom(
+  public static io.scyna.proto.TraceCreatedSignal parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.proto.EndSessionSignal parseFrom(java.io.InputStream input)
+  public static io.scyna.proto.TraceCreatedSignal parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.proto.EndSessionSignal parseFrom(
+  public static io.scyna.proto.TraceCreatedSignal parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.proto.EndSessionSignal parseDelimitedFrom(java.io.InputStream input)
+  public static io.scyna.proto.TraceCreatedSignal parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static io.scyna.proto.EndSessionSignal parseDelimitedFrom(
+  public static io.scyna.proto.TraceCreatedSignal parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.proto.EndSessionSignal parseFrom(
+  public static io.scyna.proto.TraceCreatedSignal parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.proto.EndSessionSignal parseFrom(
+  public static io.scyna.proto.TraceCreatedSignal parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -207,7 +273,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(io.scyna.proto.EndSessionSignal prototype) {
+  public static Builder newBuilder(io.scyna.proto.TraceCreatedSignal prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -223,26 +289,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code scyna.EndSessionSignal}
+   * Protobuf type {@code scyna.TraceCreatedSignal}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:scyna.EndSessionSignal)
-      io.scyna.proto.EndSessionSignalOrBuilder {
+      // @@protoc_insertion_point(builder_implements:scyna.TraceCreatedSignal)
+      io.scyna.proto.TraceCreatedSignalOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.scyna.proto.Engine.internal_static_scyna_EndSessionSignal_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_TraceCreatedSignal_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.scyna.proto.Engine.internal_static_scyna_EndSessionSignal_fieldAccessorTable
+      return io.scyna.proto.Engine.internal_static_scyna_TraceCreatedSignal_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              io.scyna.proto.EndSessionSignal.class, io.scyna.proto.EndSessionSignal.Builder.class);
+              io.scyna.proto.TraceCreatedSignal.class, io.scyna.proto.TraceCreatedSignal.Builder.class);
     }
 
-    // Construct using io.scyna.proto.EndSessionSignal.newBuilder()
+    // Construct using io.scyna.proto.TraceCreatedSignal.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -262,9 +328,21 @@ private static final long serialVersionUID = 0L;
       super.clear();
       iD_ = 0L;
 
-      code_ = "";
+      parentID_ = 0L;
 
-      module_ = "";
+      type_ = 0;
+
+      time_ = 0L;
+
+      duration_ = 0L;
+
+      path_ = "";
+
+      source_ = "";
+
+      sessionID_ = 0L;
+
+      status_ = 0;
 
       return this;
     }
@@ -272,17 +350,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.scyna.proto.Engine.internal_static_scyna_EndSessionSignal_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_TraceCreatedSignal_descriptor;
     }
 
     @java.lang.Override
-    public io.scyna.proto.EndSessionSignal getDefaultInstanceForType() {
-      return io.scyna.proto.EndSessionSignal.getDefaultInstance();
+    public io.scyna.proto.TraceCreatedSignal getDefaultInstanceForType() {
+      return io.scyna.proto.TraceCreatedSignal.getDefaultInstance();
     }
 
     @java.lang.Override
-    public io.scyna.proto.EndSessionSignal build() {
-      io.scyna.proto.EndSessionSignal result = buildPartial();
+    public io.scyna.proto.TraceCreatedSignal build() {
+      io.scyna.proto.TraceCreatedSignal result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -290,11 +368,17 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public io.scyna.proto.EndSessionSignal buildPartial() {
-      io.scyna.proto.EndSessionSignal result = new io.scyna.proto.EndSessionSignal(this);
+    public io.scyna.proto.TraceCreatedSignal buildPartial() {
+      io.scyna.proto.TraceCreatedSignal result = new io.scyna.proto.TraceCreatedSignal(this);
       result.iD_ = iD_;
-      result.code_ = code_;
-      result.module_ = module_;
+      result.parentID_ = parentID_;
+      result.type_ = type_;
+      result.time_ = time_;
+      result.duration_ = duration_;
+      result.path_ = path_;
+      result.source_ = source_;
+      result.sessionID_ = sessionID_;
+      result.status_ = status_;
       onBuilt();
       return result;
     }
@@ -363,154 +447,340 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object code_ = "";
+    private long parentID_ ;
     /**
-     * <code>string Code = 2;</code>
-     * @return The code.
+     * <code>uint64 ParentID = 2;</code>
+     * @return The parentID.
      */
-    public java.lang.String getCode() {
-      java.lang.Object ref = code_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        code_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    @java.lang.Override
+    public long getParentID() {
+      return parentID_;
     }
     /**
-     * <code>string Code = 2;</code>
-     * @return The bytes for code.
-     */
-    public com.google.protobuf.ByteString
-        getCodeBytes() {
-      java.lang.Object ref = code_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        code_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string Code = 2;</code>
-     * @param value The code to set.
+     * <code>uint64 ParentID = 2;</code>
+     * @param value The parentID to set.
      * @return This builder for chaining.
      */
-    public Builder setCode(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      code_ = value;
+    public Builder setParentID(long value) {
+      
+      parentID_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string Code = 2;</code>
+     * <code>uint64 ParentID = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearCode() {
+    public Builder clearParentID() {
       
-      code_ = getDefaultInstance().getCode();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string Code = 2;</code>
-     * @param value The bytes for code to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCodeBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      code_ = value;
+      parentID_ = 0L;
       onChanged();
       return this;
     }
 
-    private java.lang.Object module_ = "";
+    private int type_ ;
     /**
-     * <code>string Module = 3;</code>
-     * @return The module.
+     * <code>uint32 Type = 3;</code>
+     * @return The type.
      */
-    public java.lang.String getModule() {
-      java.lang.Object ref = module_;
+    @java.lang.Override
+    public int getType() {
+      return type_;
+    }
+    /**
+     * <code>uint32 Type = 3;</code>
+     * @param value The type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setType(int value) {
+      
+      type_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint32 Type = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearType() {
+      
+      type_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private long time_ ;
+    /**
+     * <code>uint64 Time = 4;</code>
+     * @return The time.
+     */
+    @java.lang.Override
+    public long getTime() {
+      return time_;
+    }
+    /**
+     * <code>uint64 Time = 4;</code>
+     * @param value The time to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTime(long value) {
+      
+      time_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint64 Time = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTime() {
+      
+      time_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long duration_ ;
+    /**
+     * <code>uint64 Duration = 5;</code>
+     * @return The duration.
+     */
+    @java.lang.Override
+    public long getDuration() {
+      return duration_;
+    }
+    /**
+     * <code>uint64 Duration = 5;</code>
+     * @param value The duration to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDuration(long value) {
+      
+      duration_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint64 Duration = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDuration() {
+      
+      duration_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object path_ = "";
+    /**
+     * <code>string Path = 6;</code>
+     * @return The path.
+     */
+    public java.lang.String getPath() {
+      java.lang.Object ref = path_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        module_ = s;
+        path_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string Module = 3;</code>
-     * @return The bytes for module.
+     * <code>string Path = 6;</code>
+     * @return The bytes for path.
      */
     public com.google.protobuf.ByteString
-        getModuleBytes() {
-      java.lang.Object ref = module_;
+        getPathBytes() {
+      java.lang.Object ref = path_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        module_ = b;
+        path_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string Module = 3;</code>
-     * @param value The module to set.
+     * <code>string Path = 6;</code>
+     * @param value The path to set.
      * @return This builder for chaining.
      */
-    public Builder setModule(
+    public Builder setPath(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      module_ = value;
+      path_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string Module = 3;</code>
+     * <code>string Path = 6;</code>
      * @return This builder for chaining.
      */
-    public Builder clearModule() {
+    public Builder clearPath() {
       
-      module_ = getDefaultInstance().getModule();
+      path_ = getDefaultInstance().getPath();
       onChanged();
       return this;
     }
     /**
-     * <code>string Module = 3;</code>
-     * @param value The bytes for module to set.
+     * <code>string Path = 6;</code>
+     * @param value The bytes for path to set.
      * @return This builder for chaining.
      */
-    public Builder setModuleBytes(
+    public Builder setPathBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      module_ = value;
+      path_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object source_ = "";
+    /**
+     * <code>string Source = 7;</code>
+     * @return The source.
+     */
+    public java.lang.String getSource() {
+      java.lang.Object ref = source_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        source_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string Source = 7;</code>
+     * @return The bytes for source.
+     */
+    public com.google.protobuf.ByteString
+        getSourceBytes() {
+      java.lang.Object ref = source_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        source_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string Source = 7;</code>
+     * @param value The source to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSource(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      source_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string Source = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSource() {
+      
+      source_ = getDefaultInstance().getSource();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string Source = 7;</code>
+     * @param value The bytes for source to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSourceBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      source_ = value;
+      onChanged();
+      return this;
+    }
+
+    private long sessionID_ ;
+    /**
+     * <code>uint64 SessionID = 8;</code>
+     * @return The sessionID.
+     */
+    @java.lang.Override
+    public long getSessionID() {
+      return sessionID_;
+    }
+    /**
+     * <code>uint64 SessionID = 8;</code>
+     * @param value The sessionID to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSessionID(long value) {
+      
+      sessionID_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint64 SessionID = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSessionID() {
+      
+      sessionID_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private int status_ ;
+    /**
+     * <code>int32 Status = 9;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public int getStatus() {
+      return status_;
+    }
+    /**
+     * <code>int32 Status = 9;</code>
+     * @param value The status to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStatus(int value) {
+      
+      status_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 Status = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearStatus() {
+      
+      status_ = 0;
       onChanged();
       return this;
     }
@@ -527,23 +797,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:scyna.EndSessionSignal)
+    // @@protoc_insertion_point(builder_scope:scyna.TraceCreatedSignal)
   }
 
-  // @@protoc_insertion_point(class_scope:scyna.EndSessionSignal)
-  private static final io.scyna.proto.EndSessionSignal DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:scyna.TraceCreatedSignal)
+  private static final io.scyna.proto.TraceCreatedSignal DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new io.scyna.proto.EndSessionSignal();
+    DEFAULT_INSTANCE = new io.scyna.proto.TraceCreatedSignal();
   }
 
-  public static io.scyna.proto.EndSessionSignal getDefaultInstance() {
+  public static io.scyna.proto.TraceCreatedSignal getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<EndSessionSignal>
-      PARSER = new com.google.protobuf.AbstractParser<EndSessionSignal>() {
+  private static final com.google.protobuf.Parser<TraceCreatedSignal>
+      PARSER = new com.google.protobuf.AbstractParser<TraceCreatedSignal>() {
     @java.lang.Override
-    public EndSessionSignal parsePartialFrom(
+    public TraceCreatedSignal parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -561,17 +831,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<EndSessionSignal> parser() {
+  public static com.google.protobuf.Parser<TraceCreatedSignal> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<EndSessionSignal> getParserForType() {
+  public com.google.protobuf.Parser<TraceCreatedSignal> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public io.scyna.proto.EndSessionSignal getDefaultInstanceForType() {
+  public io.scyna.proto.TraceCreatedSignal getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

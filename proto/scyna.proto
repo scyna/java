@@ -3,16 +3,16 @@ syntax = "proto3";
 package scyna;
 option java_package = "io.scyna.proto";
 option java_multiple_files = true;
-
+option csharp_namespace = "scyna.proto";
 option optimize_for = CODE_SIZE;
 option go_package = ".;scyna";
 
 message Request 
 {
-  uint64 CallID = 1;
+  uint64 TraceID = 1;
   bytes Body = 2;
-  bool JSON = 3;
   string Data = 4;
+  bool JSON = 3;
 }
 
 message Response 
@@ -26,7 +26,7 @@ message Response
 
 message EventOrSignal
 {
-  uint64 CallID = 1;
+  uint64 ParentID = 1;
   bytes Body = 2;
   string Data = 3;
 }
