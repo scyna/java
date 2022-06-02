@@ -8,7 +8,6 @@ import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
 
 import io.nats.client.MessageHandler;
-import io.scyna.proto.EventOrSignal;
 
 public class SignalLite {
     public static <T extends Message> void emit(String channel, T data) {

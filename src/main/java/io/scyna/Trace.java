@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 
 public class Trace {
 
-    public final static int TRACE_SERVICE = 1;
-    public final static int TRACE_EVENT = 2;
-    public final static int TRACE_SIGNAL = 3;
+    public final static int SERVICE = 1;
+    public final static int EVENT = 2;
+    public final static int SIGNAL = 3;
 
     public long ParentID;
     public long ID;

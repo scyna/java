@@ -2,6 +2,7 @@ package io.scyna;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
+import java.time.LocalDateTime;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
@@ -19,7 +20,12 @@ public class Signal {
 
     public static <T extends Message> void register(String channel, Handler<T> handler) throws Exception {
         System.out.println("Register Signal:" + channel);
-        handler.init();
+        Trace trace = new Trace();
+        trace.Path = channel;
+        trace.SessionID = Engine.session().ID();
+        trace.Type = Trace.SIGNAL;
+
+        handler.init(trace);
         var nc = Engine.connection();
         var d = nc.createDispatcher(handler);
         d.subscribe(channel, Engine.module());
@@ -29,16 +35,17 @@ public class Signal {
         protected Logger LOG = new Logger(0, false);
         protected Parser<T> parser;
         protected T data;
+        protected Trace trace;
 
         public abstract void execute();
 
-        public void init() throws Exception {
+        public void init(Trace trace) throws Exception {
             try {
                 Class<T> cls = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
                         .getActualTypeArguments()[0];
                 Method m = cls.getMethod("parser");
                 this.parser = (Parser<T>) m.invoke(null);
-
+                this.trace = trace;
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new Exception();
@@ -50,10 +57,13 @@ public class Signal {
         public void onMessage(io.nats.client.Message msg) {
             try {
                 var request = EventOrSignal.parseFrom(msg.getData());
-                // TODO: LOG.reset(request.getCallID());
+                trace.Time = LocalDateTime.now();
+                trace.ID = Engine.ID().next();
+                trace.ParentID = request.getParentID();
                 var requestBody = request.getBody();
                 this.data = parser.parseFrom(requestBody);
                 this.execute();
+                trace.record();
             } catch (InvalidProtocolBufferException e) {
                 e.printStackTrace();
             }
