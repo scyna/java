@@ -3,10 +3,10 @@ package io.scyna;
 import java.nio.ByteBuffer;
 
 import com.datastax.driver.core.BoundStatement;
-import com.datastax.driver.core.Row;
 import com.google.protobuf.Message;
 
 public class ActivityStream {
+    private final static int TRY_COUNT = 10;
     private String tableName;
 
     public ActivityStream(String keyspace) {
@@ -17,21 +17,18 @@ public class ActivityStream {
         var session = Engine.DB().session();
         try {
             var buf = activity.toByteArray();
-            ByteBuffer buffer = ByteBuffer.wrap(buf);
-            long time = Utils.currentMicroSeconds();
-
-            var ps = session.prepare(
+            var buffer = ByteBuffer.wrap(buf);
+            var time = Utils.currentMicroSeconds();
+            var qInsert = session.prepare(
                     "INSERT INTO " + tableName + " (entity_id, type, time, data) VALUES(?,?,?,?) IF NOT EXISTS");
-
-            BoundStatement boundStatement = new BoundStatement(ps);
+            var statement = new BoundStatement(qInsert);
 
             int count = 0;
-
-            while (count < 10) {
-                var rs = session.execute(boundStatement.bind(entity, type, time, buffer));
-                Row row = rs.one();
-                if (row.getBool("applied"))
+            while (count < TRY_COUNT) {
+                var rs = session.execute(statement.bind(entity, type, time, buffer));
+                if (rs.one().getBool("applied")) {
                     break;
+                }
                 time++;
                 count++;
             }
