@@ -8,7 +8,7 @@ import io.scyna.ex.basic.proto.AddResponse;
 public class AddService extends Service.Handler<AddRequest> {
     @Override
     public void execute() {
-        LOG.info("Receive AddRequest");
+        context.info("Receive AddRequest");
         var sum = request.getA() + request.getB();
         if (sum > 100) {
             error(Error.REQUEST_INVALID);

@@ -57,6 +57,7 @@ public class Signal {
         public void onMessage(io.nats.client.Message msg) {
             try {
                 var request = EventOrSignal.parseFrom(msg.getData());
+                context.reset(request.getParentID());
                 trace.Time = LocalDateTime.now();
                 trace.ID = Engine.ID().next();
                 trace.ParentID = request.getParentID();

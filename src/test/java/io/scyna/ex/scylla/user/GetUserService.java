@@ -8,7 +8,7 @@ public class GetUserService extends Service.Handler<GetUserRequest> {
 
     @Override
     public void execute() {
-        LOG.info("Receive GetUserRequest");
+        context.info("Receive GetUserRequest");
         var repository = User.repository();
         var user = repository.get(request.getEmail());
         if (user == null) {
