@@ -13,8 +13,9 @@ public class Event {
     public static <T extends Message> void register(String channel, String consumer, Handler<T> handler,
             Parser<T> parser) {
         System.out.println("Register Event:" + channel);
+        var trace = Trace.newEventTrace(channel);
         try {
-            handler.init(parser);
+            handler.init(parser, trace);
             var nc = Engine.connection();
             var js = Engine.stream();
             var d = nc.createDispatcher();
@@ -33,21 +34,25 @@ public class Event {
         protected Context context = new Context();
         protected Parser<T> parser;
         protected T data;
+        protected Trace trace;
 
         public abstract void execute();
 
-        public void init(Parser<T> parser) {
+        public void init(Parser<T> parser, Trace trace) {
             this.parser = parser;
+            this.trace = trace;
         }
 
         @Override
         public void onMessage(io.nats.client.Message msg) {
             try {
                 var request = EventOrSignal.parseFrom(msg.getData());
+                trace.update(request.getParentID());
                 context.reset(request.getParentID());
                 var requestBody = request.getBody();
                 this.data = parser.parseFrom(requestBody);
                 this.execute();
+                trace.record();
             } catch (InvalidProtocolBufferException e) {
                 e.printStackTrace();
             }

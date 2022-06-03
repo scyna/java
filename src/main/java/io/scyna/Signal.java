@@ -11,12 +11,6 @@ import io.nats.client.MessageHandler;
 import io.scyna.proto.EventOrSignal;
 
 public class Signal {
-    public static <T extends Message> void emit(String channel, T data) {
-        var msg = EventOrSignal.newBuilder().setBody(data.toByteString()).build();
-        var nc = Engine.connection();
-        nc.publish(channel, msg.toByteArray());
-    }
-
     public static <T extends Message> void register(String channel, Handler<T> handler) throws Exception {
         System.out.println("Register Signal:" + channel);
         var trace = Trace.newSignalTrace(channel);
