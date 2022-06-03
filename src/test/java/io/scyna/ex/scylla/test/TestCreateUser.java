@@ -15,7 +15,6 @@ import io.scyna.ex.scylla.proto.GetUserResponse;
 import io.scyna.ex.scylla.user.CreateUserService;
 import io.scyna.ex.scylla.user.GetUserService;
 import io.scyna.ex.scylla.user.Path;
-import io.scyna.ex.scylla.user.User;
 
 public class TestCreateUser {
 
@@ -25,8 +24,6 @@ public class TestCreateUser {
 
                 Service.register(Path.CREATE_USER_URL, new CreateUserService());
                 Service.register(Path.GET_USER_URL, new GetUserService());
-
-                User.initScyllaRepository();
         }
 
         @AfterClass

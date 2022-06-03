@@ -5,7 +5,7 @@ import com.datastax.driver.mapping.Mapper;
 
 import io.scyna.Engine;
 
-public class ScyllaRepository implements IRepository {
+public class Repository implements IRepository {
     private Mapper<User> mapper = Engine.DB().mapping().mapper(io.scyna.ex.scylla.user.User.class);;
 
     @Override

@@ -6,14 +6,10 @@ import com.datastax.driver.mapping.annotations.Table;
 
 @Table(keyspace = "ex", name = "user", caseSensitiveKeyspace = false, caseSensitiveTable = false)
 public class User {
-    private static IRepository repository;
+    private static IRepository repository = new Repository();
 
     public static IRepository repository() {
         return repository;
-    }
-
-    public static void initScyllaRepository() {
-        repository = new ScyllaRepository();
     }
 
     @PartitionKey
