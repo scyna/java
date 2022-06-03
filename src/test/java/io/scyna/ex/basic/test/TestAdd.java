@@ -17,7 +17,7 @@ public class TestAdd {
     @BeforeClass
     public static void setup() throws Exception {
         Engine.init("http://127.0.0.1:8081", "scyna.test", "123456");
-        Service.register(Path.ADD_USER_URL, new AddService());
+        Service.register(Path.ADD_URL, new AddService());
     }
 
     @AfterClass
@@ -27,12 +27,12 @@ public class TestAdd {
 
     @Test
     public void testAddShouldSuccess() {
-        ServiceTest.New(Path.ADD_USER_URL)
+        ServiceTest.New(Path.ADD_URL)
                 .withRequest(AddRequest.newBuilder().setA(5).setB(34).build())
                 .expectResponse(AddResponse.newBuilder().setSum(39).build())
                 .run();
 
-        ServiceTest.New(Path.ADD_USER_URL)
+        ServiceTest.New(Path.ADD_URL)
                 .withRequest(AddRequest.newBuilder().setA(82).setB(18).build())
                 .expectResponse(AddResponse.newBuilder().setSum(100).build())
                 .run();
@@ -41,7 +41,7 @@ public class TestAdd {
 
     @Test
     public void testAddTooBig() {
-        ServiceTest.New(Path.ADD_USER_URL)
+        ServiceTest.New(Path.ADD_URL)
                 .withRequest(AddRequest.newBuilder().setA(95).setB(34).build())
                 .expectError(Error.REQUEST_INVALID)
                 .run();
