@@ -8,7 +8,7 @@ public class Logger {
     final int WARNING = 3;
     final int DEBUG = 4;
     final int FATAL = 5;
-    private long id;
+    protected long id;
     private final boolean session;
 
     Logger(long id, boolean session) {

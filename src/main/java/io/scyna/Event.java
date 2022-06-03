@@ -4,23 +4,11 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
 
-import io.nats.client.JetStreamApiException;
 import io.nats.client.MessageHandler;
 import io.nats.client.PushSubscribeOptions;
 import io.scyna.proto.EventOrSignal;
 
-import java.io.IOException;
-
 public class Event {
-
-    public static <T extends Message> void post(String channel, T data) {
-        try {
-            var msg = EventOrSignal.newBuilder().setBody(data.toByteString()).build();
-            Engine.stream().publish(channel, msg.toByteArray());
-        } catch (IOException | JetStreamApiException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static <T extends Message> void register(String channel, String consumer, Handler<T> handler,
             Parser<T> parser) {
@@ -42,7 +30,7 @@ public class Event {
     }
 
     public static abstract class Handler<T extends Message> implements MessageHandler {
-        protected Logger LOG = new Logger(0, false);
+        protected Context context = new Context();
         protected Parser<T> parser;
         protected T data;
 

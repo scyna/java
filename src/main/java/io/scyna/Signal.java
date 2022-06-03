@@ -32,7 +32,7 @@ public class Signal {
     }
 
     public static abstract class Handler<T extends Message> implements MessageHandler {
-        protected Logger LOG = new Logger(0, false);
+        protected Context context = new Context();
         protected Parser<T> parser;
         protected T data;
         protected Trace trace;

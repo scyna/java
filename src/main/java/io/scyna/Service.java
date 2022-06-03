@@ -44,8 +44,7 @@ public abstract class Service {
     }
 
     public static class BaseHandler {
-
-        protected Logger LOG = new Logger(0, false);
+        protected Context context = new Context();
         protected boolean JSON;
 
         protected String source;
@@ -103,7 +102,7 @@ public abstract class Service {
         public void onMessage(io.nats.client.Message msg) {
             try {
                 var request = Request.parseFrom(msg.getData());
-                LOG.reset(request.getTraceID());
+                context.reset(request.getTraceID());
                 reply = msg.getReplyTo();
                 JSON = request.getJSON();
                 var requestBody = request.getBody();
