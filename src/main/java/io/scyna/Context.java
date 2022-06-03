@@ -21,7 +21,7 @@ public class Context extends Logger {
         nc.publish(channel, msg.toByteArray());
     }
 
-    public <T extends Message> void post(String channel, T data) {
+    public <T extends Message> void postEvent(String channel, T data) {
         try {
             var msg = EventOrSignal.newBuilder().setParentID(this.id).setBody(data.toByteString()).build();
             Engine.stream().publish(channel, msg.toByteArray());
@@ -44,7 +44,7 @@ public class Context extends Logger {
                     req.build().toByteArray());
             var msg = incoming.get(5, TimeUnit.SECONDS);
             ret = Response.parseFrom(msg.getData());
-            trace.updateService(ret.getSessionID(), ret.getCode());
+            trace.update(ret.getSessionID(), ret.getCode());
         } catch (Exception e) {
             e.printStackTrace();
         }

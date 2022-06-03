@@ -53,7 +53,7 @@ public class Trace {
         return ret;
     }
 
-    public void update(long parent) {
+    public void reset(long parent) {
         this.parentID = parent;
         this.id = Engine.ID().next();
         t1 = System.nanoTime();
@@ -61,7 +61,7 @@ public class Trace {
         time = instant.getEpochSecond() * 1000_000 + instant.getNano() / 1000;
     }
 
-    public void updateService(long session, int status) {
+    public void update(long session, int status) {
         this.sessionID = session;
         this.status = status;
     }

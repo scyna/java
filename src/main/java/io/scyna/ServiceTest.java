@@ -48,7 +48,7 @@ public class ServiceTest {
         var res = Service.sendRequest(url, request);
         assertNotNull(res);
         assertEquals(status, res.getCode());
-        trace.updateService(res.getSessionID(), res.getCode());
+        trace.update(res.getSessionID(), res.getCode());
 
         if (response != null) {
 
@@ -66,7 +66,7 @@ public class ServiceTest {
     public <T extends Message> T run(Parser<T> parser) {
         var trace = Trace.newServiceTrace(url, 0);
         var res = Service.sendRequest(url, request);
-        trace.updateService(res.getSessionID(), res.getCode());
+        trace.update(res.getSessionID(), res.getCode());
         assertNotNull(res);
         assertEquals(status, res.getCode());
         try {

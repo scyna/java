@@ -46,7 +46,7 @@ public class Signal {
         public void onMessage(io.nats.client.Message msg) {
             try {
                 var request = EventOrSignal.parseFrom(msg.getData());
-                trace.update(request.getParentID());
+                trace.reset(request.getParentID());
                 context.reset(trace.ID());
                 var requestBody = request.getBody();
                 this.data = parser.parseFrom(requestBody);

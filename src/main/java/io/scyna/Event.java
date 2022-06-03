@@ -47,7 +47,7 @@ public class Event {
         public void onMessage(io.nats.client.Message msg) {
             try {
                 var request = EventOrSignal.parseFrom(msg.getData());
-                trace.update(request.getParentID());
+                trace.reset(request.getParentID());
                 context.reset(request.getParentID());
                 var requestBody = request.getBody();
                 this.data = parser.parseFrom(requestBody);
