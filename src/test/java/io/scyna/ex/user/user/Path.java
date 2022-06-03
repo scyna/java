@@ -1,4 +1,4 @@
-package io.scyna.ex.scylla.user;
+package io.scyna.ex.user.user;
 
 public abstract class Path {
     public static String CREATE_USER_URL = "/example/user/create";

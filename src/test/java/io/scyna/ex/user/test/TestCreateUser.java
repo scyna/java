@@ -1,4 +1,4 @@
-package io.scyna.ex.scylla.test;
+package io.scyna.ex.user.test;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -8,13 +8,13 @@ import org.junit.Test;
 import io.scyna.Engine;
 import io.scyna.Service;
 import io.scyna.ServiceTest;
-import io.scyna.ex.scylla.proto.CreateUserRequest;
-import io.scyna.ex.scylla.proto.CreateUserResponse;
-import io.scyna.ex.scylla.proto.GetUserRequest;
-import io.scyna.ex.scylla.proto.GetUserResponse;
-import io.scyna.ex.scylla.user.CreateUserService;
-import io.scyna.ex.scylla.user.GetUserService;
-import io.scyna.ex.scylla.user.Path;
+import io.scyna.ex.user.proto.CreateUserRequest;
+import io.scyna.ex.user.proto.CreateUserResponse;
+import io.scyna.ex.user.proto.GetUserRequest;
+import io.scyna.ex.user.proto.GetUserResponse;
+import io.scyna.ex.user.user.CreateUserService;
+import io.scyna.ex.user.user.GetUserService;
+import io.scyna.ex.user.user.Path;
 
 public class TestCreateUser {
 
@@ -43,7 +43,7 @@ public class TestCreateUser {
         public void testCreateUserShouldSuccess() {
                 ServiceTest.New(Path.CREATE_USER_URL)
                                 .withRequest(CreateUserRequest.newBuilder().setUser(
-                                                io.scyna.ex.scylla.proto.User.newBuilder()
+                                                io.scyna.ex.user.proto.User.newBuilder()
                                                                 .setEmail("a@gmail.com")
                                                                 .setName("Nguyen Van A")
                                                                 .setPassword("123456")
@@ -57,7 +57,7 @@ public class TestCreateUser {
         public void testCreateDuplicate() {
                 ServiceTest.New(Path.CREATE_USER_URL)
                                 .withRequest(CreateUserRequest.newBuilder().setUser(
-                                                io.scyna.ex.scylla.proto.User.newBuilder()
+                                                io.scyna.ex.user.proto.User.newBuilder()
                                                                 .setEmail("a@gmail.com")
                                                                 .setName("Nguyen Van A")
                                                                 .setPassword("123456")
@@ -68,13 +68,13 @@ public class TestCreateUser {
 
                 ServiceTest.New(Path.CREATE_USER_URL)
                                 .withRequest(CreateUserRequest.newBuilder().setUser(
-                                                io.scyna.ex.scylla.proto.User.newBuilder()
+                                                io.scyna.ex.user.proto.User.newBuilder()
                                                                 .setEmail("a@gmail.com")
                                                                 .setName("Nguyen Van A")
                                                                 .setPassword("123456")
                                                                 .build())
                                                 .build())
-                                .expectError(io.scyna.ex.scylla.user.Error.USER_EXISTED)
+                                .expectError(io.scyna.ex.user.user.Error.USER_EXISTED)
                                 .run();
 
         }
@@ -83,7 +83,7 @@ public class TestCreateUser {
         public void testCreateThenGet() {
                 var u = ServiceTest.New(Path.CREATE_USER_URL)
                                 .withRequest(CreateUserRequest.newBuilder().setUser(
-                                                io.scyna.ex.scylla.proto.User.newBuilder()
+                                                io.scyna.ex.user.proto.User.newBuilder()
                                                                 .setEmail("a@gmail.com")
                                                                 .setName("Nguyen Van A")
                                                                 .setPassword("123456")
@@ -95,7 +95,7 @@ public class TestCreateUser {
                 ServiceTest.New(Path.GET_USER_URL)
                                 .withRequest(GetUserRequest.newBuilder().setEmail("a@gmail.com").build())
                                 .expectResponse(GetUserResponse.newBuilder().setUser(
-                                                io.scyna.ex.scylla.proto.User.newBuilder()
+                                                io.scyna.ex.user.proto.User.newBuilder()
                                                                 .setId(u.getId())
                                                                 .setEmail("a@gmail.com")
                                                                 .setName("Nguyen Van A")

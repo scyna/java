@@ -1,4 +1,4 @@
-package io.scyna.ex.scylla.user;
+package io.scyna.ex.user.user;
 
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.datastax.driver.mapping.Mapper;
@@ -6,7 +6,7 @@ import com.datastax.driver.mapping.Mapper;
 import io.scyna.Engine;
 
 public class Repository implements IRepository {
-    private Mapper<User> mapper = Engine.DB().mapping().mapper(io.scyna.ex.scylla.user.User.class);;
+    private Mapper<User> mapper = Engine.DB().mapping().mapper(io.scyna.ex.user.user.User.class);;
 
     @Override
     public long create(User user) {

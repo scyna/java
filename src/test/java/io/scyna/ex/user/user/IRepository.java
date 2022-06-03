@@ -1,4 +1,4 @@
-package io.scyna.ex.scylla.user;
+package io.scyna.ex.user.user;
 
 public interface IRepository {
     long create(User user);
