@@ -44,6 +44,7 @@ public class ServiceTest {
     }
 
     public void run() {
+        var trace = Trace.newServiceTrace(url, 0);
         var res = Service.sendRequest(url, request);
         assertNotNull(res);
         assertEquals(status, res.getCode());
@@ -58,17 +59,21 @@ public class ServiceTest {
                 e.printStackTrace();
             }
         }
+        trace.record();
     }
 
     public <T extends Message> T run(Parser<T> parser) {
+        var trace = Trace.newServiceTrace(url, 0);
         var res = Service.sendRequest(url, request);
         assertNotNull(res);
         assertEquals(status, res.getCode());
         try {
+            trace.record();
             return parser.parseFrom(res.getBody());
         } catch (InvalidProtocolBufferException e) {
             e.printStackTrace();
         }
+        trace.record();
         return null;
     }
 }
