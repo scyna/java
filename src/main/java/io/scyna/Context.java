@@ -52,4 +52,7 @@ public class Context extends Logger {
         return ret;
     }
 
+    public Response sendCommand(String url) {
+        return sendRequest(url, null);
+    }
 }
