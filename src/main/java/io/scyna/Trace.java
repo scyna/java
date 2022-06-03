@@ -1,6 +1,5 @@
 package io.scyna;
 
-import java.time.Instant;
 import io.scyna.proto.TraceCreatedSignal;
 
 public class Trace {
@@ -47,8 +46,7 @@ public class Trace {
         ret.id = Engine.ID().next();
         ret.parentID = trace;
         ret.t1 = System.nanoTime();
-        var instant = Instant.now();
-        ret.time = instant.getEpochSecond() * 1000_000 + instant.getNano() / 1000;
+        ret.time = Utils.currentMicroSeconds();
         ret.source = Engine.module();
         return ret;
     }
@@ -57,8 +55,7 @@ public class Trace {
         this.parentID = parent;
         this.id = Engine.ID().next();
         t1 = System.nanoTime();
-        var instant = Instant.now();
-        time = instant.getEpochSecond() * 1000_000 + instant.getNano() / 1000;
+        time = Utils.currentMicroSeconds();
     }
 
     public void update(long session, int status) {
@@ -68,8 +65,7 @@ public class Trace {
 
     public void start() {
         t1 = System.nanoTime();
-        var instant = Instant.now();
-        time = instant.getEpochSecond() * 1000_000 + instant.getNano() / 1000;
+        time = Utils.currentMicroSeconds();
     }
 
     public void record() {
