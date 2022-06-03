@@ -2,7 +2,6 @@ package io.scyna;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
-import java.time.LocalDateTime;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
@@ -20,11 +19,7 @@ public class Signal {
 
     public static <T extends Message> void register(String channel, Handler<T> handler) throws Exception {
         System.out.println("Register Signal:" + channel);
-        Trace trace = new Trace();
-        trace.Path = channel;
-        trace.SessionID = Engine.session().ID();
-        trace.Type = Trace.SIGNAL;
-
+        var trace = Trace.newSignalTrace(channel);
         handler.init(trace);
         var nc = Engine.connection();
         var d = nc.createDispatcher(handler);
@@ -57,10 +52,8 @@ public class Signal {
         public void onMessage(io.nats.client.Message msg) {
             try {
                 var request = EventOrSignal.parseFrom(msg.getData());
-                context.reset(request.getParentID());
-                trace.Time = LocalDateTime.now();
-                trace.ID = Engine.ID().next();
-                trace.ParentID = request.getParentID();
+                trace.update(request.getParentID());
+                context.reset(trace.ID());
                 var requestBody = request.getBody();
                 this.data = parser.parseFrom(requestBody);
                 this.execute();

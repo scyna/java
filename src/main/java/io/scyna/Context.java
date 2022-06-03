@@ -32,17 +32,11 @@ public class Context extends Logger {
     }
 
     public Response sendRequest(String url, Message request) {
-        Trace trace = new Trace();
-        trace.ID = Engine.ID().next();
-        trace.ParentID = this.id;
-        trace.Time = LocalDateTime.now();
-        trace.Path = url;
-        trace.Type = Trace.SERVICE;
-        trace.Source = Engine.module();
+        Trace trace = Trace.newServiceTrace(url, this.id);
         Response ret = null;
 
         try {
-            var req = Request.newBuilder().setTraceID(trace.ID).setJSON(false);
+            var req = Request.newBuilder().setTraceID(trace.ID()).setJSON(false);
             if (request != null) {
                 req.setBody(request.toByteString());
             }
@@ -51,9 +45,7 @@ public class Context extends Logger {
                     req.build().toByteArray());
             var msg = incoming.get(5, TimeUnit.SECONDS);
             ret = Response.parseFrom(msg.getData());
-
-            trace.SessionID = ret.getSessionID();
-            trace.Status = ret.getCode();
+            trace.updateService(ret.getSessionID(), ret.getCode());
         } catch (Exception e) {
             e.printStackTrace();
         }

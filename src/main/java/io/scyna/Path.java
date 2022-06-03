@@ -18,4 +18,5 @@ class Path {
     public static final String AUTH_CREATE_URL = "/scyna/auth/create";
     public static final String AUTH_GET_URL = "/scyna/auth/get";
     public static final String AUTH_LOGOUT_URL = "/scyna/auth/logout";
+    public static final String TRACE_CREATED_CHANNEL = "scyna.trace";
 }
