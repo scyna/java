@@ -3,19 +3,14 @@ package io.scyna;
 import io.nats.client.JetStreamApiException;
 import io.nats.client.Message;
 import io.nats.client.PullSubscribeOptions;
-
 import java.io.IOException;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-
 import com.google.protobuf.Parser;
 
 public class Scheduler {
-    public static <T extends Message> void register(String channel, String receiver, Handler<T> handler)
+    public static <T extends com.google.protobuf.Message> void register(String channel, String receiver,
+            Handler<T> handler)
             throws IOException, JetStreamApiException, TimeoutException, InterruptedException {
 
         var subject = Engine.module() + ".task." + channel;

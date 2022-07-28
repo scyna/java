@@ -15,7 +15,8 @@ import java.util.concurrent.TimeoutException;
 import com.google.protobuf.Parser;
 
 public class Sync {
-    public static <T extends Message> void register(String channel, String receiver, Handler<T> handler)
+    public static <T extends com.google.protobuf.Message> void register(String channel, String receiver,
+            Handler<T> handler)
             throws IOException, JetStreamApiException, TimeoutException, InterruptedException {
 
         var subject = Engine.module() + ".sync." + channel;
