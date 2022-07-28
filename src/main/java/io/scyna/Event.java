@@ -10,6 +10,14 @@ import io.scyna.proto.EventOrSignal;
 
 public class Event {
 
+    public class Stream {
+        String sender;
+        String receiver;
+        // Map<string, > executors;
+        // executors map[string]func(m *nats.Msg, id int64)
+
+    }
+
     public static <T extends Message> void register(String channel, String consumer, Handler<T> handler,
             Parser<T> parser) {
         System.out.println("Register Event:" + channel);

@@ -25,36 +25,28 @@ public class Sync {
         Engine.connection().flush(Duration.ofSeconds(1));
 
         while (true) {
-            sub.pull(1);
-
-            try {
-                Message m = sub.nextMessage(Duration.ofSeconds(1));
-                while (m != null) {
-                    if (m.isJetStream()) {
-                        var request = handler.execute(m.getData());
+            var messages = sub.fetch(1, Duration.ofSeconds(1));
+            for (Message m : messages) {
+                var request = handler.execute(m.getData());
+                if (sendRequest(request)) {
+                    m.ack();
+                } else {
+                    Boolean ok = false;
+                    for (int i = 0; i < 3; i++) {
+                        request = handler.execute(m.getData());
                         if (sendRequest(request)) {
                             m.ack();
-                        } else {
-                            Boolean ok = false;
-                            for (int i = 0; i < 3; i++) {
-                                request = handler.execute(m.getData());
-                                if (sendRequest(request)) {
-                                    m.ack();
-                                    ok = true;
-                                    break;
-                                }
-                                TimeUnit.SECONDS.sleep(30);
-                            }
-
-                            if (!ok) {
-                                m.nak();
-                            }
+                            ok = true;
+                            break;
                         }
+                        TimeUnit.SECONDS.sleep(30);
                     }
-                    m = sub.nextMessage(Duration.ofMillis(100));
+
+                    if (!ok) {
+                        m.nak();
+                    }
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+                m.ack();
             }
         }
     }
