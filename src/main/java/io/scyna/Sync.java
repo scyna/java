@@ -1,44 +1,62 @@
 package io.scyna;
 
 import io.nats.client.JetStreamApiException;
-import io.nats.client.MessageHandler;
-import io.nats.client.PushSubscribeOptions;
+import io.nats.client.Message;
+import io.nats.client.PullSubscribeOptions;
 
 import java.io.IOException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class Sync {
-    public static void register(String channel, String consumer, String group, Handler handler)
-            throws IOException, JetStreamApiException {
-        var js = Engine.stream();
-        var dispatcher = Engine.connection().createDispatcher();
+    public static void register(String channel, String receiver, Handler handler)
+            throws IOException, JetStreamApiException, TimeoutException, InterruptedException {
 
-        MessageHandler h = (msg) -> {
-            var request = handler.execute(msg.getData());
-            if (sendRequest(request)) {
-                msg.ack();
-            } else {
-                for (int i = 0; i < 3; i++) {
-                    request = handler.execute(msg.getData());
-                    if (sendRequest(request)) {
-                        msg.ack();
-                        return;
+        var subject = Engine.module() + ".sync." + channel;
+        var durable = "sync_" + channel + "_" + receiver;
+
+        PullSubscribeOptions opt = PullSubscribeOptions.builder().durable(durable).build();
+
+        var sub = Engine.stream().subscribe(subject, opt);
+        Engine.connection().flush(Duration.ofSeconds(1));
+
+        while (true) {
+            sub.pull(1);
+
+            try {
+                Message m = sub.nextMessage(Duration.ofSeconds(1));
+                while (m != null) {
+                    if (m.isJetStream()) {
+                        var request = handler.execute(m.getData());
+                        if (sendRequest(request)) {
+                            m.ack();
+                        } else {
+                            Boolean ok = false;
+                            for (int i = 0; i < 3; i++) {
+                                request = handler.execute(m.getData());
+                                if (sendRequest(request)) {
+                                    m.ack();
+                                    ok = true;
+                                    break;
+                                }
+                                TimeUnit.SECONDS.sleep(30);
+                            }
+
+                            if (!ok) {
+                                m.nak();
+                            }
+                        }
                     }
-                    TimeUnit.SECONDS.sleep(30);
+                    m = sub.nextMessage(Duration.ofMillis(100));
                 }
-                TimeUnit.MINUTES.sleep(10);
-                msg.nak();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        };
-
-        PushSubscribeOptions so = PushSubscribeOptions.builder()
-                .durable(consumer)
-                .build();
-
-        js.subscribe(channel, group, dispatcher, h, false, so);
+        }
     }
 
     private static boolean sendRequest(HttpRequest request) {
