@@ -11,23 +11,25 @@ import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
 
 import io.nats.client.JetStreamApiException;
-import io.nats.client.MessageHandler;
 import io.nats.client.PullSubscribeOptions;
 import io.scyna.proto.EventOrSignal;
 
 public class Event {
-
     static Map<String, Stream> streams = new HashMap<String, Stream>();
+
+    interface MessageHandler {
+        void onMessage(io.nats.client.Message msg);
+    }
 
     public static class Stream {
         String sender;
         String receiver;
-        Map<String, Handler> executors;
+        Map<String, MessageHandler> executors;
 
         Stream(String sender, String receiver) {
             this.sender = sender;
             this.receiver = receiver;
-            executors = new HashMap<String, Handler>();
+            executors = new HashMap<String, MessageHandler>();
         }
 
         public static Stream createOrGet(String sender)
@@ -56,8 +58,8 @@ public class Event {
                         for (io.nats.client.Message m : messages) {
                             var executor = executors.get(m.getSubject());
                             if (executor != null) {
-                                executor.execute();
                                 /* TODO: event stream */
+                                executor.onMessage(m);
                             }
                             m.ack();
                         }
