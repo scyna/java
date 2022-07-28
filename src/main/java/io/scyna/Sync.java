@@ -24,31 +24,43 @@ public class Sync {
         var sub = Engine.stream().subscribe(subject, opt);
         Engine.connection().flush(Duration.ofSeconds(1));
 
-        while (true) {
-            var messages = sub.fetch(1, Duration.ofSeconds(1));
-            for (Message m : messages) {
-                var request = handler.execute(m.getData());
-                if (sendRequest(request)) {
-                    m.ack();
-                } else {
-                    Boolean ok = false;
-                    for (int i = 0; i < 3; i++) {
-                        request = handler.execute(m.getData());
+        var runable = new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    var messages = sub.fetch(1, Duration.ofSeconds(1));
+                    for (Message m : messages) {
+                        var request = handler.execute(m.getData());
                         if (sendRequest(request)) {
                             m.ack();
-                            ok = true;
-                            break;
-                        }
-                        TimeUnit.SECONDS.sleep(30);
-                    }
+                        } else {
+                            Boolean ok = false;
+                            for (int i = 0; i < 3; i++) {
+                                request = handler.execute(m.getData());
+                                if (sendRequest(request)) {
+                                    m.ack();
+                                    ok = true;
+                                    break;
+                                }
+                                try {
+                                    TimeUnit.SECONDS.sleep(30);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
 
-                    if (!ok) {
-                        m.nak();
+                            if (!ok) {
+                                m.nak();
+                            }
+                        }
+                        m.ack();
                     }
                 }
-                m.ack();
             }
-        }
+        };
+
+        Thread thread = new Thread(runable);
+        thread.start();
     }
 
     private static boolean sendRequest(HttpRequest request) {

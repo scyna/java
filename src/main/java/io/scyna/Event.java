@@ -1,41 +1,84 @@
 package io.scyna;
 
+import java.io.IOException;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeoutException;
+
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
 
+import io.nats.client.JetStreamApiException;
 import io.nats.client.MessageHandler;
-import io.nats.client.PushSubscribeOptions;
+import io.nats.client.PullSubscribeOptions;
 import io.scyna.proto.EventOrSignal;
 
 public class Event {
 
-    public class Stream {
+    static Map<String, Stream> streams = new HashMap<String, Stream>();
+
+    public static class Stream {
         String sender;
         String receiver;
-        // Map<string, > executors;
-        // executors map[string]func(m *nats.Msg, id int64)
+        Map<String, Handler> executors;
 
+        Stream(String sender, String receiver) {
+            this.sender = sender;
+            this.receiver = receiver;
+            executors = new HashMap<String, Handler>();
+        }
+
+        public static Stream createOrGet(String sender)
+                throws TimeoutException, InterruptedException, IOException, JetStreamApiException {
+            var stream = streams.get(sender);
+            if (stream != null)
+                return stream;
+
+            stream = new Stream(sender, Engine.module());
+            streams.put(sender, stream);
+            stream.start();
+            return stream;
+        }
+
+        void start() throws TimeoutException, InterruptedException, IOException, JetStreamApiException {
+            var opt = PullSubscribeOptions.builder().durable(receiver).stream(sender).build();
+
+            var sub = Engine.stream().subscribe("", opt);
+            Engine.connection().flush(Duration.ofSeconds(1));
+
+            var runable = new Runnable() {
+                @Override
+                public void run() {
+                    while (true) {
+                        var messages = sub.fetch(1, Duration.ofSeconds(1));
+                        for (io.nats.client.Message m : messages) {
+                            var executor = executors.get(m.getSubject());
+                            if (executor != null) {
+                                executor.execute();
+                                /* TODO: event stream */
+                            }
+                            m.ack();
+                        }
+                    }
+                }
+            };
+
+            Thread thread = new Thread(runable);
+            thread.start();
+        }
     }
 
-    public static <T extends Message> void register(String channel, String consumer, Handler<T> handler,
-            Parser<T> parser) {
+    public static <T extends Message> void register(String sender, String channel, Handler<T> handler,
+            Parser<T> parser) throws TimeoutException, InterruptedException, IOException, JetStreamApiException {
         System.out.println("Register Event:" + channel);
-        var trace = Trace.newEventTrace(channel);
-        try {
-            handler.init(parser, trace);
-            var nc = Engine.connection();
-            var js = Engine.stream();
-            var d = nc.createDispatcher();
 
-            PushSubscribeOptions so = PushSubscribeOptions.builder()
-                    .durable(consumer)
-                    .build();
-
-            js.subscribe(channel, Engine.module(), d, handler, true, so);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        var stream = Stream.createOrGet(sender);
+        var subject = sender + "." + channel;
+        var trace = Trace.newEventTrace(subject);
+        handler.init(parser, trace);
+        stream.executors.put(subject, handler);
     }
 
     public static abstract class Handler<T extends Message> implements MessageHandler {
