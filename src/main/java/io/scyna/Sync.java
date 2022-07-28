@@ -32,13 +32,13 @@ public class Sync {
                 while (true) {
                     var messages = sub.fetch(1, Duration.ofSeconds(1));
                     for (Message m : messages) {
-                        var request = handler.process(m.getData());
+                        var request = handler.process(m);
                         if (sendRequest(request)) {
                             m.ack();
                         } else {
                             Boolean ok = false;
                             for (int i = 0; i < 3; i++) {
-                                request = handler.process(m.getData());
+                                request = handler.process(m);
                                 if (sendRequest(request)) {
                                     m.ack();
                                     ok = true;
@@ -81,7 +81,7 @@ public class Sync {
         return true;
     }
 
-    public static abstract class Handler<T extends Message> {
+    public static abstract class Handler<T extends com.google.protobuf.Message> {
         protected Context context = new Context();
         protected Parser<T> parser;
         protected T data;
@@ -94,7 +94,7 @@ public class Sync {
             this.trace = trace;
         }
 
-        public HttpRequest process(byte[] data) {
+        public HttpRequest process(Message m) {
             /* TODO */
             return execute();
         }
