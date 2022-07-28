@@ -12,8 +12,10 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import com.google.protobuf.Parser;
+
 public class Sync {
-    public static void register(String channel, String receiver, Handler handler)
+    public static <T extends Message> void register(String channel, String receiver, Handler<T> handler)
             throws IOException, JetStreamApiException, TimeoutException, InterruptedException {
 
         var subject = Engine.module() + ".sync." + channel;
@@ -30,13 +32,13 @@ public class Sync {
                 while (true) {
                     var messages = sub.fetch(1, Duration.ofSeconds(1));
                     for (Message m : messages) {
-                        var request = handler.execute(m.getData());
+                        var request = handler.process(m.getData());
                         if (sendRequest(request)) {
                             m.ack();
                         } else {
                             Boolean ok = false;
                             for (int i = 0; i < 3; i++) {
-                                request = handler.execute(m.getData());
+                                request = handler.process(m.getData());
                                 if (sendRequest(request)) {
                                     m.ack();
                                     ok = true;
@@ -79,7 +81,26 @@ public class Sync {
         return true;
     }
 
-    public interface Handler {
-        HttpRequest execute(byte[] data);
+    // public interface Handler {
+    // HttpRequest execute(byte[] data);
+    // }
+
+    public static abstract class Handler<T extends Message> {
+        protected Context context = new Context();
+        protected Parser<T> parser;
+        protected T data;
+        protected Trace trace;
+
+        public abstract HttpRequest execute();
+
+        public void init(Parser<T> parser, Trace trace) {
+            this.parser = parser;
+            this.trace = trace;
+        }
+
+        public HttpRequest process(byte[] data) {
+            /* TODO */
+            return execute();
+        }
     }
 }
