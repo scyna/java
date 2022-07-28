@@ -81,10 +81,6 @@ public class Sync {
         return true;
     }
 
-    // public interface Handler {
-    // HttpRequest execute(byte[] data);
-    // }
-
     public static abstract class Handler<T extends Message> {
         protected Context context = new Context();
         protected Parser<T> parser;
