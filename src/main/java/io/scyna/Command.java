@@ -14,10 +14,10 @@ public abstract class Command {
     }
 
     public static Response send(String url) {
-        return Service.sendRequest(url, null);
+        return Endpoint.sendRequest(url, null);
     }
 
-    public static abstract class Handler extends Service.BaseHandler implements MessageHandler {
+    public static abstract class Handler extends Endpoint.BaseHandler implements MessageHandler {
         public abstract void execute();
 
         @Override

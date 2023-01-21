@@ -15,13 +15,7 @@ public class Context extends Logger {
         super(0, false);
     }
 
-    public <T extends Message> void emitSignal(String channel, T data) {
-        var msg = EventOrSignal.newBuilder().setParentID(this.id).setBody(data.toByteString()).build();
-        var nc = Engine.connection();
-        nc.publish(channel, msg.toByteArray());
-    }
-
-    public <T extends Message> void postEvent(String channel, T data) {
+    public <T extends Message> void publishEvent(String channel, T data) {
         try {
             var msg = EventOrSignal.newBuilder().setParentID(this.id).setBody(data.toByteString()).build();
             Engine.stream().publish(channel, msg.toByteArray());
@@ -50,9 +44,5 @@ public class Context extends Logger {
         }
         trace.record();
         return ret;
-    }
-
-    public Response sendCommand(String url) {
-        return sendRequest(url, null);
     }
 }

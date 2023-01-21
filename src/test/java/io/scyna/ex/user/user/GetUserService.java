@@ -1,10 +1,10 @@
 package io.scyna.ex.user.user;
 
-import io.scyna.Service;
+import io.scyna.Endpoint;
 import io.scyna.ex.user.proto.GetUserRequest;
 import io.scyna.ex.user.proto.GetUserResponse;
 
-public class GetUserService extends Service.Handler<GetUserRequest> {
+public class GetUserService extends Endpoint.Handler<GetUserRequest> {
 
     @Override
     public void execute() {

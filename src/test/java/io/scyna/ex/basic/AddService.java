@@ -1,11 +1,11 @@
 package io.scyna.ex.basic;
 
 import io.scyna.Error;
-import io.scyna.Service;
+import io.scyna.Endpoint;
 import io.scyna.ex.basic.proto.AddRequest;
 import io.scyna.ex.basic.proto.AddResponse;
 
-public class AddService extends Service.Handler<AddRequest> {
+public class AddService extends Endpoint.Handler<AddRequest> {
     @Override
     public void execute() {
         context.info("Receive AddRequest");

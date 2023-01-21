@@ -61,8 +61,8 @@ public class Engine {
         System.out.println("Engine created for module:" + module);
 
         /* setting */
-        SignalLite.register(Path.SETTING_UPDATE_CHANNEL + module, new Settings.UpdateHandler());
-        SignalLite.register(Path.SETTING_REMOVE_CHANNEL + module, new Settings.RemoveHandler());
+        Signal.register(Path.SETTING_UPDATE_CHANNEL + module, new Settings.UpdateHandler());
+        Signal.register(Path.SETTING_REMOVE_CHANNEL + module, new Settings.RemoveHandler());
     }
 
     public static Engine instance() {

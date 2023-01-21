@@ -6,8 +6,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import io.scyna.Engine;
-import io.scyna.Service;
-import io.scyna.ServiceTest;
+import io.scyna.Endpoint;
+import io.scyna.EndpointTest;
 import io.scyna.ex.user.proto.CreateUserRequest;
 import io.scyna.ex.user.proto.CreateUserResponse;
 import io.scyna.ex.user.proto.GetUserRequest;
@@ -22,8 +22,8 @@ public class TestCreateUser {
         public static void setup() throws Exception {
                 Engine.init("http://127.0.0.1:8081", "scyna.test", "123456");
 
-                Service.register(Path.CREATE_USER_URL, new CreateUserService());
-                Service.register(Path.GET_USER_URL, new GetUserService());
+                Endpoint.register(Path.CREATE_USER_URL, new CreateUserService());
+                Endpoint.register(Path.GET_USER_URL, new GetUserService());
         }
 
         @AfterClass
@@ -41,7 +41,7 @@ public class TestCreateUser {
 
         @Test
         public void testCreateUserShouldSuccess() {
-                ServiceTest.New(Path.CREATE_USER_URL)
+                EndpointTest.New(Path.CREATE_USER_URL)
                                 .withRequest(CreateUserRequest.newBuilder().setUser(
                                                 io.scyna.ex.user.proto.User.newBuilder()
                                                                 .setEmail("a@gmail.com")
@@ -55,7 +55,7 @@ public class TestCreateUser {
 
         @Test
         public void testCreateDuplicate() {
-                ServiceTest.New(Path.CREATE_USER_URL)
+                EndpointTest.New(Path.CREATE_USER_URL)
                                 .withRequest(CreateUserRequest.newBuilder().setUser(
                                                 io.scyna.ex.user.proto.User.newBuilder()
                                                                 .setEmail("a@gmail.com")
@@ -66,7 +66,7 @@ public class TestCreateUser {
                                 .expectSuccess()
                                 .run();
 
-                ServiceTest.New(Path.CREATE_USER_URL)
+                EndpointTest.New(Path.CREATE_USER_URL)
                                 .withRequest(CreateUserRequest.newBuilder().setUser(
                                                 io.scyna.ex.user.proto.User.newBuilder()
                                                                 .setEmail("a@gmail.com")
@@ -81,7 +81,7 @@ public class TestCreateUser {
 
         @Test
         public void testCreateThenGet() {
-                var u = ServiceTest.New(Path.CREATE_USER_URL)
+                var u = EndpointTest.New(Path.CREATE_USER_URL)
                                 .withRequest(CreateUserRequest.newBuilder().setUser(
                                                 io.scyna.ex.user.proto.User.newBuilder()
                                                                 .setEmail("a@gmail.com")
@@ -92,7 +92,7 @@ public class TestCreateUser {
                                 .expectSuccess()
                                 .run(CreateUserResponse.parser());
 
-                ServiceTest.New(Path.GET_USER_URL)
+                EndpointTest.New(Path.GET_USER_URL)
                                 .withRequest(GetUserRequest.newBuilder().setEmail("a@gmail.com").build())
                                 .expectResponse(GetUserResponse.newBuilder().setUser(
                                                 io.scyna.ex.user.proto.User.newBuilder()

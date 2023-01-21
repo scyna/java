@@ -1,10 +1,10 @@
 package io.scyna.ex.basic;
 
-import io.scyna.Service;
+import io.scyna.Endpoint;
 import io.scyna.ex.basic.proto.EchoRequest;
 import io.scyna.ex.basic.proto.EchoResponse;
 
-public class EchoService extends Service.Handler<EchoRequest> {
+public class EchoService extends Endpoint.Handler<EchoRequest> {
     @Override
     public void execute() {
         context.info("Receive EchoRequest");
