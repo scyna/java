@@ -79,6 +79,6 @@ public class Trace {
                 .setSource(source)
                 .setSessionID(sessionID)
                 .setStatus(status).build();
-        SignalLite.emit(Path.TRACE_CREATED_CHANNEL, signal);
+        Signal.emit(Path.TRACE_CREATED_CHANNEL, signal);
     }
 }

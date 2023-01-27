@@ -31,7 +31,7 @@ public class Logger {
                     .setText(messgage)
                     .setSession(session)
                     .build();
-            SignalLite.emit(Path.LOG_CREATED_CHANNEL, event);
+            Signal.emit(Path.LOG_CREATED_CHANNEL, event);
         }
     }
 
