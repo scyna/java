@@ -1,9 +1,9 @@
 package io.scyna.ex.user.user;
 
-import io.scyna.Service;
+import io.scyna.Endpoint;
 import io.scyna.ex.user.proto.*;
 
-public class CreateUserService extends Service.Handler<CreateUserRequest> {
+public class CreateUserService extends Endpoint.Handler<CreateUserRequest> {
 
     @Override
     public void execute() {

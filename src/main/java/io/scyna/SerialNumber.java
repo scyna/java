@@ -20,7 +20,7 @@ public class SerialNumber {
             next++;
         } else {
             var request = GetSNRequest.newBuilder().setKey(key).build();
-            var response = Service.sendRequest(Path.GEN_GET_SN_URL, request);
+            var response = Endpoint.sendRequest(Path.GEN_GET_SN_URL, request);
             if (response != null && response.getCode() == 200) {
                 var r = GetSNResponse.parseFrom(response.getBody());
                 prefix = r.getPrefix();

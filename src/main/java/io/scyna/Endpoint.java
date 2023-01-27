@@ -14,7 +14,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-public abstract class Service {
+public abstract class Endpoint {
 
     public static <T extends Message> void register(String url, Handler<T> handler) throws Exception {
         System.out.println("Register Service:" + url);

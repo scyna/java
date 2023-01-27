@@ -16,7 +16,7 @@ public class Signal {
     }
 
     public static <T extends Message> void register(String channel, Handler<T> handler) throws Exception {
-        System.out.println("Register SignalLite:" + channel);
+        System.out.println("Register Signal:" + channel);
         handler.init();
         var nc = Engine.connection();
         var d = nc.createDispatcher(handler);

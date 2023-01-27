@@ -2,7 +2,6 @@ package io.scyna;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
-import com.google.protobuf.Parser;
 import com.google.protobuf.util.JsonFormat;
 
 import io.scyna.proto.ReadSettingRequest;
@@ -24,7 +23,7 @@ public class Settings {
                 .setModule(Engine.module())
                 .setKey(key)
                 .setValue(value).build();
-        var response = Service.sendRequest(Path.SETTING_WRITE_URL, request);
+        var response = Endpoint.sendRequest(Path.SETTING_WRITE_URL, request);
         return response != null && response.getCode() == 200;
     }
 
@@ -38,7 +37,7 @@ public class Settings {
                 .setModule(Engine.module())
                 .setKey(key)
                 .build();
-        var response = Service.sendRequest(Path.SETTING_READ_URL, request);
+        var response = Endpoint.sendRequest(Path.SETTING_READ_URL, request);
         if (response != null && response.getCode() == 200) {
             try {
                 var r = ReadSettingResponse.parseFrom(response.getBody());

@@ -7,37 +7,37 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
 
-public class ServiceTest {
+public class EndpointTest {
     private String url;
     private Message request = null;
     private Message response = null;
     private int status;
 
-    private ServiceTest(String url) {
+    private EndpointTest(String url) {
         this.url = url;
     }
 
-    public static ServiceTest New(String url) {
-        return new ServiceTest(url);
+    public static EndpointTest New(String url) {
+        return new EndpointTest(url);
     }
 
-    public ServiceTest withRequest(Message request) {
+    public EndpointTest withRequest(Message request) {
         this.request = request;
         return this;
     }
 
-    public ServiceTest expectSuccess() {
+    public EndpointTest expectSuccess() {
         this.status = 200;
         return this;
     }
 
-    public ServiceTest expectError(io.scyna.proto.Error error) {
+    public EndpointTest expectError(io.scyna.proto.Error error) {
         this.status = 400;
         this.response = error;
         return this;
     }
 
-    public ServiceTest expectResponse(Message response) {
+    public EndpointTest expectResponse(Message response) {
         this.status = 200;
         this.response = response;
         return this;
@@ -45,7 +45,7 @@ public class ServiceTest {
 
     public void run() {
         var trace = Trace.newServiceTrace(url, 0);
-        var res = Service.sendRequest(url, request);
+        var res = Endpoint.sendRequest(url, request);
         assertNotNull(res);
         assertEquals(status, res.getCode());
         trace.update(res.getSessionID(), res.getCode());
@@ -65,7 +65,7 @@ public class ServiceTest {
 
     public <T extends Message> T run(Parser<T> parser) {
         var trace = Trace.newServiceTrace(url, 0);
-        var res = Service.sendRequest(url, request);
+        var res = Endpoint.sendRequest(url, request);
         trace.update(res.getSessionID(), res.getCode());
         assertNotNull(res);
         assertEquals(status, res.getCode());
