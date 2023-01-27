@@ -1,0 +1,19 @@
+syntax = "proto3";
+package io.scyna.customer.proto;
+option java_multiple_files = true;
+option java_package = "io.scyna.ex.customer.proto";
+
+/*CREATE*/
+message CreateCustomerRequest 
+{
+  string IDType = 1;
+  string IDNumber = 2;
+  string Name = 3;
+  string IssuesDate = 4;
+  string IssuePlace = 5;
+}
+
+message CreateCustomerResponse
+{
+  uint64 string = 1;
+}

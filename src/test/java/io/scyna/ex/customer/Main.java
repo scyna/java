@@ -1,8 +1,8 @@
-package io.scyna.ex.user;
+package io.scyna.ex.customer;
 
 import io.scyna.Engine;
+import io.scyna.ex.customer.service.CreateUserService;
 import io.scyna.Endpoint;
-import io.scyna.ex.user.user.CreateUserService;
 
 public class Main {
     public static void main(String[] args) throws Exception {

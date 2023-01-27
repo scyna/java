@@ -1,8 +1,10 @@
-package io.scyna.ex.user.user;
+package io.scyna.ex.customer.repository;
 
 import com.datastax.driver.mapping.annotations.Column;
 import com.datastax.driver.mapping.annotations.PartitionKey;
 import com.datastax.driver.mapping.annotations.Table;
+
+import io.scyna.ex.customer.domain.IRepository;
 
 @Table(keyspace = "ex", name = "user", caseSensitiveKeyspace = false, caseSensitiveTable = false)
 public class User {
@@ -24,21 +26,4 @@ public class User {
 
     @Column(name = "password")
     public String password;
-
-    public static User fromProto(io.scyna.ex.user.proto.User user) {
-        var u = new User();
-        u.id = user.getId();
-        u.email = user.getEmail();
-        u.name = user.getName();
-        u.password = user.getPassword();
-        return u;
-    }
-
-    public io.scyna.ex.user.proto.User toProto() {
-        return io.scyna.ex.user.proto.User.newBuilder()
-                .setId(id)
-                .setEmail(email)
-                .setName(name)
-                .build();
-    }
 }
