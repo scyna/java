@@ -12,7 +12,6 @@ import com.google.protobuf.Parser;
 
 import io.nats.client.JetStreamApiException;
 import io.nats.client.PullSubscribeOptions;
-import io.scyna.proto.EventOrSignal;
 
 public class Event {
     static Map<String, Stream> streams = new HashMap<String, Stream>();
@@ -98,17 +97,17 @@ public class Event {
 
         @Override
         public void onMessage(io.nats.client.Message msg) {
-            try {
-                var request = EventOrSignal.parseFrom(msg.getData());
-                trace.reset(request.getParentID());
-                context.reset(request.getParentID());
-                var requestBody = request.getBody();
-                this.data = parser.parseFrom(requestBody);
-                this.execute();
-                trace.record();
-            } catch (InvalidProtocolBufferException e) {
-                e.printStackTrace();
-            }
+            // try {
+            // var request = EventOrSignal.parseFrom(msg.getData());
+            // trace.reset(request.getParentID());
+            // context.reset(request.getParentID());
+            // var requestBody = request.getBody();
+            // this.data = parser.parseFrom(requestBody);
+            // this.execute();
+            // trace.record();
+            // } catch (InvalidProtocolBufferException e) {
+            // e.printStackTrace();
+            // }
         }
     }
 }

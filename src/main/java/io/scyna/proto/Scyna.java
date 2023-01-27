@@ -25,10 +25,10 @@ public final class Scyna {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_scyna_Response_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_scyna_EventOrSignal_descriptor;
+    internal_static_scyna_Event_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_scyna_EventOrSignal_fieldAccessorTable;
+      internal_static_scyna_Event_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -42,10 +42,11 @@ public final class Scyna {
       "ID\030\001 \001(\004\022\014\n\004Body\030\002 \001(\014\022\014\n\004Data\030\004 \001(\t\022\014\n\004" +
       "JSON\030\003 \001(\010\"Y\n\010Response\022\014\n\004Code\030\001 \001(\005\022\014\n\004" +
       "Body\030\002 \001(\014\022\021\n\tSessionID\030\003 \001(\004\022\r\n\005Token\030\004" +
-      " \001(\t\022\017\n\007Expired\030\005 \001(\004\"=\n\rEventOrSignal\022\020" +
-      "\n\010ParentID\030\001 \001(\004\022\014\n\004Body\030\002 \001(\014\022\014\n\004Data\030\003" +
-      " \001(\tB+\n\016io.scyna.protoH\002P\001Z\007.;scyna\252\002\013sc" +
-      "yna.protob\006proto3"
+      " \001(\t\022\017\n\007Expired\030\005 \001(\004\"Z\n\005Event\022\023\n\013Aggreg" +
+      "ateID\030\001 \001(\004\022\017\n\007Version\030\002 \001(\004\022\014\n\004Body\030\003 \001" +
+      "(\014\022\014\n\004Data\030\004 \001(\t\022\017\n\007TraceID\030\005 \001(\004B2\n\016io." +
+      "scyna.protoH\002P\001Z\016./;scyna_proto\252\002\013scyna." +
+      "protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -63,12 +64,12 @@ public final class Scyna {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_scyna_Response_descriptor,
         new java.lang.String[] { "Code", "Body", "SessionID", "Token", "Expired", });
-    internal_static_scyna_EventOrSignal_descriptor =
+    internal_static_scyna_Event_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_scyna_EventOrSignal_fieldAccessorTable = new
+    internal_static_scyna_Event_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_scyna_EventOrSignal_descriptor,
-        new java.lang.String[] { "ParentID", "Body", "Data", });
+        internal_static_scyna_Event_descriptor,
+        new java.lang.String[] { "AggregateID", "Version", "Body", "Data", "TraceID", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -4,25 +4,29 @@
 package io.scyna.proto;
 
 /**
- * Protobuf type {@code scyna.GetIDResponse}
+ * <pre>
+ *GENERATOR
+ * </pre>
+ *
+ * Protobuf type {@code scyna.GetIDRequest}
  */
-public final class GetIDResponse extends
+public final class GetIDRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:scyna.GetIDResponse)
-    GetIDResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:scyna.GetIDRequest)
+    GetIDRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use GetIDResponse.newBuilder() to construct.
-  private GetIDResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use GetIDRequest.newBuilder() to construct.
+  private GetIDRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private GetIDResponse() {
+  private GetIDRequest() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new GetIDResponse();
+    return new GetIDRequest();
   }
 
   @java.lang.Override
@@ -32,113 +36,80 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.scyna.proto.Engine.internal_static_scyna_GetIDResponse_descriptor;
+    return io.scyna.proto.Engine.internal_static_scyna_GetIDRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.scyna.proto.Engine.internal_static_scyna_GetIDResponse_fieldAccessorTable
+    return io.scyna.proto.Engine.internal_static_scyna_GetIDRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            io.scyna.proto.GetIDResponse.class, io.scyna.proto.GetIDResponse.Builder.class);
+            io.scyna.proto.GetIDRequest.class, io.scyna.proto.GetIDRequest.Builder.class);
   }
 
-  public static final int PREFIX_FIELD_NUMBER = 1;
-  private int prefix_;
-  /**
-   * <code>uint32 prefix = 1;</code>
-   * @return The prefix.
-   */
-  @java.lang.Override
-  public int getPrefix() {
-    return prefix_;
-  }
-
-  public static final int START_FIELD_NUMBER = 2;
-  private long start_;
-  /**
-   * <code>uint64 start = 2;</code>
-   * @return The start.
-   */
-  @java.lang.Override
-  public long getStart() {
-    return start_;
-  }
-
-  public static final int END_FIELD_NUMBER = 3;
-  private long end_;
-  /**
-   * <code>uint64 end = 3;</code>
-   * @return The end.
-   */
-  @java.lang.Override
-  public long getEnd() {
-    return end_;
-  }
-
-  public static io.scyna.proto.GetIDResponse parseFrom(
+  public static io.scyna.proto.GetIDRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.proto.GetIDResponse parseFrom(
+  public static io.scyna.proto.GetIDRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.proto.GetIDResponse parseFrom(
+  public static io.scyna.proto.GetIDRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.proto.GetIDResponse parseFrom(
+  public static io.scyna.proto.GetIDRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.proto.GetIDResponse parseFrom(byte[] data)
+  public static io.scyna.proto.GetIDRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.proto.GetIDResponse parseFrom(
+  public static io.scyna.proto.GetIDRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.proto.GetIDResponse parseFrom(java.io.InputStream input)
+  public static io.scyna.proto.GetIDRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.proto.GetIDResponse parseFrom(
+  public static io.scyna.proto.GetIDRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.proto.GetIDResponse parseDelimitedFrom(java.io.InputStream input)
+  public static io.scyna.proto.GetIDRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static io.scyna.proto.GetIDResponse parseDelimitedFrom(
+  public static io.scyna.proto.GetIDRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.proto.GetIDResponse parseFrom(
+  public static io.scyna.proto.GetIDRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.proto.GetIDResponse parseFrom(
+  public static io.scyna.proto.GetIDRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -151,7 +122,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(io.scyna.proto.GetIDResponse prototype) {
+  public static Builder newBuilder(io.scyna.proto.GetIDRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -167,26 +138,30 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code scyna.GetIDResponse}
+   * <pre>
+   *GENERATOR
+   * </pre>
+   *
+   * Protobuf type {@code scyna.GetIDRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:scyna.GetIDResponse)
-      io.scyna.proto.GetIDResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:scyna.GetIDRequest)
+      io.scyna.proto.GetIDRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.scyna.proto.Engine.internal_static_scyna_GetIDResponse_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_GetIDRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.scyna.proto.Engine.internal_static_scyna_GetIDResponse_fieldAccessorTable
+      return io.scyna.proto.Engine.internal_static_scyna_GetIDRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              io.scyna.proto.GetIDResponse.class, io.scyna.proto.GetIDResponse.Builder.class);
+              io.scyna.proto.GetIDRequest.class, io.scyna.proto.GetIDRequest.Builder.class);
     }
 
-    // Construct using io.scyna.proto.GetIDResponse.newBuilder()
+    // Construct using io.scyna.proto.GetIDRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -204,29 +179,23 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      prefix_ = 0;
-
-      start_ = 0L;
-
-      end_ = 0L;
-
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.scyna.proto.Engine.internal_static_scyna_GetIDResponse_descriptor;
+      return io.scyna.proto.Engine.internal_static_scyna_GetIDRequest_descriptor;
     }
 
     @java.lang.Override
-    public io.scyna.proto.GetIDResponse getDefaultInstanceForType() {
-      return io.scyna.proto.GetIDResponse.getDefaultInstance();
+    public io.scyna.proto.GetIDRequest getDefaultInstanceForType() {
+      return io.scyna.proto.GetIDRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public io.scyna.proto.GetIDResponse build() {
-      io.scyna.proto.GetIDResponse result = buildPartial();
+    public io.scyna.proto.GetIDRequest build() {
+      io.scyna.proto.GetIDRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -234,11 +203,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public io.scyna.proto.GetIDResponse buildPartial() {
-      io.scyna.proto.GetIDResponse result = new io.scyna.proto.GetIDResponse(this);
-      result.prefix_ = prefix_;
-      result.start_ = start_;
-      result.end_ = end_;
+    public io.scyna.proto.GetIDRequest buildPartial() {
+      io.scyna.proto.GetIDRequest result = new io.scyna.proto.GetIDRequest(this);
       onBuilt();
       return result;
     }
@@ -275,99 +241,6 @@ private static final long serialVersionUID = 0L;
         java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
-    private int prefix_ ;
-    /**
-     * <code>uint32 prefix = 1;</code>
-     * @return The prefix.
-     */
-    @java.lang.Override
-    public int getPrefix() {
-      return prefix_;
-    }
-    /**
-     * <code>uint32 prefix = 1;</code>
-     * @param value The prefix to set.
-     * @return This builder for chaining.
-     */
-    public Builder setPrefix(int value) {
-      
-      prefix_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint32 prefix = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearPrefix() {
-      
-      prefix_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private long start_ ;
-    /**
-     * <code>uint64 start = 2;</code>
-     * @return The start.
-     */
-    @java.lang.Override
-    public long getStart() {
-      return start_;
-    }
-    /**
-     * <code>uint64 start = 2;</code>
-     * @param value The start to set.
-     * @return This builder for chaining.
-     */
-    public Builder setStart(long value) {
-      
-      start_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint64 start = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearStart() {
-      
-      start_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private long end_ ;
-    /**
-     * <code>uint64 end = 3;</code>
-     * @return The end.
-     */
-    @java.lang.Override
-    public long getEnd() {
-      return end_;
-    }
-    /**
-     * <code>uint64 end = 3;</code>
-     * @param value The end to set.
-     * @return This builder for chaining.
-     */
-    public Builder setEnd(long value) {
-      
-      end_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint64 end = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearEnd() {
-      
-      end_ = 0L;
-      onChanged();
-      return this;
-    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -381,23 +254,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:scyna.GetIDResponse)
+    // @@protoc_insertion_point(builder_scope:scyna.GetIDRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:scyna.GetIDResponse)
-  private static final io.scyna.proto.GetIDResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:scyna.GetIDRequest)
+  private static final io.scyna.proto.GetIDRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new io.scyna.proto.GetIDResponse();
+    DEFAULT_INSTANCE = new io.scyna.proto.GetIDRequest();
   }
 
-  public static io.scyna.proto.GetIDResponse getDefaultInstance() {
+  public static io.scyna.proto.GetIDRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<GetIDResponse>
-      PARSER = new com.google.protobuf.AbstractParser<GetIDResponse>() {
+  private static final com.google.protobuf.Parser<GetIDRequest>
+      PARSER = new com.google.protobuf.AbstractParser<GetIDRequest>() {
     @java.lang.Override
-    public GetIDResponse parsePartialFrom(
+    public GetIDRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -415,17 +288,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<GetIDResponse> parser() {
+  public static com.google.protobuf.Parser<GetIDRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<GetIDResponse> getParserForType() {
+  public com.google.protobuf.Parser<GetIDRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public io.scyna.proto.GetIDResponse getDefaultInstanceForType() {
+  public io.scyna.proto.GetIDRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 
