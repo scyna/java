@@ -2,12 +2,10 @@ package io.scyna;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Session;
-import com.datastax.driver.mapping.MappingManager;
 
 public class DB {
     private Cluster cluster = null;
     private Session session = null;
-    private MappingManager mapping;
 
     private DB(String[] hosts, String username, String password) {
         Cluster.Builder builder = Cluster.builder();
@@ -19,7 +17,6 @@ public class DB {
         }
         cluster = builder.build();
         session = cluster.connect();
-        mapping = new MappingManager(session);
     }
 
     static DB init(String[] hosts, String username, String password, String location) {
@@ -28,10 +25,6 @@ public class DB {
 
     public Session session() {
         return session;
-    }
-
-    public MappingManager mapping() {
-        return mapping;
     }
 
     public void close() {

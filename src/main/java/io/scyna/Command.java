@@ -29,8 +29,8 @@ public abstract class Command {
                 JSON = request.getJSON();
                 source = request.getData();
                 execute();
-            } catch (Exception e) {
-                flush(400, io.scyna.Error.BAD_REQUEST);
+            } catch (java.lang.Exception e) {
+                flush(400, io.scyna.Error.BAD_REQUEST.toProto());
                 e.printStackTrace();
             }
         }

@@ -1,14 +1,27 @@
 package io.scyna;
 
-public class Error {
-        public static final io.scyna.proto.Error OK = New(0, "Success");
-        public static final io.scyna.proto.Error SERVER_ERROR = New(1, "Server Error");
-        public static final io.scyna.proto.Error BAD_REQUEST = New(2, "Bad Request");
-        public static final io.scyna.proto.Error PERMISSION_ERROR = New(4, "Permission Error");
-        public static final io.scyna.proto.Error REQUEST_INVALID = New(5, "Request Invalid");
-        public static final io.scyna.proto.Error MODULE_NOT_EXIST = New(6, "Module Not Exist");
+public class Error extends java.lang.Exception {
+    int code;
+    String message;
 
-        public static final io.scyna.proto.Error New(int code, String message) {
-                return io.scyna.proto.Error.newBuilder().setCode(0).setMessage("Success").build();
-        }
+    public static final Error OK = New(0, "Success");
+    public static final Error SERVER_ERROR = New(1, "Server Error");
+    public static final Error BAD_REQUEST = New(2, "Bad Request");
+    public static final Error PERMISSION_ERROR = New(4, "Permission Error");
+    public static final Error REQUEST_INVALID = New(5, "Request Invalid");
+    public static final Error MODULE_NOT_EXIST = New(6, "Module Not Exist");
+
+    private Error(int code, String message) {
+        super(message);
+        this.code = code;
+        this.message = message;
+    }
+
+    static public Error New(int code, String message) {
+        return new Error(code, message);
+    }
+
+    public io.scyna.proto.Error toProto() {
+        return io.scyna.proto.Error.newBuilder().setCode(code).setMessage(message).build();
+    }
 }

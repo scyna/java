@@ -6,8 +6,8 @@ import io.scyna.ex.basic.proto.EchoResponse;
 
 public class EchoService extends Endpoint.Handler<EchoRequest> {
     @Override
-    public void execute() {
+    public void execute() throws io.scyna.Error {
         context.info("Receive EchoRequest");
-        done(EchoResponse.newBuilder().setText(request.getText()).build());
+        response(EchoResponse.newBuilder().setText(request.getText()).build());
     }
 }

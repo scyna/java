@@ -4,7 +4,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import io.scyna.Engine;
-import io.scyna.Error;
 import io.scyna.Endpoint;
 import io.scyna.EndpointTest;
 import io.scyna.ex.basic.AddService;
@@ -43,7 +42,7 @@ public class TestAdd {
     public void testAddTooBig() {
         EndpointTest.New(Path.ADD_URL)
                 .withRequest(AddRequest.newBuilder().setA(95).setB(34).build())
-                .expectError(Error.REQUEST_INVALID)
+                .expectError(io.scyna.Error.REQUEST_INVALID.toProto())
                 .run();
     }
 }

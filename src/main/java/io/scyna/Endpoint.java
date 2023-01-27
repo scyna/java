@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class Endpoint {
 
-    public static <T extends Message> void register(String url, Handler<T> handler) throws Exception {
+    public static <T extends Message> void register(String url, Handler<T> handler) throws java.lang.Exception {
         System.out.println("Register Service:" + url);
         handler.init();
         var nc = Engine.connection();
@@ -37,7 +37,7 @@ public abstract class Endpoint {
                     req.build().toByteArray());
             var msg = incoming.get(5, TimeUnit.SECONDS);
             return Response.parseFrom(msg.getData());
-        } catch (Exception e) {
+        } catch (java.lang.Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -54,7 +54,7 @@ public abstract class Endpoint {
             flush(400, error);
         }
 
-        protected void done(Message m) {
+        protected void response(Message m) {
             flush(200, m);
         }
 
@@ -82,7 +82,7 @@ public abstract class Endpoint {
         protected Parser<T> parser;
         protected Message.Builder builder;
 
-        public void init() throws Exception {
+        public void init() throws java.lang.Exception {
             try {
                 Class<T> cls = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
                         .getActualTypeArguments()[0];
@@ -90,13 +90,13 @@ public abstract class Endpoint {
                 builder = (Message.Builder) m.invoke(null);
                 var tObj = builder.build();
                 parser = (Parser<T>) tObj.getParserForType();
-            } catch (Exception e) {
+            } catch (java.lang.Exception e) {
                 e.printStackTrace();
-                throw new Exception();
+                throw new java.lang.Exception();
             }
         }
 
-        public abstract void execute();
+        public abstract void execute() throws io.scyna.Error;
 
         @Override
         public void onMessage(io.nats.client.Message msg) {
@@ -112,14 +112,18 @@ public abstract class Endpoint {
                     JsonFormat.parser().merge(requestBody.toStringUtf8(), builder);
                     this.request = (T) builder.build();
                     builder.clear();
-                    this.execute();
-
                 } else {
                     this.request = parser.parseFrom(requestBody);
+                }
+
+                try {
                     this.execute();
+                } catch (io.scyna.Error e) {
+                    flush(400, e.toProto());
+                    e.printStackTrace();
                 }
             } catch (InvalidProtocolBufferException e) {
-                flush(400, io.scyna.Error.BAD_REQUEST);
+                flush(400, io.scyna.Error.BAD_REQUEST.toProto());
                 e.printStackTrace();
             }
         }

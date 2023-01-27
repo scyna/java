@@ -15,7 +15,7 @@ public class Signal {
         nc.publish(channel, data.toByteArray());
     }
 
-    public static <T extends Message> void register(String channel, Handler<T> handler) throws Exception {
+    public static <T extends Message> void register(String channel, Handler<T> handler) throws java.lang.Exception {
         System.out.println("Register Signal:" + channel);
         handler.init();
         var nc = Engine.connection();
@@ -29,16 +29,16 @@ public class Signal {
 
         public abstract void execute();
 
-        public void init() throws Exception {
+        public void init() throws java.lang.Exception {
             try {
                 Class<T> cls = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
                         .getActualTypeArguments()[0];
                 Method m = cls.getMethod("parser");
                 this.parser = (Parser<T>) m.invoke(null);
 
-            } catch (Exception e) {
+            } catch (java.lang.Exception e) {
                 e.printStackTrace();
-                throw new Exception();
+                throw new java.lang.Exception();
             }
         }
 

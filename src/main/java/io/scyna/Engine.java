@@ -44,7 +44,7 @@ public class Engine {
     }
 
     public static void init(String managerURL, String module, String secret)
-            throws Exception {
+            throws java.lang.Exception {
 
         var req = CreateSessionRequest.newBuilder().setModule(module).setSecret(secret).build();
         var request = HttpRequest.newBuilder()
