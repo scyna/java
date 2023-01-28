@@ -9,8 +9,6 @@ message CreateCustomerRequest
   string IDType = 1;
   string IDNumber = 2;
   string Name = 3;
-  string IssuesDate = 4;
-  string IssuePlace = 5;
 }
 
 message CreateCustomerResponse

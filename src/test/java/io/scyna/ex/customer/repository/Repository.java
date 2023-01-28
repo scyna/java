@@ -3,6 +3,7 @@ package io.scyna.ex.customer.repository;
 import com.datastax.driver.core.exceptions.QueryExecutionException;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import io.scyna.Engine;
+import io.scyna.Logger;
 import io.scyna.ex.customer.domain.IRepository;
 import io.scyna.ex.customer.model.Customer;
 import io.scyna.ex.customer.model.Error;
@@ -10,6 +11,15 @@ import io.scyna.ex.customer.model.Identity;
 
 public class Repository implements IRepository {
     final String TABLE_NAME = "ddd_ex.customer";
+    private Logger logger;
+
+    private Repository(Logger logger) {
+        this.logger = logger;
+    }
+
+    public static IRepository load(Logger logger) {
+        return new Repository(logger);
+    }
 
     @Override
     public void createCustomer(Customer customer) throws io.scyna.Error {
@@ -17,10 +27,11 @@ public class Repository implements IRepository {
                 .value("id", customer.ID)
                 .value("name", customer.name)
                 .value("identity", customer.identity.toString());
-
         try {
             Engine.DB().session().execute(insertInto);
+
         } catch (QueryExecutionException e) {
+            logger.info(e.getMessage());
             throw io.scyna.Error.SERVER_ERROR;
         }
     }

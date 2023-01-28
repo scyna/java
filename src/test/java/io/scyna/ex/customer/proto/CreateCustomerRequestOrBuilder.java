@@ -42,28 +42,4 @@ public interface CreateCustomerRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getNameBytes();
-
-  /**
-   * <code>string IssuesDate = 4;</code>
-   * @return The issuesDate.
-   */
-  java.lang.String getIssuesDate();
-  /**
-   * <code>string IssuesDate = 4;</code>
-   * @return The bytes for issuesDate.
-   */
-  com.google.protobuf.ByteString
-      getIssuesDateBytes();
-
-  /**
-   * <code>string IssuePlace = 5;</code>
-   * @return The issuePlace.
-   */
-  java.lang.String getIssuePlace();
-  /**
-   * <code>string IssuePlace = 5;</code>
-   * @return The bytes for issuePlace.
-   */
-  com.google.protobuf.ByteString
-      getIssuePlaceBytes();
 }

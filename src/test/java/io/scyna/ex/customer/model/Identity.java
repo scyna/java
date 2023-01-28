@@ -10,9 +10,14 @@ public class Identity {
         this.number = number;
     }
 
-    public static Identity newIdentity(String type, String number) throws io.scyna.Error {
+    public static Identity create(String type, String number) throws io.scyna.Error {
         /* TODO: validate */
         return new Identity(type, number);
+    }
+
+    public static Identity parse(String value) {
+        /* TODO */
+        return new Identity("", "");
     }
 
     public String getType() {
@@ -26,10 +31,4 @@ public class Identity {
     public String toString() {
         return type + ":" + number;
     }
-
-    public static Identity parse(String id) {
-        /* TODO */
-        return new Identity("", "");
-    }
-
 }

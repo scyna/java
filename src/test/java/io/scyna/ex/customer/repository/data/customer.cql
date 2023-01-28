@@ -1,18 +1,13 @@
 
-DROP TABLE IF EXISTS ex.user;
-CREATE TABLE ex.user
+DROP TABLE IF EXISTS ddd_ex.customer;
+CREATE TABLE ddd_ex.customer
 (
-    id           bigint PRIMARY KEY,
-    email        text ,
+    id           text PRIMARY KEY,
     name         text,
-    password     text,
+    identity     text,
+    email        text,
+    phone        text,
+    dob          text,
+    gender       text,
 );
-CREATE INDEX ON ex.user (email);
-
-DROP TABLE IF EXISTS ex.has_friend;
-CREATE TABLE ex.has_friend
-(
-    user_id        bigint,
-    friend_id      bigint,
-    PRIMARY KEY(user_id, friend_id)
-);
+CREATE INDEX ON ddd_ex.customer (identity);

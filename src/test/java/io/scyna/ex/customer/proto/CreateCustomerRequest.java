@@ -23,8 +23,6 @@ private static final long serialVersionUID = 0L;
     iDType_ = "";
     iDNumber_ = "";
     name_ = "";
-    issuesDate_ = "";
-    issuePlace_ = "";
   }
 
   @java.lang.Override
@@ -73,18 +71,6 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             name_ = s;
-            break;
-          }
-          case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            issuesDate_ = s;
-            break;
-          }
-          case 42: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            issuePlace_ = s;
             break;
           }
           default: {
@@ -233,82 +219,6 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int ISSUESDATE_FIELD_NUMBER = 4;
-  private volatile java.lang.Object issuesDate_;
-  /**
-   * <code>string IssuesDate = 4;</code>
-   * @return The issuesDate.
-   */
-  @java.lang.Override
-  public java.lang.String getIssuesDate() {
-    java.lang.Object ref = issuesDate_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      issuesDate_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string IssuesDate = 4;</code>
-   * @return The bytes for issuesDate.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getIssuesDateBytes() {
-    java.lang.Object ref = issuesDate_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      issuesDate_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int ISSUEPLACE_FIELD_NUMBER = 5;
-  private volatile java.lang.Object issuePlace_;
-  /**
-   * <code>string IssuePlace = 5;</code>
-   * @return The issuePlace.
-   */
-  @java.lang.Override
-  public java.lang.String getIssuePlace() {
-    java.lang.Object ref = issuePlace_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      issuePlace_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string IssuePlace = 5;</code>
-   * @return The bytes for issuePlace.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getIssuePlaceBytes() {
-    java.lang.Object ref = issuePlace_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      issuePlace_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -332,12 +242,6 @@ private static final long serialVersionUID = 0L;
     if (!getNameBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
     }
-    if (!getIssuesDateBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, issuesDate_);
-    }
-    if (!getIssuePlaceBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, issuePlace_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -355,12 +259,6 @@ private static final long serialVersionUID = 0L;
     }
     if (!getNameBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
-    }
-    if (!getIssuesDateBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, issuesDate_);
-    }
-    if (!getIssuePlaceBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, issuePlace_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -383,10 +281,6 @@ private static final long serialVersionUID = 0L;
         .equals(other.getIDNumber())) return false;
     if (!getName()
         .equals(other.getName())) return false;
-    if (!getIssuesDate()
-        .equals(other.getIssuesDate())) return false;
-    if (!getIssuePlace()
-        .equals(other.getIssuePlace())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -404,10 +298,6 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getIDNumber().hashCode();
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + ISSUESDATE_FIELD_NUMBER;
-    hash = (53 * hash) + getIssuesDate().hashCode();
-    hash = (37 * hash) + ISSUEPLACE_FIELD_NUMBER;
-    hash = (53 * hash) + getIssuePlace().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -551,10 +441,6 @@ private static final long serialVersionUID = 0L;
 
       name_ = "";
 
-      issuesDate_ = "";
-
-      issuePlace_ = "";
-
       return this;
     }
 
@@ -584,8 +470,6 @@ private static final long serialVersionUID = 0L;
       result.iDType_ = iDType_;
       result.iDNumber_ = iDNumber_;
       result.name_ = name_;
-      result.issuesDate_ = issuesDate_;
-      result.issuePlace_ = issuePlace_;
       onBuilt();
       return result;
     }
@@ -644,14 +528,6 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getName().isEmpty()) {
         name_ = other.name_;
-        onChanged();
-      }
-      if (!other.getIssuesDate().isEmpty()) {
-        issuesDate_ = other.issuesDate_;
-        onChanged();
-      }
-      if (!other.getIssuePlace().isEmpty()) {
-        issuePlace_ = other.issuePlace_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -907,158 +783,6 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       name_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object issuesDate_ = "";
-    /**
-     * <code>string IssuesDate = 4;</code>
-     * @return The issuesDate.
-     */
-    public java.lang.String getIssuesDate() {
-      java.lang.Object ref = issuesDate_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        issuesDate_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string IssuesDate = 4;</code>
-     * @return The bytes for issuesDate.
-     */
-    public com.google.protobuf.ByteString
-        getIssuesDateBytes() {
-      java.lang.Object ref = issuesDate_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        issuesDate_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string IssuesDate = 4;</code>
-     * @param value The issuesDate to set.
-     * @return This builder for chaining.
-     */
-    public Builder setIssuesDate(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      issuesDate_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string IssuesDate = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearIssuesDate() {
-      
-      issuesDate_ = getDefaultInstance().getIssuesDate();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string IssuesDate = 4;</code>
-     * @param value The bytes for issuesDate to set.
-     * @return This builder for chaining.
-     */
-    public Builder setIssuesDateBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      issuesDate_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object issuePlace_ = "";
-    /**
-     * <code>string IssuePlace = 5;</code>
-     * @return The issuePlace.
-     */
-    public java.lang.String getIssuePlace() {
-      java.lang.Object ref = issuePlace_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        issuePlace_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string IssuePlace = 5;</code>
-     * @return The bytes for issuePlace.
-     */
-    public com.google.protobuf.ByteString
-        getIssuePlaceBytes() {
-      java.lang.Object ref = issuePlace_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        issuePlace_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string IssuePlace = 5;</code>
-     * @param value The issuePlace to set.
-     * @return This builder for chaining.
-     */
-    public Builder setIssuePlace(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      issuePlace_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string IssuePlace = 5;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearIssuePlace() {
-      
-      issuePlace_ = getDefaultInstance().getIssuePlace();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string IssuePlace = 5;</code>
-     * @param value The bytes for issuePlace to set.
-     * @return This builder for chaining.
-     */
-    public Builder setIssuePlaceBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      issuePlace_ = value;
       onChanged();
       return this;
     }
