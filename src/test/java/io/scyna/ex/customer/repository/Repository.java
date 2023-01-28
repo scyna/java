@@ -4,6 +4,11 @@ import io.scyna.ex.customer.domain.IRepository;
 
 public class Repository implements IRepository {
 
+    @Override
+    public void createCustomer() throws io.scyna.Error {
+
+    }
+
     // @Override
     // public long create(User user) {
     // var id = Engine.ID().next();
