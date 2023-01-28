@@ -6,7 +6,6 @@ import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
 import com.google.protobuf.util.JsonFormat;
 import io.nats.client.MessageHandler;
-import io.scyna.proto.Error;
 import io.scyna.proto.Request;
 import io.scyna.proto.Response;
 import java.lang.reflect.Method;
@@ -49,10 +48,6 @@ public abstract class Endpoint {
 
         protected String source;
         protected String reply;
-
-        protected void error(Error error) {
-            flush(400, error);
-        }
 
         protected void response(Message m) {
             flush(200, m);
@@ -115,16 +110,11 @@ public abstract class Endpoint {
                 } else {
                     this.request = parser.parseFrom(requestBody);
                 }
-
-                try {
-                    this.execute();
-                } catch (io.scyna.Error e) {
-                    flush(400, e.toProto());
-                    e.printStackTrace();
-                }
+                this.execute();
+            } catch (io.scyna.Error e) {
+                flush(400, e.toProto());
             } catch (InvalidProtocolBufferException e) {
                 flush(400, io.scyna.Error.BAD_REQUEST.toProto());
-                e.printStackTrace();
             }
         }
     }

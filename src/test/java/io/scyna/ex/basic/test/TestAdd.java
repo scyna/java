@@ -42,7 +42,7 @@ public class TestAdd {
     public void testAddTooBig() {
         EndpointTest.New(Path.ADD_URL)
                 .withRequest(AddRequest.newBuilder().setA(95).setB(34).build())
-                .expectError(io.scyna.Error.REQUEST_INVALID.toProto())
+                .expectError(io.scyna.Error.REQUEST_INVALID)
                 .run();
     }
 }

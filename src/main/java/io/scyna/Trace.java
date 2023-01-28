@@ -4,9 +4,10 @@ import io.scyna.proto.TraceCreatedSignal;
 
 public class Trace {
 
-    public final static int SERVICE = 1;
+    public final static int ENDPOINT = 1;
     public final static int EVENT = 2;
-    public final static int SIGNAL = 3;
+    public final static int SYNC = 4;
+    public final static int TASK = 5;
 
     private long parentID;
     private long id;
@@ -23,14 +24,6 @@ public class Trace {
         return id;
     }
 
-    public static Trace newSignalTrace(String channel) {
-        var ret = new Trace();
-        ret.type = SIGNAL;
-        ret.path = channel;
-        ret.sessionID = Engine.session().ID();
-        return ret;
-    }
-
     public static Trace newEventTrace(String channel) {
         var ret = new Trace();
         ret.type = EVENT;
@@ -39,9 +32,9 @@ public class Trace {
         return ret;
     }
 
-    public static Trace newServiceTrace(String url, long trace) {
+    public static Trace newEndpointTrace(String url, long trace) {
         var ret = new Trace();
-        ret.type = SERVICE;
+        ret.type = ENDPOINT;
         ret.path = url;
         ret.id = Engine.ID().next();
         ret.parentID = trace;

@@ -22,4 +22,14 @@ public class Identity {
     public String getNumber() {
         return number;
     }
+
+    public String toString() {
+        return type + ":" + number;
+    }
+
+    public static Identity parse(String id) {
+        /* TODO */
+        return new Identity("", "");
+    }
+
 }

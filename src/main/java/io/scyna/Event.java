@@ -5,11 +5,8 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
-
-import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
-
 import io.nats.client.JetStreamApiException;
 import io.nats.client.PullSubscribeOptions;
 
