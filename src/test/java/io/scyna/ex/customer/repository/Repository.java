@@ -17,6 +17,7 @@ public class Repository implements IRepository {
                 .value("id", customer.ID)
                 .value("name", customer.name)
                 .value("identity", customer.identity.toString());
+
         try {
             Engine.DB().session().execute(insertInto);
         } catch (QueryExecutionException e) {
@@ -45,7 +46,7 @@ public class Repository implements IRepository {
             customer.name = row.getString("name");
 
             return customer;
-        } catch (QueryExecutionException e) {
+        } catch (java.lang.Exception e) {
             throw io.scyna.Error.SERVER_ERROR;
         }
     }
