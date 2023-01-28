@@ -7,5 +7,4 @@ public class Customer {
     public PhoneNumber phone;
     public Gender gender;
     public StreetAddress address;
-
 }

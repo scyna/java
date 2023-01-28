@@ -1,35 +1,20 @@
 package io.scyna.ex.customer.repository;
 
+import io.scyna.Error;
 import io.scyna.ex.customer.domain.IRepository;
+import io.scyna.ex.customer.model.Customer;
+import io.scyna.ex.customer.model.Identity;
 
 public class Repository implements IRepository {
 
     @Override
-    public void createCustomer() throws io.scyna.Error {
+    public void createCustomer(Customer customer) throws io.scyna.Error {
 
     }
 
-    // @Override
-    // public long create(User user) {
-    // var id = Engine.ID().next();
-    // user.id = id;
-    // mapper.save(user);
-    // return id;
-    // }
-
-    // @Override
-    // public User get(String email) {
-    // try {
-    // var session = Engine.DB().session();
-    // var result = session.execute(QueryBuilder
-    // .select("id", "email", "name")
-    // .from("ex", "user")
-    // .where(QueryBuilder.eq("email", email))
-    // .limit(1));
-    // return mapper.map(result).one();
-    // } catch (Exception e) {
-    // e.printStackTrace();
-    // return null;
-    // }
-    // }
+    @Override
+    public Customer getCustomer(Identity identity) throws Error {
+        /* TODO */
+        return null;
+    }
 }
