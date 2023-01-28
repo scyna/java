@@ -1,6 +1,7 @@
 package io.scyna.ex.customer.model;
 
 public class Customer {
+    public String ID;
     public Identity identity;
     public String name;
     public EmailAddress email;

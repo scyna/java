@@ -1,17 +1,9 @@
 package io.scyna.ex.customer.model;
 
 public class Identity {
+
     private String type;
-
-    public String getType() {
-        return type;
-    }
-
     private String number;
-
-    public String getNumber() {
-        return number;
-    }
 
     private Identity(String type, String number) {
         this.type = type;
@@ -21,5 +13,13 @@ public class Identity {
     public static Identity newIdentity(String type, String number) throws io.scyna.Error {
         /* TODO: validate */
         return new Identity(type, number);
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getNumber() {
+        return number;
     }
 }

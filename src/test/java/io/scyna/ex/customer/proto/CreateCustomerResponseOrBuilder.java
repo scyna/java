@@ -8,8 +8,14 @@ public interface CreateCustomerResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>uint64 string = 1;</code>
-   * @return The string.
+   * <code>string ID = 1;</code>
+   * @return The iD.
    */
-  long getString();
+  java.lang.String getID();
+  /**
+   * <code>string ID = 1;</code>
+   * @return The bytes for iD.
+   */
+  com.google.protobuf.ByteString
+      getIDBytes();
 }

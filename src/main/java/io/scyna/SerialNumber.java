@@ -15,19 +15,26 @@ public class SerialNumber {
         this.key = key;
     }
 
-    public synchronized String next() throws InvalidProtocolBufferException {
-        if (next < last) {
-            next++;
-        } else {
-            var request = GetSNRequest.newBuilder().setKey(key).build();
-            var response = Endpoint.sendRequest(Path.GEN_GET_SN_URL, request);
-            if (response != null && response.getCode() == 200) {
-                var r = GetSNResponse.parseFrom(response.getBody());
-                prefix = r.getPrefix();
-                next = r.getStart();
-                last = r.getEnd();
+    public synchronized String next() throws io.scyna.Error {
+
+        try {
+            if (next < last) {
+                next++;
+            } else {
+                var request = GetSNRequest.newBuilder().setKey(key).build();
+                var response = Endpoint.sendRequest(Path.GEN_GET_SN_URL, request);
+                if (response != null && response.getCode() == 200) {
+                    var r = GetSNResponse.parseFrom(response.getBody());
+                    prefix = r.getPrefix();
+                    next = r.getStart();
+                    last = r.getEnd();
+                }
             }
+
+        } catch (InvalidProtocolBufferException e) {
+            throw Error.BAD_DATA;
         }
+
         return String.format("%d%07d", prefix, next);
     }
 }

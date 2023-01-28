@@ -16,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private CreateCustomerResponse() {
+    iD_ = "";
   }
 
   @java.lang.Override
@@ -48,9 +49,10 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            string_ = input.readUInt64();
+            iD_ = s;
             break;
           }
           default: {
@@ -85,15 +87,42 @@ private static final long serialVersionUID = 0L;
             io.scyna.ex.customer.proto.CreateCustomerResponse.class, io.scyna.ex.customer.proto.CreateCustomerResponse.Builder.class);
   }
 
-  public static final int STRING_FIELD_NUMBER = 1;
-  private long string_;
+  public static final int ID_FIELD_NUMBER = 1;
+  private volatile java.lang.Object iD_;
   /**
-   * <code>uint64 string = 1;</code>
-   * @return The string.
+   * <code>string ID = 1;</code>
+   * @return The iD.
    */
   @java.lang.Override
-  public long getString() {
-    return string_;
+  public java.lang.String getID() {
+    java.lang.Object ref = iD_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      iD_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string ID = 1;</code>
+   * @return The bytes for iD.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getIDBytes() {
+    java.lang.Object ref = iD_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      iD_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -110,8 +139,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (string_ != 0L) {
-      output.writeUInt64(1, string_);
+    if (!getIDBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, iD_);
     }
     unknownFields.writeTo(output);
   }
@@ -122,9 +151,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (string_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(1, string_);
+    if (!getIDBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, iD_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -141,8 +169,8 @@ private static final long serialVersionUID = 0L;
     }
     io.scyna.ex.customer.proto.CreateCustomerResponse other = (io.scyna.ex.customer.proto.CreateCustomerResponse) obj;
 
-    if (getString()
-        != other.getString()) return false;
+    if (!getID()
+        .equals(other.getID())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -154,9 +182,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + STRING_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getString());
+    hash = (37 * hash) + ID_FIELD_NUMBER;
+    hash = (53 * hash) + getID().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -290,7 +317,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      string_ = 0L;
+      iD_ = "";
 
       return this;
     }
@@ -318,7 +345,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public io.scyna.ex.customer.proto.CreateCustomerResponse buildPartial() {
       io.scyna.ex.customer.proto.CreateCustomerResponse result = new io.scyna.ex.customer.proto.CreateCustomerResponse(this);
-      result.string_ = string_;
+      result.iD_ = iD_;
       onBuilt();
       return result;
     }
@@ -367,8 +394,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(io.scyna.ex.customer.proto.CreateCustomerResponse other) {
       if (other == io.scyna.ex.customer.proto.CreateCustomerResponse.getDefaultInstance()) return this;
-      if (other.getString() != 0L) {
-        setString(other.getString());
+      if (!other.getID().isEmpty()) {
+        iD_ = other.iD_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -399,33 +427,78 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long string_ ;
+    private java.lang.Object iD_ = "";
     /**
-     * <code>uint64 string = 1;</code>
-     * @return The string.
+     * <code>string ID = 1;</code>
+     * @return The iD.
      */
-    @java.lang.Override
-    public long getString() {
-      return string_;
+    public java.lang.String getID() {
+      java.lang.Object ref = iD_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        iD_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>uint64 string = 1;</code>
-     * @param value The string to set.
+     * <code>string ID = 1;</code>
+     * @return The bytes for iD.
+     */
+    public com.google.protobuf.ByteString
+        getIDBytes() {
+      java.lang.Object ref = iD_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        iD_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string ID = 1;</code>
+     * @param value The iD to set.
      * @return This builder for chaining.
      */
-    public Builder setString(long value) {
-      
-      string_ = value;
+    public Builder setID(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      iD_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 string = 1;</code>
+     * <code>string ID = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearString() {
+    public Builder clearID() {
       
-      string_ = 0L;
+      iD_ = getDefaultInstance().getID();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string ID = 1;</code>
+     * @param value The bytes for iD to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIDBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      iD_ = value;
       onChanged();
       return this;
     }

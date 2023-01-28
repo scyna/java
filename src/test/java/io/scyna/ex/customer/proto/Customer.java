@@ -36,9 +36,9 @@ public final class Customer {
       "\n\016customer.proto\022\027io.scyna.customer.prot" +
       "o\"o\n\025CreateCustomerRequest\022\016\n\006IDType\030\001 \001" +
       "(\t\022\020\n\010IDNumber\030\002 \001(\t\022\014\n\004Name\030\003 \001(\t\022\022\n\nIs" +
-      "suesDate\030\004 \001(\t\022\022\n\nIssuePlace\030\005 \001(\t\"(\n\026Cr" +
-      "eateCustomerResponse\022\016\n\006string\030\001 \001(\004B\036\n\032" +
-      "io.scyna.ex.customer.protoP\001b\006proto3"
+      "suesDate\030\004 \001(\t\022\022\n\nIssuePlace\030\005 \001(\t\"$\n\026Cr" +
+      "eateCustomerResponse\022\n\n\002ID\030\001 \001(\tB\036\n\032io.s" +
+      "cyna.ex.customer.protoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -55,7 +55,7 @@ public final class Customer {
     internal_static_io_scyna_customer_proto_CreateCustomerResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_io_scyna_customer_proto_CreateCustomerResponse_descriptor,
-        new java.lang.String[] { "String", });
+        new java.lang.String[] { "ID", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

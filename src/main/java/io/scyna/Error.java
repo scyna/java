@@ -10,6 +10,8 @@ public class Error extends java.lang.Exception {
     public static final Error PERMISSION_ERROR = New(4, "Permission Error");
     public static final Error REQUEST_INVALID = New(5, "Request Invalid");
     public static final Error MODULE_NOT_EXIST = New(6, "Module Not Exist");
+    public static final Error BAD_DATA = New(7, "Bad Data");
+    public static final Error STREAM_ERROR = New(8, "Stream Error");
 
     private Error(int code, String message) {
         super(message);

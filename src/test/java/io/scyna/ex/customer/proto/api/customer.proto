@@ -15,5 +15,5 @@ message CreateCustomerRequest
 
 message CreateCustomerResponse
 {
-  uint64 string = 1;
+  string ID = 1;
 }
