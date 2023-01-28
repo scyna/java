@@ -1,11 +1,8 @@
 package io.scyna;
 
-import java.io.IOException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import com.google.protobuf.Message;
-import io.nats.client.JetStreamApiException;
-import io.scyna.proto.EventOrSignal;
 import io.scyna.proto.Request;
 import io.scyna.proto.Response;
 
@@ -16,12 +13,7 @@ public class Context extends Logger {
     }
 
     public <T extends Message> void publishEvent(String channel, T data) {
-        try {
-            var msg = EventOrSignal.newBuilder().setParentID(this.id).setBody(data.toByteString()).build();
-            Engine.stream().publish(channel, msg.toByteArray());
-        } catch (IOException | JetStreamApiException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public Response sendRequest(String url, Message request) {

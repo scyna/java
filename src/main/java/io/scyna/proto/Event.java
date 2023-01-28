@@ -4,18 +4,18 @@
 package io.scyna.proto;
 
 /**
- * Protobuf type {@code scyna.EventOrSignal}
+ * Protobuf type {@code scyna.Event}
  */
-public final class EventOrSignal extends
+public final class Event extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:scyna.EventOrSignal)
-    EventOrSignalOrBuilder {
+    // @@protoc_insertion_point(message_implements:scyna.Event)
+    EventOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use EventOrSignal.newBuilder() to construct.
-  private EventOrSignal(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use Event.newBuilder() to construct.
+  private Event(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private EventOrSignal() {
+  private Event() {
     body_ = com.google.protobuf.ByteString.EMPTY;
     data_ = "";
   }
@@ -24,7 +24,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new EventOrSignal();
+    return new Event();
   }
 
   @java.lang.Override
@@ -34,32 +34,43 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.scyna.proto.Scyna.internal_static_scyna_EventOrSignal_descriptor;
+    return io.scyna.proto.Scyna.internal_static_scyna_Event_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.scyna.proto.Scyna.internal_static_scyna_EventOrSignal_fieldAccessorTable
+    return io.scyna.proto.Scyna.internal_static_scyna_Event_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            io.scyna.proto.EventOrSignal.class, io.scyna.proto.EventOrSignal.Builder.class);
+            io.scyna.proto.Event.class, io.scyna.proto.Event.Builder.class);
   }
 
-  public static final int PARENTID_FIELD_NUMBER = 1;
-  private long parentID_;
+  public static final int AGGREGATEID_FIELD_NUMBER = 1;
+  private long aggregateID_;
   /**
-   * <code>uint64 ParentID = 1;</code>
-   * @return The parentID.
+   * <code>uint64 AggregateID = 1;</code>
+   * @return The aggregateID.
    */
   @java.lang.Override
-  public long getParentID() {
-    return parentID_;
+  public long getAggregateID() {
+    return aggregateID_;
   }
 
-  public static final int BODY_FIELD_NUMBER = 2;
+  public static final int VERSION_FIELD_NUMBER = 2;
+  private long version_;
+  /**
+   * <code>uint64 Version = 2;</code>
+   * @return The version.
+   */
+  @java.lang.Override
+  public long getVersion() {
+    return version_;
+  }
+
+  public static final int BODY_FIELD_NUMBER = 3;
   private com.google.protobuf.ByteString body_;
   /**
-   * <code>bytes Body = 2;</code>
+   * <code>bytes Body = 3;</code>
    * @return The body.
    */
   @java.lang.Override
@@ -67,10 +78,10 @@ private static final long serialVersionUID = 0L;
     return body_;
   }
 
-  public static final int DATA_FIELD_NUMBER = 3;
+  public static final int DATA_FIELD_NUMBER = 4;
   private volatile java.lang.Object data_;
   /**
-   * <code>string Data = 3;</code>
+   * <code>string Data = 4;</code>
    * @return The data.
    */
   @java.lang.Override
@@ -87,7 +98,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string Data = 3;</code>
+   * <code>string Data = 4;</code>
    * @return The bytes for data.
    */
   @java.lang.Override
@@ -105,69 +116,80 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static io.scyna.proto.EventOrSignal parseFrom(
+  public static final int TRACEID_FIELD_NUMBER = 5;
+  private long traceID_;
+  /**
+   * <code>uint64 TraceID = 5;</code>
+   * @return The traceID.
+   */
+  @java.lang.Override
+  public long getTraceID() {
+    return traceID_;
+  }
+
+  public static io.scyna.proto.Event parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.proto.EventOrSignal parseFrom(
+  public static io.scyna.proto.Event parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.proto.EventOrSignal parseFrom(
+  public static io.scyna.proto.Event parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.proto.EventOrSignal parseFrom(
+  public static io.scyna.proto.Event parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.proto.EventOrSignal parseFrom(byte[] data)
+  public static io.scyna.proto.Event parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.proto.EventOrSignal parseFrom(
+  public static io.scyna.proto.Event parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.proto.EventOrSignal parseFrom(java.io.InputStream input)
+  public static io.scyna.proto.Event parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.proto.EventOrSignal parseFrom(
+  public static io.scyna.proto.Event parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.proto.EventOrSignal parseDelimitedFrom(java.io.InputStream input)
+  public static io.scyna.proto.Event parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static io.scyna.proto.EventOrSignal parseDelimitedFrom(
+  public static io.scyna.proto.Event parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.proto.EventOrSignal parseFrom(
+  public static io.scyna.proto.Event parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.proto.EventOrSignal parseFrom(
+  public static io.scyna.proto.Event parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -180,7 +202,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(io.scyna.proto.EventOrSignal prototype) {
+  public static Builder newBuilder(io.scyna.proto.Event prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -196,26 +218,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code scyna.EventOrSignal}
+   * Protobuf type {@code scyna.Event}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:scyna.EventOrSignal)
-      io.scyna.proto.EventOrSignalOrBuilder {
+      // @@protoc_insertion_point(builder_implements:scyna.Event)
+      io.scyna.proto.EventOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.scyna.proto.Scyna.internal_static_scyna_EventOrSignal_descriptor;
+      return io.scyna.proto.Scyna.internal_static_scyna_Event_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.scyna.proto.Scyna.internal_static_scyna_EventOrSignal_fieldAccessorTable
+      return io.scyna.proto.Scyna.internal_static_scyna_Event_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              io.scyna.proto.EventOrSignal.class, io.scyna.proto.EventOrSignal.Builder.class);
+              io.scyna.proto.Event.class, io.scyna.proto.Event.Builder.class);
     }
 
-    // Construct using io.scyna.proto.EventOrSignal.newBuilder()
+    // Construct using io.scyna.proto.Event.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -233,11 +255,15 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      parentID_ = 0L;
+      aggregateID_ = 0L;
+
+      version_ = 0L;
 
       body_ = com.google.protobuf.ByteString.EMPTY;
 
       data_ = "";
+
+      traceID_ = 0L;
 
       return this;
     }
@@ -245,17 +271,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.scyna.proto.Scyna.internal_static_scyna_EventOrSignal_descriptor;
+      return io.scyna.proto.Scyna.internal_static_scyna_Event_descriptor;
     }
 
     @java.lang.Override
-    public io.scyna.proto.EventOrSignal getDefaultInstanceForType() {
-      return io.scyna.proto.EventOrSignal.getDefaultInstance();
+    public io.scyna.proto.Event getDefaultInstanceForType() {
+      return io.scyna.proto.Event.getDefaultInstance();
     }
 
     @java.lang.Override
-    public io.scyna.proto.EventOrSignal build() {
-      io.scyna.proto.EventOrSignal result = buildPartial();
+    public io.scyna.proto.Event build() {
+      io.scyna.proto.Event result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -263,11 +289,13 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public io.scyna.proto.EventOrSignal buildPartial() {
-      io.scyna.proto.EventOrSignal result = new io.scyna.proto.EventOrSignal(this);
-      result.parentID_ = parentID_;
+    public io.scyna.proto.Event buildPartial() {
+      io.scyna.proto.Event result = new io.scyna.proto.Event(this);
+      result.aggregateID_ = aggregateID_;
+      result.version_ = version_;
       result.body_ = body_;
       result.data_ = data_;
+      result.traceID_ = traceID_;
       onBuilt();
       return result;
     }
@@ -305,40 +333,71 @@ private static final long serialVersionUID = 0L;
       return super.addRepeatedField(field, value);
     }
 
-    private long parentID_ ;
+    private long aggregateID_ ;
     /**
-     * <code>uint64 ParentID = 1;</code>
-     * @return The parentID.
+     * <code>uint64 AggregateID = 1;</code>
+     * @return The aggregateID.
      */
     @java.lang.Override
-    public long getParentID() {
-      return parentID_;
+    public long getAggregateID() {
+      return aggregateID_;
     }
     /**
-     * <code>uint64 ParentID = 1;</code>
-     * @param value The parentID to set.
+     * <code>uint64 AggregateID = 1;</code>
+     * @param value The aggregateID to set.
      * @return This builder for chaining.
      */
-    public Builder setParentID(long value) {
+    public Builder setAggregateID(long value) {
       
-      parentID_ = value;
+      aggregateID_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 ParentID = 1;</code>
+     * <code>uint64 AggregateID = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearParentID() {
+    public Builder clearAggregateID() {
       
-      parentID_ = 0L;
+      aggregateID_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long version_ ;
+    /**
+     * <code>uint64 Version = 2;</code>
+     * @return The version.
+     */
+    @java.lang.Override
+    public long getVersion() {
+      return version_;
+    }
+    /**
+     * <code>uint64 Version = 2;</code>
+     * @param value The version to set.
+     * @return This builder for chaining.
+     */
+    public Builder setVersion(long value) {
+      
+      version_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint64 Version = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearVersion() {
+      
+      version_ = 0L;
       onChanged();
       return this;
     }
 
     private com.google.protobuf.ByteString body_ = com.google.protobuf.ByteString.EMPTY;
     /**
-     * <code>bytes Body = 2;</code>
+     * <code>bytes Body = 3;</code>
      * @return The body.
      */
     @java.lang.Override
@@ -346,7 +405,7 @@ private static final long serialVersionUID = 0L;
       return body_;
     }
     /**
-     * <code>bytes Body = 2;</code>
+     * <code>bytes Body = 3;</code>
      * @param value The body to set.
      * @return This builder for chaining.
      */
@@ -360,7 +419,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>bytes Body = 2;</code>
+     * <code>bytes Body = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearBody() {
@@ -372,7 +431,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object data_ = "";
     /**
-     * <code>string Data = 3;</code>
+     * <code>string Data = 4;</code>
      * @return The data.
      */
     public java.lang.String getData() {
@@ -388,7 +447,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string Data = 3;</code>
+     * <code>string Data = 4;</code>
      * @return The bytes for data.
      */
     public com.google.protobuf.ByteString
@@ -405,7 +464,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string Data = 3;</code>
+     * <code>string Data = 4;</code>
      * @param value The data to set.
      * @return This builder for chaining.
      */
@@ -420,7 +479,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string Data = 3;</code>
+     * <code>string Data = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearData() {
@@ -430,7 +489,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string Data = 3;</code>
+     * <code>string Data = 4;</code>
      * @param value The bytes for data to set.
      * @return This builder for chaining.
      */
@@ -442,6 +501,37 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       data_ = value;
+      onChanged();
+      return this;
+    }
+
+    private long traceID_ ;
+    /**
+     * <code>uint64 TraceID = 5;</code>
+     * @return The traceID.
+     */
+    @java.lang.Override
+    public long getTraceID() {
+      return traceID_;
+    }
+    /**
+     * <code>uint64 TraceID = 5;</code>
+     * @param value The traceID to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTraceID(long value) {
+      
+      traceID_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint64 TraceID = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTraceID() {
+      
+      traceID_ = 0L;
       onChanged();
       return this;
     }
@@ -458,23 +548,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:scyna.EventOrSignal)
+    // @@protoc_insertion_point(builder_scope:scyna.Event)
   }
 
-  // @@protoc_insertion_point(class_scope:scyna.EventOrSignal)
-  private static final io.scyna.proto.EventOrSignal DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:scyna.Event)
+  private static final io.scyna.proto.Event DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new io.scyna.proto.EventOrSignal();
+    DEFAULT_INSTANCE = new io.scyna.proto.Event();
   }
 
-  public static io.scyna.proto.EventOrSignal getDefaultInstance() {
+  public static io.scyna.proto.Event getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<EventOrSignal>
-      PARSER = new com.google.protobuf.AbstractParser<EventOrSignal>() {
+  private static final com.google.protobuf.Parser<Event>
+      PARSER = new com.google.protobuf.AbstractParser<Event>() {
     @java.lang.Override
-    public EventOrSignal parsePartialFrom(
+    public Event parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -492,17 +582,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<EventOrSignal> parser() {
+  public static com.google.protobuf.Parser<Event> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<EventOrSignal> getParserForType() {
+  public com.google.protobuf.Parser<Event> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public io.scyna.proto.EventOrSignal getDefaultInstanceForType() {
+  public io.scyna.proto.Event getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

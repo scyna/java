@@ -47,7 +47,7 @@ private static final long serialVersionUID = 0L;
   public static final int CODE_FIELD_NUMBER = 1;
   private int code_;
   /**
-   * <code>int32 Code = 1;</code>
+   * <code>int32 code = 1;</code>
    * @return The code.
    */
   @java.lang.Override
@@ -58,7 +58,7 @@ private static final long serialVersionUID = 0L;
   public static final int MESSAGE_FIELD_NUMBER = 2;
   private volatile java.lang.Object message_;
   /**
-   * <code>string Message = 2;</code>
+   * <code>string message = 2;</code>
    * @return The message.
    */
   @java.lang.Override
@@ -75,7 +75,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string Message = 2;</code>
+   * <code>string message = 2;</code>
    * @return The bytes for message.
    */
   @java.lang.Override
@@ -292,7 +292,7 @@ private static final long serialVersionUID = 0L;
 
     private int code_ ;
     /**
-     * <code>int32 Code = 1;</code>
+     * <code>int32 code = 1;</code>
      * @return The code.
      */
     @java.lang.Override
@@ -300,7 +300,7 @@ private static final long serialVersionUID = 0L;
       return code_;
     }
     /**
-     * <code>int32 Code = 1;</code>
+     * <code>int32 code = 1;</code>
      * @param value The code to set.
      * @return This builder for chaining.
      */
@@ -311,7 +311,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 Code = 1;</code>
+     * <code>int32 code = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearCode() {
@@ -323,7 +323,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object message_ = "";
     /**
-     * <code>string Message = 2;</code>
+     * <code>string message = 2;</code>
      * @return The message.
      */
     public java.lang.String getMessage() {
@@ -339,7 +339,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string Message = 2;</code>
+     * <code>string message = 2;</code>
      * @return The bytes for message.
      */
     public com.google.protobuf.ByteString
@@ -356,7 +356,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string Message = 2;</code>
+     * <code>string message = 2;</code>
      * @param value The message to set.
      * @return This builder for chaining.
      */
@@ -371,7 +371,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string Message = 2;</code>
+     * <code>string message = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearMessage() {
@@ -381,7 +381,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string Message = 2;</code>
+     * <code>string message = 2;</code>
      * @param value The bytes for message to set.
      * @return This builder for chaining.
      */
