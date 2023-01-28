@@ -9,9 +9,7 @@ import io.scyna.ex.customer.proto.*;
 public class CreateUserService extends Endpoint.Handler<CreateCustomerRequest> {
     @Override
     public void execute() throws io.scyna.Error {
-        context.info("Receive CreateUserRequest");
-
-        var repository = CustomerService.createRepository();
+        var repository = CustomerService.loadRepository(context);
 
         var customer = new Customer();
         customer.ID = CustomerService.nextCustomerID();
