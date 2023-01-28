@@ -6,7 +6,7 @@ import io.scyna.ex.customer.model.Customer;
 import io.scyna.ex.customer.model.Identity;
 import io.scyna.ex.customer.proto.*;
 
-public class CreateUserService extends Endpoint.Handler<CreateCustomerRequest> {
+public class CreateCustomerService extends Endpoint.Handler<CreateCustomerRequest> {
     @Override
     public void execute() throws io.scyna.Error {
         var repository = CustomerService.loadRepository(context);
