@@ -2,6 +2,8 @@ package io.scyna.ex.customer.repository;
 
 import com.datastax.driver.core.exceptions.QueryExecutionException;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
+import com.datastax.driver.core.querybuilder.Select;
+
 import io.scyna.Engine;
 import io.scyna.Logger;
 import io.scyna.ex.customer.domain.IRepository;
@@ -42,6 +44,19 @@ public class Repository implements IRepository {
                 .from(TABLE_NAME)
                 .where(QueryBuilder.eq("identity", identity.toString()))
                 .limit(1);
+        return queryCustomer(select);
+    }
+
+    @Override
+    public Customer getCustomerByID(String ID) throws io.scyna.Error {
+        var select = QueryBuilder.select("id", "name", "identity")
+                .from(TABLE_NAME)
+                .where(QueryBuilder.eq("id", ID))
+                .limit(1);
+        return queryCustomer(select);
+    }
+
+    private Customer queryCustomer(Select select) throws io.scyna.Error {
         try {
             var rs = Engine.DB().session().execute(select);
             var row = rs.one();
@@ -58,11 +73,6 @@ public class Repository implements IRepository {
         } catch (java.lang.Exception e) {
             throw io.scyna.Error.SERVER_ERROR;
         }
-    }
 
-    @Override
-    public Customer getCustomerByID(String ID) throws io.scyna.Error {
-        // TODO Auto-generated method stub
-        return null;
     }
 }
