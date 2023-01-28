@@ -24,6 +24,21 @@ public final class Customer {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_io_scyna_customer_proto_CreateCustomerResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_io_scyna_customer_proto_GetCustomerByIdentityRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_io_scyna_customer_proto_GetCustomerByIdentityRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_io_scyna_customer_proto_GetCustomerRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_io_scyna_customer_proto_GetCustomerRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_io_scyna_customer_proto_GetCustomerResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_io_scyna_customer_proto_GetCustomerResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -36,8 +51,13 @@ public final class Customer {
       "\n\016customer.proto\022\027io.scyna.customer.prot" +
       "o\"G\n\025CreateCustomerRequest\022\016\n\006IDType\030\001 \001" +
       "(\t\022\020\n\010IDNumber\030\002 \001(\t\022\014\n\004Name\030\003 \001(\t\"$\n\026Cr" +
-      "eateCustomerResponse\022\n\n\002ID\030\001 \001(\tB\036\n\032io.s" +
-      "cyna.ex.customer.protoP\001b\006proto3"
+      "eateCustomerResponse\022\n\n\002ID\030\001 \001(\t\"@\n\034GetC" +
+      "ustomerByIdentityRequest\022\016\n\006IDType\030\001 \001(\t" +
+      "\022\020\n\010IDNumber\030\002 \001(\t\" \n\022GetCustomerRequest" +
+      "\022\n\n\002ID\030\001 \001(\t\"Q\n\023GetCustomerResponse\022\n\n\002I" +
+      "D\030\001 \001(\t\022\014\n\004Name\030\002 \001(\t\022\016\n\006IDType\030\003 \001(\t\022\020\n" +
+      "\010IDNumber\030\004 \001(\tB\036\n\032io.scyna.ex.customer." +
+      "protoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -55,6 +75,24 @@ public final class Customer {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_io_scyna_customer_proto_CreateCustomerResponse_descriptor,
         new java.lang.String[] { "ID", });
+    internal_static_io_scyna_customer_proto_GetCustomerByIdentityRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_io_scyna_customer_proto_GetCustomerByIdentityRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_io_scyna_customer_proto_GetCustomerByIdentityRequest_descriptor,
+        new java.lang.String[] { "IDType", "IDNumber", });
+    internal_static_io_scyna_customer_proto_GetCustomerRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_io_scyna_customer_proto_GetCustomerRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_io_scyna_customer_proto_GetCustomerRequest_descriptor,
+        new java.lang.String[] { "ID", });
+    internal_static_io_scyna_customer_proto_GetCustomerResponse_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_io_scyna_customer_proto_GetCustomerResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_io_scyna_customer_proto_GetCustomerResponse_descriptor,
+        new java.lang.String[] { "ID", "Name", "IDType", "IDNumber", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

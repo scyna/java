@@ -4,28 +4,27 @@
 package io.scyna.ex.customer.proto;
 
 /**
- * Protobuf type {@code io.scyna.customer.proto.CreateCustomerRequest}
+ * Protobuf type {@code io.scyna.customer.proto.GetCustomerByIdentityRequest}
  */
-public final class CreateCustomerRequest extends
+public final class GetCustomerByIdentityRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:io.scyna.customer.proto.CreateCustomerRequest)
-    CreateCustomerRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:io.scyna.customer.proto.GetCustomerByIdentityRequest)
+    GetCustomerByIdentityRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use CreateCustomerRequest.newBuilder() to construct.
-  private CreateCustomerRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use GetCustomerByIdentityRequest.newBuilder() to construct.
+  private GetCustomerByIdentityRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private CreateCustomerRequest() {
+  private GetCustomerByIdentityRequest() {
     iDType_ = "";
     iDNumber_ = "";
-    name_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new CreateCustomerRequest();
+    return new GetCustomerByIdentityRequest();
   }
 
   @java.lang.Override
@@ -33,7 +32,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private CreateCustomerRequest(
+  private GetCustomerByIdentityRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -63,12 +62,6 @@ private static final long serialVersionUID = 0L;
             iDNumber_ = s;
             break;
           }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            name_ = s;
-            break;
-          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -90,15 +83,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.scyna.ex.customer.proto.Customer.internal_static_io_scyna_customer_proto_CreateCustomerRequest_descriptor;
+    return io.scyna.ex.customer.proto.Customer.internal_static_io_scyna_customer_proto_GetCustomerByIdentityRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.scyna.ex.customer.proto.Customer.internal_static_io_scyna_customer_proto_CreateCustomerRequest_fieldAccessorTable
+    return io.scyna.ex.customer.proto.Customer.internal_static_io_scyna_customer_proto_GetCustomerByIdentityRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            io.scyna.ex.customer.proto.CreateCustomerRequest.class, io.scyna.ex.customer.proto.CreateCustomerRequest.Builder.class);
+            io.scyna.ex.customer.proto.GetCustomerByIdentityRequest.class, io.scyna.ex.customer.proto.GetCustomerByIdentityRequest.Builder.class);
   }
 
   public static final int IDTYPE_FIELD_NUMBER = 1;
@@ -177,44 +170,6 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int NAME_FIELD_NUMBER = 3;
-  private volatile java.lang.Object name_;
-  /**
-   * <code>string Name = 3;</code>
-   * @return The name.
-   */
-  @java.lang.Override
-  public java.lang.String getName() {
-    java.lang.Object ref = name_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      name_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string Name = 3;</code>
-   * @return The bytes for name.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getNameBytes() {
-    java.lang.Object ref = name_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      name_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -235,9 +190,6 @@ private static final long serialVersionUID = 0L;
     if (!getIDNumberBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, iDNumber_);
     }
-    if (!getNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -253,9 +205,6 @@ private static final long serialVersionUID = 0L;
     if (!getIDNumberBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, iDNumber_);
     }
-    if (!getNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
-    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -266,17 +215,15 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof io.scyna.ex.customer.proto.CreateCustomerRequest)) {
+    if (!(obj instanceof io.scyna.ex.customer.proto.GetCustomerByIdentityRequest)) {
       return super.equals(obj);
     }
-    io.scyna.ex.customer.proto.CreateCustomerRequest other = (io.scyna.ex.customer.proto.CreateCustomerRequest) obj;
+    io.scyna.ex.customer.proto.GetCustomerByIdentityRequest other = (io.scyna.ex.customer.proto.GetCustomerByIdentityRequest) obj;
 
     if (!getIDType()
         .equals(other.getIDType())) return false;
     if (!getIDNumber()
         .equals(other.getIDNumber())) return false;
-    if (!getName()
-        .equals(other.getName())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -292,76 +239,74 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getIDType().hashCode();
     hash = (37 * hash) + IDNUMBER_FIELD_NUMBER;
     hash = (53 * hash) + getIDNumber().hashCode();
-    hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static io.scyna.ex.customer.proto.CreateCustomerRequest parseFrom(
+  public static io.scyna.ex.customer.proto.GetCustomerByIdentityRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.ex.customer.proto.CreateCustomerRequest parseFrom(
+  public static io.scyna.ex.customer.proto.GetCustomerByIdentityRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.ex.customer.proto.CreateCustomerRequest parseFrom(
+  public static io.scyna.ex.customer.proto.GetCustomerByIdentityRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.ex.customer.proto.CreateCustomerRequest parseFrom(
+  public static io.scyna.ex.customer.proto.GetCustomerByIdentityRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.ex.customer.proto.CreateCustomerRequest parseFrom(byte[] data)
+  public static io.scyna.ex.customer.proto.GetCustomerByIdentityRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.ex.customer.proto.CreateCustomerRequest parseFrom(
+  public static io.scyna.ex.customer.proto.GetCustomerByIdentityRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.ex.customer.proto.CreateCustomerRequest parseFrom(java.io.InputStream input)
+  public static io.scyna.ex.customer.proto.GetCustomerByIdentityRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.ex.customer.proto.CreateCustomerRequest parseFrom(
+  public static io.scyna.ex.customer.proto.GetCustomerByIdentityRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.ex.customer.proto.CreateCustomerRequest parseDelimitedFrom(java.io.InputStream input)
+  public static io.scyna.ex.customer.proto.GetCustomerByIdentityRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static io.scyna.ex.customer.proto.CreateCustomerRequest parseDelimitedFrom(
+  public static io.scyna.ex.customer.proto.GetCustomerByIdentityRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.ex.customer.proto.CreateCustomerRequest parseFrom(
+  public static io.scyna.ex.customer.proto.GetCustomerByIdentityRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.ex.customer.proto.CreateCustomerRequest parseFrom(
+  public static io.scyna.ex.customer.proto.GetCustomerByIdentityRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -374,7 +319,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(io.scyna.ex.customer.proto.CreateCustomerRequest prototype) {
+  public static Builder newBuilder(io.scyna.ex.customer.proto.GetCustomerByIdentityRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -390,26 +335,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code io.scyna.customer.proto.CreateCustomerRequest}
+   * Protobuf type {@code io.scyna.customer.proto.GetCustomerByIdentityRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:io.scyna.customer.proto.CreateCustomerRequest)
-      io.scyna.ex.customer.proto.CreateCustomerRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:io.scyna.customer.proto.GetCustomerByIdentityRequest)
+      io.scyna.ex.customer.proto.GetCustomerByIdentityRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.scyna.ex.customer.proto.Customer.internal_static_io_scyna_customer_proto_CreateCustomerRequest_descriptor;
+      return io.scyna.ex.customer.proto.Customer.internal_static_io_scyna_customer_proto_GetCustomerByIdentityRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.scyna.ex.customer.proto.Customer.internal_static_io_scyna_customer_proto_CreateCustomerRequest_fieldAccessorTable
+      return io.scyna.ex.customer.proto.Customer.internal_static_io_scyna_customer_proto_GetCustomerByIdentityRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              io.scyna.ex.customer.proto.CreateCustomerRequest.class, io.scyna.ex.customer.proto.CreateCustomerRequest.Builder.class);
+              io.scyna.ex.customer.proto.GetCustomerByIdentityRequest.class, io.scyna.ex.customer.proto.GetCustomerByIdentityRequest.Builder.class);
     }
 
-    // Construct using io.scyna.ex.customer.proto.CreateCustomerRequest.newBuilder()
+    // Construct using io.scyna.ex.customer.proto.GetCustomerByIdentityRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -431,25 +376,23 @@ private static final long serialVersionUID = 0L;
 
       iDNumber_ = "";
 
-      name_ = "";
-
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.scyna.ex.customer.proto.Customer.internal_static_io_scyna_customer_proto_CreateCustomerRequest_descriptor;
+      return io.scyna.ex.customer.proto.Customer.internal_static_io_scyna_customer_proto_GetCustomerByIdentityRequest_descriptor;
     }
 
     @java.lang.Override
-    public io.scyna.ex.customer.proto.CreateCustomerRequest getDefaultInstanceForType() {
-      return io.scyna.ex.customer.proto.CreateCustomerRequest.getDefaultInstance();
+    public io.scyna.ex.customer.proto.GetCustomerByIdentityRequest getDefaultInstanceForType() {
+      return io.scyna.ex.customer.proto.GetCustomerByIdentityRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public io.scyna.ex.customer.proto.CreateCustomerRequest build() {
-      io.scyna.ex.customer.proto.CreateCustomerRequest result = buildPartial();
+    public io.scyna.ex.customer.proto.GetCustomerByIdentityRequest build() {
+      io.scyna.ex.customer.proto.GetCustomerByIdentityRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -457,11 +400,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public io.scyna.ex.customer.proto.CreateCustomerRequest buildPartial() {
-      io.scyna.ex.customer.proto.CreateCustomerRequest result = new io.scyna.ex.customer.proto.CreateCustomerRequest(this);
+    public io.scyna.ex.customer.proto.GetCustomerByIdentityRequest buildPartial() {
+      io.scyna.ex.customer.proto.GetCustomerByIdentityRequest result = new io.scyna.ex.customer.proto.GetCustomerByIdentityRequest(this);
       result.iDType_ = iDType_;
       result.iDNumber_ = iDNumber_;
-      result.name_ = name_;
       onBuilt();
       return result;
     }
@@ -500,26 +442,22 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof io.scyna.ex.customer.proto.CreateCustomerRequest) {
-        return mergeFrom((io.scyna.ex.customer.proto.CreateCustomerRequest)other);
+      if (other instanceof io.scyna.ex.customer.proto.GetCustomerByIdentityRequest) {
+        return mergeFrom((io.scyna.ex.customer.proto.GetCustomerByIdentityRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(io.scyna.ex.customer.proto.CreateCustomerRequest other) {
-      if (other == io.scyna.ex.customer.proto.CreateCustomerRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(io.scyna.ex.customer.proto.GetCustomerByIdentityRequest other) {
+      if (other == io.scyna.ex.customer.proto.GetCustomerByIdentityRequest.getDefaultInstance()) return this;
       if (!other.getIDType().isEmpty()) {
         iDType_ = other.iDType_;
         onChanged();
       }
       if (!other.getIDNumber().isEmpty()) {
         iDNumber_ = other.iDNumber_;
-        onChanged();
-      }
-      if (!other.getName().isEmpty()) {
-        name_ = other.name_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -537,11 +475,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      io.scyna.ex.customer.proto.CreateCustomerRequest parsedMessage = null;
+      io.scyna.ex.customer.proto.GetCustomerByIdentityRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (io.scyna.ex.customer.proto.CreateCustomerRequest) e.getUnfinishedMessage();
+        parsedMessage = (io.scyna.ex.customer.proto.GetCustomerByIdentityRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -702,82 +640,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
-    private java.lang.Object name_ = "";
-    /**
-     * <code>string Name = 3;</code>
-     * @return The name.
-     */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        name_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string Name = 3;</code>
-     * @return The bytes for name.
-     */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string Name = 3;</code>
-     * @param value The name to set.
-     * @return This builder for chaining.
-     */
-    public Builder setName(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      name_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string Name = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearName() {
-      
-      name_ = getDefaultInstance().getName();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string Name = 3;</code>
-     * @param value The bytes for name to set.
-     * @return This builder for chaining.
-     */
-    public Builder setNameBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      name_ = value;
-      onChanged();
-      return this;
-    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -791,41 +653,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:io.scyna.customer.proto.CreateCustomerRequest)
+    // @@protoc_insertion_point(builder_scope:io.scyna.customer.proto.GetCustomerByIdentityRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:io.scyna.customer.proto.CreateCustomerRequest)
-  private static final io.scyna.ex.customer.proto.CreateCustomerRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:io.scyna.customer.proto.GetCustomerByIdentityRequest)
+  private static final io.scyna.ex.customer.proto.GetCustomerByIdentityRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new io.scyna.ex.customer.proto.CreateCustomerRequest();
+    DEFAULT_INSTANCE = new io.scyna.ex.customer.proto.GetCustomerByIdentityRequest();
   }
 
-  public static io.scyna.ex.customer.proto.CreateCustomerRequest getDefaultInstance() {
+  public static io.scyna.ex.customer.proto.GetCustomerByIdentityRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<CreateCustomerRequest>
-      PARSER = new com.google.protobuf.AbstractParser<CreateCustomerRequest>() {
+  private static final com.google.protobuf.Parser<GetCustomerByIdentityRequest>
+      PARSER = new com.google.protobuf.AbstractParser<GetCustomerByIdentityRequest>() {
     @java.lang.Override
-    public CreateCustomerRequest parsePartialFrom(
+    public GetCustomerByIdentityRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new CreateCustomerRequest(input, extensionRegistry);
+      return new GetCustomerByIdentityRequest(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<CreateCustomerRequest> parser() {
+  public static com.google.protobuf.Parser<GetCustomerByIdentityRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<CreateCustomerRequest> getParserForType() {
+  public com.google.protobuf.Parser<GetCustomerByIdentityRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public io.scyna.ex.customer.proto.CreateCustomerRequest getDefaultInstanceForType() {
+  public io.scyna.ex.customer.proto.GetCustomerByIdentityRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

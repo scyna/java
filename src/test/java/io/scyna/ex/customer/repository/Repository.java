@@ -37,12 +37,11 @@ public class Repository implements IRepository {
     }
 
     @Override
-    public Customer getCustomer(Identity identity) throws io.scyna.Error {
+    public Customer getCustomerByIdentity(Identity identity) throws io.scyna.Error {
         var select = QueryBuilder.select("id", "name", "identity")
                 .from(TABLE_NAME)
                 .where(QueryBuilder.eq("identity", identity.toString()))
                 .limit(1);
-
         try {
             var rs = Engine.DB().session().execute(select);
             var row = rs.one();
@@ -55,10 +54,15 @@ public class Repository implements IRepository {
             customer.ID = row.getString("id");
             customer.identity = Identity.parse(row.getString("identity"));
             customer.name = row.getString("name");
-
             return customer;
         } catch (java.lang.Exception e) {
             throw io.scyna.Error.SERVER_ERROR;
         }
+    }
+
+    @Override
+    public Customer getCustomerByID(String ID) throws io.scyna.Error {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

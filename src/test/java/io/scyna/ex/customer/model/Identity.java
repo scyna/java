@@ -1,5 +1,7 @@
 package io.scyna.ex.customer.model;
 
+import java.util.Arrays;
+
 public class Identity {
 
     private String type;
@@ -15,9 +17,12 @@ public class Identity {
         return new Identity(type, number);
     }
 
-    public static Identity parse(String value) {
-        /* TODO */
-        return new Identity("", "");
+    public static Identity parse(String value) throws io.scyna.Error {
+        var items = Arrays.asList(value.split(":"));
+        if (items.size() != 2) {
+            throw Error.IDENTITY_INVALID;
+        }
+        return new Identity(items.get(0), items.get(1));
     }
 
     public String getType() {

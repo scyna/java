@@ -18,7 +18,7 @@ public class CustomerService {
     }
 
     public static void assureIdentityNotExists(IRepository repository, Identity identity) throws io.scyna.Error {
-        if (repository.getCustomer(identity) != null) {
+        if (repository.getCustomerByIdentity(identity) != null) {
             throw Error.IDENTITY_EXISTS;
         }
     }
