@@ -8,26 +8,17 @@ import io.scyna.ex.customer.repository.Repository;
 
 public class CustomerService {
     private static SerialNumber oneid = new SerialNumber("ddd.customer.oneid");
-    private IRepository repository_;
 
-    private CustomerService(Logger logger) {
-        repository_ = Repository.load(logger);
-    }
-
-    public static CustomerService load(Logger logger) {
-        return new CustomerService(logger);
-    }
-
-    public String nextCustomerID() throws io.scyna.Error {
+    public static String nextCustomerID() throws io.scyna.Error {
         return oneid.next();
     }
 
-    public IRepository repository() {
-        return repository_;
+    public static IRepository loadRepository(Logger logger) {
+        return Repository.load(logger);
     }
 
-    public void assureIdentityNotExists(Identity identity) throws io.scyna.Error {
-        if (repository_.getCustomer(identity) != null) {
+    public static void assureIdentityNotExists(IRepository repository, Identity identity) throws io.scyna.Error {
+        if (repository.getCustomer(identity) != null) {
             throw Error.IDENTITY_EXISTS;
         }
     }
