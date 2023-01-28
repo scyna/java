@@ -58,7 +58,7 @@ public class StreetAddress {
         }
 
         public StreetAddress build() throws io.scyna.Error {
-            /* TODO: validate */
+            /* TODO: validate and throws Error here */
             var ret = new StreetAddress();
             ret.street = street;
             ret.district = district;
