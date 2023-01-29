@@ -3,9 +3,7 @@ package io.scyna.ex.customer.test;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-
 import io.scyna.Endpoint;
 import io.scyna.EndpointTest;
 import io.scyna.Engine;
@@ -37,6 +35,15 @@ public class CreateCustomerTest {
                         .setName("Nguyen Van A")
                         .build())
                 .expectSuccess()
+                .run();
+
+        EndpointTest.New(Path.CREATE_CUSTOMER_URL)
+                .withRequest(CreateCustomerRequest.newBuilder()
+                        .setIDType("CMND")
+                        .setIDNumber("123456789")
+                        .setName("Nguyen Van A")
+                        .build())
+                .expectError(io.scyna.ex.customer.model.Error.CUSTOMER_EXISTS)
                 .run();
     }
 
