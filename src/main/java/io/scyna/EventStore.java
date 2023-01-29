@@ -42,7 +42,8 @@ public class EventStore {
         }
     }
 
-    public void append(Logger LOG, Batch batch, long agrregate, String channel, Message event) throws io.scyna.Error {
+    public void append(Context context, Batch batch, long agrregate, String channel, Message event)
+            throws io.scyna.Error {
         try {
             var id = version + 1;
             var data = event.toByteArray();
@@ -54,9 +55,7 @@ public class EventStore {
 
             Engine.DB().session().execute(batch);
             version = id;
-
-            /* TODO: publish event */
-
+            context.publishEvent(channel, data);
         } catch (DriverException e) {
             e.printStackTrace();
             throw io.scyna.Error.SERVER_ERROR;

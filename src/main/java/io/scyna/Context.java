@@ -12,8 +12,8 @@ public class Context extends Logger {
         super(0, false);
     }
 
-    public <T extends Message> void publishEvent(String channel, T data) {
-
+    public void publishEvent(String channel, byte[] data) {
+        /* TODO */
     }
 
     public Response sendRequest(String url, Message request) {
