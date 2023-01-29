@@ -51,6 +51,7 @@ public class Command extends Endpoint {
                 context.reset(request.getTraceID());
                 reply = msg.getReplyTo();
                 JSON = request.getJSON();
+                flushed = false;
                 var requestBody = request.getBody();
                 source = request.getData();
                 if (JSON) {
@@ -62,6 +63,9 @@ public class Command extends Endpoint {
                     this.request = parser.parseFrom(requestBody);
                 }
                 this.execute();
+                if (!flushed) {
+                    flush(200, io.scyna.Error.OK.toProto());
+                }
             } catch (io.scyna.Error e) {
                 context.error(e.getMessage());
                 flush(400, e.toProto());
