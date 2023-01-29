@@ -28,13 +28,3 @@ message AddResponse
 {
   int32 sum = 1;
 }
-
-message TestSignal 
-{
-  string text = 1;
-}
-
-message TestEvent
-{
-  string text = 1;
-}

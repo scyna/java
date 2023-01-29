@@ -39,16 +39,6 @@ public final class Basic {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_AddResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_TestSignal_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_TestSignal_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_TestEvent_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_TestEvent_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -62,9 +52,8 @@ public final class Basic {
       "(\t\"\034\n\014EchoResponse\022\014\n\004text\030\001 \001(\t\"\035\n\rHell" +
       "oResponse\022\014\n\004text\030\001 \001(\t\"\"\n\nAddRequest\022\t\n" +
       "\001a\030\001 \001(\005\022\t\n\001b\030\002 \001(\005\"\032\n\013AddResponse\022\013\n\003su" +
-      "m\030\001 \001(\005\"\032\n\nTestSignal\022\014\n\004text\030\001 \001(\t\"\031\n\tT" +
-      "estEvent\022\014\n\004text\030\001 \001(\tB#\n\027io.scyna.ex.ba" +
-      "sic.protoP\001\252\002\005protob\006proto3"
+      "m\030\001 \001(\005B#\n\027io.scyna.ex.basic.protoP\001\252\002\005p" +
+      "rotob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -100,18 +89,6 @@ public final class Basic {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AddResponse_descriptor,
         new java.lang.String[] { "Sum", });
-    internal_static_TestSignal_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_TestSignal_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_TestSignal_descriptor,
-        new java.lang.String[] { "Text", });
-    internal_static_TestEvent_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_TestEvent_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_TestEvent_descriptor,
-        new java.lang.String[] { "Text", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
