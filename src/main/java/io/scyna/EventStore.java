@@ -3,7 +3,6 @@ package io.scyna;
 import com.datastax.driver.core.exceptions.DriverException;
 import com.datastax.driver.core.querybuilder.Batch;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 
 public class EventStore {
