@@ -48,6 +48,7 @@ public abstract class Endpoint {
 
         protected String source;
         protected String reply;
+        protected boolean flushed = false;
 
         protected void response(Message m) {
             flush(200, m);
@@ -66,6 +67,7 @@ public abstract class Endpoint {
                         .setSessionID(Engine.session().ID())
                         .setBody(ByteString.copyFrom(body)).build();
                 Engine.connection().publish(reply, response.toByteArray());
+                flushed = true;
             } catch (InvalidProtocolBufferException e) {
                 e.printStackTrace();
             }
@@ -91,7 +93,7 @@ public abstract class Endpoint {
             }
         }
 
-        public abstract void execute() throws io.scyna.Error;
+        protected abstract void execute() throws io.scyna.Error;
 
         @Override
         public void onMessage(io.nats.client.Message msg) {
@@ -100,6 +102,7 @@ public abstract class Endpoint {
                 context.reset(request.getTraceID());
                 reply = msg.getReplyTo();
                 JSON = request.getJSON();
+                flushed = false;
                 var requestBody = request.getBody();
                 source = request.getData();
                 if (JSON) {
@@ -111,6 +114,9 @@ public abstract class Endpoint {
                     this.request = parser.parseFrom(requestBody);
                 }
                 this.execute();
+                if (!flushed) {
+                    flush(200, io.scyna.Error.OK.toProto());
+                }
             } catch (io.scyna.Error e) {
                 context.error(e.getMessage());
                 flush(400, e.toProto());

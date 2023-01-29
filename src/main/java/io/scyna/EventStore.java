@@ -1,7 +1,9 @@
 package io.scyna;
 
 import com.datastax.driver.core.exceptions.DriverException;
+import com.datastax.driver.core.querybuilder.Batch;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
+import com.google.protobuf.Message;
 
 public class EventStore {
 
@@ -39,7 +41,7 @@ public class EventStore {
         }
     }
 
-    public void Append() {
+    public void Append(Logger LOG, Batch batch, long agrregate, String channel, Message event) {
         /* TODO */
     }
 }

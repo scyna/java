@@ -3,6 +3,7 @@ package io.scyna;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 
+import com.datastax.driver.core.querybuilder.Batch;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
@@ -25,6 +26,7 @@ public class Command extends Endpoint {
         protected T request;
         protected Parser<T> parser;
         protected Message.Builder builder;
+        protected Batch batch;
 
         public void init() throws java.lang.Exception {
             try {
@@ -40,7 +42,7 @@ public class Command extends Endpoint {
             }
         }
 
-        public abstract void execute() throws io.scyna.Error;
+        protected abstract void execute() throws io.scyna.Error;
 
         @Override
         public void onMessage(io.nats.client.Message msg) {
@@ -66,6 +68,10 @@ public class Command extends Endpoint {
             } catch (InvalidProtocolBufferException e) {
                 flush(400, io.scyna.Error.BAD_REQUEST.toProto());
             }
+        }
+
+        protected void storeEvent(long agrregate, String channel, Message event) {
+            EventStore.instance().Append(context, batch, agrregate, channel, event);
         }
     }
 }
