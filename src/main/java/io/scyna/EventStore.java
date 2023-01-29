@@ -3,6 +3,7 @@ package io.scyna;
 import com.datastax.driver.core.exceptions.DriverException;
 import com.datastax.driver.core.querybuilder.Batch;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 
 public class EventStore {
@@ -41,7 +42,24 @@ public class EventStore {
         }
     }
 
-    public void Append(Logger LOG, Batch batch, long agrregate, String channel, Message event) {
-        /* TODO */
+    public void append(Logger LOG, Batch batch, long agrregate, String channel, Message event) throws io.scyna.Error {
+        try {
+            var id = version + 1;
+            var data = event.toByteArray();
+            batch.add(QueryBuilder.insertInto(keyspace, TABLE_NAME)
+                    .value("event_id", id)
+                    .value("entity_id", agrregate)
+                    .value("channel", channel)
+                    .value("data", data));
+
+            Engine.DB().session().execute(batch);
+            version = id;
+
+            /* TODO: publish event */
+
+        } catch (DriverException e) {
+            e.printStackTrace();
+            throw io.scyna.Error.SERVER_ERROR;
+        }
     }
 }

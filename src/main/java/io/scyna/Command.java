@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 
 import com.datastax.driver.core.querybuilder.Batch;
+import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
@@ -62,6 +63,9 @@ public class Command extends Endpoint {
                 } else {
                     this.request = parser.parseFrom(requestBody);
                 }
+
+                batch = QueryBuilder.batch();// new batch for new request
+
                 this.execute();
                 if (!flushed) {
                     flush(200, io.scyna.Error.OK.toProto());
@@ -74,8 +78,8 @@ public class Command extends Endpoint {
             }
         }
 
-        protected void storeEvent(long agrregate, String channel, Message event) {
-            EventStore.instance().Append(context, batch, agrregate, channel, event);
+        protected void storeEvent(long agrregate, String channel, Message event) throws io.scyna.Error {
+            EventStore.instance().append(context, batch, agrregate, channel, event);
         }
     }
 }
