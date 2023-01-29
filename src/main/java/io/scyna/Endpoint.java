@@ -112,6 +112,7 @@ public abstract class Endpoint {
                 }
                 this.execute();
             } catch (io.scyna.Error e) {
+                context.error(e.getMessage());
                 flush(400, e.toProto());
             } catch (InvalidProtocolBufferException e) {
                 flush(400, io.scyna.Error.BAD_REQUEST.toProto());

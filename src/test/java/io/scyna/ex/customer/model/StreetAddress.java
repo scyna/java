@@ -35,7 +35,7 @@ public class StreetAddress {
         return ret;
     }
 
-    static class Builder {
+    public static class Builder {
         private String street;
         private String district;
         private String province;

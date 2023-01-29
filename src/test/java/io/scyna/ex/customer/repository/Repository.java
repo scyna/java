@@ -1,5 +1,6 @@
 package io.scyna.ex.customer.repository;
 
+import com.datastax.driver.core.exceptions.DriverException;
 import com.datastax.driver.core.exceptions.QueryExecutionException;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.datastax.driver.core.querybuilder.Select;
@@ -12,7 +13,8 @@ import io.scyna.ex.customer.model.Error;
 import io.scyna.ex.customer.model.Identity;
 
 public class Repository implements IRepository {
-    final String TABLE_NAME = "ddd_ex.customer";
+    final String TABLE_NAME = "customer";
+    final String KEYSPACE = "ddd_ex";
     private Logger logger;
 
     private Repository(Logger logger) {
@@ -25,14 +27,14 @@ public class Repository implements IRepository {
 
     @Override
     public void createCustomer(Customer customer) throws io.scyna.Error {
-        var insertInto = QueryBuilder.insertInto(TABLE_NAME)
+        var insertInto = QueryBuilder.insertInto(KEYSPACE, TABLE_NAME)
                 .value("id", customer.ID)
                 .value("name", customer.name)
                 .value("identity", customer.identity.toString());
         try {
             Engine.DB().session().execute(insertInto);
 
-        } catch (QueryExecutionException e) {
+        } catch (DriverException e) {
             logger.info(e.getMessage());
             throw io.scyna.Error.SERVER_ERROR;
         }
@@ -41,7 +43,7 @@ public class Repository implements IRepository {
     @Override
     public Customer getCustomerByIdentity(Identity identity) throws io.scyna.Error {
         var select = QueryBuilder.select("id", "name", "identity")
-                .from(TABLE_NAME)
+                .from(KEYSPACE, TABLE_NAME)
                 .where(QueryBuilder.eq("identity", identity.toString()))
                 .limit(1);
         return queryCustomer(select);
@@ -50,7 +52,7 @@ public class Repository implements IRepository {
     @Override
     public Customer getCustomerByID(String ID) throws io.scyna.Error {
         var select = QueryBuilder.select("id", "name", "identity")
-                .from(TABLE_NAME)
+                .from(KEYSPACE, TABLE_NAME)
                 .where(QueryBuilder.eq("id", ID))
                 .limit(1);
         return queryCustomer(select);
@@ -70,7 +72,8 @@ public class Repository implements IRepository {
             customer.identity = Identity.parse(row.getString("identity"));
             customer.name = row.getString("name");
             return customer;
-        } catch (java.lang.Exception e) {
+        } catch (DriverException e) {
+            logger.error(e.toString());
             throw io.scyna.Error.SERVER_ERROR;
         }
 

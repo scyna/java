@@ -4,8 +4,12 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.datastax.driver.core.querybuilder.QueryBuilder;
+
 import io.scyna.Endpoint;
+import io.scyna.EndpointTest;
 import io.scyna.Engine;
+import io.scyna.ex.customer.proto.CreateCustomerRequest;
 import io.scyna.ex.customer.service.CreateCustomerService;
 import io.scyna.ex.customer.service.GetCustomerByIdentityService;
 import io.scyna.ex.customer.service.Path;
@@ -20,11 +24,24 @@ public class CreateCustomerTest {
 
     @AfterClass
     public static void teardown() {
+        cleanup();
         Engine.release();
     }
 
     @Test
     public void testCreateShouldSuccess() {
-        /* TODO */
+        EndpointTest.New(Path.CREATE_CUSTOMER_URL)
+                .withRequest(CreateCustomerRequest.newBuilder()
+                        .setIDType("CMND")
+                        .setIDNumber("123456789")
+                        .setName("Nguyen Van A")
+                        .build())
+                .expectSuccess()
+                .run();
+    }
+
+    private static void cleanup() {
+        var truncate = QueryBuilder.truncate("ddd_ex", "customer");
+        Engine.DB().session().execute(truncate);
     }
 }
