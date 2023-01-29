@@ -1,4 +1,4 @@
-package io.scyna.ex.basic;
+package io.scyna.ex.basic.service;
 
 public abstract class Path {
     public static String ECHO_URL = "/example/basic/echo";

@@ -4,6 +4,7 @@ import io.scyna.Engine;
 import io.scyna.Endpoint;
 import io.scyna.ex.basic.proto.EchoRequest;
 import io.scyna.ex.basic.proto.EchoResponse;
+import io.scyna.ex.basic.service.EchoService;
 
 public class Main {
     public static void main(String[] args) throws Exception {

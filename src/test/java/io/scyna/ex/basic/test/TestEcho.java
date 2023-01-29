@@ -6,10 +6,10 @@ import org.junit.Test;
 import io.scyna.Engine;
 import io.scyna.Endpoint;
 import io.scyna.EndpointTest;
-import io.scyna.ex.basic.EchoService;
-import io.scyna.ex.basic.Path;
 import io.scyna.ex.basic.proto.EchoRequest;
 import io.scyna.ex.basic.proto.EchoResponse;
+import io.scyna.ex.basic.service.EchoService;
+import io.scyna.ex.basic.service.Path;
 
 public class TestEcho {
 

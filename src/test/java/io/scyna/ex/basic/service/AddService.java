@@ -1,4 +1,4 @@
-package io.scyna.ex.basic;
+package io.scyna.ex.basic.service;
 
 import io.scyna.Endpoint;
 import io.scyna.ex.basic.proto.AddRequest;

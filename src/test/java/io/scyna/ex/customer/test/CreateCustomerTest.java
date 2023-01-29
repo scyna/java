@@ -27,7 +27,7 @@ public class CreateCustomerTest {
     }
 
     @Test
-    public void testCreateShouldSuccess() {
+    public void testCreateCustomer() {
         EndpointTest.New(Path.CREATE_CUSTOMER_URL)
                 .withRequest(CreateCustomerRequest.newBuilder()
                         .setIDType("CMND")

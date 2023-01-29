@@ -6,10 +6,10 @@ import org.junit.Test;
 import io.scyna.Engine;
 import io.scyna.Endpoint;
 import io.scyna.EndpointTest;
-import io.scyna.ex.basic.AddService;
-import io.scyna.ex.basic.Path;
 import io.scyna.ex.basic.proto.AddRequest;
 import io.scyna.ex.basic.proto.AddResponse;
+import io.scyna.ex.basic.service.AddService;
+import io.scyna.ex.basic.service.Path;
 
 public class TestAdd {
 
