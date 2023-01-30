@@ -16,7 +16,7 @@ import io.scyna.proto.Request;
 
 public class Command extends Endpoint {
     static final String TABLE_NAME = "event_store";
-    static long version;
+    static long version = 0;
     static String keyspace;
 
     public static void initSingleWriter(String keyspace) {
@@ -32,7 +32,7 @@ public class Command extends Endpoint {
             Command.version = version;
             Command.keyspace = keyspace;
         } catch (DriverException e) {
-            Engine.LOG().error("Can not load EventStore configuration fron database");
+            Engine.LOG().error("Can not load SingleWriter configuration from database");
             System.exit(1);
         }
     }
@@ -101,6 +101,11 @@ public class Command extends Endpoint {
         }
 
         protected void storeEvent(long entity, String channel, Message event) throws io.scyna.Error {
+            if (version == 0) {
+                context.error("SingleWriter is not initialized");
+                System.exit(1);
+            }
+
             try {
                 var id = version + 1;
                 var data = event.toByteArray();
