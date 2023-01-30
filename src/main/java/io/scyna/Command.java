@@ -100,13 +100,13 @@ public class Command extends Endpoint {
             }
         }
 
-        protected void storeEvent(long agrregate, String channel, Message event) throws io.scyna.Error {
+        protected void storeEvent(long entity, String channel, Message event) throws io.scyna.Error {
             try {
                 var id = version + 1;
                 var data = event.toByteArray();
                 batch.add(QueryBuilder.insertInto(keyspace, TABLE_NAME)
                         .value("event_id", id)
-                        .value("entity_id", agrregate)
+                        .value("entity_id", entity)
                         .value("channel", channel)
                         .value("data", data));
 
