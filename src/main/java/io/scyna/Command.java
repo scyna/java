@@ -51,6 +51,8 @@ public class Command extends Endpoint {
         protected Message.Builder builder;
         protected Batch batch;
 
+        protected abstract void execute() throws io.scyna.Error;
+
         public void init() throws java.lang.Exception {
             try {
                 Class<T> cls = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
@@ -64,8 +66,6 @@ public class Command extends Endpoint {
                 throw new java.lang.Exception();
             }
         }
-
-        protected abstract void execute() throws io.scyna.Error;
 
         @Override
         public void onMessage(io.nats.client.Message msg) {
