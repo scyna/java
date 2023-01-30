@@ -1,8 +1,8 @@
-package io.scyna.ex.basic.service;
+package io.scyna.ex.hello.service;
 
 import io.scyna.Endpoint;
-import io.scyna.ex.basic.proto.AddRequest;
-import io.scyna.ex.basic.proto.AddResponse;
+import io.scyna.ex.hello.proto.AddRequest;
+import io.scyna.ex.hello.proto.AddResponse;
 
 public class AddService extends Endpoint.Handler<AddRequest> {
     @Override

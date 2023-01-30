@@ -1,15 +1,15 @@
-package io.scyna.ex.basic.test;
+package io.scyna.ex.hello.test;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import io.scyna.Engine;
+import io.scyna.ex.hello.proto.EchoRequest;
+import io.scyna.ex.hello.proto.EchoResponse;
+import io.scyna.ex.hello.service.EchoService;
+import io.scyna.ex.hello.service.Path;
 import io.scyna.Endpoint;
 import io.scyna.EndpointTest;
-import io.scyna.ex.basic.proto.EchoRequest;
-import io.scyna.ex.basic.proto.EchoResponse;
-import io.scyna.ex.basic.service.EchoService;
-import io.scyna.ex.basic.service.Path;
 
 public class TestEcho {
 

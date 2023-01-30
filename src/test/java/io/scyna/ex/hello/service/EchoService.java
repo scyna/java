@@ -1,8 +1,8 @@
-package io.scyna.ex.basic.service;
+package io.scyna.ex.hello.service;
 
 import io.scyna.Endpoint;
-import io.scyna.ex.basic.proto.EchoRequest;
-import io.scyna.ex.basic.proto.EchoResponse;
+import io.scyna.ex.hello.proto.EchoRequest;
+import io.scyna.ex.hello.proto.EchoResponse;
 
 public class EchoService extends Endpoint.Handler<EchoRequest> {
     @Override
