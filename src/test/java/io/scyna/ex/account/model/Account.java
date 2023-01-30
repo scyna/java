@@ -10,7 +10,7 @@ public class Account {
     }
 
     public long ID;
-    public String name;
+    public Name name;
     public EmailAddress email;
     public Password password;
 }

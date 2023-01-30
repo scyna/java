@@ -5,6 +5,7 @@ import io.scyna.Engine;
 import io.scyna.ex.account.domain.AccountService;
 import io.scyna.ex.account.model.Account;
 import io.scyna.ex.account.model.EmailAddress;
+import io.scyna.ex.account.model.Name;
 import io.scyna.ex.account.model.Password;
 import io.scyna.ex.account.proto.AccountCreated;
 import io.scyna.ex.account.proto.CreateAccountRequest;
@@ -17,7 +18,7 @@ public class CreateAccountService extends Command.Handler<CreateAccountRequest> 
 
         var account = new Account();
         account.ID = Engine.ID().next();
-        account.name = request.getName();
+        account.name = Name.create(request.getName());
         account.email = EmailAddress.parse(request.getEmail());
         account.password = Password.create(request.getPassword());
 
@@ -28,7 +29,7 @@ public class CreateAccountService extends Command.Handler<CreateAccountRequest> 
         storeEvent(account.ID, "something here", AccountCreated.newBuilder()
                 .setId(account.ID)
                 .setEmail(account.email.toString())
-                .setName(account.name)
+                .setName(account.name.toString())
                 .build());
 
         response(CreateAccountResponse.newBuilder().setId(account.ID).build());
