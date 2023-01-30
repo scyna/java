@@ -3,6 +3,7 @@ package io.scyna;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 
+import com.datastax.driver.core.exceptions.DriverException;
 import com.datastax.driver.core.querybuilder.Batch;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -14,6 +15,27 @@ import io.nats.client.MessageHandler;
 import io.scyna.proto.Request;
 
 public class Command extends Endpoint {
+    static final String TABLE_NAME = "event_store";
+    static long version;
+    static String keyspace;
+
+    public static void initSingleWriter(String keyspace) {
+        var select = QueryBuilder.select(QueryBuilder.max("event_id")).from(keyspace, TABLE_NAME);
+        try {
+            var rs = Engine.DB().session().execute(select);
+            var row = rs.one();
+
+            long version = 1;
+            if (row != null && (!row.isNull(0))) {
+                version = row.getLong(0);
+            }
+            Command.version = version;
+            Command.keyspace = keyspace;
+        } catch (DriverException e) {
+            Engine.LOG().error("Can not load EventStore configuration fron database");
+            System.exit(1);
+        }
+    }
 
     public static <T extends Message> void register(String url, Handler<T> handler) throws java.lang.Exception {
         System.out.println("Register Command:" + url);
@@ -79,7 +101,22 @@ public class Command extends Endpoint {
         }
 
         protected void storeEvent(long agrregate, String channel, Message event) throws io.scyna.Error {
-            EventStore.instance().append(context, batch, agrregate, channel, event);
+            try {
+                var id = version + 1;
+                var data = event.toByteArray();
+                batch.add(QueryBuilder.insertInto(keyspace, TABLE_NAME)
+                        .value("event_id", id)
+                        .value("entity_id", agrregate)
+                        .value("channel", channel)
+                        .value("data", data));
+
+                Engine.DB().session().execute(batch);
+                version = id;
+                context.publishEvent(channel, data);
+            } catch (DriverException e) {
+                e.printStackTrace();
+                throw io.scyna.Error.SERVER_ERROR;
+            }
         }
     }
 }
