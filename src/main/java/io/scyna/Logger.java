@@ -16,10 +16,6 @@ public class Logger {
         this.session = session;
     }
 
-    public void reset(long id) {
-        this.id = id;
-    }
-
     private void add(int level, String messgage) {
         messgage = format(messgage);
         System.out.println(messgage);

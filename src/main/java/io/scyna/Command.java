@@ -71,7 +71,7 @@ public class Command extends Endpoint {
         public void onMessage(io.nats.client.Message msg) {
             try {
                 var request = Request.parseFrom(msg.getData());
-                context.reset(request.getTraceID());
+                context.id = request.getTraceID();
                 reply = msg.getReplyTo();
                 JSON = request.getJSON();
                 flushed = false;
