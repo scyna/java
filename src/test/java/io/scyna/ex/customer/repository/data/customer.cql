@@ -1,8 +1,8 @@
-DROP KEYSPACE IF EXISTS ddd_ex;
-CREATE KEYSPACE ddd_ex WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
+DROP KEYSPACE IF EXISTS ex_customer;
+CREATE KEYSPACE ex_customer WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
 
-DROP TABLE IF EXISTS ddd_ex.customer;
-CREATE TABLE ddd_ex.customer
+DROP TABLE IF EXISTS ex_customer.customer;
+CREATE TABLE ex_customer.customer
 (
     id           text PRIMARY KEY,
     name         text,
@@ -12,4 +12,4 @@ CREATE TABLE ddd_ex.customer
     dob          text,
     gender       text,
 );
-CREATE INDEX ON ddd_ex.customer (identity);
+CREATE INDEX ON ex_customer.customer (identity);
