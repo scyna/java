@@ -10,6 +10,7 @@ public class AccountService {
         return Repository.load(logger);
     }
 
-    public static void assureEmailNotExists(IRepository repository, EmailAddress email) throws io.scyna.Error {
+    public static void assureAccountNotExists(IRepository repository, EmailAddress email) throws io.scyna.Error {
+        /* TODO */
     }
 }

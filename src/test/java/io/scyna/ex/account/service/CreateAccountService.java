@@ -21,7 +21,7 @@ public class CreateAccountService extends Command.Handler<CreateAccountRequest> 
         account.email = EmailAddress.parse(request.getEmail());
         account.password = Password.create(request.getPassword());
 
-        AccountService.assureEmailNotExists(repository, account.email);
+        AccountService.assureAccountNotExists(repository, account.email);
 
         repository.createAccount(account);
 
