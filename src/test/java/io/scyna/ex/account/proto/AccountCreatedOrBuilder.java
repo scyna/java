@@ -3,8 +3,8 @@
 
 package io.scyna.ex.account.proto;
 
-public interface GetAccountResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.customer.proto.GetAccountResponse)
+public interface AccountCreatedOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:io.scyna.customer.proto.AccountCreated)
     com.google.protobuf.MessageOrBuilder {
 
   /**

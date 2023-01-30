@@ -4,18 +4,18 @@
 package io.scyna.ex.account.proto;
 
 /**
- * Protobuf type {@code io.scyna.customer.proto.GetAccountResponse}
+ * Protobuf type {@code io.scyna.customer.proto.AccountCreated}
  */
-public final class GetAccountResponse extends
+public final class AccountCreated extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:io.scyna.customer.proto.GetAccountResponse)
-    GetAccountResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:io.scyna.customer.proto.AccountCreated)
+    AccountCreatedOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use GetAccountResponse.newBuilder() to construct.
-  private GetAccountResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use AccountCreated.newBuilder() to construct.
+  private AccountCreated(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private GetAccountResponse() {
+  private AccountCreated() {
     email_ = "";
     name_ = "";
   }
@@ -24,7 +24,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new GetAccountResponse();
+    return new AccountCreated();
   }
 
   @java.lang.Override
@@ -32,7 +32,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private GetAccountResponse(
+  private AccountCreated(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -88,15 +88,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_GetAccountResponse_descriptor;
+    return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_AccountCreated_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_GetAccountResponse_fieldAccessorTable
+    return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_AccountCreated_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            io.scyna.ex.account.proto.GetAccountResponse.class, io.scyna.ex.account.proto.GetAccountResponse.Builder.class);
+            io.scyna.ex.account.proto.AccountCreated.class, io.scyna.ex.account.proto.AccountCreated.Builder.class);
   }
 
   public static final int ID_FIELD_NUMBER = 1;
@@ -238,10 +238,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof io.scyna.ex.account.proto.GetAccountResponse)) {
+    if (!(obj instanceof io.scyna.ex.account.proto.AccountCreated)) {
       return super.equals(obj);
     }
-    io.scyna.ex.account.proto.GetAccountResponse other = (io.scyna.ex.account.proto.GetAccountResponse) obj;
+    io.scyna.ex.account.proto.AccountCreated other = (io.scyna.ex.account.proto.AccountCreated) obj;
 
     if (getId()
         != other.getId()) return false;
@@ -272,69 +272,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AccountCreated parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AccountCreated parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AccountCreated parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AccountCreated parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(byte[] data)
+  public static io.scyna.ex.account.proto.AccountCreated parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AccountCreated parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(java.io.InputStream input)
+  public static io.scyna.ex.account.proto.AccountCreated parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AccountCreated parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseDelimitedFrom(java.io.InputStream input)
+  public static io.scyna.ex.account.proto.AccountCreated parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseDelimitedFrom(
+  public static io.scyna.ex.account.proto.AccountCreated parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AccountCreated parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AccountCreated parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -347,7 +347,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(io.scyna.ex.account.proto.GetAccountResponse prototype) {
+  public static Builder newBuilder(io.scyna.ex.account.proto.AccountCreated prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -363,26 +363,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code io.scyna.customer.proto.GetAccountResponse}
+   * Protobuf type {@code io.scyna.customer.proto.AccountCreated}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:io.scyna.customer.proto.GetAccountResponse)
-      io.scyna.ex.account.proto.GetAccountResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:io.scyna.customer.proto.AccountCreated)
+      io.scyna.ex.account.proto.AccountCreatedOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_GetAccountResponse_descriptor;
+      return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_AccountCreated_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_GetAccountResponse_fieldAccessorTable
+      return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_AccountCreated_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              io.scyna.ex.account.proto.GetAccountResponse.class, io.scyna.ex.account.proto.GetAccountResponse.Builder.class);
+              io.scyna.ex.account.proto.AccountCreated.class, io.scyna.ex.account.proto.AccountCreated.Builder.class);
     }
 
-    // Construct using io.scyna.ex.account.proto.GetAccountResponse.newBuilder()
+    // Construct using io.scyna.ex.account.proto.AccountCreated.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -412,17 +412,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_GetAccountResponse_descriptor;
+      return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_AccountCreated_descriptor;
     }
 
     @java.lang.Override
-    public io.scyna.ex.account.proto.GetAccountResponse getDefaultInstanceForType() {
-      return io.scyna.ex.account.proto.GetAccountResponse.getDefaultInstance();
+    public io.scyna.ex.account.proto.AccountCreated getDefaultInstanceForType() {
+      return io.scyna.ex.account.proto.AccountCreated.getDefaultInstance();
     }
 
     @java.lang.Override
-    public io.scyna.ex.account.proto.GetAccountResponse build() {
-      io.scyna.ex.account.proto.GetAccountResponse result = buildPartial();
+    public io.scyna.ex.account.proto.AccountCreated build() {
+      io.scyna.ex.account.proto.AccountCreated result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -430,8 +430,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public io.scyna.ex.account.proto.GetAccountResponse buildPartial() {
-      io.scyna.ex.account.proto.GetAccountResponse result = new io.scyna.ex.account.proto.GetAccountResponse(this);
+    public io.scyna.ex.account.proto.AccountCreated buildPartial() {
+      io.scyna.ex.account.proto.AccountCreated result = new io.scyna.ex.account.proto.AccountCreated(this);
       result.id_ = id_;
       result.email_ = email_;
       result.name_ = name_;
@@ -473,16 +473,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof io.scyna.ex.account.proto.GetAccountResponse) {
-        return mergeFrom((io.scyna.ex.account.proto.GetAccountResponse)other);
+      if (other instanceof io.scyna.ex.account.proto.AccountCreated) {
+        return mergeFrom((io.scyna.ex.account.proto.AccountCreated)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(io.scyna.ex.account.proto.GetAccountResponse other) {
-      if (other == io.scyna.ex.account.proto.GetAccountResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(io.scyna.ex.account.proto.AccountCreated other) {
+      if (other == io.scyna.ex.account.proto.AccountCreated.getDefaultInstance()) return this;
       if (other.getId() != 0L) {
         setId(other.getId());
       }
@@ -509,11 +509,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      io.scyna.ex.account.proto.GetAccountResponse parsedMessage = null;
+      io.scyna.ex.account.proto.AccountCreated parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (io.scyna.ex.account.proto.GetAccountResponse) e.getUnfinishedMessage();
+        parsedMessage = (io.scyna.ex.account.proto.AccountCreated) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -718,41 +718,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:io.scyna.customer.proto.GetAccountResponse)
+    // @@protoc_insertion_point(builder_scope:io.scyna.customer.proto.AccountCreated)
   }
 
-  // @@protoc_insertion_point(class_scope:io.scyna.customer.proto.GetAccountResponse)
-  private static final io.scyna.ex.account.proto.GetAccountResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:io.scyna.customer.proto.AccountCreated)
+  private static final io.scyna.ex.account.proto.AccountCreated DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new io.scyna.ex.account.proto.GetAccountResponse();
+    DEFAULT_INSTANCE = new io.scyna.ex.account.proto.AccountCreated();
   }
 
-  public static io.scyna.ex.account.proto.GetAccountResponse getDefaultInstance() {
+  public static io.scyna.ex.account.proto.AccountCreated getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<GetAccountResponse>
-      PARSER = new com.google.protobuf.AbstractParser<GetAccountResponse>() {
+  private static final com.google.protobuf.Parser<AccountCreated>
+      PARSER = new com.google.protobuf.AbstractParser<AccountCreated>() {
     @java.lang.Override
-    public GetAccountResponse parsePartialFrom(
+    public AccountCreated parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new GetAccountResponse(input, extensionRegistry);
+      return new AccountCreated(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<GetAccountResponse> parser() {
+  public static com.google.protobuf.Parser<AccountCreated> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<GetAccountResponse> getParserForType() {
+  public com.google.protobuf.Parser<AccountCreated> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public io.scyna.ex.account.proto.GetAccountResponse getDefaultInstanceForType() {
+  public io.scyna.ex.account.proto.AccountCreated getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

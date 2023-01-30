@@ -3,8 +3,8 @@
 
 package io.scyna.ex.account.proto;
 
-public interface CreateAccountRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:io.scyna.customer.proto.CreateAccountRequest)
+public interface AuthenticateRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:io.scyna.customer.proto.AuthenticateRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -20,24 +20,12 @@ public interface CreateAccountRequestOrBuilder extends
       getEmailBytes();
 
   /**
-   * <code>string name = 2;</code>
-   * @return The name.
-   */
-  java.lang.String getName();
-  /**
-   * <code>string name = 2;</code>
-   * @return The bytes for name.
-   */
-  com.google.protobuf.ByteString
-      getNameBytes();
-
-  /**
-   * <code>string password = 3;</code>
+   * <code>string password = 2;</code>
    * @return The password.
    */
   java.lang.String getPassword();
   /**
-   * <code>string password = 3;</code>
+   * <code>string password = 2;</code>
    * @return The bytes for password.
    */
   com.google.protobuf.ByteString

@@ -25,6 +25,11 @@ public final class Account {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_io_scyna_customer_proto_CreateAccountResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_io_scyna_customer_proto_AccountCreated_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_io_scyna_customer_proto_AccountCreated_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_io_scyna_customer_proto_GetAccountByEmailRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -39,6 +44,26 @@ public final class Account {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_io_scyna_customer_proto_GetAccountResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_io_scyna_customer_proto_ChangePasswordRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_io_scyna_customer_proto_ChangePasswordRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_io_scyna_customer_proto_PasswordChanged_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_io_scyna_customer_proto_PasswordChanged_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_io_scyna_customer_proto_AuthenticateRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_io_scyna_customer_proto_AuthenticateRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_io_scyna_customer_proto_AuthenticateResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_io_scyna_customer_proto_AuthenticateResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -49,13 +74,21 @@ public final class Account {
   static {
     java.lang.String[] descriptorData = {
       "\n\raccount.proto\022\027io.scyna.customer.proto" +
-      "\"3\n\024CreateAccountRequest\022\r\n\005Email\030\001 \001(\t\022" +
-      "\014\n\004Name\030\003 \001(\t\"#\n\025CreateAccountResponse\022\n" +
-      "\n\002ID\030\001 \001(\004\")\n\030GetAccountByEmailRequest\022\r" +
-      "\n\005Email\030\001 \001(\t\"#\n\025GetAccountByIDRequest\022\n" +
-      "\n\002ID\030\001 \001(\004\"=\n\022GetAccountResponse\022\n\n\002ID\030\001" +
-      " \001(\t\022\014\n\004Name\030\002 \001(\t\022\r\n\005Email\030\003 \001(\tB\035\n\031io." +
-      "scyna.ex.account.protoP\001b\006proto3"
+      "\"E\n\024CreateAccountRequest\022\r\n\005email\030\001 \001(\t\022" +
+      "\014\n\004name\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\"#\n\025Creat" +
+      "eAccountResponse\022\n\n\002id\030\001 \001(\004\"9\n\016AccountC" +
+      "reated\022\n\n\002id\030\001 \001(\004\022\r\n\005email\030\002 \001(\t\022\014\n\004nam" +
+      "e\030\003 \001(\t\")\n\030GetAccountByEmailRequest\022\r\n\005e" +
+      "mail\030\001 \001(\t\"#\n\025GetAccountByIDRequest\022\n\n\002i" +
+      "d\030\001 \001(\004\"=\n\022GetAccountResponse\022\n\n\002id\030\001 \001(" +
+      "\004\022\r\n\005email\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\"D\n\025Change" +
+      "PasswordRequest\022\n\n\002id\030\001 \001(\004\022\017\n\007current\030\002" +
+      " \001(\t\022\016\n\006future\030\003 \001(\t\">\n\017PasswordChanged\022" +
+      "\n\n\002id\030\001 \001(\004\022\017\n\007current\030\002 \001(\t\022\016\n\006future\030\003" +
+      " \001(\t\"6\n\023AuthenticateRequest\022\r\n\005email\030\001 \001" +
+      "(\t\022\020\n\010password\030\002 \001(\t\"2\n\024AuthenticateResp" +
+      "onse\022\014\n\004host\030\001 \001(\t\022\014\n\004port\030\002 \001(\rB\035\n\031io.s" +
+      "cyna.ex.account.protoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -66,31 +99,61 @@ public final class Account {
     internal_static_io_scyna_customer_proto_CreateAccountRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_io_scyna_customer_proto_CreateAccountRequest_descriptor,
-        new java.lang.String[] { "Email", "Name", });
+        new java.lang.String[] { "Email", "Name", "Password", });
     internal_static_io_scyna_customer_proto_CreateAccountResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_io_scyna_customer_proto_CreateAccountResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_io_scyna_customer_proto_CreateAccountResponse_descriptor,
-        new java.lang.String[] { "ID", });
-    internal_static_io_scyna_customer_proto_GetAccountByEmailRequest_descriptor =
+        new java.lang.String[] { "Id", });
+    internal_static_io_scyna_customer_proto_AccountCreated_descriptor =
       getDescriptor().getMessageTypes().get(2);
+    internal_static_io_scyna_customer_proto_AccountCreated_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_io_scyna_customer_proto_AccountCreated_descriptor,
+        new java.lang.String[] { "Id", "Email", "Name", });
+    internal_static_io_scyna_customer_proto_GetAccountByEmailRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
     internal_static_io_scyna_customer_proto_GetAccountByEmailRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_io_scyna_customer_proto_GetAccountByEmailRequest_descriptor,
         new java.lang.String[] { "Email", });
     internal_static_io_scyna_customer_proto_GetAccountByIDRequest_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_io_scyna_customer_proto_GetAccountByIDRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_io_scyna_customer_proto_GetAccountByIDRequest_descriptor,
-        new java.lang.String[] { "ID", });
+        new java.lang.String[] { "Id", });
     internal_static_io_scyna_customer_proto_GetAccountResponse_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_io_scyna_customer_proto_GetAccountResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_io_scyna_customer_proto_GetAccountResponse_descriptor,
-        new java.lang.String[] { "ID", "Name", "Email", });
+        new java.lang.String[] { "Id", "Email", "Name", });
+    internal_static_io_scyna_customer_proto_ChangePasswordRequest_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_io_scyna_customer_proto_ChangePasswordRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_io_scyna_customer_proto_ChangePasswordRequest_descriptor,
+        new java.lang.String[] { "Id", "Current", "Future", });
+    internal_static_io_scyna_customer_proto_PasswordChanged_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_io_scyna_customer_proto_PasswordChanged_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_io_scyna_customer_proto_PasswordChanged_descriptor,
+        new java.lang.String[] { "Id", "Current", "Future", });
+    internal_static_io_scyna_customer_proto_AuthenticateRequest_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_io_scyna_customer_proto_AuthenticateRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_io_scyna_customer_proto_AuthenticateRequest_descriptor,
+        new java.lang.String[] { "Email", "Password", });
+    internal_static_io_scyna_customer_proto_AuthenticateResponse_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_io_scyna_customer_proto_AuthenticateResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_io_scyna_customer_proto_AuthenticateResponse_descriptor,
+        new java.lang.String[] { "Host", "Port", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

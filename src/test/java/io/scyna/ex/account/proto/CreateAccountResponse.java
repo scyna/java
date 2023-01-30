@@ -50,7 +50,7 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            iD_ = input.readUInt64();
+            id_ = input.readUInt64();
             break;
           }
           default: {
@@ -86,14 +86,14 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int ID_FIELD_NUMBER = 1;
-  private long iD_;
+  private long id_;
   /**
-   * <code>uint64 ID = 1;</code>
-   * @return The iD.
+   * <code>uint64 id = 1;</code>
+   * @return The id.
    */
   @java.lang.Override
-  public long getID() {
-    return iD_;
+  public long getId() {
+    return id_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -110,8 +110,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (iD_ != 0L) {
-      output.writeUInt64(1, iD_);
+    if (id_ != 0L) {
+      output.writeUInt64(1, id_);
     }
     unknownFields.writeTo(output);
   }
@@ -122,9 +122,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (iD_ != 0L) {
+    if (id_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(1, iD_);
+        .computeUInt64Size(1, id_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -141,8 +141,8 @@ private static final long serialVersionUID = 0L;
     }
     io.scyna.ex.account.proto.CreateAccountResponse other = (io.scyna.ex.account.proto.CreateAccountResponse) obj;
 
-    if (getID()
-        != other.getID()) return false;
+    if (getId()
+        != other.getId()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -156,7 +156,7 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getID());
+        getId());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -290,7 +290,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      iD_ = 0L;
+      id_ = 0L;
 
       return this;
     }
@@ -318,7 +318,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public io.scyna.ex.account.proto.CreateAccountResponse buildPartial() {
       io.scyna.ex.account.proto.CreateAccountResponse result = new io.scyna.ex.account.proto.CreateAccountResponse(this);
-      result.iD_ = iD_;
+      result.id_ = id_;
       onBuilt();
       return result;
     }
@@ -367,8 +367,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(io.scyna.ex.account.proto.CreateAccountResponse other) {
       if (other == io.scyna.ex.account.proto.CreateAccountResponse.getDefaultInstance()) return this;
-      if (other.getID() != 0L) {
-        setID(other.getID());
+      if (other.getId() != 0L) {
+        setId(other.getId());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -399,33 +399,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long iD_ ;
+    private long id_ ;
     /**
-     * <code>uint64 ID = 1;</code>
-     * @return The iD.
+     * <code>uint64 id = 1;</code>
+     * @return The id.
      */
     @java.lang.Override
-    public long getID() {
-      return iD_;
+    public long getId() {
+      return id_;
     }
     /**
-     * <code>uint64 ID = 1;</code>
-     * @param value The iD to set.
+     * <code>uint64 id = 1;</code>
+     * @param value The id to set.
      * @return This builder for chaining.
      */
-    public Builder setID(long value) {
+    public Builder setId(long value) {
       
-      iD_ = value;
+      id_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 ID = 1;</code>
+     * <code>uint64 id = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearID() {
+    public Builder clearId() {
       
-      iD_ = 0L;
+      id_ = 0L;
       onChanged();
       return this;
     }

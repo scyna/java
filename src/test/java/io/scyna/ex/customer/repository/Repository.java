@@ -32,6 +32,7 @@ public class Repository implements IRepository {
                 .value("identity", customer.identity.toString());
         try {
             Engine.DB().session().execute(insertInto);
+            customer.logger = logger;
 
         } catch (DriverException e) {
             logger.info(e.getMessage());
@@ -67,6 +68,7 @@ public class Repository implements IRepository {
             }
 
             var customer = new Customer();
+            customer.logger = logger;
             customer.ID = row.getString("id");
             customer.identity = Identity.parse(row.getString("identity"));
             customer.name = row.getString("name");

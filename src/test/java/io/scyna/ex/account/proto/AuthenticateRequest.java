@@ -4,27 +4,27 @@
 package io.scyna.ex.account.proto;
 
 /**
- * Protobuf type {@code io.scyna.customer.proto.GetAccountResponse}
+ * Protobuf type {@code io.scyna.customer.proto.AuthenticateRequest}
  */
-public final class GetAccountResponse extends
+public final class AuthenticateRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:io.scyna.customer.proto.GetAccountResponse)
-    GetAccountResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:io.scyna.customer.proto.AuthenticateRequest)
+    AuthenticateRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use GetAccountResponse.newBuilder() to construct.
-  private GetAccountResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use AuthenticateRequest.newBuilder() to construct.
+  private AuthenticateRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private GetAccountResponse() {
+  private AuthenticateRequest() {
     email_ = "";
-    name_ = "";
+    password_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new GetAccountResponse();
+    return new AuthenticateRequest();
   }
 
   @java.lang.Override
@@ -32,7 +32,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private GetAccountResponse(
+  private AuthenticateRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -50,21 +50,16 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
-
-            id_ = input.readUInt64();
-            break;
-          }
-          case 18: {
+          case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
             email_ = s;
             break;
           }
-          case 26: {
+          case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            name_ = s;
+            password_ = s;
             break;
           }
           default: {
@@ -88,32 +83,21 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_GetAccountResponse_descriptor;
+    return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_AuthenticateRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_GetAccountResponse_fieldAccessorTable
+    return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_AuthenticateRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            io.scyna.ex.account.proto.GetAccountResponse.class, io.scyna.ex.account.proto.GetAccountResponse.Builder.class);
+            io.scyna.ex.account.proto.AuthenticateRequest.class, io.scyna.ex.account.proto.AuthenticateRequest.Builder.class);
   }
 
-  public static final int ID_FIELD_NUMBER = 1;
-  private long id_;
-  /**
-   * <code>uint64 id = 1;</code>
-   * @return The id.
-   */
-  @java.lang.Override
-  public long getId() {
-    return id_;
-  }
-
-  public static final int EMAIL_FIELD_NUMBER = 2;
+  public static final int EMAIL_FIELD_NUMBER = 1;
   private volatile java.lang.Object email_;
   /**
-   * <code>string email = 2;</code>
+   * <code>string email = 1;</code>
    * @return The email.
    */
   @java.lang.Override
@@ -130,7 +114,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string email = 2;</code>
+   * <code>string email = 1;</code>
    * @return The bytes for email.
    */
   @java.lang.Override
@@ -148,38 +132,38 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int NAME_FIELD_NUMBER = 3;
-  private volatile java.lang.Object name_;
+  public static final int PASSWORD_FIELD_NUMBER = 2;
+  private volatile java.lang.Object password_;
   /**
-   * <code>string name = 3;</code>
-   * @return The name.
+   * <code>string password = 2;</code>
+   * @return The password.
    */
   @java.lang.Override
-  public java.lang.String getName() {
-    java.lang.Object ref = name_;
+  public java.lang.String getPassword() {
+    java.lang.Object ref = password_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      name_ = s;
+      password_ = s;
       return s;
     }
   }
   /**
-   * <code>string name = 3;</code>
-   * @return The bytes for name.
+   * <code>string password = 2;</code>
+   * @return The bytes for password.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getNameBytes() {
-    java.lang.Object ref = name_;
+      getPasswordBytes() {
+    java.lang.Object ref = password_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      name_ = b;
+      password_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -200,14 +184,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (id_ != 0L) {
-      output.writeUInt64(1, id_);
-    }
     if (!getEmailBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, email_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, email_);
     }
-    if (!getNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
+    if (!getPasswordBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
     }
     unknownFields.writeTo(output);
   }
@@ -218,15 +199,11 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (id_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(1, id_);
-    }
     if (!getEmailBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, email_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, email_);
     }
-    if (!getNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
+    if (!getPasswordBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -238,17 +215,15 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof io.scyna.ex.account.proto.GetAccountResponse)) {
+    if (!(obj instanceof io.scyna.ex.account.proto.AuthenticateRequest)) {
       return super.equals(obj);
     }
-    io.scyna.ex.account.proto.GetAccountResponse other = (io.scyna.ex.account.proto.GetAccountResponse) obj;
+    io.scyna.ex.account.proto.AuthenticateRequest other = (io.scyna.ex.account.proto.AuthenticateRequest) obj;
 
-    if (getId()
-        != other.getId()) return false;
     if (!getEmail()
         .equals(other.getEmail())) return false;
-    if (!getName()
-        .equals(other.getName())) return false;
+    if (!getPassword()
+        .equals(other.getPassword())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -260,81 +235,78 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + ID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getId());
     hash = (37 * hash) + EMAIL_FIELD_NUMBER;
     hash = (53 * hash) + getEmail().hashCode();
-    hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
+    hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+    hash = (53 * hash) + getPassword().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AuthenticateRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AuthenticateRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AuthenticateRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AuthenticateRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(byte[] data)
+  public static io.scyna.ex.account.proto.AuthenticateRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AuthenticateRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(java.io.InputStream input)
+  public static io.scyna.ex.account.proto.AuthenticateRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AuthenticateRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseDelimitedFrom(java.io.InputStream input)
+  public static io.scyna.ex.account.proto.AuthenticateRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseDelimitedFrom(
+  public static io.scyna.ex.account.proto.AuthenticateRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AuthenticateRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.ex.account.proto.GetAccountResponse parseFrom(
+  public static io.scyna.ex.account.proto.AuthenticateRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -347,7 +319,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(io.scyna.ex.account.proto.GetAccountResponse prototype) {
+  public static Builder newBuilder(io.scyna.ex.account.proto.AuthenticateRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -363,26 +335,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code io.scyna.customer.proto.GetAccountResponse}
+   * Protobuf type {@code io.scyna.customer.proto.AuthenticateRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:io.scyna.customer.proto.GetAccountResponse)
-      io.scyna.ex.account.proto.GetAccountResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:io.scyna.customer.proto.AuthenticateRequest)
+      io.scyna.ex.account.proto.AuthenticateRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_GetAccountResponse_descriptor;
+      return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_AuthenticateRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_GetAccountResponse_fieldAccessorTable
+      return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_AuthenticateRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              io.scyna.ex.account.proto.GetAccountResponse.class, io.scyna.ex.account.proto.GetAccountResponse.Builder.class);
+              io.scyna.ex.account.proto.AuthenticateRequest.class, io.scyna.ex.account.proto.AuthenticateRequest.Builder.class);
     }
 
-    // Construct using io.scyna.ex.account.proto.GetAccountResponse.newBuilder()
+    // Construct using io.scyna.ex.account.proto.AuthenticateRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -400,11 +372,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      id_ = 0L;
-
       email_ = "";
 
-      name_ = "";
+      password_ = "";
 
       return this;
     }
@@ -412,17 +382,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_GetAccountResponse_descriptor;
+      return io.scyna.ex.account.proto.Account.internal_static_io_scyna_customer_proto_AuthenticateRequest_descriptor;
     }
 
     @java.lang.Override
-    public io.scyna.ex.account.proto.GetAccountResponse getDefaultInstanceForType() {
-      return io.scyna.ex.account.proto.GetAccountResponse.getDefaultInstance();
+    public io.scyna.ex.account.proto.AuthenticateRequest getDefaultInstanceForType() {
+      return io.scyna.ex.account.proto.AuthenticateRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public io.scyna.ex.account.proto.GetAccountResponse build() {
-      io.scyna.ex.account.proto.GetAccountResponse result = buildPartial();
+    public io.scyna.ex.account.proto.AuthenticateRequest build() {
+      io.scyna.ex.account.proto.AuthenticateRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -430,11 +400,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public io.scyna.ex.account.proto.GetAccountResponse buildPartial() {
-      io.scyna.ex.account.proto.GetAccountResponse result = new io.scyna.ex.account.proto.GetAccountResponse(this);
-      result.id_ = id_;
+    public io.scyna.ex.account.proto.AuthenticateRequest buildPartial() {
+      io.scyna.ex.account.proto.AuthenticateRequest result = new io.scyna.ex.account.proto.AuthenticateRequest(this);
       result.email_ = email_;
-      result.name_ = name_;
+      result.password_ = password_;
       onBuilt();
       return result;
     }
@@ -473,25 +442,22 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof io.scyna.ex.account.proto.GetAccountResponse) {
-        return mergeFrom((io.scyna.ex.account.proto.GetAccountResponse)other);
+      if (other instanceof io.scyna.ex.account.proto.AuthenticateRequest) {
+        return mergeFrom((io.scyna.ex.account.proto.AuthenticateRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(io.scyna.ex.account.proto.GetAccountResponse other) {
-      if (other == io.scyna.ex.account.proto.GetAccountResponse.getDefaultInstance()) return this;
-      if (other.getId() != 0L) {
-        setId(other.getId());
-      }
+    public Builder mergeFrom(io.scyna.ex.account.proto.AuthenticateRequest other) {
+      if (other == io.scyna.ex.account.proto.AuthenticateRequest.getDefaultInstance()) return this;
       if (!other.getEmail().isEmpty()) {
         email_ = other.email_;
         onChanged();
       }
-      if (!other.getName().isEmpty()) {
-        name_ = other.name_;
+      if (!other.getPassword().isEmpty()) {
+        password_ = other.password_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -509,11 +475,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      io.scyna.ex.account.proto.GetAccountResponse parsedMessage = null;
+      io.scyna.ex.account.proto.AuthenticateRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (io.scyna.ex.account.proto.GetAccountResponse) e.getUnfinishedMessage();
+        parsedMessage = (io.scyna.ex.account.proto.AuthenticateRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -523,40 +489,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long id_ ;
-    /**
-     * <code>uint64 id = 1;</code>
-     * @return The id.
-     */
-    @java.lang.Override
-    public long getId() {
-      return id_;
-    }
-    /**
-     * <code>uint64 id = 1;</code>
-     * @param value The id to set.
-     * @return This builder for chaining.
-     */
-    public Builder setId(long value) {
-      
-      id_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint64 id = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearId() {
-      
-      id_ = 0L;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object email_ = "";
     /**
-     * <code>string email = 2;</code>
+     * <code>string email = 1;</code>
      * @return The email.
      */
     public java.lang.String getEmail() {
@@ -572,7 +507,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string email = 2;</code>
+     * <code>string email = 1;</code>
      * @return The bytes for email.
      */
     public com.google.protobuf.ByteString
@@ -589,7 +524,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string email = 2;</code>
+     * <code>string email = 1;</code>
      * @param value The email to set.
      * @return This builder for chaining.
      */
@@ -604,7 +539,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string email = 2;</code>
+     * <code>string email = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearEmail() {
@@ -614,7 +549,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string email = 2;</code>
+     * <code>string email = 1;</code>
      * @param value The bytes for email to set.
      * @return This builder for chaining.
      */
@@ -630,78 +565,78 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object name_ = "";
+    private java.lang.Object password_ = "";
     /**
-     * <code>string name = 3;</code>
-     * @return The name.
+     * <code>string password = 2;</code>
+     * @return The password.
      */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
+    public java.lang.String getPassword() {
+      java.lang.Object ref = password_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        name_ = s;
+        password_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string name = 3;</code>
-     * @return The bytes for name.
+     * <code>string password = 2;</code>
+     * @return The bytes for password.
      */
     public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
+        getPasswordBytes() {
+      java.lang.Object ref = password_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        name_ = b;
+        password_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string name = 3;</code>
-     * @param value The name to set.
+     * <code>string password = 2;</code>
+     * @param value The password to set.
      * @return This builder for chaining.
      */
-    public Builder setName(
+    public Builder setPassword(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      name_ = value;
+      password_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string name = 3;</code>
+     * <code>string password = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearName() {
+    public Builder clearPassword() {
       
-      name_ = getDefaultInstance().getName();
+      password_ = getDefaultInstance().getPassword();
       onChanged();
       return this;
     }
     /**
-     * <code>string name = 3;</code>
-     * @param value The bytes for name to set.
+     * <code>string password = 2;</code>
+     * @param value The bytes for password to set.
      * @return This builder for chaining.
      */
-    public Builder setNameBytes(
+    public Builder setPasswordBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      name_ = value;
+      password_ = value;
       onChanged();
       return this;
     }
@@ -718,41 +653,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:io.scyna.customer.proto.GetAccountResponse)
+    // @@protoc_insertion_point(builder_scope:io.scyna.customer.proto.AuthenticateRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:io.scyna.customer.proto.GetAccountResponse)
-  private static final io.scyna.ex.account.proto.GetAccountResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:io.scyna.customer.proto.AuthenticateRequest)
+  private static final io.scyna.ex.account.proto.AuthenticateRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new io.scyna.ex.account.proto.GetAccountResponse();
+    DEFAULT_INSTANCE = new io.scyna.ex.account.proto.AuthenticateRequest();
   }
 
-  public static io.scyna.ex.account.proto.GetAccountResponse getDefaultInstance() {
+  public static io.scyna.ex.account.proto.AuthenticateRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<GetAccountResponse>
-      PARSER = new com.google.protobuf.AbstractParser<GetAccountResponse>() {
+  private static final com.google.protobuf.Parser<AuthenticateRequest>
+      PARSER = new com.google.protobuf.AbstractParser<AuthenticateRequest>() {
     @java.lang.Override
-    public GetAccountResponse parsePartialFrom(
+    public AuthenticateRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new GetAccountResponse(input, extensionRegistry);
+      return new AuthenticateRequest(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<GetAccountResponse> parser() {
+  public static com.google.protobuf.Parser<AuthenticateRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<GetAccountResponse> getParserForType() {
+  public com.google.protobuf.Parser<AuthenticateRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public io.scyna.ex.account.proto.GetAccountResponse getDefaultInstanceForType() {
+  public io.scyna.ex.account.proto.AuthenticateRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

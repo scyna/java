@@ -8,12 +8,12 @@ public interface GetAccountByEmailRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string Email = 1;</code>
+   * <code>string email = 1;</code>
    * @return The email.
    */
   java.lang.String getEmail();
   /**
-   * <code>string Email = 1;</code>
+   * <code>string email = 1;</code>
    * @return The bytes for email.
    */
   com.google.protobuf.ByteString

@@ -8,8 +8,8 @@ public interface CreateAccountResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>uint64 ID = 1;</code>
-   * @return The iD.
+   * <code>uint64 id = 1;</code>
+   * @return The id.
    */
-  long getID();
+  long getId();
 }
