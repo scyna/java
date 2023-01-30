@@ -1,0 +1,14 @@
+package io.scyna.ex.account.domain;
+
+import io.scyna.ex.account.model.Account;
+import io.scyna.ex.account.model.EmailAddress;
+
+public interface IRepository {
+
+    void createAccount(Account account) throws io.scyna.Error;
+
+    Account getAccountByEmail(EmailAddress email) throws io.scyna.Error;
+
+    Account getCustomerByID(long ID) throws io.scyna.Error;
+
+}

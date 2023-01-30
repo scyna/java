@@ -13,7 +13,7 @@ import io.scyna.ex.customer.model.Identity;
 
 public class Repository implements IRepository {
     final String TABLE_NAME = "customer";
-    final String KEYSPACE = "ddd_ex";
+    final String KEYSPACE = "ex_customer";
     private Logger logger;
 
     private Repository(Logger logger) {
@@ -32,8 +32,7 @@ public class Repository implements IRepository {
                 .value("identity", customer.identity.toString());
         try {
             Engine.DB().session().execute(insertInto);
-            customer.logger = logger;
-
+            customer.setLogger(logger);
         } catch (DriverException e) {
             logger.info(e.getMessage());
             throw io.scyna.Error.SERVER_ERROR;
@@ -68,7 +67,7 @@ public class Repository implements IRepository {
             }
 
             var customer = new Customer();
-            customer.logger = logger;
+            customer.setLogger(logger);
             customer.ID = row.getString("id");
             customer.identity = Identity.parse(row.getString("identity"));
             customer.name = row.getString("name");
