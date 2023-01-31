@@ -5,7 +5,6 @@ import io.scyna.Engine;
 import io.scyna.ex.script.proto.CreateAccountRequest;
 import io.scyna.ex.script.proto.CreateAccountResponse;
 import io.scyna.ex.script.repository.Account;
-import io.scyna.ex.script.repository.Error;
 import io.scyna.ex.script.repository.Repository;
 
 public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest> {
