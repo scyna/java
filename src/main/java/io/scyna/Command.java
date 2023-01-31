@@ -51,7 +51,7 @@ public class Command {
         }
 
         if (entity == 0 || event == null) {
-            throw io.scyna.Error.BAD_DATA; // FIXME
+            throw io.scyna.Error.BAD_DATA;
         }
 
         try {
@@ -69,7 +69,6 @@ public class Command {
             if (this.channel != null) {
                 context.publishEvent(channel, data);
             }
-
         } catch (DriverException e) {
             e.printStackTrace();
             throw io.scyna.Error.SERVER_ERROR;
@@ -88,6 +87,9 @@ public class Command {
             }
             Command.version = version;
             Command.keyspace = keyspace;
+
+            /* TODO: publish last event */
+
         } catch (DriverException e) {
             Engine.LOG().error("Can not load SingleWriter configuration from database");
             System.exit(1);
