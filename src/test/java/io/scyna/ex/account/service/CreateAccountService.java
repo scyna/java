@@ -26,7 +26,7 @@ public class CreateAccountService extends Command.Handler<CreateAccountRequest> 
 
         repository.createAccount(account);
 
-        storeEvent(account.ID, "something here", AccountCreated.newBuilder()
+        storeEvent(account.ID, Path.ACCOUNT_CREATED_CHANNEL, AccountCreated.newBuilder()
                 .setId(account.ID)
                 .setEmail(account.email.toString())
                 .setName(account.name.toString())

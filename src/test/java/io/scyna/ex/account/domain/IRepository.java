@@ -9,6 +9,6 @@ public interface IRepository {
 
     Account getAccountByEmail(EmailAddress email) throws io.scyna.Error;
 
-    Account getCustomerByID(long ID) throws io.scyna.Error;
+    Account getAccountByID(long ID) throws io.scyna.Error;
 
 }
