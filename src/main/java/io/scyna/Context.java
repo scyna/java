@@ -16,15 +16,15 @@ public class Context extends Logger {
     }
 
     public void publishEvent(String channel, byte[] data) throws io.scyna.Error {
-        // try {
-        // Engine.stream().publish(channel, data);
-        // } catch (IOException e) {
-        // e.printStackTrace();
-        // throw io.scyna.Error.SERVER_ERROR;
-        // } catch (JetStreamApiException e) {
-        // e.printStackTrace();
-        // throw io.scyna.Error.STREAM_ERROR;
-        // }
+        try {
+            Engine.stream().publish(channel, data);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw io.scyna.Error.SERVER_ERROR;
+        } catch (JetStreamApiException e) {
+            e.printStackTrace();
+            throw io.scyna.Error.STREAM_ERROR;
+        }
     }
 
     public Response sendRequest(String url, Message request) {

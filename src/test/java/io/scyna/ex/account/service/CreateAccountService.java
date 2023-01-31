@@ -27,7 +27,7 @@ public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest>
 
         var command = Command.create(context)
                 .setAggregateID(account.ID)
-                .setChannel(Path.ACCOUNT_CREATED_CHANNEL)
+                // .setChannel(Path.ACCOUNT_CREATED_CHANNEL)
                 .setEvent(AccountCreated.newBuilder()
                         .setId(account.ID)
                         .setEmail(account.email.toString())
@@ -38,9 +38,6 @@ public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest>
 
         command.commit();
 
-        System.out.println("H1");
-
         response(CreateAccountResponse.newBuilder().setId(account.ID).build());
-        System.out.println("H2");
     }
 }
