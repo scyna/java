@@ -16,7 +16,7 @@ public class CreateAccountService extends Command.Handler<CreateAccountRequest> 
     public void execute() throws io.scyna.Error {
         var repository = AccountService.loadRepository(context);
 
-        var account = new Account();
+        var account = new Account(context);
         account.ID = Engine.ID().next();
         account.name = Name.create(request.getName());
         account.email = EmailAddress.parse(request.getEmail());
@@ -24,7 +24,7 @@ public class CreateAccountService extends Command.Handler<CreateAccountRequest> 
 
         AccountService.assureAccountNotExists(repository, account.email);
 
-        repository.createAccount(account);
+        repository.createAccount(account, batch);
 
         storeEvent(account.ID, Path.ACCOUNT_CREATED_CHANNEL, AccountCreated.newBuilder()
                 .setId(account.ID)
