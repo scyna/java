@@ -61,7 +61,7 @@ public class CreateAccountTest {
                         .setName("Nguyen Van A")
                         .setPassword("12345678")
                         .build())
-                .expectError(Error.EMAIL_INVALID)
+                .expectError(Error.BAD_EMAIL)
                 .run();
 
         EndpointTest.New(Path.CREATE_ACCOUNT_URL)
@@ -69,7 +69,7 @@ public class CreateAccountTest {
                         .setName("Nguyen Van A")
                         .setPassword("12345678")
                         .build())
-                .expectError(Error.EMAIL_INVALID)
+                .expectError(Error.BAD_EMAIL)
                 .run();
 
         EndpointTest.New(Path.CREATE_ACCOUNT_URL)
@@ -78,7 +78,7 @@ public class CreateAccountTest {
                         .setName("Nguyen Van A")
                         .setPassword("12345678")
                         .build())
-                .expectError(Error.EMAIL_INVALID)
+                .expectError(Error.BAD_EMAIL)
                 .run();
     }
 

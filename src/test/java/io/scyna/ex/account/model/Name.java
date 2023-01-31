@@ -7,8 +7,11 @@ public class Name {
         this.value = name;
     }
 
-    public static Name create(String name) {
-        /* TODO: validation */
+    public static Name create(String name) throws io.scyna.Error {
+        if (name == null || name.length() == 0) {
+            throw Error.BAD_NAME;
+        }
+
         return new Name(name);
     }
 

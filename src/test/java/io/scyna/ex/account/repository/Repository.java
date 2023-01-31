@@ -71,5 +71,4 @@ public class Repository implements IRepository {
             throw io.scyna.Error.SERVER_ERROR;
         }
     }
-
 }

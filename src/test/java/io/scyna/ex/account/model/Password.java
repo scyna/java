@@ -7,8 +7,11 @@ public class Password {
         this.value = password;
     }
 
-    public static Password create(String password) {
-        /* TODO: validation */
+    public static Password create(String password) throws io.scyna.Error {
+        if (password == null || password.length() == 0) {
+            throw Error.BAD_PASSWORD;
+        }
+
         return new Password(password);
     }
 

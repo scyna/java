@@ -12,11 +12,11 @@ public class EmailAddress {
 
     public static EmailAddress parse(String email) throws io.scyna.Error {
         if (email == null || email.length() == 0) {
-            throw Error.EMAIL_INVALID;
+            throw Error.BAD_EMAIL;
         }
 
         if (!Pattern.compile(regexPattern).matcher(email).matches()) {
-            throw Error.EMAIL_INVALID;
+            throw Error.BAD_EMAIL;
         }
 
         return new EmailAddress(email);
