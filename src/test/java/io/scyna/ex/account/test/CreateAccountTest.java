@@ -53,6 +53,35 @@ public class CreateAccountTest {
                 .run();
     }
 
+    @Test
+    public void testCreateCustomerBadEmail() {
+        EndpointTest.New(Path.CREATE_ACCOUNT_URL)
+                .withRequest(CreateAccountRequest.newBuilder()
+                        .setEmail("a+gmail.com")
+                        .setName("Nguyen Van A")
+                        .setPassword("12345678")
+                        .build())
+                .expectError(Error.EMAIL_INVALID)
+                .run();
+
+        EndpointTest.New(Path.CREATE_ACCOUNT_URL)
+                .withRequest(CreateAccountRequest.newBuilder()
+                        .setName("Nguyen Van A")
+                        .setPassword("12345678")
+                        .build())
+                .expectError(Error.EMAIL_INVALID)
+                .run();
+
+        EndpointTest.New(Path.CREATE_ACCOUNT_URL)
+                .withRequest(CreateAccountRequest.newBuilder()
+                        .setEmail("")
+                        .setName("Nguyen Van A")
+                        .setPassword("12345678")
+                        .build())
+                .expectError(Error.EMAIL_INVALID)
+                .run();
+    }
+
     private static void cleanup() {
         var truncate = QueryBuilder.truncate("ex_account", "account");
         Engine.DB().session().execute(truncate);
