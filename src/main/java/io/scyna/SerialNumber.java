@@ -11,8 +11,12 @@ public class SerialNumber {
     private long last = 0;
     private long next = 0;
 
-    public SerialNumber(String key) {
+    private SerialNumber(String key) {
         this.key = key;
+    }
+
+    public static SerialNumber create(String key) {
+        return new SerialNumber(key);
     }
 
     public synchronized String next() throws io.scyna.Error {

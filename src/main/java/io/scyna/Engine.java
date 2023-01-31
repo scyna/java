@@ -69,10 +69,6 @@ public class Engine {
         return instance;
     }
 
-    public static SerialNumber initSerialNumber(String key) {
-        return new SerialNumber(key);
-    }
-
     public static Generator ID() {
         return instance.id;
     }

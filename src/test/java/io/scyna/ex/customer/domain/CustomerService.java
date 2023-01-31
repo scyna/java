@@ -7,7 +7,7 @@ import io.scyna.ex.customer.model.Identity;
 import io.scyna.ex.customer.repository.Repository;
 
 public class CustomerService {
-    private static SerialNumber oneid = new SerialNumber("ddd.customer.oneid");
+    private static SerialNumber oneid = SerialNumber.create("ddd.customer.oneid");
 
     public static String nextCustomerID() throws io.scyna.Error {
         return oneid.next();
