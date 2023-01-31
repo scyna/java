@@ -1,6 +1,7 @@
 package io.scyna.ex.account.service;
 
 import io.scyna.Command;
+import io.scyna.Endpoint;
 import io.scyna.Engine;
 import io.scyna.ex.account.domain.AccountService;
 import io.scyna.ex.account.model.Account;
@@ -11,7 +12,7 @@ import io.scyna.ex.account.proto.AccountCreated;
 import io.scyna.ex.account.proto.CreateAccountRequest;
 import io.scyna.ex.account.proto.CreateAccountResponse;
 
-public class CreateAccountService extends Command.Handler<CreateAccountRequest> {
+public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest> {
     @Override
     public void execute() throws io.scyna.Error {
         var repository = AccountService.loadRepository(context);
@@ -24,13 +25,17 @@ public class CreateAccountService extends Command.Handler<CreateAccountRequest> 
 
         AccountService.assureAccountNotExists(repository, account.email);
 
-        repository.createAccount(account, batch);
+        var command = Command.create(context);
+        repository.createAccount(command, account);
 
-        storeEvent(account.ID, Path.ACCOUNT_CREATED_CHANNEL, AccountCreated.newBuilder()
-                .setId(account.ID)
-                .setEmail(account.email.toString())
-                .setName(account.name.toString())
-                .build());
+        command.setAggregateID(account.ID)
+                .setEvent(AccountCreated.newBuilder()
+                        .setId(account.ID)
+                        .setEmail(account.email.toString())
+                        .setName(account.name.toString())
+                        .build())
+                .setChannel(Path.ACCOUNT_CREATED_CHANNEL)
+                .commit();
 
         response(CreateAccountResponse.newBuilder().setId(account.ID).build());
     }

@@ -5,6 +5,7 @@ import com.datastax.driver.core.querybuilder.Batch;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.datastax.driver.core.querybuilder.Select;
 
+import io.scyna.Command;
 import io.scyna.Context;
 import io.scyna.Engine;
 import io.scyna.ex.account.domain.IRepository;
@@ -27,8 +28,8 @@ public class Repository implements IRepository {
     }
 
     @Override
-    public void createAccount(Account account, Batch batch) throws io.scyna.Error {
-        batch.add(QueryBuilder.insertInto(KEYSPACE, TABLE_NAME)
+    public void createAccount(Command command, Account account) throws io.scyna.Error {
+        command.getBatch().add(QueryBuilder.insertInto(KEYSPACE, TABLE_NAME)
                 .value("id", account.ID)
                 .value("email", account.email.toString())
                 .value("name", account.name.toString()));
