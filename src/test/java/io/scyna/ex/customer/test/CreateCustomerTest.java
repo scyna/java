@@ -48,7 +48,7 @@ public class CreateCustomerTest {
     }
 
     private static void cleanup() {
-        var truncate = QueryBuilder.truncate("ddd_ex", "customer");
+        var truncate = QueryBuilder.truncate("ex_customer", "customer");
         Engine.DB().session().execute(truncate);
     }
 }

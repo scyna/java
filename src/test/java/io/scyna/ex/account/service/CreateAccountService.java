@@ -35,6 +35,7 @@ public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest>
                         .build());
 
         repository.createAccount(command, account);
+
         command.commit();
 
         response(CreateAccountResponse.newBuilder().setId(account.ID).build());
