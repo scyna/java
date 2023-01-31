@@ -10,6 +10,8 @@ import io.scyna.ex.script.repository.Account;
 import io.scyna.ex.script.repository.Repository;
 
 public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest> {
+    static final String EMAIL_PATTERN = "^(.+)@(\\S+)$"; // FIXME: do not use this pattern in production
+
     @Override
     public void execute() throws io.scyna.Error {
         var repository = Repository.load(context);
@@ -30,8 +32,6 @@ public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest>
         response(CreateAccountResponse.newBuilder().setId(account.ID).build());
     }
 
-    static final String emailPattern = "^(.+)@(\\S+)$"; // FIXME: do not use this pattern in production
-
     private void validateRequest(CreateAccountRequest request) throws io.scyna.Error {
         if (request.getEmail() == null || request.getName() == null || request.getPassword() == null) {
             throw io.scyna.Error.REQUEST_INVALID;
@@ -41,7 +41,7 @@ public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest>
             throw io.scyna.Error.REQUEST_INVALID;
         }
 
-        if (!Pattern.compile(emailPattern).matcher(request.getEmail()).matches()) {
+        if (!Pattern.compile(EMAIL_PATTERN).matcher(request.getEmail()).matches()) {
             throw io.scyna.Error.REQUEST_INVALID;
         }
     }
