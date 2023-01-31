@@ -1,6 +1,6 @@
 package io.scyna.ex.customer.domain;
 
-import io.scyna.Logger;
+import io.scyna.Context;
 import io.scyna.SerialNumber;
 import io.scyna.ex.customer.model.Error;
 import io.scyna.ex.customer.model.Identity;
@@ -13,8 +13,8 @@ public class CustomerService {
         return oneid.next();
     }
 
-    public static IRepository loadRepository(Logger logger) {
-        return Repository.load(logger);
+    public static IRepository loadRepository(Context context) {
+        return Repository.load(context);
     }
 
     public static void assureIdentityNotExists(IRepository repository, Identity identity) throws io.scyna.Error {

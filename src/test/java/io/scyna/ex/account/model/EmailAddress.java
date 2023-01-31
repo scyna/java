@@ -3,7 +3,7 @@ package io.scyna.ex.account.model;
 import java.util.regex.Pattern;
 
 public class EmailAddress {
-    static final String regexPattern = "^(.+)@(\\S+)$";
+    static final String emailPattern = "^(.+)@(\\S+)$"; // FIXME: do not use this pattern in production
     String value;
 
     private EmailAddress(String email) {
@@ -15,7 +15,7 @@ public class EmailAddress {
             throw Error.BAD_EMAIL;
         }
 
-        if (!Pattern.compile(regexPattern).matcher(email).matches()) {
+        if (!Pattern.compile(emailPattern).matcher(email).matches()) {
             throw Error.BAD_EMAIL;
         }
 

@@ -1,12 +1,12 @@
 package io.scyna.ex.customer.model;
 
-import io.scyna.Logger;
+import io.scyna.Context;
 
 public class Customer {
-    private Logger logger;
+    private Context context;
 
-    public void setLogger(Logger logger) {
-        this.logger = logger;
+    public Customer(Context context) {
+        this.context = context;
     }
 
     public String ID;

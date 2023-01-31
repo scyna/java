@@ -11,7 +11,7 @@ public class CreateCustomerService extends Endpoint.Handler<CreateCustomerReques
     public void execute() throws io.scyna.Error {
         var repository = CustomerService.loadRepository(context);
 
-        var customer = new Customer();
+        var customer = new Customer(context);
         customer.ID = CustomerService.nextCustomerID();
         customer.name = request.getName();
         customer.identity = Identity.create(request.getIDType(), request.getIDNumber());

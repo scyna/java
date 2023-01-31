@@ -12,6 +12,8 @@ public class Password {
             throw Error.BAD_PASSWORD;
         }
 
+        /* TODO: some other rules here */
+
         return new Password(password);
     }
 

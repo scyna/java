@@ -4,6 +4,7 @@ import com.datastax.driver.core.exceptions.DriverException;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.datastax.driver.core.querybuilder.Select;
 
+import io.scyna.Context;
 import io.scyna.Engine;
 import io.scyna.Logger;
 import io.scyna.ex.customer.domain.IRepository;
@@ -14,14 +15,14 @@ import io.scyna.ex.customer.model.Identity;
 public class Repository implements IRepository {
     final String TABLE_NAME = "customer";
     final String KEYSPACE = "ex_customer";
-    private Logger logger;
+    private Context context;
 
-    private Repository(Logger logger) {
-        this.logger = logger;
+    private Repository(Context context) {
+        this.context = context;
     }
 
-    public static IRepository load(Logger logger) {
-        return new Repository(logger);
+    public static IRepository load(Context context) {
+        return new Repository(context);
     }
 
     @Override
@@ -32,9 +33,8 @@ public class Repository implements IRepository {
                 .value("identity", customer.identity.toString());
         try {
             Engine.DB().session().execute(insertInto);
-            customer.setLogger(logger);
         } catch (DriverException e) {
-            logger.info(e.getMessage());
+            context.info(e.getMessage());
             throw io.scyna.Error.SERVER_ERROR;
         }
     }
@@ -66,14 +66,13 @@ public class Repository implements IRepository {
                 throw Error.CUSTOMER_NOT_FOUND;
             }
 
-            var customer = new Customer();
-            customer.setLogger(logger);
+            var customer = new Customer(context);
             customer.ID = row.getString("id");
             customer.identity = Identity.parse(row.getString("identity"));
             customer.name = row.getString("name");
             return customer;
         } catch (DriverException e) {
-            logger.error(e.toString());
+            context.error(e.toString());
             throw io.scyna.Error.SERVER_ERROR;
         }
 
