@@ -26,6 +26,7 @@ public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest>
         AccountService.assureAccountNotExists(repository, account.email);
 
         var command = Command.create(context);
+
         repository.createAccount(command, account);
 
         command.setAggregateID(account.ID)

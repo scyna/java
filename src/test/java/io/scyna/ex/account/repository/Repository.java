@@ -1,7 +1,6 @@
 package io.scyna.ex.account.repository;
 
 import com.datastax.driver.core.exceptions.DriverException;
-import com.datastax.driver.core.querybuilder.Batch;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.datastax.driver.core.querybuilder.Select;
 

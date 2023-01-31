@@ -88,7 +88,7 @@ public class Command {
             Command.version = version;
             Command.keyspace = keyspace;
 
-            /* TODO: publish last event */
+            /* TODO: publish last event here */
 
         } catch (DriverException e) {
             Engine.LOG().error("Can not load SingleWriter configuration from database");
