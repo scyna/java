@@ -58,7 +58,6 @@ public class Repository {
             var row = rs.one();
 
             if (row == null) {
-                System.out.println("WHY");
                 return null;
             }
 
