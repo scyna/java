@@ -1,8 +1,11 @@
 package io.scyna;
 
+import java.io.IOException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import com.google.protobuf.Message;
+
+import io.nats.client.JetStreamApiException;
 import io.scyna.proto.Request;
 import io.scyna.proto.Response;
 
@@ -12,8 +15,16 @@ public class Context extends Logger {
         super(0, false);
     }
 
-    public void publishEvent(String channel, byte[] data) {
-        /* TODO */
+    public void publishEvent(String channel, byte[] data) throws io.scyna.Error {
+        // try {
+        // Engine.stream().publish(channel, data);
+        // } catch (IOException e) {
+        // e.printStackTrace();
+        // throw io.scyna.Error.SERVER_ERROR;
+        // } catch (JetStreamApiException e) {
+        // e.printStackTrace();
+        // throw io.scyna.Error.STREAM_ERROR;
+        // }
     }
 
     public Response sendRequest(String url, Message request) {
@@ -36,5 +47,13 @@ public class Context extends Logger {
         }
         trace.record();
         return ret;
+    }
+
+    public void saveTag(String key, String value) {
+        /* TODO */
+    }
+
+    public void scheduleTask() {
+        /* TODO */
     }
 }

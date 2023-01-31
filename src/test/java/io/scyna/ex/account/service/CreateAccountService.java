@@ -38,6 +38,9 @@ public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest>
 
         command.commit();
 
+        System.out.println("H1");
+
         response(CreateAccountResponse.newBuilder().setId(account.ID).build());
+        System.out.println("H2");
     }
 }
