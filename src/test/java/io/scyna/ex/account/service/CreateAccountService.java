@@ -25,18 +25,17 @@ public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest>
 
         AccountService.assureAccountNotExists(repository, account.email);
 
-        var command = Command.create(context);
-
-        repository.createAccount(command, account);
-
-        command.setAggregateID(account.ID)
+        var command = Command.create(context)
+                .setAggregateID(account.ID)
                 .setEvent(AccountCreated.newBuilder()
                         .setId(account.ID)
                         .setEmail(account.email.toString())
                         .setName(account.name.toString())
                         .build())
-                .setChannel(Path.ACCOUNT_CREATED_CHANNEL)
-                .commit();
+                .setChannel(Path.ACCOUNT_CREATED_CHANNEL);
+
+        repository.createAccount(command, account);
+        command.commit();
 
         response(CreateAccountResponse.newBuilder().setId(account.ID).build());
     }
