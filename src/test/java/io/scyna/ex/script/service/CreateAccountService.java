@@ -1,5 +1,7 @@
 package io.scyna.ex.script.service;
 
+import java.util.regex.Pattern;
+
 import io.scyna.Endpoint;
 import io.scyna.Engine;
 import io.scyna.ex.script.proto.CreateAccountRequest;
@@ -28,7 +30,19 @@ public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest>
         response(CreateAccountResponse.newBuilder().setId(account.ID).build());
     }
 
+    static final String emailPattern = "^(.+)@(\\S+)$"; // FIXME: do not use this pattern in production
+
     private void validateRequest(CreateAccountRequest request) throws io.scyna.Error {
-        /* TODO */
+        if (request.getEmail() == null || request.getName() == null || request.getPassword() == null) {
+            throw io.scyna.Error.REQUEST_INVALID;
+        }
+
+        if (request.getEmail().length() + request.getName().length() + request.getPassword().length() == 0) {
+            throw io.scyna.Error.REQUEST_INVALID;
+        }
+
+        if (!Pattern.compile(emailPattern).matcher(request.getEmail()).matches()) {
+            throw io.scyna.Error.REQUEST_INVALID;
+        }
     }
 }

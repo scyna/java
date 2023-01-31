@@ -57,7 +57,7 @@ public class CreateAccountTest {
                                                 .setName("Nguyen Van A")
                                                 .setPassword("12345678")
                                                 .build())
-                                .expectError(Error.BAD_EMAIL)
+                                .expectError(io.scyna.Error.REQUEST_INVALID)
                                 .run();
 
                 EndpointTest.New(Path.CREATE_ACCOUNT_URL)
@@ -65,7 +65,7 @@ public class CreateAccountTest {
                                                 .setName("Nguyen Van A")
                                                 .setPassword("12345678")
                                                 .build())
-                                .expectError(Error.BAD_EMAIL)
+                                .expectError(io.scyna.Error.REQUEST_INVALID)
                                 .run();
 
                 EndpointTest.New(Path.CREATE_ACCOUNT_URL)
@@ -74,7 +74,7 @@ public class CreateAccountTest {
                                                 .setName("Nguyen Van A")
                                                 .setPassword("12345678")
                                                 .build())
-                                .expectError(Error.BAD_EMAIL)
+                                .expectError(io.scyna.Error.REQUEST_INVALID)
                                 .run();
         }
 
