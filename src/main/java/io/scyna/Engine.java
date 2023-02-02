@@ -8,7 +8,6 @@ import java.net.http.HttpResponse.BodyHandlers;
 
 import io.nats.client.Connection;
 import io.nats.client.JetStream;
-import io.nats.client.JetStreamManagement;
 import io.nats.client.Nats;
 import io.scyna.proto.Configuration;
 import io.scyna.proto.CreateSessionRequest;
@@ -105,5 +104,10 @@ public class Engine {
     public static void release() {
         DB().close();
         System.out.println("Engine Closed");
+    }
+
+    public static void start() throws Exception {
+        Event.startListening();
+        System.out.println("Engine Started");
     }
 }

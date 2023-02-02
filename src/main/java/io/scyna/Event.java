@@ -19,6 +19,12 @@ public class Event {
         void onMessage(io.nats.client.Message msg);
     }
 
+    public static void startListening() throws Exception {
+        for (var stream : streams.values()) {
+            stream.start();
+        }
+    }
+
     public static class Stream {
         String sender;
         String receiver;
@@ -38,7 +44,6 @@ public class Event {
 
             stream = new Stream(sender, Engine.module());
             streams.put(sender, stream);
-            stream.start();
             return stream;
         }
 
@@ -97,11 +102,10 @@ public class Event {
         @Override
         public void onMessage(io.nats.client.Message msg) {
             try {
-                var request = io.scyna.proto.Event.parseFrom(msg.getData());
-                trace.reset(request.getTraceID());
-                context.id = request.getTraceID();
-                var requestBody = request.getBody();
-                this.data = parser.parseFrom(requestBody);
+                var event = io.scyna.proto.Event.parseFrom(msg.getData());
+                trace.reset(event.getTraceID());
+                context.id = event.getTraceID();
+                this.data = parser.parseFrom(event.getBody());
                 this.execute();
                 trace.record();
             } catch (InvalidProtocolBufferException e) {
