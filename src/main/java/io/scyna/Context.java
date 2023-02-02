@@ -11,6 +11,7 @@ import io.nats.client.JetStreamApiException;
 import io.scyna.proto.Event;
 import io.scyna.proto.Request;
 import io.scyna.proto.Response;
+import io.scyna.proto.TagCreatedSignal;
 
 public class Context extends Logger {
 
@@ -57,7 +58,15 @@ public class Context extends Logger {
     }
 
     public void saveTag(String key, String value) {
-        /* TODO */
+        if (id == 0) {
+            return;
+        }
+
+        Signal.emit(Path.TRACE_CREATED_CHANNEL, TagCreatedSignal.newBuilder()
+                .setTraceID(id)
+                .setKey(key)
+                .setValue(value)
+                .build());
     }
 
     public void scheduleTask() {
