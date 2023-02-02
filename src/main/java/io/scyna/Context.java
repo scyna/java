@@ -1,16 +1,20 @@
 package io.scyna;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 import com.google.protobuf.ByteString;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 
 import io.nats.client.JetStreamApiException;
 import io.scyna.proto.Event;
 import io.scyna.proto.Request;
 import io.scyna.proto.Response;
+import io.scyna.proto.StartTaskRequest;
+import io.scyna.proto.StartTaskResponse;
 import io.scyna.proto.TagCreatedSignal;
 
 public class Context extends Logger {
@@ -69,7 +73,25 @@ public class Context extends Logger {
                 .build());
     }
 
-    public void scheduleTask() {
-        /* TODO */
+    public long scheduleTask(String task, long start, long interval, ByteString data, long loop) throws io.scyna.Error {
+        var response = sendRequest(Path.START_TASK_URL, StartTaskRequest.newBuilder()
+                .setModule(Engine.module())
+                .setTopic(Engine.module() + ".task." + task)
+                .setData(data)
+                .setTime(start)
+                .setInterval(interval)
+                .setLoop(loop)
+                .build());
+        if (response == null) {
+            throw io.scyna.Error.REQUEST_INVALID;
+        }
+
+        try {
+            var r = StartTaskResponse.parseFrom(response.getBody());
+            return r.getId();
+        } catch (InvalidProtocolBufferException e) {
+            e.printStackTrace();
+            throw io.scyna.Error.BAD_DATA;
+        }
     }
 }
