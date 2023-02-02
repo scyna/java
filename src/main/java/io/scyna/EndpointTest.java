@@ -161,8 +161,6 @@ public class EndpointTest {
 
     private void createStream() {
         streamName = getStreamName(channel);
-        System.out.println("Channel=" + channel);
-        System.out.println("Stream Name=" + streamName);
         if (streamName.length() > 0) {
             try {
 
