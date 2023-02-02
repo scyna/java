@@ -88,7 +88,7 @@ public class EndpointTest {
                 if (exactResponseMatch) {
                     assertEquals(response, o);
                 } else {
-                    assertTrue("Response not match", matchMessage(response, o));
+                    assertTrue("Response not match", partialMatchMessage(response, o));
                 }
             } catch (InvalidProtocolBufferException e) {
                 assertTrue(false);
@@ -149,7 +149,7 @@ public class EndpointTest {
             if (exactEventMatch) {
                 assertEquals(event, received);
             } else {
-                assertTrue("Event not match", matchMessage(event, received));
+                assertTrue("Event not match", partialMatchMessage(event, received));
             }
 
             sub.unsubscribe();
@@ -194,7 +194,7 @@ public class EndpointTest {
         }
     }
 
-    private boolean matchMessage(Message x, Message y) {
+    private boolean partialMatchMessage(Message x, Message y) {
         if (x.getDescriptorForType() != y.getDescriptorForType()) {
             return false;
         }
@@ -212,7 +212,6 @@ public class EndpointTest {
                 return false;
             }
         }
-
         return equal;
     }
 }
