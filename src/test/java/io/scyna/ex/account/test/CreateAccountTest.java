@@ -42,7 +42,7 @@ public class CreateAccountTest {
                         .setPassword("12345678")
                         .build())
                 .publishEventTo(Path.ACCOUNT_CREATED_CHANNEL)
-                .expectEvent(AccountCreated.newBuilder()
+                .matchEvent(AccountCreated.newBuilder()
                         .setEmail("a@gmail.com")
                         .setName("Nguyen Van A")
                         .build())

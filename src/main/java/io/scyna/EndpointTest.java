@@ -7,7 +7,6 @@ import java.time.Duration;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
-import io.nats.client.api.StorageType;
 import io.nats.client.api.StreamConfiguration;
 
 public class EndpointTest {
@@ -18,6 +17,8 @@ public class EndpointTest {
     private Message event = null;
     private String channel = "";
     private String streamName = "";
+    private boolean exactEventMatch = true;
+    private boolean exactResponseMatch = true;
 
     private EndpointTest(String url) {
         this.url = url;
@@ -49,8 +50,21 @@ public class EndpointTest {
         return this;
     }
 
+    public EndpointTest matchResponse(Message response) {
+        this.status = 200;
+        this.response = response;
+        this.exactResponseMatch = false;
+        return this;
+    }
+
     public EndpointTest expectEvent(Message event) {
         this.event = event;
+        return this;
+    }
+
+    public EndpointTest matchEvent(Message event) {
+        this.event = event;
+        this.exactEventMatch = false;
         return this;
     }
 
@@ -71,7 +85,11 @@ public class EndpointTest {
             try {
                 var parser = response.getParserForType();
                 var o = parser.parseFrom(res.getBody());
-                assertEquals(response, o);
+                if (exactResponseMatch) {
+                    assertEquals(response, o);
+                } else {
+                    assertTrue("Response not match", matchMessage(response, o));
+                }
             } catch (InvalidProtocolBufferException e) {
                 assertTrue(false);
                 e.printStackTrace();
@@ -83,6 +101,7 @@ public class EndpointTest {
     }
 
     public <T extends Message> T run(Parser<T> parser) {
+        createStream();
         var trace = Trace.newEndpointTrace(url, 0);
         var res = Endpoint.sendRequest(url, request);
         trace.update(res.getSessionID(), res.getCode());
@@ -96,6 +115,8 @@ public class EndpointTest {
             e.printStackTrace();
         }
         trace.record();
+        receiveEvent();
+        deleteStream();
         return null;
     }
 
@@ -124,7 +145,12 @@ public class EndpointTest {
             var ev = io.scyna.proto.Event.parseFrom(msg.getData());
             var parser = event.getParserForType();
             var received = parser.parseFrom(ev.getBody());
-            assertEquals(event, received);
+
+            if (exactEventMatch) {
+                assertEquals(event, received);
+            } else {
+                assertTrue("Event not match", matchMessage(event, received));
+            }
 
             sub.unsubscribe();
         } catch (Exception e) {
@@ -146,7 +172,7 @@ public class EndpointTest {
                         .build();
 
                 var jsm = Engine.connection().jetStreamManagement();
-                if (jsm.getStreamInfo(streamName) != null) {
+                if (jsm.getStreamNames().contains(streamName)) {
                     jsm.deleteStream(streamName);
                 }
                 jsm.addStream(config);
@@ -166,5 +192,27 @@ public class EndpointTest {
                 assertTrue("Error in deleting stream", false);
             }
         }
+    }
+
+    private boolean matchMessage(Message x, Message y) {
+        if (x.getDescriptorForType() != y.getDescriptorForType()) {
+            return false;
+        }
+
+        var equal = true;
+        for (var i : y.getAllFields().entrySet()) {
+            var fd = i.getKey();
+
+            if (x.hasField(fd)) {
+                var vx = x.getField(fd);
+                equal = vx.equals(i.getValue());
+            }
+
+            if (!equal) {
+                return false;
+            }
+        }
+
+        return equal;
     }
 }

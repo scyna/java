@@ -29,7 +29,7 @@ public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest>
                 .setAggregateID(account.ID)
                 .setChannel(Path.ACCOUNT_CREATED_CHANNEL)
                 .setEvent(AccountCreated.newBuilder()
-                        // .setId(account.ID)
+                        .setId(account.ID)
                         .setEmail(account.email.toString())
                         .setName(account.name.toString())
                         .build());
