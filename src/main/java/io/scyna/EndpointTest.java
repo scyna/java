@@ -24,7 +24,7 @@ public class EndpointTest {
         this.url = url;
     }
 
-    public static EndpointTest New(String url) {
+    public static EndpointTest create(String url) {
         return new EndpointTest(url);
     }
 

@@ -26,12 +26,12 @@ public class TestAdd {
 
     @Test
     public void testAddShouldSuccess() {
-        EndpointTest.New(Path.ADD_URL)
+        EndpointTest.create(Path.ADD_URL)
                 .withRequest(AddRequest.newBuilder().setA(5).setB(34).build())
                 .expectResponse(AddResponse.newBuilder().setSum(39).build())
                 .run();
 
-        EndpointTest.New(Path.ADD_URL)
+        EndpointTest.create(Path.ADD_URL)
                 .withRequest(AddRequest.newBuilder().setA(82).setB(18).build())
                 .expectResponse(AddResponse.newBuilder().setSum(100).build())
                 .run();
@@ -40,7 +40,7 @@ public class TestAdd {
 
     @Test
     public void testAddTooBig() {
-        EndpointTest.New(Path.ADD_URL)
+        EndpointTest.create(Path.ADD_URL)
                 .withRequest(AddRequest.newBuilder().setA(95).setB(34).build())
                 .expectError(io.scyna.Error.REQUEST_INVALID)
                 .run();

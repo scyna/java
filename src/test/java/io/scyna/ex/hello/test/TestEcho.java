@@ -26,7 +26,7 @@ public class TestEcho {
 
     @Test
     public void testEchoShouldSuccess() {
-        EndpointTest.New(Path.ECHO_URL)
+        EndpointTest.create(Path.ECHO_URL)
                 .withRequest(EchoRequest.newBuilder().setText("Hello").build())
                 .expectResponse(EchoResponse.newBuilder().setText("Hello").build())
                 .run();

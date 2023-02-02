@@ -28,7 +28,7 @@ public class CreateCustomerTest {
 
     @Test
     public void testCreateCustomer() {
-        EndpointTest.New(Path.CREATE_CUSTOMER_URL)
+        EndpointTest.create(Path.CREATE_CUSTOMER_URL)
                 .withRequest(CreateCustomerRequest.newBuilder()
                         .setIDType("CMND")
                         .setIDNumber("123456789")
@@ -37,7 +37,7 @@ public class CreateCustomerTest {
                 .expectSuccess()
                 .run();
 
-        EndpointTest.New(Path.CREATE_CUSTOMER_URL)
+        EndpointTest.create(Path.CREATE_CUSTOMER_URL)
                 .withRequest(CreateCustomerRequest.newBuilder()
                         .setIDType("CMND")
                         .setIDNumber("123456789")

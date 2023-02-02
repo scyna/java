@@ -35,7 +35,7 @@ public class CreateAccountTest {
 
     @Test
     public void testCreateCustomer() {
-        EndpointTest.New(Path.CREATE_ACCOUNT_URL)
+        EndpointTest.create(Path.CREATE_ACCOUNT_URL)
                 .withRequest(CreateAccountRequest.newBuilder()
                         .setEmail("a@gmail.com")
                         .setName("Nguyen Van A")
@@ -49,7 +49,7 @@ public class CreateAccountTest {
                 .expectSuccess()
                 .run();
 
-        EndpointTest.New(Path.CREATE_ACCOUNT_URL)
+        EndpointTest.create(Path.CREATE_ACCOUNT_URL)
                 .withRequest(CreateAccountRequest.newBuilder()
                         .setEmail("a@gmail.com")
                         .setName("Nguyen Van A")
@@ -61,7 +61,7 @@ public class CreateAccountTest {
 
     @Test
     public void testCreateCustomerBadEmail() {
-        EndpointTest.New(Path.CREATE_ACCOUNT_URL)
+        EndpointTest.create(Path.CREATE_ACCOUNT_URL)
                 .withRequest(CreateAccountRequest.newBuilder()
                         .setEmail("a+gmail.com")
                         .setName("Nguyen Van A")
@@ -70,7 +70,7 @@ public class CreateAccountTest {
                 .expectError(Error.BAD_EMAIL)
                 .run();
 
-        EndpointTest.New(Path.CREATE_ACCOUNT_URL)
+        EndpointTest.create(Path.CREATE_ACCOUNT_URL)
                 .withRequest(CreateAccountRequest.newBuilder()
                         .setName("Nguyen Van A")
                         .setPassword("12345678")
@@ -78,7 +78,7 @@ public class CreateAccountTest {
                 .expectError(Error.BAD_EMAIL)
                 .run();
 
-        EndpointTest.New(Path.CREATE_ACCOUNT_URL)
+        EndpointTest.create(Path.CREATE_ACCOUNT_URL)
                 .withRequest(CreateAccountRequest.newBuilder()
                         .setEmail("")
                         .setName("Nguyen Van A")
