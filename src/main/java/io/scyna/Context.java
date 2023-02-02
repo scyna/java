@@ -1,7 +1,6 @@
 package io.scyna;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
@@ -24,16 +23,13 @@ public class Context extends Logger {
     }
 
     public void publishEvent(String channel, byte[] data) throws io.scyna.Error {
-        System.out.println("publish event to " + channel);
         try {
             var event = Event.newBuilder().setTraceID(this.id).setBody(ByteString.copyFrom(data)).build();
             Engine.connection().jetStream().publish(channel, event.toByteArray());
         } catch (IOException e) {
-            System.out.println("h1");
             e.printStackTrace();
             throw io.scyna.Error.SERVER_ERROR;
         } catch (JetStreamApiException e) {
-            System.out.println("h2");
             e.printStackTrace();
             throw io.scyna.Error.STREAM_ERROR;
         }
