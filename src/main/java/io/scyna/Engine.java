@@ -8,6 +8,7 @@ import java.net.http.HttpResponse.BodyHandlers;
 
 import io.nats.client.Connection;
 import io.nats.client.JetStream;
+import io.nats.client.JetStreamManagement;
 import io.nats.client.Nats;
 import io.scyna.proto.Configuration;
 import io.scyna.proto.CreateSessionRequest;

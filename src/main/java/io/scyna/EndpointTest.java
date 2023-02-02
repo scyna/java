@@ -3,16 +3,21 @@ package io.scyna;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-
+import java.time.Duration;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
+import io.nats.client.api.StorageType;
+import io.nats.client.api.StreamConfiguration;
 
 public class EndpointTest {
+    private int status;
     private String url;
     private Message request = null;
     private Message response = null;
-    private int status;
+    private Message event = null;
+    private String channel = "";
+    private String streamName = "";
 
     private EndpointTest(String url) {
         this.url = url;
@@ -44,7 +49,18 @@ public class EndpointTest {
         return this;
     }
 
+    public EndpointTest expectEvent(Message event) {
+        this.event = event;
+        return this;
+    }
+
+    public EndpointTest publishEventTo(String channel) {
+        this.channel = channel;
+        return this;
+    }
+
     public void run() {
+        createStream();
         var trace = Trace.newEndpointTrace(url, 0);
         var res = Endpoint.sendRequest(url, request);
         assertNotNull(res);
@@ -62,6 +78,8 @@ public class EndpointTest {
             }
         }
         trace.record();
+        receiveEvent();
+        deleteStream();
     }
 
     public <T extends Message> T run(Parser<T> parser) {
@@ -79,5 +97,74 @@ public class EndpointTest {
         }
         trace.record();
         return null;
+    }
+
+    private String getStreamName(String channel) {
+        var list = channel.split("\\.");
+        if (list.length > 1) {
+            return list[0];
+        }
+        return "";
+    }
+
+    private void receiveEvent() {
+        if (event == null) {
+            return;
+        }
+
+        try {
+            var sub = Engine.stream().subscribe(channel);
+            var msg = sub.nextMessage(Duration.ofSeconds(1));
+
+            if (msg == null)
+                System.out.println("Timeout");
+
+            assertNotNull(msg);
+
+            var ev = io.scyna.proto.Event.parseFrom(msg.getData());
+            var parser = event.getParserForType();
+            var received = parser.parseFrom(ev.getBody());
+            assertEquals(event, received);
+
+            sub.unsubscribe();
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue("Error in receiving event", false);
+        }
+    }
+
+    private void createStream() {
+        streamName = getStreamName(channel);
+        System.out.println("Channel=" + channel);
+        System.out.println("Stream Name=" + streamName);
+        if (streamName.length() > 0) {
+            try {
+
+                StreamConfiguration config = StreamConfiguration.builder()
+                        .name(streamName)
+                        .subjects(channel)
+                        .build();
+
+                var jsm = Engine.connection().jetStreamManagement();
+                if (jsm.getStreamInfo(streamName) != null) {
+                    jsm.deleteStream(streamName);
+                }
+                jsm.addStream(config);
+            } catch (Exception e) {
+                e.printStackTrace();
+                assertTrue("Error in creating stream", false);
+            }
+        }
+    }
+
+    private void deleteStream() {
+        if (streamName.length() > 0) {
+            try {
+                Engine.connection().jetStreamManagement().deleteStream(streamName);
+            } catch (Exception e) {
+                e.printStackTrace();
+                assertTrue("Error in deleting stream", false);
+            }
+        }
     }
 }

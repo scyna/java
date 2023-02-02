@@ -28,7 +28,7 @@ public class Event {
             executors = new HashMap<String, MessageHandler>();
         }
 
-        public static Stream createOrGet(String sender)
+        private static Stream createOrGet(String sender)
                 throws TimeoutException, InterruptedException, IOException, JetStreamApiException {
             var stream = streams.get(sender);
             if (stream != null)

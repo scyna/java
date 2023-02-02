@@ -9,6 +9,7 @@ import com.datastax.driver.core.querybuilder.QueryBuilder;
 import io.scyna.Endpoint;
 import io.scyna.EndpointTest;
 import io.scyna.Engine;
+import io.scyna.ex.account.proto.AccountCreated;
 import io.scyna.ex.script.proto.CreateAccountRequest;
 import io.scyna.ex.script.service.CreateAccountService;
 import io.scyna.ex.script.service.Error;

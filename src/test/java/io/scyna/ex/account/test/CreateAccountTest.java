@@ -10,6 +10,7 @@ import io.scyna.Command;
 import io.scyna.Endpoint;
 import io.scyna.EndpointTest;
 import io.scyna.Engine;
+import io.scyna.ex.account.proto.AccountCreated;
 import io.scyna.ex.account.proto.CreateAccountRequest;
 import io.scyna.ex.account.service.CreateAccountService;
 import io.scyna.ex.account.service.GetAccountByEmailService;
@@ -39,6 +40,11 @@ public class CreateAccountTest {
                         .setEmail("a@gmail.com")
                         .setName("Nguyen Van A")
                         .setPassword("12345678")
+                        .build())
+                .publishEventTo(Path.ACCOUNT_CREATED_CHANNEL)
+                .expectEvent(AccountCreated.newBuilder()
+                        .setEmail("a@gmail.com")
+                        .setName("Nguyen Van A")
                         .build())
                 .expectSuccess()
                 .run();

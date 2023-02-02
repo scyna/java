@@ -71,8 +71,8 @@ public class Command {
             if (this.channel != null) {
                 context.publishEvent(channel, data);
             }
+
         } catch (DriverException e) {
-            System.out.println("");
             e.printStackTrace();
             throw io.scyna.Error.SERVER_ERROR;
         }
