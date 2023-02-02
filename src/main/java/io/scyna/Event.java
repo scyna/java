@@ -5,6 +5,8 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
+
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
 import io.nats.client.JetStreamApiException;
@@ -94,17 +96,17 @@ public class Event {
 
         @Override
         public void onMessage(io.nats.client.Message msg) {
-            // try {
-            // var request = EventOrSignal.parseFrom(msg.getData());
-            // trace.reset(request.getParentID());
-            // context.reset(request.getParentID());
-            // var requestBody = request.getBody();
-            // this.data = parser.parseFrom(requestBody);
-            // this.execute();
-            // trace.record();
-            // } catch (InvalidProtocolBufferException e) {
-            // e.printStackTrace();
-            // }
+            try {
+                var request = io.scyna.proto.Event.parseFrom(msg.getData());
+                trace.reset(request.getTraceID());
+                context.id = request.getTraceID();
+                var requestBody = request.getBody();
+                this.data = parser.parseFrom(requestBody);
+                this.execute();
+                trace.record();
+            } catch (InvalidProtocolBufferException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
