@@ -32,6 +32,14 @@ public class Trace {
         return ret;
     }
 
+    public static Trace newTaskTrace(String channel) {
+        var ret = new Trace();
+        ret.type = TASK;
+        ret.path = channel;
+        ret.sessionID = Engine.session().ID();
+        return ret;
+    }
+
     public static Trace newEndpointTrace(String url, long trace) {
         var ret = new Trace();
         ret.type = ENDPOINT;

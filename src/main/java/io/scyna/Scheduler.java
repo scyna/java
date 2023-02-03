@@ -1,17 +1,16 @@
 package io.scyna;
 
-import io.nats.client.JetStreamApiException;
 import io.nats.client.Message;
 import io.nats.client.PullSubscribeOptions;
-import java.io.IOException;
+import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.time.Duration;
-import java.util.concurrent.TimeoutException;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Parser;
 
 public class Scheduler {
     public static <T extends com.google.protobuf.Message> void register(String channel, String receiver,
-            Handler<T> handler)
-            throws IOException, JetStreamApiException, TimeoutException, InterruptedException {
+            Handler<T> handler) throws Exception {
 
         var subject = Engine.module() + ".task." + channel;
         var durable = "task_" + channel + "_" + receiver;
@@ -35,6 +34,8 @@ public class Scheduler {
         };
 
         Thread thread = new Thread(runable);
+        var trace = Trace.newTaskTrace(subject);
+        handler.init(trace);
         thread.start();
     }
 
@@ -46,13 +47,25 @@ public class Scheduler {
 
         public abstract void execute();
 
-        public void init(Parser<T> parser, Trace trace) {
-            this.parser = parser;
+        public void init(Trace trace) throws Exception {
+            Class<T> cls = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
+                    .getActualTypeArguments()[0];
+            Method m = cls.getMethod("newBuilder");
+            var builder = (com.google.protobuf.Message.Builder) m.invoke(null);
+            var tObj = builder.build();
+            parser = (Parser<T>) tObj.getParserForType();
             this.trace = trace;
         }
 
         public void process(Message m) {
-            /* TODO */
+            try {
+                trace.reset(Engine.ID().next());
+                context.id = trace.ID();
+                data = parser.parseFrom(m.getData());
+                execute();
+            } catch (InvalidProtocolBufferException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
