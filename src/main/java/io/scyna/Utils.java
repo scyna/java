@@ -26,4 +26,5 @@ public class Utils {
         var instant = Instant.now();
         return instant.getEpochSecond() * 1000_000 + instant.getNano() / 1000;
     }
+
 }

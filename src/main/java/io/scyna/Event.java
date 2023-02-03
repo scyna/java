@@ -1,11 +1,12 @@
 package io.scyna;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
-
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
@@ -61,7 +62,6 @@ public class Event {
                         for (io.nats.client.Message m : messages) {
                             var executor = executors.get(m.getSubject());
                             if (executor != null) {
-                                /* TODO: event stream */
                                 executor.onMessage(m);
                             }
                             m.ack();
@@ -75,14 +75,14 @@ public class Event {
         }
     }
 
-    public static <T extends Message> void register(String sender, String channel, Handler<T> handler,
-            Parser<T> parser) throws TimeoutException, InterruptedException, IOException, JetStreamApiException {
+    public static <T extends Message> void register(String sender, String channel, Handler<T> handler)
+            throws Exception {
         System.out.println("Register Event:" + channel);
 
         var stream = Stream.createOrGet(sender);
         var subject = sender + "." + channel;
         var trace = Trace.newEventTrace(subject);
-        handler.init(parser, trace);
+        handler.init(trace);
         stream.executors.put(subject, handler);
     }
 
@@ -94,8 +94,13 @@ public class Event {
 
         public abstract void execute();
 
-        public void init(Parser<T> parser, Trace trace) {
-            this.parser = parser;
+        public void init(Trace trace) throws Exception {
+            Class<T> cls = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
+                    .getActualTypeArguments()[0];
+            Method m = cls.getMethod("newBuilder");
+            var builder = (com.google.protobuf.Message.Builder) m.invoke(null);
+            var tObj = builder.build();
+            parser = (Parser<T>) tObj.getParserForType();
             this.trace = trace;
         }
 
