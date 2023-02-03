@@ -48,7 +48,7 @@ public class Event {
             return stream;
         }
 
-        void start() throws TimeoutException, InterruptedException, IOException, JetStreamApiException {
+        void start() throws Exception {
             var opt = PullSubscribeOptions.builder().durable(receiver).stream(sender).build();
 
             var sub = Engine.stream().subscribe("", opt);
