@@ -61,8 +61,9 @@ public class Scheduler {
             try {
                 trace.reset(Engine.ID().next());
                 context.id = trace.ID();
-                data = parser.parseFrom(m.getData());
-                execute();
+                this.data = parser.parseFrom(m.getData());
+                this.execute();
+                trace.record();
             } catch (InvalidProtocolBufferException e) {
                 e.printStackTrace();
             }
