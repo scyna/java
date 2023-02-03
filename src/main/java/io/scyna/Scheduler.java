@@ -50,10 +50,8 @@ public class Scheduler {
         public void init(Trace trace) throws Exception {
             Class<T> cls = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
                     .getActualTypeArguments()[0];
-            Method m = cls.getMethod("newBuilder");
-            var builder = (com.google.protobuf.Message.Builder) m.invoke(null);
-            var tObj = builder.build();
-            parser = (Parser<T>) tObj.getParserForType();
+            Method m = cls.getMethod("parser");
+            this.parser = (Parser<T>) m.invoke(null);
             this.trace = trace;
         }
 
