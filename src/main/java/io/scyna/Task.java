@@ -8,6 +8,16 @@ import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
 
 public class Task {
+
+    public static <T extends Message> void register(String sender, String channel, Handler<T> handler)
+            throws Exception {
+        System.out.println("Register Task:" + channel);
+        var subject = sender + "." + channel;
+        var trace = Trace.newEventTrace(subject);
+        handler.init(trace);
+        Event.addToStream(sender, channel, handler);
+    }
+
     public static abstract class Handler<T extends Message> implements MessageHandler {
         protected Context context = new Context();
         protected Parser<T> parser;

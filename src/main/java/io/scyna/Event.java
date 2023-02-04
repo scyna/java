@@ -89,6 +89,13 @@ public class Event {
         stream.executors.put(subject, handler);
     }
 
+    public static void addToStream(String sender, String channel, MessageHandler handler)
+            throws Exception {
+        var stream = Stream.createOrGet(sender);
+        var subject = sender + "." + channel;
+        stream.executors.put(subject, handler);
+    }
+
     public static abstract class Handler<T extends Message> implements MessageHandler {
         protected Context context = new Context();
         protected Parser<T> parser;
