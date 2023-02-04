@@ -47,6 +47,7 @@ public class Scheduler {
 
         public abstract void execute();
 
+        @SuppressWarnings("unchecked")
         public void init(Trace trace) throws Exception {
             Class<T> cls = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
                     .getActualTypeArguments()[0];

@@ -29,6 +29,7 @@ public class Signal {
 
         public abstract void execute();
 
+        @SuppressWarnings("unchecked")
         public void init() throws java.lang.Exception {
             try {
                 Class<T> cls = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())

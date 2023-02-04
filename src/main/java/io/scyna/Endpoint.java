@@ -81,6 +81,7 @@ public abstract class Endpoint {
 
         protected abstract void execute() throws io.scyna.Error;
 
+        @SuppressWarnings("unchecked")
         public void init() throws java.lang.Exception {
             try {
                 Class<T> cls = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
@@ -96,6 +97,7 @@ public abstract class Endpoint {
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public void onMessage(io.nats.client.Message msg) {
             try {
                 var request = Request.parseFrom(msg.getData());
