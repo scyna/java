@@ -1,45 +1,14 @@
 package io.scyna;
 
-import io.nats.client.Message;
-import io.nats.client.PullSubscribeOptions;
+import io.scyna.Event.MessageHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
-import java.time.Duration;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
 
 public class Task {
-    public static <T extends com.google.protobuf.Message> void register(String channel, String receiver,
-            Handler<T> handler) throws Exception {
-
-        var subject = Engine.module() + ".task." + channel;
-        var durable = "task_" + channel + "_" + receiver;
-
-        PullSubscribeOptions opt = PullSubscribeOptions.builder().durable(durable).build();
-
-        var sub = Engine.stream().subscribe(subject, opt);
-        Engine.connection().flush(Duration.ofSeconds(1));
-
-        var runable = new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    var messages = sub.fetch(1, Duration.ofSeconds(1));
-                    for (Message m : messages) {
-                        handler.process(m);
-                        m.ack();
-                    }
-                }
-            }
-        };
-
-        Thread thread = new Thread(runable);
-        var trace = Trace.newTaskTrace(subject);
-        handler.init(trace);
-        thread.start();
-    }
-
-    public static abstract class Handler<T extends com.google.protobuf.Message> {
+    public static abstract class Handler<T extends Message> implements MessageHandler {
         protected Context context = new Context();
         protected Parser<T> parser;
         protected T data;
@@ -56,11 +25,13 @@ public class Task {
             this.trace = trace;
         }
 
-        public void process(Message m) {
+        @Override
+        public void onMessage(io.nats.client.Message msg) {
             try {
-                trace.reset(Engine.ID().next());
-                context.id = trace.ID();
-                this.data = parser.parseFrom(m.getData());
+                var event = io.scyna.proto.Task.parseFrom(msg.getData());
+                trace.reset(event.getTraceID());
+                context.id = event.getTraceID();
+                this.data = parser.parseFrom(event.getData());
                 this.execute();
                 trace.record();
             } catch (InvalidProtocolBufferException e) {
