@@ -29,6 +29,8 @@ public class Trace {
         ret.type = EVENT;
         ret.path = channel;
         ret.sessionID = Engine.session().ID();
+        ret.t1 = System.nanoTime();
+        ret.source = Engine.module();
         return ret;
     }
 
@@ -37,6 +39,8 @@ public class Trace {
         ret.type = TASK;
         ret.path = channel;
         ret.sessionID = Engine.session().ID();
+        ret.t1 = System.nanoTime();
+        ret.source = Engine.module();
         return ret;
     }
 

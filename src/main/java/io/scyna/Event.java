@@ -49,9 +49,12 @@ public class Event {
         }
 
         void start() throws Exception {
-            var opt = PullSubscribeOptions.builder().durable(receiver).stream(sender).build();
+            var opt = PullSubscribeOptions.builder()
+                    .durable(receiver)
+                    .stream(sender)
+                    .build();
 
-            var sub = Engine.stream().subscribe("", opt);
+            var sub = Engine.stream().subscribe(sender + ".>", opt);
             Engine.connection().flush(Duration.ofSeconds(1));
 
             var runable = new Runnable() {

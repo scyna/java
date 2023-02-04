@@ -15,6 +15,7 @@ import io.scyna.ex.account.proto.CreateAccountResponse;
 public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest> {
     @Override
     public void execute() throws io.scyna.Error {
+        context.info("Receive CreateAccountRequest");
         var repository = AccountService.loadRepository(context);
 
         var account = new Account(context);

@@ -8,6 +8,7 @@ public class AccountCreatedHandler extends Event.Handler<AccountCreated> {
     @Override
     public void execute() {
         context.info("Receive AccountCreated event");
+        System.out.println(data);
         /* TODO */
     }
 }
