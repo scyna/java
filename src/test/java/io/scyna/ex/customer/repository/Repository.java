@@ -6,7 +6,6 @@ import com.datastax.driver.core.querybuilder.Select;
 
 import io.scyna.Context;
 import io.scyna.Engine;
-import io.scyna.Logger;
 import io.scyna.ex.customer.domain.IRepository;
 import io.scyna.ex.customer.model.Customer;
 import io.scyna.ex.customer.model.Error;

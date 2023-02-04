@@ -1,6 +1,5 @@
 package io.scyna.ex.account.build;
 
-import io.scyna.Endpoint;
 import io.scyna.Engine;
 import io.scyna.Event;
 import io.scyna.ex.account.event.AccountCreatedHandler;
