@@ -26,7 +26,6 @@ public class Context extends Logger {
         try {
             var event = Event.newBuilder().setTraceID(this.id).setBody(ByteString.copyFrom(data)).build();
             var subject = Engine.module() + "." + channel;
-            System.out.println(subject);
             Engine.stream().publish(subject, event.toByteArray());
         } catch (IOException e) {
             e.printStackTrace();

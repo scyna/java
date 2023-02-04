@@ -15,7 +15,6 @@ import io.scyna.ex.account.proto.CreateAccountResponse;
 public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest> {
     @Override
     public void execute() throws io.scyna.Error {
-        System.out.println("a1");
         var repository = AccountService.loadRepository(context);
 
         var account = new Account(context);
@@ -24,11 +23,7 @@ public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest>
         account.email = EmailAddress.parse(request.getEmail());
         account.password = Password.create(request.getPassword());
 
-        System.out.println("a2");
-
         AccountService.assureAccountNotExists(repository, account.email);
-
-        System.out.println("a3");
 
         var command = Command.create(context)
                 .setAggregateID(account.ID)
@@ -39,14 +34,9 @@ public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest>
                         .setName(account.name.toString())
                         .build());
 
-        System.out.println("a4");
-
         repository.createAccount(command, account);
-
         command.commit();
-        System.out.println("a5");
 
         response(CreateAccountResponse.newBuilder().setId(account.ID).build());
-        System.out.println("a6");
     }
 }
