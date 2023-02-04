@@ -4,25 +4,26 @@
 package io.scyna.proto;
 
 /**
- * Protobuf type {@code scyna.StopTaskRequest}
+ * Protobuf type {@code scyna.Task}
  */
-public final class StopTaskRequest extends
+public final class Task extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:scyna.StopTaskRequest)
-    StopTaskRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:scyna.Task)
+    TaskOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use StopTaskRequest.newBuilder() to construct.
-  private StopTaskRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use Task.newBuilder() to construct.
+  private Task(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private StopTaskRequest() {
+  private Task() {
+    data_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new StopTaskRequest();
+    return new Task();
   }
 
   @java.lang.Override
@@ -32,91 +33,102 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.scyna.proto.TaskOuterClass.internal_static_scyna_StopTaskRequest_descriptor;
+    return io.scyna.proto.TaskOuterClass.internal_static_scyna_Task_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.scyna.proto.TaskOuterClass.internal_static_scyna_StopTaskRequest_fieldAccessorTable
+    return io.scyna.proto.TaskOuterClass.internal_static_scyna_Task_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            io.scyna.proto.StopTaskRequest.class, io.scyna.proto.StopTaskRequest.Builder.class);
+            io.scyna.proto.Task.class, io.scyna.proto.Task.Builder.class);
   }
 
-  public static final int ID_FIELD_NUMBER = 1;
-  private long id_;
+  public static final int TRACEID_FIELD_NUMBER = 1;
+  private long traceID_;
   /**
-   * <code>uint64 Id = 1;</code>
-   * @return The id.
+   * <code>uint64 TraceID = 1;</code>
+   * @return The traceID.
    */
   @java.lang.Override
-  public long getId() {
-    return id_;
+  public long getTraceID() {
+    return traceID_;
   }
 
-  public static io.scyna.proto.StopTaskRequest parseFrom(
+  public static final int DATA_FIELD_NUMBER = 2;
+  private com.google.protobuf.ByteString data_;
+  /**
+   * <code>bytes Data = 2;</code>
+   * @return The data.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getData() {
+    return data_;
+  }
+
+  public static io.scyna.proto.Task parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.proto.StopTaskRequest parseFrom(
+  public static io.scyna.proto.Task parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.proto.StopTaskRequest parseFrom(
+  public static io.scyna.proto.Task parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.proto.StopTaskRequest parseFrom(
+  public static io.scyna.proto.Task parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.proto.StopTaskRequest parseFrom(byte[] data)
+  public static io.scyna.proto.Task parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.scyna.proto.StopTaskRequest parseFrom(
+  public static io.scyna.proto.Task parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.scyna.proto.StopTaskRequest parseFrom(java.io.InputStream input)
+  public static io.scyna.proto.Task parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.proto.StopTaskRequest parseFrom(
+  public static io.scyna.proto.Task parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.proto.StopTaskRequest parseDelimitedFrom(java.io.InputStream input)
+  public static io.scyna.proto.Task parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static io.scyna.proto.StopTaskRequest parseDelimitedFrom(
+  public static io.scyna.proto.Task parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.scyna.proto.StopTaskRequest parseFrom(
+  public static io.scyna.proto.Task parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.scyna.proto.StopTaskRequest parseFrom(
+  public static io.scyna.proto.Task parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -129,7 +141,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(io.scyna.proto.StopTaskRequest prototype) {
+  public static Builder newBuilder(io.scyna.proto.Task prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -145,26 +157,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code scyna.StopTaskRequest}
+   * Protobuf type {@code scyna.Task}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:scyna.StopTaskRequest)
-      io.scyna.proto.StopTaskRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:scyna.Task)
+      io.scyna.proto.TaskOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.scyna.proto.TaskOuterClass.internal_static_scyna_StopTaskRequest_descriptor;
+      return io.scyna.proto.TaskOuterClass.internal_static_scyna_Task_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.scyna.proto.TaskOuterClass.internal_static_scyna_StopTaskRequest_fieldAccessorTable
+      return io.scyna.proto.TaskOuterClass.internal_static_scyna_Task_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              io.scyna.proto.StopTaskRequest.class, io.scyna.proto.StopTaskRequest.Builder.class);
+              io.scyna.proto.Task.class, io.scyna.proto.Task.Builder.class);
     }
 
-    // Construct using io.scyna.proto.StopTaskRequest.newBuilder()
+    // Construct using io.scyna.proto.Task.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -182,7 +194,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      id_ = 0L;
+      traceID_ = 0L;
+
+      data_ = com.google.protobuf.ByteString.EMPTY;
 
       return this;
     }
@@ -190,17 +204,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.scyna.proto.TaskOuterClass.internal_static_scyna_StopTaskRequest_descriptor;
+      return io.scyna.proto.TaskOuterClass.internal_static_scyna_Task_descriptor;
     }
 
     @java.lang.Override
-    public io.scyna.proto.StopTaskRequest getDefaultInstanceForType() {
-      return io.scyna.proto.StopTaskRequest.getDefaultInstance();
+    public io.scyna.proto.Task getDefaultInstanceForType() {
+      return io.scyna.proto.Task.getDefaultInstance();
     }
 
     @java.lang.Override
-    public io.scyna.proto.StopTaskRequest build() {
-      io.scyna.proto.StopTaskRequest result = buildPartial();
+    public io.scyna.proto.Task build() {
+      io.scyna.proto.Task result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -208,9 +222,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public io.scyna.proto.StopTaskRequest buildPartial() {
-      io.scyna.proto.StopTaskRequest result = new io.scyna.proto.StopTaskRequest(this);
-      result.id_ = id_;
+    public io.scyna.proto.Task buildPartial() {
+      io.scyna.proto.Task result = new io.scyna.proto.Task(this);
+      result.traceID_ = traceID_;
+      result.data_ = data_;
       onBuilt();
       return result;
     }
@@ -248,33 +263,67 @@ private static final long serialVersionUID = 0L;
       return super.addRepeatedField(field, value);
     }
 
-    private long id_ ;
+    private long traceID_ ;
     /**
-     * <code>uint64 Id = 1;</code>
-     * @return The id.
+     * <code>uint64 TraceID = 1;</code>
+     * @return The traceID.
      */
     @java.lang.Override
-    public long getId() {
-      return id_;
+    public long getTraceID() {
+      return traceID_;
     }
     /**
-     * <code>uint64 Id = 1;</code>
-     * @param value The id to set.
+     * <code>uint64 TraceID = 1;</code>
+     * @param value The traceID to set.
      * @return This builder for chaining.
      */
-    public Builder setId(long value) {
+    public Builder setTraceID(long value) {
       
-      id_ = value;
+      traceID_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 Id = 1;</code>
+     * <code>uint64 TraceID = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearId() {
+    public Builder clearTraceID() {
       
-      id_ = 0L;
+      traceID_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <code>bytes Data = 2;</code>
+     * @return The data.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getData() {
+      return data_;
+    }
+    /**
+     * <code>bytes Data = 2;</code>
+     * @param value The data to set.
+     * @return This builder for chaining.
+     */
+    public Builder setData(com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      data_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bytes Data = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearData() {
+      
+      data_ = getDefaultInstance().getData();
       onChanged();
       return this;
     }
@@ -291,23 +340,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:scyna.StopTaskRequest)
+    // @@protoc_insertion_point(builder_scope:scyna.Task)
   }
 
-  // @@protoc_insertion_point(class_scope:scyna.StopTaskRequest)
-  private static final io.scyna.proto.StopTaskRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:scyna.Task)
+  private static final io.scyna.proto.Task DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new io.scyna.proto.StopTaskRequest();
+    DEFAULT_INSTANCE = new io.scyna.proto.Task();
   }
 
-  public static io.scyna.proto.StopTaskRequest getDefaultInstance() {
+  public static io.scyna.proto.Task getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<StopTaskRequest>
-      PARSER = new com.google.protobuf.AbstractParser<StopTaskRequest>() {
+  private static final com.google.protobuf.Parser<Task>
+      PARSER = new com.google.protobuf.AbstractParser<Task>() {
     @java.lang.Override
-    public StopTaskRequest parsePartialFrom(
+    public Task parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -325,17 +374,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<StopTaskRequest> parser() {
+  public static com.google.protobuf.Parser<Task> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<StopTaskRequest> getParserForType() {
+  public com.google.protobuf.Parser<Task> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public io.scyna.proto.StopTaskRequest getDefaultInstanceForType() {
+  public io.scyna.proto.Task getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

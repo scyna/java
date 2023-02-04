@@ -70,10 +70,11 @@ public class Context extends Logger {
                 .build());
     }
 
-    public long scheduleTask(String task, long start, long interval, ByteString data, long loop) throws io.scyna.Error {
+    public long scheduleTask(String channel, long start, long interval, ByteString data, long loop)
+            throws io.scyna.Error {
         var response = sendRequest(Path.START_TASK_URL, StartTaskRequest.newBuilder()
                 .setModule(Engine.module())
-                .setTopic(Engine.module() + ".task." + task)
+                .setTopic(Engine.module() + "." + channel)
                 .setData(data)
                 .setTime(start)
                 .setInterval(interval)

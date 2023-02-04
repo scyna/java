@@ -17,7 +17,6 @@ private static final long serialVersionUID = 0L;
   }
   private Event() {
     body_ = com.google.protobuf.ByteString.EMPTY;
-    data_ = "";
   }
 
   @java.lang.Override
@@ -45,15 +44,15 @@ private static final long serialVersionUID = 0L;
             io.scyna.proto.Event.class, io.scyna.proto.Event.Builder.class);
   }
 
-  public static final int AGGREGATEID_FIELD_NUMBER = 1;
-  private long aggregateID_;
+  public static final int ENTITY_FIELD_NUMBER = 1;
+  private long entity_;
   /**
-   * <code>uint64 AggregateID = 1;</code>
-   * @return The aggregateID.
+   * <code>uint64 Entity = 1;</code>
+   * @return The entity.
    */
   @java.lang.Override
-  public long getAggregateID() {
-    return aggregateID_;
+  public long getEntity() {
+    return entity_;
   }
 
   public static final int VERSION_FIELD_NUMBER = 2;
@@ -76,44 +75,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public com.google.protobuf.ByteString getBody() {
     return body_;
-  }
-
-  public static final int DATA_FIELD_NUMBER = 4;
-  private volatile java.lang.Object data_;
-  /**
-   * <code>string Data = 4;</code>
-   * @return The data.
-   */
-  @java.lang.Override
-  public java.lang.String getData() {
-    java.lang.Object ref = data_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      data_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string Data = 4;</code>
-   * @return The bytes for data.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getDataBytes() {
-    java.lang.Object ref = data_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      data_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
   }
 
   public static final int TRACEID_FIELD_NUMBER = 5;
@@ -255,13 +216,11 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      aggregateID_ = 0L;
+      entity_ = 0L;
 
       version_ = 0L;
 
       body_ = com.google.protobuf.ByteString.EMPTY;
-
-      data_ = "";
 
       traceID_ = 0L;
 
@@ -291,10 +250,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public io.scyna.proto.Event buildPartial() {
       io.scyna.proto.Event result = new io.scyna.proto.Event(this);
-      result.aggregateID_ = aggregateID_;
+      result.entity_ = entity_;
       result.version_ = version_;
       result.body_ = body_;
-      result.data_ = data_;
       result.traceID_ = traceID_;
       onBuilt();
       return result;
@@ -333,33 +291,33 @@ private static final long serialVersionUID = 0L;
       return super.addRepeatedField(field, value);
     }
 
-    private long aggregateID_ ;
+    private long entity_ ;
     /**
-     * <code>uint64 AggregateID = 1;</code>
-     * @return The aggregateID.
+     * <code>uint64 Entity = 1;</code>
+     * @return The entity.
      */
     @java.lang.Override
-    public long getAggregateID() {
-      return aggregateID_;
+    public long getEntity() {
+      return entity_;
     }
     /**
-     * <code>uint64 AggregateID = 1;</code>
-     * @param value The aggregateID to set.
+     * <code>uint64 Entity = 1;</code>
+     * @param value The entity to set.
      * @return This builder for chaining.
      */
-    public Builder setAggregateID(long value) {
+    public Builder setEntity(long value) {
       
-      aggregateID_ = value;
+      entity_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 AggregateID = 1;</code>
+     * <code>uint64 Entity = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearAggregateID() {
+    public Builder clearEntity() {
       
-      aggregateID_ = 0L;
+      entity_ = 0L;
       onChanged();
       return this;
     }
@@ -425,82 +383,6 @@ private static final long serialVersionUID = 0L;
     public Builder clearBody() {
       
       body_ = getDefaultInstance().getBody();
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object data_ = "";
-    /**
-     * <code>string Data = 4;</code>
-     * @return The data.
-     */
-    public java.lang.String getData() {
-      java.lang.Object ref = data_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        data_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string Data = 4;</code>
-     * @return The bytes for data.
-     */
-    public com.google.protobuf.ByteString
-        getDataBytes() {
-      java.lang.Object ref = data_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        data_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string Data = 4;</code>
-     * @param value The data to set.
-     * @return This builder for chaining.
-     */
-    public Builder setData(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      data_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string Data = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearData() {
-      
-      data_ = getDefaultInstance().getData();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string Data = 4;</code>
-     * @param value The bytes for data to set.
-     * @return This builder for chaining.
-     */
-    public Builder setDataBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      data_ = value;
       onChanged();
       return this;
     }

@@ -1,11 +1,16 @@
 package io.scyna;
 
+import java.io.IOException;
 import java.nio.ByteBuffer;
 
 import com.datastax.driver.core.exceptions.DriverException;
 import com.datastax.driver.core.querybuilder.Batch;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
+import com.google.protobuf.ByteString;
 import com.google.protobuf.Message;
+
+import io.nats.client.JetStreamApiException;
+import io.scyna.proto.Event;
 
 public class Command {
     static final String TABLE_NAME = "event_store";
@@ -69,12 +74,22 @@ public class Command {
             version = id;
 
             if (this.channel != null) {
-                context.publishEvent(channel, data);
+                var eventMessage = Event.newBuilder()
+                        .setTraceID(context.id)
+                        .setBody(ByteString.copyFrom(data))
+                        .setEntity(entity)
+                        .setVersion(id)
+                        .build();
+                var subject = Engine.module() + "." + channel;
+                Engine.stream().publish(subject, eventMessage.toByteArray());
             }
 
-        } catch (DriverException e) {
+        } catch (DriverException | IOException e) {
             e.printStackTrace();
             throw io.scyna.Error.SERVER_ERROR;
+        } catch (JetStreamApiException e) {
+            e.printStackTrace();
+            throw io.scyna.Error.STREAM_ERROR;
         }
     }
 

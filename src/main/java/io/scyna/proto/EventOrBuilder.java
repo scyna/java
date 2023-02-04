@@ -8,10 +8,10 @@ public interface EventOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>uint64 AggregateID = 1;</code>
-   * @return The aggregateID.
+   * <code>uint64 Entity = 1;</code>
+   * @return The entity.
    */
-  long getAggregateID();
+  long getEntity();
 
   /**
    * <code>uint64 Version = 2;</code>
@@ -24,18 +24,6 @@ public interface EventOrBuilder extends
    * @return The body.
    */
   com.google.protobuf.ByteString getBody();
-
-  /**
-   * <code>string Data = 4;</code>
-   * @return The data.
-   */
-  java.lang.String getData();
-  /**
-   * <code>string Data = 4;</code>
-   * @return The bytes for data.
-   */
-  com.google.protobuf.ByteString
-      getDataBytes();
 
   /**
    * <code>uint64 TraceID = 5;</code>

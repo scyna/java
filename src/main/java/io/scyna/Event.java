@@ -94,6 +94,8 @@ public class Event {
         protected Parser<T> parser;
         protected T data;
         protected Trace trace;
+        protected long entity;
+        protected long version;
 
         public abstract void execute();
 
@@ -112,6 +114,8 @@ public class Event {
                 var event = io.scyna.proto.Event.parseFrom(msg.getData());
                 trace.reset(event.getTraceID());
                 context.id = event.getTraceID();
+                entity = event.getEntity();
+                version = event.getVersion();
                 this.data = parser.parseFrom(event.getBody());
                 this.execute();
                 trace.record();

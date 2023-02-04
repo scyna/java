@@ -8,7 +8,7 @@ import java.time.Duration;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Parser;
 
-public class Scheduler {
+public class Task {
     public static <T extends com.google.protobuf.Message> void register(String channel, String receiver,
             Handler<T> handler) throws Exception {
 
