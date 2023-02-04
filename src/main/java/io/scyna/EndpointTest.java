@@ -120,21 +120,13 @@ public class EndpointTest {
         return null;
     }
 
-    private String getStreamName(String channel) {
-        var list = channel.split("\\.");
-        if (list.length > 1) {
-            return list[0];
-        }
-        return "";
-    }
-
     private void receiveEvent() {
         if (event == null) {
             return;
         }
 
         try {
-            var sub = Engine.stream().subscribe(channel);
+            var sub = Engine.stream().subscribe(streamName + "." + channel);
             var msg = sub.nextMessage(Duration.ofSeconds(1));
 
             if (msg == null)
@@ -160,35 +152,37 @@ public class EndpointTest {
     }
 
     private void createStream() {
-        streamName = getStreamName(channel);
-        if (streamName.length() > 0) {
-            try {
+        if (channel.length() == 0) {
+            return;
+        }
+        streamName = Engine.module();
+        try {
+            StreamConfiguration config = StreamConfiguration.builder()
+                    .name(streamName)
+                    .subjects(streamName + ".>")
+                    .build();
 
-                StreamConfiguration config = StreamConfiguration.builder()
-                        .name(streamName)
-                        .subjects(channel)
-                        .build();
-
-                var jsm = Engine.connection().jetStreamManagement();
-                if (jsm.getStreamNames().contains(streamName)) {
-                    jsm.deleteStream(streamName);
-                }
-                jsm.addStream(config);
-            } catch (Exception e) {
-                e.printStackTrace();
-                assertTrue("Error in creating stream", false);
+            var jsm = Engine.connection().jetStreamManagement();
+            if (jsm.getStreamNames().contains(streamName)) {
+                jsm.deleteStream(streamName);
             }
+            jsm.addStream(config);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue("Error in creating stream", false);
         }
     }
 
     private void deleteStream() {
-        if (streamName.length() > 0) {
-            try {
-                Engine.connection().jetStreamManagement().deleteStream(streamName);
-            } catch (Exception e) {
-                e.printStackTrace();
-                assertTrue("Error in deleting stream", false);
-            }
+        if (channel.length() == 0) {
+            return;
+        }
+
+        try {
+            Engine.connection().jetStreamManagement().deleteStream(streamName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue("Error in deleting stream", false);
         }
     }
 

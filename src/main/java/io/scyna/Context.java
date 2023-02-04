@@ -25,7 +25,9 @@ public class Context extends Logger {
     public void publishEvent(String channel, byte[] data) throws io.scyna.Error {
         try {
             var event = Event.newBuilder().setTraceID(this.id).setBody(ByteString.copyFrom(data)).build();
-            Engine.connection().jetStream().publish(channel, event.toByteArray());
+            var subject = Engine.module() + "." + channel;
+            System.out.println(subject);
+            Engine.stream().publish(subject, event.toByteArray());
         } catch (IOException e) {
             e.printStackTrace();
             throw io.scyna.Error.SERVER_ERROR;
