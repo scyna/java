@@ -19,7 +19,7 @@ public class Error extends java.lang.Exception {
         this.message = message;
     }
 
-    static public Error New(int code, String message) {
+    public static Error New(int code, String message) {
         return new Error(code, message);
     }
 

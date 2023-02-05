@@ -76,7 +76,7 @@ public class EndpointTest {
     public void run() {
         createStream();
         var trace = Trace.newEndpointTrace(url, 0);
-        var res = Endpoint.sendRequest(url, request);
+        var res = Request.send(url, request);
         assertNotNull(res);
         assertEquals(status, res.getCode());
         trace.update(res.getSessionID(), res.getCode());
@@ -103,7 +103,7 @@ public class EndpointTest {
     public <T extends Message> T run(Parser<T> parser) {
         createStream();
         var trace = Trace.newEndpointTrace(url, 0);
-        var res = Endpoint.sendRequest(url, request);
+        var res = Request.send(url, request);
         trace.update(res.getSessionID(), res.getCode());
         assertNotNull(res);
         assertEquals(status, res.getCode());

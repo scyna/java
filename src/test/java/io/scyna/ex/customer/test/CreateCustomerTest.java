@@ -15,7 +15,7 @@ import io.scyna.ex.customer.service.Path;
 public class CreateCustomerTest {
     @BeforeClass
     public static void setup() throws Exception {
-        Engine.init("http://127.0.0.1:8081", "scyna.test", "123456");
+        Engine.init("http://127.0.0.1:8081", "scyna_test", "123456");
         Endpoint.register(Path.CREATE_CUSTOMER_URL, new CreateCustomerService());
         Endpoint.register(Path.GET_CUSTOMER_BY_IDENTITY_URL, new GetCustomerByIdentityService());
     }
