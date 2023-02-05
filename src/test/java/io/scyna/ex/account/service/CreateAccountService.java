@@ -27,7 +27,7 @@ public class CreateAccountService extends Endpoint.Handler<CreateAccountRequest>
         AccountService.assureAccountNotExists(repository, account.email);
 
         var command = Command.create(context)
-                .setAggregateID(account.ID)
+                .setEntity(account.ID)
                 .setChannel(Path.ACCOUNT_CREATED_CHANNEL)
                 .setEvent(AccountCreated.newBuilder()
                         .setId(account.ID)

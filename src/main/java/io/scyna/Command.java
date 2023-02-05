@@ -32,7 +32,7 @@ public class Command {
         return new Command(context);
     }
 
-    public Command setAggregateID(long id) {
+    public Command setEntity(long id) {
         entity = id;
         return this;
     }
