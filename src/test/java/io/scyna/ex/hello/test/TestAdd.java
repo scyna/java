@@ -15,7 +15,7 @@ public class TestAdd {
 
     @BeforeClass
     public static void setup() throws Exception {
-        Engine.init("http://127.0.0.1:8081", "scyna.test", "123456");
+        Engine.init("http://127.0.0.1:8081", "scyna_test", "123456");
         Endpoint.register(Path.ADD_URL, new AddService());
     }
 
