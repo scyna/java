@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>scyna</groupId>
-    <artifactId>scyna-java</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <groupId>io.scyna</groupId>
+    <artifactId>java</artifactId>
+    <version>2.0.1</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -17,12 +17,12 @@
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
-            <version>4.0.0-rc-2</version>
+            <version>3.19.4</version>
         </dependency>
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java-util</artifactId>
-            <version>4.0.0-rc-2</version>
+            <version>3.19.4</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -40,6 +40,11 @@
             <version>3.11.0.1</version>
         </dependency>
         <dependency>
+            <groupId>com.scylladb</groupId>
+            <artifactId>scylla-driver-mapping</artifactId>
+            <version>3.10.2-scylla-1</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
@@ -52,10 +57,6 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-
-    <profiles>
-
-    </profiles>
 
     <build>
         <plugins>
@@ -74,7 +75,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>2.4</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -89,7 +90,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>2.10.4</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -136,26 +137,5 @@
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
-
-    <developers>
-        <developer>
-            <name>Duy Khanh</name>
-            <email>khanhnd162@gmail.com</email>
-            <organization>ScynaIO</organization>
-            <organizationUrl>http://www.scyna.io</organizationUrl>
-        </developer>
-        <developer>
-            <name>Hong San</name>
-            <email>hongsan@gmail.com</email>
-            <organization>ScynaIO</organization>
-            <organizationUrl>http://www.scyna.io</organizationUrl>
-        </developer>
-    </developers>
-
-    <scm>
-        <connection>scm:git@github.com:scyna/java.git</connection>
-        <developerConnection>scm:git:ssh://github.com:scyna/java.git</developerConnection>
-        <url>http://github.com/scyna/java/tree/master</url>
-    </scm>
 
 </project>
