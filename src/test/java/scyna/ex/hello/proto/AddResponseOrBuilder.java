@@ -4,13 +4,11 @@
 package scyna.ex.hello.proto;
 
 public interface AddResponseOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:AddResponse)
-        com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:AddResponse)
+    com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>int32 sum = 1;</code>
-     * 
-     * @return The sum.
-     */
-    int getSum();
+  /**
+   * <code>int32 sum = 1;</code>
+   */
+  int getSum();
 }

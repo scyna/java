@@ -4,20 +4,16 @@
 package scyna.ex.hello.proto;
 
 public interface AddRequestOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:AddRequest)
-        com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:AddRequest)
+    com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>int32 a = 1;</code>
-     * 
-     * @return The a.
-     */
-    int getA();
+  /**
+   * <code>int32 a = 1;</code>
+   */
+  int getA();
 
-    /**
-     * <code>int32 b = 2;</code>
-     * 
-     * @return The b.
-     */
-    int getB();
+  /**
+   * <code>int32 b = 2;</code>
+   */
+  int getB();
 }

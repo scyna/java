@@ -4,20 +4,16 @@
 package scyna.ex.hello.proto;
 
 public interface EchoRequestOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:EchoRequest)
-        com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:EchoRequest)
+    com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>string text = 1;</code>
-     * 
-     * @return The text.
-     */
-    java.lang.String getText();
-
-    /**
-     * <code>string text = 1;</code>
-     * 
-     * @return The bytes for text.
-     */
-    com.google.protobuf.ByteString getTextBytes();
+  /**
+   * <code>string text = 1;</code>
+   */
+  java.lang.String getText();
+  /**
+   * <code>string text = 1;</code>
+   */
+  com.google.protobuf.ByteString
+      getTextBytes();
 }

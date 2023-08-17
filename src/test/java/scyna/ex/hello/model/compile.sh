@@ -1,1 +1,1 @@
-protoc -I=. --java_out=../../../../../ hello.proto
+protoc -I=. --java_out=../../../../ hello.proto
