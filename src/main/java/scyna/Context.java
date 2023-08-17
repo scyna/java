@@ -58,7 +58,7 @@ public class Context extends Logger {
         return ret;
     }
 
-    public void saveTag(String key, String value) {
+    public void tag(String key, String value) {
         if (id == 0) {
             return;
         }
