@@ -1,4 +1,4 @@
-package scyna.ex.hello.shared;
+package ex.hello.shared;
 
 public abstract class Path {
     public static String ECHO = "/example/hello/echo";

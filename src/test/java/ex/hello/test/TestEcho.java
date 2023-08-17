@@ -1,16 +1,16 @@
-package scyna.ex.hello.test;
+package ex.hello.test;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import ex.hello.proto.EchoRequest;
+import ex.hello.proto.EchoResponse;
+import ex.hello.services.EchoService;
+import ex.hello.shared.Path;
 import scyna.Endpoint;
 import scyna.EndpointTest;
 import scyna.Engine;
-import scyna.ex.hello.proto.EchoRequest;
-import scyna.ex.hello.proto.EchoResponse;
-import scyna.ex.hello.services.EchoService;
-import scyna.ex.hello.shared.Path;
 
 public class TestEcho {
 

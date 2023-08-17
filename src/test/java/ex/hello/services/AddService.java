@@ -1,8 +1,8 @@
-package scyna.ex.hello.services;
+package ex.hello.services;
 
+import ex.hello.proto.AddRequest;
+import ex.hello.proto.AddResponse;
 import scyna.Endpoint;
-import scyna.ex.hello.proto.AddRequest;
-import scyna.ex.hello.proto.AddResponse;
 
 public class AddService extends Endpoint.Handler<AddRequest> {
     @Override

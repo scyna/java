@@ -1,16 +1,16 @@
-package scyna.ex.hello.test;
+package ex.hello.test;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import ex.hello.proto.AddRequest;
+import ex.hello.proto.AddResponse;
+import ex.hello.services.AddService;
+import ex.hello.shared.Path;
 import scyna.Endpoint;
 import scyna.EndpointTest;
 import scyna.Engine;
-import scyna.ex.hello.proto.AddRequest;
-import scyna.ex.hello.proto.AddResponse;
-import scyna.ex.hello.services.AddService;
-import scyna.ex.hello.shared.Path;
 
 public class TestAdd {
 
