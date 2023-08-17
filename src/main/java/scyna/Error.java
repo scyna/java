@@ -13,6 +13,9 @@ public class Error extends java.lang.Exception {
     public static final Error BAD_DATA = New(7, "Bad Data");
     public static final Error STREAM_ERROR = New(8, "Stream Error");
 
+    public static final Error OBJECT_NOT_FOUND = New(9, "Object Not Found");
+    public static final Error OBJECT_EXISTS = New(10, "Object Exists");
+
     private Error(int code, String message) {
         super(message);
         this.code = code;
