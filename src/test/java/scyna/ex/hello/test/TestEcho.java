@@ -9,8 +9,8 @@ import scyna.EndpointTest;
 import scyna.Engine;
 import scyna.ex.hello.proto.EchoRequest;
 import scyna.ex.hello.proto.EchoResponse;
-import scyna.ex.hello.service.EchoService;
-import scyna.ex.hello.service.Path;
+import scyna.ex.hello.services.EchoService;
+import scyna.ex.hello.services.Path;
 
 public class TestEcho {
 

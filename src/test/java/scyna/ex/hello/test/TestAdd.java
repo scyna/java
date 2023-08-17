@@ -9,8 +9,8 @@ import scyna.EndpointTest;
 import scyna.Engine;
 import scyna.ex.hello.proto.AddRequest;
 import scyna.ex.hello.proto.AddResponse;
-import scyna.ex.hello.service.AddService;
-import scyna.ex.hello.service.Path;
+import scyna.ex.hello.services.AddService;
+import scyna.ex.hello.services.Path;
 
 public class TestAdd {
 
