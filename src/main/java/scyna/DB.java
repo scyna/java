@@ -17,6 +17,7 @@ public class DB {
         } catch (scyna.Error e) {
             throw e;
         } catch (Exception e) {
+            Engine.LOG().error(e.toString());
             throw scyna.Error.SERVER_ERROR;
         }
     }
@@ -30,6 +31,7 @@ public class DB {
         } catch (scyna.Error e) {
             throw e;
         } catch (Exception e) {
+            Engine.LOG().error(e.toString());
             throw scyna.Error.SERVER_ERROR;
         }
     }
@@ -44,6 +46,7 @@ public class DB {
         } catch (scyna.Error e) {
             throw e;
         } catch (Exception e) {
+            Engine.LOG().error(e.toString());
             throw scyna.Error.SERVER_ERROR;
         }
     }
@@ -52,6 +55,7 @@ public class DB {
         try {
             session.execute(query, args);
         } catch (Exception e) {
+            Engine.LOG().error(e.toString());
             throw scyna.Error.SERVER_ERROR;
         }
     }
