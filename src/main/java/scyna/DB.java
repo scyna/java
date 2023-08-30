@@ -1,6 +1,7 @@
 package scyna;
 
 import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
 
@@ -10,7 +11,7 @@ public class DB {
 
     public void assureExists(String query, Object... args) throws Error {
         try {
-            var result = session.execute(query, args);
+            var result = session.execute(addLimitOne(query), args);
             if (!result.isExhausted()) {
                 throw Error.OBJECT_NOT_FOUND;
             }
@@ -23,7 +24,7 @@ public class DB {
 
     public void assureNotExists(String query, Object... args) throws Error {
         try {
-            var result = session.execute(query, args);
+            var result = session.execute(addLimitOne(query), args);
             if (result.isExhausted()) {
                 throw Error.OBJECT_EXISTS;
             }
@@ -36,13 +37,22 @@ public class DB {
 
     public Row queryOne(String query, Object... args) throws Error {
         try {
-            var result = session.execute(query, args);
+            var result = session.execute(addLimitOne(query), args);
             if (!result.isExhausted()) {
                 throw Error.OBJECT_NOT_FOUND;
             }
             return result.one();
         } catch (scyna.Error e) {
             throw e;
+        } catch (Exception e) {
+            throw scyna.Error.SERVER_ERROR;
+        }
+    }
+
+    public ResultSet queryMany(String query, Object... args) throws Error {
+        try {
+            var result = session.execute(query, args);
+            return result;
         } catch (Exception e) {
             throw scyna.Error.SERVER_ERROR;
         }
@@ -79,5 +89,12 @@ public class DB {
     public void close() {
         session.close();
         cluster.close();
+    }
+
+    private String addLimitOne(String query) {
+        if (query.contains("LIMIT")) {
+            return query;
+        }
+        return query + " LIMIT 1";
     }
 }
