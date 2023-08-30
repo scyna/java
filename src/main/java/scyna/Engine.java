@@ -32,18 +32,18 @@ public class Engine {
         settings = new Settings();
 
         /* NATS */
-        connection = Nats.connect(config.getNatsUrl()); // FIXME: hosts list anh auth
+        connection = Nats.connect(config.getNatsUrl()); // FIXME: hosts list and auth
         stream = connection.jetStream();
         System.out.println("Connected to NATS");
 
         /* ScyllaDB */
         var hosts = config.getDBHost().split(",");
-        db = DB.init(hosts, config.getDBUsername(), config.getDBPassword(), config.getDBLocation());
+        db = DB.Init(hosts, config.getDBUsername(), config.getDBPassword(), config.getDBLocation());
         settings = new Settings();
         System.out.println("Connected to ScyllaDB");
     }
 
-    public static void init(String managerURL, String module, String secret)
+    public static void Init(String managerURL, String module, String secret)
             throws java.lang.Exception {
 
         var req = CreateSessionRequest.newBuilder().setModule(module).setSecret(secret).build();
@@ -61,8 +61,8 @@ public class Engine {
         System.out.println("Engine created for module:" + module);
 
         /* setting */
-        Signal.register(Path.SETTING_UPDATE_CHANNEL + module, new Settings.UpdateHandler());
-        Signal.register(Path.SETTING_REMOVE_CHANNEL + module, new Settings.RemoveHandler());
+        Signal.RegisterBySession(Path.SETTING_UPDATE_CHANNEL + module, new Settings.UpdateHandler());
+        Signal.RegisterBySession(Path.SETTING_REMOVE_CHANNEL + module, new Settings.RemoveHandler());
     }
 
     public static Engine instance() {
@@ -81,32 +81,32 @@ public class Engine {
         return instance.logger;
     }
 
-    public static Session session() {
+    public static Session Session() {
         return instance.session;
     }
 
-    public static String module() {
+    public static String Module() {
         return instance.module;
     }
 
-    public static Connection connection() {
+    public static Connection Connection() {
         return instance.connection;
     }
 
-    public static JetStream stream() {
+    public static JetStream Stream() {
         return instance.stream;
     }
 
-    public static Settings settings() {
+    public static Settings Settings() {
         return instance.settings;
     }
 
-    public static void release() {
+    public static void Release() {
         DB().close();
         System.out.println("Engine Closed");
     }
 
-    public static void start() throws Exception {
+    public static void Start() throws Exception {
         Event.startListening();
         System.out.println("Engine Started");
     }

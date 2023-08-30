@@ -16,13 +16,13 @@ public class TestEcho {
 
     @BeforeClass
     public static void setup() throws Exception {
-        Engine.init("http://127.0.0.1:8081", "scyna_test", "123456");
+        Engine.Init("http://127.0.0.1:8081", "scyna_test", "123456");
         Endpoint.register(Path.ECHO, new EchoService());
     }
 
     @AfterClass
     public static void teardown() {
-        Engine.release();
+        Engine.Release();
     }
 
     @Test

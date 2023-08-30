@@ -17,7 +17,7 @@ public abstract class Endpoint {
     public static <T extends Message> void register(String url, Handler<T> handler) throws java.lang.Exception {
         System.out.println("Register Service:" + url);
         handler.init();
-        var nc = Engine.connection();
+        var nc = Engine.Connection();
         var d = nc.createDispatcher(handler);
         d.subscribe(Utils.subscribeURL(url), "API");
     }
@@ -44,9 +44,9 @@ public abstract class Endpoint {
                 }
                 var response = Response.newBuilder()
                         .setCode(status)
-                        .setSessionID(Engine.session().ID())
+                        .setSessionID(Engine.Session().ID())
                         .setBody(ByteString.copyFrom(body)).build();
-                Engine.connection().publish(reply, response.toByteArray());
+                Engine.Connection().publish(reply, response.toByteArray());
                 flushed = true;
             } catch (InvalidProtocolBufferException e) {
                 e.printStackTrace();

@@ -82,7 +82,7 @@ public class DB {
         session = cluster.connect();
     }
 
-    static DB init(String[] hosts, String username, String password, String location) {
+    static DB Init(String[] hosts, String username, String password, String location) {
         return new DB(hosts, username, password);
     }
 

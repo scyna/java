@@ -27,7 +27,7 @@ public class Generator {
     }
 
     private boolean getID() {
-        var nats = Engine.connection();
+        var nats = Engine.Connection();
         var request = Request.newBuilder().setTraceID(0).setJSON(false).build();
         try {
             Future<Message> incoming = nats.request(Utils.publishURL(Path.GEN_GET_ID_URL), request.toByteArray());

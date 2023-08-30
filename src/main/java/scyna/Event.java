@@ -43,7 +43,7 @@ public class Event {
             if (stream != null)
                 return stream;
 
-            stream = new Stream(sender, Engine.module());
+            stream = new Stream(sender, Engine.Module());
             streams.put(sender, stream);
             return stream;
         }
@@ -54,8 +54,8 @@ public class Event {
                     .stream(sender)
                     .build();
 
-            var sub = Engine.stream().subscribe(sender + ".>", opt);
-            Engine.connection().flush(Duration.ofSeconds(1));
+            var sub = Engine.Stream().subscribe(sender + ".>", opt);
+            Engine.Connection().flush(Duration.ofSeconds(1));
 
             var runable = new Runnable() {
                 @Override

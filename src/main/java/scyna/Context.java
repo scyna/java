@@ -25,8 +25,8 @@ public class Context extends Logger {
     public void publishEvent(String channel, byte[] data) throws scyna.Error {
         try {
             var event = Event.newBuilder().setTraceID(this.id).setBody(ByteString.copyFrom(data)).build();
-            var subject = Engine.module() + "." + channel;
-            Engine.stream().publish(subject, event.toByteArray());
+            var subject = Engine.Module() + "." + channel;
+            Engine.Stream().publish(subject, event.toByteArray());
         } catch (IOException e) {
             e.printStackTrace();
             throw scyna.Error.SERVER_ERROR;
@@ -46,7 +46,7 @@ public class Context extends Logger {
                 req.setBody(request.toByteString());
             }
 
-            Future<io.nats.client.Message> incoming = Engine.connection().request(Utils.publishURL(url),
+            Future<io.nats.client.Message> incoming = Engine.Connection().request(Utils.publishURL(url),
                     req.build().toByteArray());
             var msg = incoming.get(5, TimeUnit.SECONDS);
             ret = Response.parseFrom(msg.getData());
@@ -74,10 +74,10 @@ public class Context extends Logger {
             throws scyna.Error {
 
         var task = scyna.proto.Task.newBuilder().setTraceID(this.id).setData(data.toByteString()).build();
-        var subject = Engine.module() + "." + channel;
+        var subject = Engine.Module() + "." + channel;
 
         var response = sendRequest(Path.START_TASK_URL, StartTaskRequest.newBuilder()
-                .setModule(Engine.module())
+                .setModule(Engine.Module())
                 .setTopic(subject)
                 .setData(task.toByteString())
                 .setTime(start)

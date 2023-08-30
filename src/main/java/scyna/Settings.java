@@ -20,7 +20,7 @@ public class Settings {
         this.update(key, value);
 
         var request = WriteSettingRequest.newBuilder()
-                .setModule(Engine.module())
+                .setModule(Engine.Module())
                 .setKey(key)
                 .setValue(value).build();
         var response = Request.send(Path.SETTING_WRITE_URL, request);
@@ -34,7 +34,7 @@ public class Settings {
         }
 
         var request = ReadSettingRequest.newBuilder()
-                .setModule(Engine.module())
+                .setModule(Engine.Module())
                 .setKey(key)
                 .build();
         var response = Request.send(Path.SETTING_READ_URL, request);
@@ -76,8 +76,8 @@ public class Settings {
     public static class UpdateHandler extends Signal.Handler<SettingUpdatedSignal> {
         @Override
         public void execute() {
-            if (data.getModule() == Engine.module()) {
-                Engine.settings().update(data.getKey(), data.getValue());
+            if (data.getModule() == Engine.Module()) {
+                Engine.Settings().update(data.getKey(), data.getValue());
             }
         }
     }
@@ -85,8 +85,8 @@ public class Settings {
     public static class RemoveHandler extends Signal.Handler<SettingRemovedSignal> {
         @Override
         public void execute() {
-            if (data.getModule() == Engine.module()) {
-                Engine.settings().remove(data.getKey());
+            if (data.getModule() == Engine.Module()) {
+                Engine.Settings().remove(data.getKey());
             }
         }
     }

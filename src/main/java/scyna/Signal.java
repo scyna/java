@@ -11,16 +11,26 @@ import io.nats.client.MessageHandler;
 
 public class Signal {
     public static <T extends Message> void emit(String channel, T data) {
-        var nc = Engine.connection();
+        var nc = Engine.Connection();
         nc.publish(channel, data.toByteArray());
     }
 
-    public static <T extends Message> void register(String channel, Handler<T> handler) throws java.lang.Exception {
+    public static <T extends Message> void RegisterByModule(String channel, Handler<T> handler)
+            throws java.lang.Exception {
         System.out.println("Register Signal:" + channel);
         handler.init();
-        var nc = Engine.connection();
+        var nc = Engine.Connection();
         var d = nc.createDispatcher(handler);
-        d.subscribe(channel, Engine.module());
+        d.subscribe(channel, Engine.Module());
+    }
+
+    public static <T extends Message> void RegisterBySession(String channel, Handler<T> handler)
+            throws java.lang.Exception {
+        System.out.println("Register Signal:" + channel);
+        handler.init();
+        var nc = Engine.Connection();
+        var d = nc.createDispatcher(handler);
+        d.subscribe(channel);
     }
 
     public static abstract class Handler<T extends Message> implements MessageHandler {

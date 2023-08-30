@@ -126,7 +126,7 @@ public class EndpointTest {
         }
 
         try {
-            var sub = Engine.stream().subscribe(streamName + "." + channel);
+            var sub = Engine.Stream().subscribe(streamName + "." + channel);
             var msg = sub.nextMessage(Duration.ofSeconds(1));
 
             if (msg == null)
@@ -155,14 +155,14 @@ public class EndpointTest {
         if (channel.length() == 0) {
             return;
         }
-        streamName = Engine.module();
+        streamName = Engine.Module();
         try {
             StreamConfiguration config = StreamConfiguration.builder()
                     .name(streamName)
                     .subjects(streamName + ".>")
                     .build();
 
-            var jsm = Engine.connection().jetStreamManagement();
+            var jsm = Engine.Connection().jetStreamManagement();
             if (jsm.getStreamNames().contains(streamName)) {
                 jsm.deleteStream(streamName);
             }
@@ -179,7 +179,7 @@ public class EndpointTest {
         }
 
         try {
-            Engine.connection().jetStreamManagement().deleteStream(streamName);
+            Engine.Connection().jetStreamManagement().deleteStream(streamName);
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue("Error in deleting stream", false);

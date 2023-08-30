@@ -17,7 +17,7 @@ class Request {
                 req.setBody(request.toByteString());
             }
 
-            Future<io.nats.client.Message> incoming = Engine.connection().request(Utils.publishURL(url),
+            Future<io.nats.client.Message> incoming = Engine.Connection().request(Utils.publishURL(url),
                     req.build().toByteArray());
             var msg = incoming.get(5, TimeUnit.SECONDS);
             return Response.parseFrom(msg.getData());

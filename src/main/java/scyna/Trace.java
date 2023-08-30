@@ -28,9 +28,9 @@ public class Trace {
         var ret = new Trace();
         ret.type = EVENT;
         ret.path = channel;
-        ret.sessionID = Engine.session().ID();
+        ret.sessionID = Engine.Session().ID();
         ret.t1 = System.nanoTime();
-        ret.source = Engine.module();
+        ret.source = Engine.Module();
         return ret;
     }
 
@@ -38,9 +38,9 @@ public class Trace {
         var ret = new Trace();
         ret.type = TASK;
         ret.path = channel;
-        ret.sessionID = Engine.session().ID();
+        ret.sessionID = Engine.Session().ID();
         ret.t1 = System.nanoTime();
-        ret.source = Engine.module();
+        ret.source = Engine.Module();
         return ret;
     }
 
@@ -52,7 +52,7 @@ public class Trace {
         ret.parentID = trace;
         ret.t1 = System.nanoTime();
         ret.time = Utils.currentMicroSeconds();
-        ret.source = Engine.module();
+        ret.source = Engine.Module();
         return ret;
     }
 
