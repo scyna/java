@@ -51,4 +51,14 @@ public interface TraceCreatedSignalOrBuilder extends
    * <code>uint32 Status = 9;</code>
    */
   int getStatus();
+
+  /**
+   * <code>string Source = 10;</code>
+   */
+  java.lang.String getSource();
+  /**
+   * <code>string Source = 10;</code>
+   */
+  com.google.protobuf.ByteString
+      getSourceBytes();
 }

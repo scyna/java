@@ -24,6 +24,7 @@ private static final long serialVersionUID = 0L;
     path_ = "";
     sessionID_ = 0L;
     status_ = 0;
+    source_ = "";
   }
 
   @java.lang.Override
@@ -139,6 +140,40 @@ private static final long serialVersionUID = 0L;
    */
   public int getStatus() {
     return status_;
+  }
+
+  public static final int SOURCE_FIELD_NUMBER = 10;
+  private volatile java.lang.Object source_;
+  /**
+   * <code>string Source = 10;</code>
+   */
+  public java.lang.String getSource() {
+    java.lang.Object ref = source_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      source_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string Source = 10;</code>
+   */
+  public com.google.protobuf.ByteString
+      getSourceBytes() {
+    java.lang.Object ref = source_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      source_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static scyna.proto.TraceCreatedSignal parseFrom(
@@ -285,6 +320,8 @@ private static final long serialVersionUID = 0L;
 
       status_ = 0;
 
+      source_ = "";
+
       return this;
     }
 
@@ -319,6 +356,7 @@ private static final long serialVersionUID = 0L;
       result.path_ = path_;
       result.sessionID_ = sessionID_;
       result.status_ = status_;
+      result.source_ = source_;
       onBuilt();
       return result;
     }
@@ -603,6 +641,75 @@ private static final long serialVersionUID = 0L;
     public Builder clearStatus() {
       
       status_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object source_ = "";
+    /**
+     * <code>string Source = 10;</code>
+     */
+    public java.lang.String getSource() {
+      java.lang.Object ref = source_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        source_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string Source = 10;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSourceBytes() {
+      java.lang.Object ref = source_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        source_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string Source = 10;</code>
+     */
+    public Builder setSource(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      source_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string Source = 10;</code>
+     */
+    public Builder clearSource() {
+      
+      source_ = getDefaultInstance().getSource();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string Source = 10;</code>
+     */
+    public Builder setSourceBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      source_ = value;
       onChanged();
       return this;
     }

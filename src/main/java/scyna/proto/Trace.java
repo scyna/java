@@ -40,15 +40,15 @@ public final class Trace {
     java.lang.String[] descriptorData = {
       "\n\013trace.proto\022\005scyna\"V\n\020LogCreatedSignal" +
       "\022\014\n\004Time\030\001 \001(\004\022\n\n\002ID\030\004 \001(\004\022\013\n\003SEQ\030\005 \001(\004\022" +
-      "\014\n\004Text\030\003 \001(\t\022\r\n\005Level\030\002 \001(\r\"\221\001\n\022TraceCr" +
+      "\014\n\004Text\030\003 \001(\t\022\r\n\005Level\030\002 \001(\r\"\241\001\n\022TraceCr" +
       "eatedSignal\022\n\n\002ID\030\001 \001(\004\022\020\n\010ParentID\030\002 \001(" +
       "\004\022\014\n\004Type\030\003 \001(\r\022\014\n\004Time\030\004 \001(\004\022\020\n\010Duratio" +
       "n\030\005 \001(\004\022\014\n\004Path\030\006 \001(\t\022\021\n\tSessionID\030\010 \001(\004" +
-      "\022\016\n\006Status\030\t \001(\r\"k\n\022EndpointDoneSignal\022\017" +
-      "\n\007TraceID\030\001 \001(\004\022\016\n\006Status\030\002 \001(\005\022\020\n\010Respo" +
-      "nse\030\003 \001(\t\022\017\n\007Request\030\004 \001(\t\022\021\n\tSessionID\030" +
-      "\005 \001(\004B/\n\013scyna.protoH\002P\001Z\016./;scyna_proto" +
-      "\252\002\013scyna.protob\006proto3"
+      "\022\016\n\006Status\030\t \001(\r\022\016\n\006Source\030\n \001(\t\"k\n\022Endp" +
+      "ointDoneSignal\022\017\n\007TraceID\030\001 \001(\004\022\016\n\006Statu" +
+      "s\030\002 \001(\005\022\020\n\010Response\030\003 \001(\t\022\017\n\007Request\030\004 \001" +
+      "(\t\022\021\n\tSessionID\030\005 \001(\004B/\n\013scyna.protoH\002P\001" +
+      "Z\016./;scyna_proto\252\002\013scyna.protob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -73,7 +73,7 @@ public final class Trace {
     internal_static_scyna_TraceCreatedSignal_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_scyna_TraceCreatedSignal_descriptor,
-        new java.lang.String[] { "ID", "ParentID", "Type", "Time", "Duration", "Path", "SessionID", "Status", });
+        new java.lang.String[] { "ID", "ParentID", "Type", "Time", "Duration", "Path", "SessionID", "Status", "Source", });
     internal_static_scyna_EndpointDoneSignal_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_scyna_EndpointDoneSignal_fieldAccessorTable = new
