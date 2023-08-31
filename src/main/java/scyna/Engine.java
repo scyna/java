@@ -28,7 +28,7 @@ public class Engine {
         this.module = module;
         id = new Generator();
         session = new Session(sessionID);
-        logger = new Logger(sessionID, true);
+        logger = new Logger(sessionID);
         settings = new Settings();
 
         /* NATS */
@@ -39,7 +39,6 @@ public class Engine {
         /* ScyllaDB */
         var hosts = config.getDBHost().split(",");
         db = DB.Init(hosts, config.getDBUsername(), config.getDBPassword(), config.getDBLocation());
-        settings = new Settings();
         System.out.println("Connected to ScyllaDB");
     }
 

@@ -19,7 +19,7 @@ import scyna.proto.TagCreatedSignal;
 public class Context extends Logger {
 
     Context() {
-        super(0, false);
+        super(0);
     }
 
     public void publishEvent(String channel, byte[] data) throws scyna.Error {
@@ -50,7 +50,6 @@ public class Context extends Logger {
                     req.build().toByteArray());
             var msg = incoming.get(5, TimeUnit.SECONDS);
             ret = Response.parseFrom(msg.getData());
-            trace.update(ret.getSessionID(), ret.getCode());
         } catch (java.lang.Exception e) {
             e.printStackTrace();
         }

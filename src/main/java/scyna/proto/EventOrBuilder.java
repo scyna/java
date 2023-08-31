@@ -4,34 +4,16 @@
 package scyna.proto;
 
 public interface EventOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:scyna.Event)
-        com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:scyna.Event)
+    com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>uint64 Entity = 1;</code>
-     * 
-     * @return The entity.
-     */
-    long getEntity();
+  /**
+   * <code>uint64 TraceID = 1;</code>
+   */
+  long getTraceID();
 
-    /**
-     * <code>uint64 Version = 2;</code>
-     * 
-     * @return The version.
-     */
-    long getVersion();
-
-    /**
-     * <code>bytes Body = 3;</code>
-     * 
-     * @return The body.
-     */
-    com.google.protobuf.ByteString getBody();
-
-    /**
-     * <code>uint64 TraceID = 5;</code>
-     * 
-     * @return The traceID.
-     */
-    long getTraceID();
+  /**
+   * <code>bytes Body = 2;</code>
+   */
+  com.google.protobuf.ByteString getBody();
 }

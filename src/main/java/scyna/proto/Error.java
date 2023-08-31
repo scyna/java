@@ -6,494 +6,432 @@ package scyna.proto;
 /**
  * Protobuf type {@code scyna.Error}
  */
-public final class Error extends
-        com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:scyna.Error)
-        ErrorOrBuilder {
-    private static final long serialVersionUID = 0L;
+public  final class Error extends
+    com.google.protobuf.GeneratedMessageV3 implements
+    // @@protoc_insertion_point(message_implements:scyna.Error)
+    ErrorOrBuilder {
+private static final long serialVersionUID = 0L;
+  // Use Error.newBuilder() to construct.
+  private Error(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    super(builder);
+  }
+  private Error() {
+    code_ = 0;
+    message_ = "";
+  }
 
-    // Use Error.newBuilder() to construct.
-    private Error(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-        super(builder);
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return scyna.proto.ErrorOuterClass.internal_static_scyna_Error_descriptor;
+  }
+
+  @java.lang.Override
+  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return scyna.proto.ErrorOuterClass.internal_static_scyna_Error_fieldAccessorTable
+        .ensureFieldAccessorsInitialized(
+            scyna.proto.Error.class, scyna.proto.Error.Builder.class);
+  }
+
+  public static final int CODE_FIELD_NUMBER = 1;
+  private int code_;
+  /**
+   * <code>int32 Code = 1;</code>
+   */
+  public int getCode() {
+    return code_;
+  }
+
+  public static final int MESSAGE_FIELD_NUMBER = 2;
+  private volatile java.lang.Object message_;
+  /**
+   * <code>string Message = 2;</code>
+   */
+  public java.lang.String getMessage() {
+    java.lang.Object ref = message_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      message_ = s;
+      return s;
     }
-
-    private Error() {
-        message_ = "";
+  }
+  /**
+   * <code>string Message = 2;</code>
+   */
+  public com.google.protobuf.ByteString
+      getMessageBytes() {
+    java.lang.Object ref = message_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      message_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
     }
+  }
 
-    @java.lang.Override
-    @SuppressWarnings({ "unused" })
-    protected java.lang.Object newInstance(
-            UnusedPrivateParameter unused) {
-        return new Error();
-    }
+  public static scyna.proto.Error parseFrom(
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+  public static scyna.proto.Error parseFrom(
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+  public static scyna.proto.Error parseFrom(
+      com.google.protobuf.ByteString data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+  public static scyna.proto.Error parseFrom(
+      com.google.protobuf.ByteString data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+  public static scyna.proto.Error parseFrom(byte[] data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+  public static scyna.proto.Error parseFrom(
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+  public static scyna.proto.Error parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
+  public static scyna.proto.Error parseFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static scyna.proto.Error parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static scyna.proto.Error parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static scyna.proto.Error parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
+  public static scyna.proto.Error parseFrom(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-        return this.unknownFields;
-    }
+  @java.lang.Override
+  public Builder newBuilderForType() { return newBuilder(); }
+  public static Builder newBuilder() {
+    return DEFAULT_INSTANCE.toBuilder();
+  }
+  public static Builder newBuilder(scyna.proto.Error prototype) {
+    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+  }
+  @java.lang.Override
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
+  }
 
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-        return scyna.proto.ErrorOuterClass.internal_static_scyna_Error_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-        return scyna.proto.ErrorOuterClass.internal_static_scyna_Error_fieldAccessorTable
-                .ensureFieldAccessorsInitialized(
-                        scyna.proto.Error.class, scyna.proto.Error.Builder.class);
-    }
-
-    public static final int CODE_FIELD_NUMBER = 1;
-    private int code_;
-
-    /**
-     * <code>int32 code = 1;</code>
-     * 
-     * @return The code.
-     */
-    @java.lang.Override
-    public int getCode() {
-        return code_;
-    }
-
-    public static final int MESSAGE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object message_;
-
-    /**
-     * <code>string message = 2;</code>
-     * 
-     * @return The message.
-     */
-    @java.lang.Override
-    public java.lang.String getMessage() {
-        java.lang.Object ref = message_;
-        if (ref instanceof java.lang.String) {
-            return (java.lang.String) ref;
-        } else {
-            com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            message_ = s;
-            return s;
-        }
-    }
-
-    /**
-     * <code>string message = 2;</code>
-     * 
-     * @return The bytes for message.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getMessageBytes() {
-        java.lang.Object ref = message_;
-        if (ref instanceof java.lang.String) {
-            com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            message_ = b;
-            return b;
-        } else {
-            return (com.google.protobuf.ByteString) ref;
-        }
-    }
-
-    public static scyna.proto.Error parseFrom(
-            java.nio.ByteBuffer data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-    }
-
-    public static scyna.proto.Error parseFrom(
-            java.nio.ByteBuffer data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-    }
-
-    public static scyna.proto.Error parseFrom(
-            com.google.protobuf.ByteString data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-    }
-
-    public static scyna.proto.Error parseFrom(
-            com.google.protobuf.ByteString data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-    }
-
-    public static scyna.proto.Error parseFrom(byte[] data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-    }
-
-    public static scyna.proto.Error parseFrom(
-            byte[] data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-    }
-
-    public static scyna.proto.Error parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-                .parseWithIOException(PARSER, input);
-    }
-
-    public static scyna.proto.Error parseFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-                .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public static scyna.proto.Error parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-                .parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static scyna.proto.Error parseDelimitedFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-                .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public static scyna.proto.Error parseFrom(
-            com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-                .parseWithIOException(PARSER, input);
-    }
-
-    public static scyna.proto.Error parseFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-                .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() {
-        return newBuilder();
-    }
-
-    public static Builder newBuilder() {
-        return DEFAULT_INSTANCE.toBuilder();
-    }
-
-    public static Builder newBuilder(scyna.proto.Error prototype) {
-        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+  @java.lang.Override
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    Builder builder = new Builder(parent);
+    return builder;
+  }
+  /**
+   * Protobuf type {@code scyna.Error}
+   */
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      // @@protoc_insertion_point(builder_implements:scyna.Error)
+      scyna.proto.ErrorOrBuilder {
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return scyna.proto.ErrorOuterClass.internal_static_scyna_Error_descriptor;
     }
 
     @java.lang.Override
-    public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE
-                ? new Builder()
-                : new Builder().mergeFrom(this);
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return scyna.proto.ErrorOuterClass.internal_static_scyna_Error_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              scyna.proto.Error.class, scyna.proto.Error.Builder.class);
+    }
+
+    // Construct using scyna.proto.Error.newBuilder()
+    private Builder() {
+      maybeForceBuilderInitialization();
+    }
+
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
+    }
+    @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      code_ = 0;
+
+      message_ = "";
+
+      return this;
     }
 
     @java.lang.Override
-    protected Builder newBuilderForType(
-            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-    }
-
-    /**
-     * Protobuf type {@code scyna.Error}
-     */
-    public static final class Builder extends
-            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-            // @@protoc_insertion_point(builder_implements:scyna.Error)
-            scyna.proto.ErrorOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-            return scyna.proto.ErrorOuterClass.internal_static_scyna_Error_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-            return scyna.proto.ErrorOuterClass.internal_static_scyna_Error_fieldAccessorTable
-                    .ensureFieldAccessorsInitialized(
-                            scyna.proto.Error.class, scyna.proto.Error.Builder.class);
-        }
-
-        // Construct using io.scyna.proto.Error.newBuilder()
-        private Builder() {
-            maybeForceBuilderInitialization();
-        }
-
-        private Builder(
-                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-            super(parent);
-            maybeForceBuilderInitialization();
-        }
-
-        private void maybeForceBuilderInitialization() {
-            if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-            }
-        }
-
-        @java.lang.Override
-        public Builder clear() {
-            super.clear();
-            code_ = 0;
-
-            message_ = "";
-
-            return this;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-            return scyna.proto.ErrorOuterClass.internal_static_scyna_Error_descriptor;
-        }
-
-        @java.lang.Override
-        public scyna.proto.Error getDefaultInstanceForType() {
-            return scyna.proto.Error.getDefaultInstance();
-        }
-
-        @java.lang.Override
-        public scyna.proto.Error build() {
-            scyna.proto.Error result = buildPartial();
-            if (!result.isInitialized()) {
-                throw newUninitializedMessageException(result);
-            }
-            return result;
-        }
-
-        @java.lang.Override
-        public scyna.proto.Error buildPartial() {
-            scyna.proto.Error result = new scyna.proto.Error(this);
-            result.code_ = code_;
-            result.message_ = message_;
-            onBuilt();
-            return result;
-        }
-
-        @java.lang.Override
-        public Builder clone() {
-            return super.clone();
-        }
-
-        @java.lang.Override
-        public Builder setField(
-                com.google.protobuf.Descriptors.FieldDescriptor field,
-                java.lang.Object value) {
-            return super.setField(field, value);
-        }
-
-        @java.lang.Override
-        public Builder clearField(
-                com.google.protobuf.Descriptors.FieldDescriptor field) {
-            return super.clearField(field);
-        }
-
-        @java.lang.Override
-        public Builder clearOneof(
-                com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-            return super.clearOneof(oneof);
-        }
-
-        @java.lang.Override
-        public Builder setRepeatedField(
-                com.google.protobuf.Descriptors.FieldDescriptor field,
-                int index, java.lang.Object value) {
-            return super.setRepeatedField(field, index, value);
-        }
-
-        @java.lang.Override
-        public Builder addRepeatedField(
-                com.google.protobuf.Descriptors.FieldDescriptor field,
-                java.lang.Object value) {
-            return super.addRepeatedField(field, value);
-        }
-
-        private int code_;
-
-        /**
-         * <code>int32 code = 1;</code>
-         * 
-         * @return The code.
-         */
-        @java.lang.Override
-        public int getCode() {
-            return code_;
-        }
-
-        /**
-         * <code>int32 code = 1;</code>
-         * 
-         * @param value
-         *            The code to set.
-         * @return This builder for chaining.
-         */
-        public Builder setCode(int value) {
-
-            code_ = value;
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>int32 code = 1;</code>
-         * 
-         * @return This builder for chaining.
-         */
-        public Builder clearCode() {
-
-            code_ = 0;
-            onChanged();
-            return this;
-        }
-
-        private java.lang.Object message_ = "";
-
-        /**
-         * <code>string message = 2;</code>
-         * 
-         * @return The message.
-         */
-        public java.lang.String getMessage() {
-            java.lang.Object ref = message_;
-            if (!(ref instanceof java.lang.String)) {
-                com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                message_ = s;
-                return s;
-            } else {
-                return (java.lang.String) ref;
-            }
-        }
-
-        /**
-         * <code>string message = 2;</code>
-         * 
-         * @return The bytes for message.
-         */
-        public com.google.protobuf.ByteString getMessageBytes() {
-            java.lang.Object ref = message_;
-            if (ref instanceof String) {
-                com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8(
-                        (java.lang.String) ref);
-                message_ = b;
-                return b;
-            } else {
-                return (com.google.protobuf.ByteString) ref;
-            }
-        }
-
-        /**
-         * <code>string message = 2;</code>
-         * 
-         * @param value
-         *            The message to set.
-         * @return This builder for chaining.
-         */
-        public Builder setMessage(
-                java.lang.String value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-
-            message_ = value;
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>string message = 2;</code>
-         * 
-         * @return This builder for chaining.
-         */
-        public Builder clearMessage() {
-
-            message_ = getDefaultInstance().getMessage();
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>string message = 2;</code>
-         * 
-         * @param value
-         *            The bytes for message to set.
-         * @return This builder for chaining.
-         */
-        public Builder setMessageBytes(
-                com.google.protobuf.ByteString value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            checkByteStringIsUtf8(value);
-
-            message_ = value;
-            onChanged();
-            return this;
-        }
-
-        @java.lang.Override
-        public final Builder setUnknownFields(
-                final com.google.protobuf.UnknownFieldSet unknownFields) {
-            return super.setUnknownFields(unknownFields);
-        }
-
-        @java.lang.Override
-        public final Builder mergeUnknownFields(
-                final com.google.protobuf.UnknownFieldSet unknownFields) {
-            return super.mergeUnknownFields(unknownFields);
-        }
-
-        // @@protoc_insertion_point(builder_scope:scyna.Error)
-    }
-
-    // @@protoc_insertion_point(class_scope:scyna.Error)
-    private static final scyna.proto.Error DEFAULT_INSTANCE;
-    static {
-        DEFAULT_INSTANCE = new scyna.proto.Error();
-    }
-
-    public static scyna.proto.Error getDefaultInstance() {
-        return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Error> PARSER = new com.google.protobuf.AbstractParser<Error>() {
-        @java.lang.Override
-        public Error parsePartialFrom(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            Builder builder = newBuilder();
-            try {
-                builder.mergeFrom(input, extensionRegistry);
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(builder.buildPartial());
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(
-                        e.getMessage()).setUnfinishedMessage(
-                                builder.buildPartial());
-            }
-            return builder.buildPartial();
-        }
-    };
-
-    public static com.google.protobuf.Parser<Error> parser() {
-        return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Error> getParserForType() {
-        return PARSER;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return scyna.proto.ErrorOuterClass.internal_static_scyna_Error_descriptor;
     }
 
     @java.lang.Override
     public scyna.proto.Error getDefaultInstanceForType() {
-        return DEFAULT_INSTANCE;
+      return scyna.proto.Error.getDefaultInstance();
     }
 
+    @java.lang.Override
+    public scyna.proto.Error build() {
+      scyna.proto.Error result = buildPartial();
+      if (!result.isInitialized()) {
+        throw newUninitializedMessageException(result);
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public scyna.proto.Error buildPartial() {
+      scyna.proto.Error result = new scyna.proto.Error(this);
+      result.code_ = code_;
+      result.message_ = message_;
+      onBuilt();
+      return result;
+    }
+
+    @java.lang.Override
+    public Builder clone() {
+      return (Builder) super.clone();
+    }
+    @java.lang.Override
+    public Builder setField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
+      return (Builder) super.setField(field, value);
+    }
+    @java.lang.Override
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
+      return (Builder) super.clearField(field);
+    }
+    @java.lang.Override
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      return (Builder) super.clearOneof(oneof);
+    }
+    @java.lang.Override
+    public Builder setRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
+      return (Builder) super.setRepeatedField(field, index, value);
+    }
+    @java.lang.Override
+    public Builder addRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
+      return (Builder) super.addRepeatedField(field, value);
+    }
+
+    private int code_ ;
+    /**
+     * <code>int32 Code = 1;</code>
+     */
+    public int getCode() {
+      return code_;
+    }
+    /**
+     * <code>int32 Code = 1;</code>
+     */
+    public Builder setCode(int value) {
+      
+      code_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 Code = 1;</code>
+     */
+    public Builder clearCode() {
+      
+      code_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object message_ = "";
+    /**
+     * <code>string Message = 2;</code>
+     */
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string Message = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string Message = 2;</code>
+     */
+    public Builder setMessage(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      message_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string Message = 2;</code>
+     */
+    public Builder clearMessage() {
+      
+      message_ = getDefaultInstance().getMessage();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string Message = 2;</code>
+     */
+    public Builder setMessageBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      message_ = value;
+      onChanged();
+      return this;
+    }
+    @java.lang.Override
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
+      return super.setUnknownFieldsProto3(unknownFields);
+    }
+
+    @java.lang.Override
+    public final Builder mergeUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
+      return super.mergeUnknownFields(unknownFields);
+    }
+
+
+    // @@protoc_insertion_point(builder_scope:scyna.Error)
+  }
+
+  // @@protoc_insertion_point(class_scope:scyna.Error)
+  private static final scyna.proto.Error DEFAULT_INSTANCE;
+  static {
+    DEFAULT_INSTANCE = new scyna.proto.Error();
+  }
+
+  public static scyna.proto.Error getDefaultInstance() {
+    return DEFAULT_INSTANCE;
+  }
+
+  private static final com.google.protobuf.Parser<Error>
+      PARSER = new com.google.protobuf.AbstractParser<Error>() {
+    @java.lang.Override
+    public Error parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(
+                builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
+
+  public static com.google.protobuf.Parser<Error> parser() {
+    return PARSER;
+  }
+
+  @java.lang.Override
+  public com.google.protobuf.Parser<Error> getParserForType() {
+    return PARSER;
+  }
+
+  @java.lang.Override
+  public scyna.proto.Error getDefaultInstanceForType() {
+    return DEFAULT_INSTANCE;
+  }
+
 }
+

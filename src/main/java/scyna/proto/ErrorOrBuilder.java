@@ -4,27 +4,21 @@
 package scyna.proto;
 
 public interface ErrorOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:scyna.Error)
-        com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:scyna.Error)
+    com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>int32 code = 1;</code>
-     * 
-     * @return The code.
-     */
-    int getCode();
+  /**
+   * <code>int32 Code = 1;</code>
+   */
+  int getCode();
 
-    /**
-     * <code>string message = 2;</code>
-     * 
-     * @return The message.
-     */
-    java.lang.String getMessage();
-
-    /**
-     * <code>string message = 2;</code>
-     * 
-     * @return The bytes for message.
-     */
-    com.google.protobuf.ByteString getMessageBytes();
+  /**
+   * <code>string Message = 2;</code>
+   */
+  java.lang.String getMessage();
+  /**
+   * <code>string Message = 2;</code>
+   */
+  com.google.protobuf.ByteString
+      getMessageBytes();
 }

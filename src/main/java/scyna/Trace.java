@@ -13,7 +13,6 @@ public class Trace {
     private long id;
     private int type;
     private String path;
-    private String source;
     private long sessionID;
     private int status;
 
@@ -30,7 +29,6 @@ public class Trace {
         ret.path = channel;
         ret.sessionID = Engine.Session().ID();
         ret.t1 = System.nanoTime();
-        ret.source = Engine.Module();
         return ret;
     }
 
@@ -40,7 +38,6 @@ public class Trace {
         ret.path = channel;
         ret.sessionID = Engine.Session().ID();
         ret.t1 = System.nanoTime();
-        ret.source = Engine.Module();
         return ret;
     }
 
@@ -52,7 +49,6 @@ public class Trace {
         ret.parentID = trace;
         ret.t1 = System.nanoTime();
         ret.time = Utils.currentMicroSeconds();
-        ret.source = Engine.Module();
         return ret;
     }
 
@@ -61,11 +57,6 @@ public class Trace {
         this.id = Engine.ID().next();
         t1 = System.nanoTime();
         time = Utils.currentMicroSeconds();
-    }
-
-    public void update(long session, int status) {
-        this.sessionID = session;
-        this.status = status;
     }
 
     public void start() {
@@ -81,7 +72,6 @@ public class Trace {
                 .setParentID(parentID)
                 .setType(type)
                 .setPath(path)
-                .setSource(source)
                 .setSessionID(sessionID)
                 .setStatus(status).build();
         Signal.emit(Path.TRACE_CREATED_CHANNEL, signal);

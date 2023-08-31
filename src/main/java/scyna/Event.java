@@ -121,8 +121,6 @@ public class Event {
                 var event = scyna.proto.Event.parseFrom(msg.getData());
                 trace.reset(event.getTraceID());
                 context.id = event.getTraceID();
-                entity = event.getEntity();
-                version = event.getVersion();
                 this.data = parser.parseFrom(event.getBody());
                 this.execute();
                 trace.record();

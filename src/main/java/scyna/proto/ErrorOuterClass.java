@@ -4,42 +4,53 @@
 package scyna.proto;
 
 public final class ErrorOuterClass {
-    private ErrorOuterClass() {
-    }
+  private ErrorOuterClass() {}
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
 
-    public static void registerAllExtensions(
-            com.google.protobuf.ExtensionRegistryLite registry) {
-    }
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
+  }
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_scyna_Error_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_scyna_Error_fieldAccessorTable;
 
-    public static void registerAllExtensions(
-            com.google.protobuf.ExtensionRegistry registry) {
-        registerAllExtensions(
-                (com.google.protobuf.ExtensionRegistryLite) registry);
-    }
-
-    static final com.google.protobuf.Descriptors.Descriptor internal_static_scyna_Error_descriptor;
-    static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_scyna_Error_fieldAccessorTable;
-
-    public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
-        return descriptor;
-    }
-
-    private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
-    static {
-        java.lang.String[] descriptorData = {
-                "\n\013error.proto\022\005scyna\"&\n\005Error\022\014\n\004code\030\001 " +
-                        "\001(\005\022\017\n\007message\030\002 \001(\tB2\n\016io.scyna.protoH\002" +
-                        "P\001Z\016./;scyna_proto\252\002\013scyna.protob\006proto3"
+  public static com.google.protobuf.Descriptors.FileDescriptor
+      getDescriptor() {
+    return descriptor;
+  }
+  private static  com.google.protobuf.Descriptors.FileDescriptor
+      descriptor;
+  static {
+    java.lang.String[] descriptorData = {
+      "\n\013error.proto\022\005scyna\"&\n\005Error\022\014\n\004Code\030\001 " +
+      "\001(\005\022\017\n\007Message\030\002 \001(\tB/\n\013scyna.protoH\002P\001Z" +
+      "\016./;scyna_proto\252\002\013scyna.protob\006proto3"
+    };
+    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
         };
-        descriptor = com.google.protobuf.Descriptors.FileDescriptor
-                .internalBuildGeneratedFileFrom(descriptorData,
-                        new com.google.protobuf.Descriptors.FileDescriptor[] {
-                        });
-        internal_static_scyna_Error_descriptor = getDescriptor().getMessageTypes().get(0);
-        internal_static_scyna_Error_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_scyna_Error_descriptor,
-                new java.lang.String[] { "Code", "Message", });
-    }
+    com.google.protobuf.Descriptors.FileDescriptor
+      .internalBuildGeneratedFileFrom(descriptorData,
+        new com.google.protobuf.Descriptors.FileDescriptor[] {
+        }, assigner);
+    internal_static_scyna_Error_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_scyna_Error_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_scyna_Error_descriptor,
+        new java.lang.String[] { "Code", "Message", });
+  }
 
-    // @@protoc_insertion_point(outer_class_scope)
+  // @@protoc_insertion_point(outer_class_scope)
 }

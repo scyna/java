@@ -14,7 +14,7 @@ import java.lang.reflect.ParameterizedType;
 
 public abstract class Endpoint {
 
-    public static <T extends Message> void register(String url, Handler<T> handler) throws java.lang.Exception {
+    public static <T extends Message> void Register(String url, Handler<T> handler) throws java.lang.Exception {
         System.out.println("Register Service:" + url);
         handler.init();
         var nc = Engine.Connection();
@@ -22,13 +22,18 @@ public abstract class Endpoint {
         d.subscribe(Utils.subscribeURL(url), "API");
     }
 
-    public static class BaseHandler {
+    public static abstract class Handler<T extends Message> implements MessageHandler {
         protected Context context = new Context();
         protected boolean JSON;
 
-        protected String source;
         protected String reply;
         protected boolean flushed = false;
+
+        protected T request;
+        protected Parser<T> parser;
+        protected Message.Builder builder;
+
+        protected abstract void execute() throws scyna.Error;
 
         protected void response(Message m) {
             flush(200, m);
@@ -44,22 +49,14 @@ public abstract class Endpoint {
                 }
                 var response = Response.newBuilder()
                         .setCode(status)
-                        .setSessionID(Engine.Session().ID())
                         .setBody(ByteString.copyFrom(body)).build();
                 Engine.Connection().publish(reply, response.toByteArray());
                 flushed = true;
+                /* TODO: update trace */
             } catch (InvalidProtocolBufferException e) {
                 e.printStackTrace();
             }
         }
-    }
-
-    public static abstract class Handler<T extends Message> extends BaseHandler implements MessageHandler {
-        protected T request;
-        protected Parser<T> parser;
-        protected Message.Builder builder;
-
-        protected abstract void execute() throws scyna.Error;
 
         @SuppressWarnings("unchecked")
         public void init() throws java.lang.Exception {
@@ -72,7 +69,7 @@ public abstract class Endpoint {
                 parser = (Parser<T>) tObj.getParserForType();
             } catch (java.lang.Exception e) {
                 e.printStackTrace();
-                throw new java.lang.Exception();
+                throw e;
             }
         }
 
@@ -86,7 +83,6 @@ public abstract class Endpoint {
                 JSON = request.getJSON();
                 flushed = false;
                 var requestBody = request.getBody();
-                source = request.getData();
                 if (JSON) {
                     builder.clear();
                     JsonFormat.parser().merge(requestBody.toStringUtf8(), builder);

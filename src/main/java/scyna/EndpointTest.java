@@ -79,7 +79,6 @@ public class EndpointTest {
         var res = Request.send(url, request);
         assertNotNull(res);
         assertEquals(status, res.getCode());
-        trace.update(res.getSessionID(), res.getCode());
 
         if (response != null) {
             try {
@@ -104,7 +103,6 @@ public class EndpointTest {
         createStream();
         var trace = Trace.newEndpointTrace(url, 0);
         var res = Request.send(url, request);
-        trace.update(res.getSessionID(), res.getCode());
         assertNotNull(res);
         assertEquals(status, res.getCode());
         try {

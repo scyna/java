@@ -4,20 +4,16 @@
 package scyna.proto;
 
 public interface TaskOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:scyna.Task)
-        com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:scyna.Task)
+    com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>uint64 TraceID = 1;</code>
-     * 
-     * @return The traceID.
-     */
-    long getTraceID();
+  /**
+   * <code>uint64 TraceID = 1;</code>
+   */
+  long getTraceID();
 
-    /**
-     * <code>bytes Data = 2;</code>
-     * 
-     * @return The data.
-     */
-    com.google.protobuf.ByteString getData();
+  /**
+   * <code>bytes Data = 2;</code>
+   */
+  com.google.protobuf.ByteString getData();
 }

@@ -9,11 +9,9 @@ public class Logger {
     final int DEBUG = 4;
     final int FATAL = 5;
     protected long id;
-    private final boolean session;
 
-    Logger(long id, boolean session) {
+    Logger(long id) {
         this.id = id;
-        this.session = session;
     }
 
     private void add(int level, String messgage) {
@@ -25,7 +23,6 @@ public class Logger {
                     .setTime(System.nanoTime() / 1000)
                     .setLevel(level)
                     .setText(messgage)
-                    .setSession(session)
                     .build();
             Signal.emit(Path.LOG_CREATED_CHANNEL, event);
         }
