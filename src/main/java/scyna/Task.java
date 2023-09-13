@@ -14,7 +14,7 @@ public class Task {
             throws Exception {
         System.out.println("Register Task:" + channel);
         var subject = sender + "." + channel;
-        var trace = Trace.newEventTrace(subject);
+        var trace = Trace.Task(subject);
         handler.init(trace);
         Event.addToStream(sender, channel, handler);
     }

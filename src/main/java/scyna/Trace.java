@@ -25,7 +25,7 @@ public class Trace {
         return id;
     }
 
-    public static Trace newEventTrace(String channel) {
+    public static Trace Event(String channel) {
         var ret = new Trace();
         ret.type = EVENT;
         ret.path = channel;

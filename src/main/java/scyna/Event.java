@@ -84,7 +84,7 @@ public class Event {
 
         var stream = Stream.createOrGet(sender);
         var subject = sender + "." + channel;
-        var trace = Trace.newEventTrace(subject);
+        var trace = Trace.Event(subject);
         handler.init(trace);
         stream.executors.put(subject, handler);
     }
