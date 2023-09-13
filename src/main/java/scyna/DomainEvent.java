@@ -26,11 +26,11 @@ public class DomainEvent {
         Instance().register(handler);
     }
 
-    private class EventData {
+    public static class EventData {
         long traceID;
         Message data;
 
-        EventData(long traceID, Message data) {
+        public EventData(long traceID, Message data) {
             this.traceID = traceID;
             this.data = data;
         }
@@ -63,6 +63,15 @@ public class DomainEvent {
             } catch (Exception e) {
                 onError(e);
             }
+            trace.record();
+        }
+
+        @SuppressWarnings("unchecked")
+        public void TestEventReceived(EventData event) throws Error {
+            var trace = Trace.DomainEvent(this.getClass().getName(), event.traceID);
+            this.data = (T) event.data;
+            context = new Context(event.traceID);
+            Execute();
             trace.record();
         }
     }
