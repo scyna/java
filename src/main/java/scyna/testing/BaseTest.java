@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 import java.time.Duration;
+import java.util.LinkedList;
+import java.util.List;
+
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Message;
 import io.nats.client.api.StreamConfiguration;
@@ -12,7 +15,7 @@ import scyna.Engine;
 
 public class BaseTest<T extends BaseTest<T>> {
     private Message event = null;
-    private Message domainEvent = null;
+    private List<Message> domainEvents = new LinkedList<Message>();
     private String channel = "";
     private String streamName = "";
     protected ByteString eventData = null;
@@ -32,23 +35,25 @@ public class BaseTest<T extends BaseTest<T>> {
 
     @SuppressWarnings("unchecked")
     public T expectDomainEvent(Message event) {
-        this.domainEvent = event;
+        this.domainEvents.add(event);
         return (T) this;
     }
 
-    public void receiveDomainEvents() {
-        if (domainEvent == null) {
+    protected void receiveDomainEvents() {
+        if (domainEvents.isEmpty()) {
             return;
         }
 
-        var received = DomainEvent.Instance().nextEvent();
-        if (received == null) {
-            fail("No event received");
+        for (var ev : domainEvents) {
+            var received = DomainEvent.Instance().nextEvent();
+            if (received == null) {
+                fail("DomainEvent must not be null");
+            }
+            assertEquals("DomainEvent not matched", ev, received);
         }
-        assertEquals("DomainEvent not matched", domainEvent, received);
     }
 
-    public void receiveEvent() {
+    protected void receiveEvent() {
         if (channel.isEmpty()) {
             return;
         }
@@ -72,7 +77,7 @@ public class BaseTest<T extends BaseTest<T>> {
         }
     }
 
-    public void createStream() {
+    protected void createStream() {
         if (channel.isEmpty()) {
             return;
         }
@@ -95,7 +100,7 @@ public class BaseTest<T extends BaseTest<T>> {
         }
     }
 
-    public void deleteStream() {
+    protected void deleteStream() {
         if (channel.isEmpty()) {
             return;
         }

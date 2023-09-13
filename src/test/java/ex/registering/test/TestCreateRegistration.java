@@ -30,23 +30,17 @@ public class TestCreateRegistration {
 
     @Test
     public void testGivenGoodRequest_ShouldSuccess() throws InterruptedException {
-        DomainEvent.Register(new RegistrationCreatedHandler());
-        DomainEvent.Instance().start();
-
+        // DomainEvent.Register(new RegistrationCreatedHandler());
         EndpointTest.create(Path.CREATE_REGISTRATION)
                 .withRequest(CreateRegistrationRequest.newBuilder()
                         .setEmail("a@gmail.com")
                         .setName("Nguyen Van A")
                         .setPassword("123456").build())
-                // .expectDomainEvent(RegistrationCreated.newBuilder()
-                // .setEmail("a@gmail.com")
-                // .setName("Nguyen Van A")
-                // .setPassword("123456").build())
+                .expectDomainEvent(RegistrationCreated.newBuilder()
+                        .setEmail("a@gmail.com")
+                        .setName("Nguyen Van A")
+                        .setPassword("123456").build())
                 .expectSuccess().run();
-
-        Thread.sleep(100);
-        var event = (RegistrationCreated) DomainEvent.Instance().nextEvent();
-        assertEquals("Nguyen Van Axxx", event.getName());
     }
 
     public class RegistrationCreatedHandler extends DomainEvent.Handler<RegistrationCreated> {
