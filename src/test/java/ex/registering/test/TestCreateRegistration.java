@@ -1,5 +1,7 @@
 package ex.registering.test;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -26,7 +28,7 @@ public class TestCreateRegistration {
 
     @Test
     public void testGivenGoodRequest_ShouldSuccess() {
-        EndpointTest.create(Path.CREATE_REGISTRATION)
+        var result = EndpointTest.create(Path.CREATE_REGISTRATION)
                 .withRequest(CreateRegistrationRequest.newBuilder()
                         .setEmail("a@gmail.com")
                         .setName("Nguyen Van A")
@@ -34,8 +36,10 @@ public class TestCreateRegistration {
                 .expectDomainEvent(RegistrationCreated.newBuilder()
                         .setEmail("a@gmail.com")
                         .setName("Nguyen Van A")
-                        .setPassword("123456")
-                        .build())
+                        .setPassword("123456").build())
                 .expectSuccess().run();
+
+        var event = (RegistrationCreated) result.nextDomainEvent();
+        assertEquals(event.getEmail(), "a@gmail.com");
     }
 }

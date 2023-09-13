@@ -3,8 +3,14 @@ package scyna.testing;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
+
+import javax.naming.spi.DirStateFactory.Result;
+
+import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import com.google.protobuf.Parser;
+
 import scyna.DomainEvent;
 import scyna.Request;
 import scyna.Trace;
@@ -14,6 +20,7 @@ public class EndpointTest extends BaseTest<EndpointTest> {
     private String url;
     private Message request = null;
     private Message response = null;
+    private ByteString responseData;
 
     private EndpointTest(String url) {
         this.url = url;
@@ -45,14 +52,14 @@ public class EndpointTest extends BaseTest<EndpointTest> {
         return this;
     }
 
-    public void run() {
+    public Result run() {
         createStream();
         DomainEvent.Instance().clear();
         var trace = Trace.Endpoint(url, 0);
         var res = Request.send(url, request);
         assertNotNull(res);
         assertEquals(status, res.getCode());
-
+        responseData = res.getBody();
         if (response != null) {
             try {
                 var parser = response.getParserForType();
@@ -67,5 +74,41 @@ public class EndpointTest extends BaseTest<EndpointTest> {
         receiveDomainEvents();
         receiveEvent();
         deleteStream();
+        return new Result(this);
+    }
+
+    public class Result {
+        private EndpointTest test;
+
+        Result(EndpointTest test) {
+            this.test = test;
+        }
+
+        public <E extends Message> E parseResponse(Parser<E> parser) {
+            try {
+                return parser.parseFrom(test.responseData);
+            } catch (InvalidProtocolBufferException e) {
+                fail("Error in parsing response");
+            }
+            return null;
+        }
+
+        public <E extends Message> E parseEvent(Parser<E> parser) {
+            try {
+                return parser.parseFrom(test.eventData);
+            } catch (InvalidProtocolBufferException e) {
+                fail("Error in parsing event");
+            }
+            return null;
+        }
+
+        public Message nextDomainEvent() {
+            try {
+                return DomainEvent.Instance().nextEvent();
+            } catch (Exception e) {
+                fail("Error in parsing event");
+            }
+            return null;
+        }
     }
 }

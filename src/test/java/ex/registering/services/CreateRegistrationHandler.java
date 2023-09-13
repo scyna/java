@@ -17,5 +17,10 @@ public class CreateRegistrationHandler extends Endpoint.Handler<CreateRegistrati
                 .setName(request.getName())
                 .setPassword(request.getPassword())
                 .build());
+        context.raiseDomainEvent(RegistrationCreated.newBuilder()
+                .setEmail(request.getEmail())
+                .setName(request.getName())
+                .setPassword(request.getPassword())
+                .build());
     }
 }

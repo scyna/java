@@ -3,8 +3,14 @@ package scyna.testing;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
+
 import java.time.Duration;
+
+import com.google.protobuf.ByteString;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import com.google.protobuf.Parser;
+
 import io.nats.client.api.StreamConfiguration;
 import scyna.DomainEvent;
 import scyna.Engine;
@@ -15,10 +21,20 @@ public class BaseTest<T extends BaseTest<T>> {
     private String channel = "";
     private String streamName = "";
 
+    protected ByteString eventData = null;
+    protected Parser eventParser = null;
+
     @SuppressWarnings("unchecked")
     public T expectEvent(String channel, Message event) {
         this.channel = channel;
         this.event = event;
+        return (T) this;
+    }
+
+    @SuppressWarnings("unchecked")
+    public <E extends Message> T expectEvent(String channel, Parser<E> parser) {
+        this.eventParser = parser;
+        this.channel = channel;
         return (T) this;
     }
 
@@ -41,7 +57,7 @@ public class BaseTest<T extends BaseTest<T>> {
     }
 
     public void receiveEvent() {
-        if (event == null) {
+        if (channel.isEmpty()) {
             return;
         }
 
@@ -51,9 +67,18 @@ public class BaseTest<T extends BaseTest<T>> {
             assertNotNull("No event received", msg);
 
             var ev = scyna.proto.Event.parseFrom(msg.getData());
-            var parser = event.getParserForType();
-            var received = parser.parseFrom(ev.getBody());
-            assertEquals("Event not matched", event, received);
+            eventData = ev.getBody();
+            if (event != null) {
+                var parser = event.getParserForType();
+                var received = parser.parseFrom(ev.getBody());
+                assertEquals("Event not matched", event, received);
+            } else if (eventParser != null) {
+                try {
+                    eventParser.parseFrom(ev.getBody());
+                } catch (InvalidProtocolBufferException e) {
+                    fail("Event type not matched");
+                }
+            }
 
             sub.unsubscribe();
         } catch (Exception e) {
@@ -63,6 +88,10 @@ public class BaseTest<T extends BaseTest<T>> {
     }
 
     public void createStream() {
+        if (channel.isEmpty()) {
+            return;
+        }
+
         streamName = Engine.Module();
         try {
             StreamConfiguration config = StreamConfiguration.builder()
@@ -82,6 +111,10 @@ public class BaseTest<T extends BaseTest<T>> {
     }
 
     public void deleteStream() {
+        if (channel.isEmpty()) {
+            return;
+        }
+
         try {
             Engine.Connection().jetStreamManagement().deleteStream(streamName);
         } catch (Exception e) {
