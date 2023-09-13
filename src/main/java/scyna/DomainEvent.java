@@ -54,7 +54,7 @@ public class DomainEvent {
         public void EventReceived(EventData event) {
             this.data = (T) event.data;
             context = new Context(event.traceID);
-            var trace = Trace.newDomainEvent(this.getClass().getName(), event.traceID);
+            var trace = Trace.DomainEvent(this.getClass().getName(), event.traceID);
             try {
                 Execute();
             } catch (scyna.Error e) {

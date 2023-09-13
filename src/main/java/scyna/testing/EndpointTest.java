@@ -78,7 +78,7 @@ public class EndpointTest {
 
     public void run() {
         createStream();
-        var trace = Trace.newEndpointTrace(url, 0);
+        var trace = Trace.Endpoint(url, 0);
         var res = Request.send(url, request);
         assertNotNull(res);
         assertEquals(status, res.getCode());
@@ -104,7 +104,7 @@ public class EndpointTest {
 
     public <T extends Message> T run(Parser<T> parser) {
         createStream();
-        var trace = Trace.newEndpointTrace(url, 0);
+        var trace = Trace.Endpoint(url, 0);
         var res = Request.send(url, request);
         assertNotNull(res);
         assertEquals(status, res.getCode());

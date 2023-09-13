@@ -41,7 +41,7 @@ public class Context extends Logger {
     }
 
     public Response sendRequest(String url, Message request) {
-        Trace trace = Trace.newEndpointTrace(url, this.id);
+        Trace trace = Trace.Endpoint(url, this.id);
         Response ret = null;
 
         try {

@@ -35,7 +35,7 @@ public class Trace {
         return ret;
     }
 
-    public static Trace newTaskTrace(String channel) {
+    public static Trace Task(String channel) {
         var ret = new Trace();
         ret.type = TASK;
         ret.path = channel;
@@ -45,7 +45,7 @@ public class Trace {
         return ret;
     }
 
-    public static Trace newEndpointTrace(String url, long trace) {
+    public static Trace Endpoint(String url, long trace) {
         var ret = new Trace();
         ret.type = ENDPOINT;
         ret.path = url;
@@ -57,7 +57,7 @@ public class Trace {
         return ret;
     }
 
-    public static Trace newDomainEvent(String name, long parentTrace) {
+    public static Trace DomainEvent(String name, long parentTrace) {
         var ret = new Trace();
         ret.type = ENDPOINT;
         ret.path = name;
