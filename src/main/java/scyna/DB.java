@@ -54,8 +54,7 @@ public class DB {
 
     public ResultSet queryMany(String query, Object... args) throws Error {
         try {
-            var result = session.execute(query, args);
-            return result;
+            return session.execute(query, args);
         } catch (Exception e) {
             throw scyna.Error.SERVER_ERROR;
         }
@@ -86,7 +85,7 @@ public class DB {
         return new DB(hosts, username, password);
     }
 
-    public Session session() {
+    public Session getSession() {
         return session;
     }
 
