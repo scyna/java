@@ -11,15 +11,29 @@ import java.util.concurrent.TimeUnit;
 import com.google.protobuf.Message;
 
 public class DomainEvent {
-    public class EventData {
-        public long traceID;
-        public Message data;
+    private DomainEvent() {
+    }
 
-        public EventData(long traceID, Message data) {
+    private static DomainEvent instance;
+
+    public static DomainEvent Instance() {
+        if (instance == null)
+            instance = new DomainEvent();
+        return instance;
+    }
+
+    public static <T> void Register(Handler<T> handler) {
+        Instance().register(handler);
+    }
+
+    private class EventData {
+        long traceID;
+        Message data;
+
+        EventData(long traceID, Message data) {
             this.traceID = traceID;
             this.data = data;
         }
-
     }
 
     public interface IHandler {
@@ -28,8 +42,7 @@ public class DomainEvent {
 
     public abstract class Handler<T> implements IHandler {
         protected T data;
-        protected Context context;// = new Context();
-        protected Trace trace; // = Trace.newDomainEvent(this.getClass().getName(), 0);
+        protected Context context;
 
         public abstract void Execute() throws scyna.Error;
 
@@ -37,13 +50,15 @@ public class DomainEvent {
             context.error(e.getStackTrace().toString());
         }
 
+        @SuppressWarnings("unchecked")
         public void EventReceived(EventData event) {
             this.data = (T) event.data;
             context = new Context(event.traceID);
+            var trace = Trace.newDomainEvent(this.getClass().getName(), event.traceID);
             try {
                 Execute();
             } catch (scyna.Error e) {
-                /* TODO */
+                /* TODO: evenstore logic */
                 onError(e);
             } catch (Exception e) {
                 onError(e);
@@ -53,7 +68,6 @@ public class DomainEvent {
     }
 
     private final BlockingQueue<EventData> events = new LinkedBlockingDeque<EventData>();
-
     private final Map<Class, List<IHandler>> handlers = new HashMap<Class, List<IHandler>>();
 
     public <T> void register(Handler<T> handler) {
