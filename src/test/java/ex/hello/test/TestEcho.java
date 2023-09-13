@@ -10,7 +10,7 @@ import ex.hello.services.EchoService;
 import ex.hello.shared.Path;
 import scyna.Endpoint;
 import scyna.Engine;
-import scyna.testing.EndpointTest;
+import scyna.testing.Testing;
 
 public class TestEcho {
 
@@ -27,7 +27,7 @@ public class TestEcho {
 
     @Test
     public void testEchoShouldSuccess() {
-        EndpointTest.create(Path.ECHO)
+        Testing.Endpoint(Path.ECHO)
                 .withRequest(EchoRequest.newBuilder().setText("Hello").build())
                 .expectResponse(EchoResponse.newBuilder().setText("Hello").build())
                 .run();

@@ -15,6 +15,7 @@ import scyna.Endpoint;
 import scyna.Engine;
 import scyna.Error;
 import scyna.testing.EndpointTest;
+import scyna.testing.Testing;
 
 public class TestCreateRegistration {
     @BeforeClass
@@ -31,7 +32,7 @@ public class TestCreateRegistration {
     @Test
     public void testGivenGoodRequest_ShouldSuccess() throws InterruptedException {
         // DomainEvent.Register(new RegistrationCreatedHandler());
-        EndpointTest.create(Path.CREATE_REGISTRATION)
+        Testing.Endpoint(Path.CREATE_REGISTRATION)
                 .withRequest(CreateRegistrationRequest.newBuilder()
                         .setEmail("a@gmail.com")
                         .setName("Nguyen Van A")

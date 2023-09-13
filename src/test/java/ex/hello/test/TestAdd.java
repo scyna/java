@@ -11,6 +11,7 @@ import ex.hello.shared.Path;
 import scyna.Endpoint;
 import scyna.Engine;
 import scyna.testing.EndpointTest;
+import scyna.testing.Testing;
 
 public class TestAdd {
 
@@ -27,12 +28,12 @@ public class TestAdd {
 
     @Test
     public void testAddShouldSuccess() {
-        EndpointTest.create(Path.ADD)
+        Testing.Endpoint(Path.ADD)
                 .withRequest(AddRequest.newBuilder().setA(5).setB(34).build())
                 .expectResponse(AddResponse.newBuilder().setSum(39).build())
                 .run();
 
-        EndpointTest.create(Path.ADD)
+        Testing.Endpoint(Path.ADD)
                 .withRequest(AddRequest.newBuilder().setA(82).setB(18).build())
                 .expectResponse(AddResponse.newBuilder().setSum(100).build())
                 .run();
@@ -40,7 +41,7 @@ public class TestAdd {
 
     @Test
     public void testAddTooBig() {
-        EndpointTest.create(Path.ADD)
+        Testing.Endpoint(Path.ADD)
                 .withRequest(AddRequest.newBuilder().setA(95).setB(34).build())
                 .expectError(scyna.Error.REQUEST_INVALID)
                 .run();

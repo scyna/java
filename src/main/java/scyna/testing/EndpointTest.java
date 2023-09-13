@@ -21,12 +21,8 @@ public class EndpointTest extends BaseTest<EndpointTest> {
     private Error error = null;
     private ByteString responseData;
 
-    private EndpointTest(String url) {
+    EndpointTest(String url) {
         this.url = url;
-    }
-
-    public static EndpointTest create(String url) {
-        return new EndpointTest(url);
     }
 
     public EndpointTest withRequest(Message request) {

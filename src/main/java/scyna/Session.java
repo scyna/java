@@ -14,8 +14,7 @@ public class Session {
 
         TimerTask task = new TimerTask() {
             public void run() {
-                var sig = UpdateSessionSignal.newBuilder().setID(id).build();
-                Signal.emit(Path.SESSION_UPDATE_CHANNEL, sig);
+                Signal.emit(Path.SESSION_UPDATE_CHANNEL, UpdateSessionSignal.newBuilder().setID(id).build());
             }
         };
 
