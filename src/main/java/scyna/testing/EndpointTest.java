@@ -9,6 +9,7 @@ import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
 
 import scyna.DomainEvent;
+import scyna.Error;
 import scyna.Request;
 import scyna.Trace;
 
@@ -17,6 +18,7 @@ public class EndpointTest extends BaseTest<EndpointTest> {
     private String url;
     private Message request = null;
     private Message response = null;
+    private Error error = null;
     private ByteString responseData;
 
     private EndpointTest(String url) {
@@ -39,7 +41,7 @@ public class EndpointTest extends BaseTest<EndpointTest> {
 
     public EndpointTest expectError(scyna.Error error) {
         this.status = 400;
-        this.response = error.toProto();
+        this.error = error;
         return this;
     }
 
@@ -63,10 +65,18 @@ public class EndpointTest extends BaseTest<EndpointTest> {
                 var o = parser.parseFrom(res.getBody());
                 assertEquals(response, o);
             } catch (InvalidProtocolBufferException e) {
-                e.printStackTrace();
                 fail("Error in parsing response");
             }
+        } else if (error != null) {
+            try {
+                var e = scyna.proto.Error.parser().parseFrom(res.getBody());
+                assertEquals(error.getMessage(), e.getMessage());
+                assertEquals(error.getCode(), e.getCode());
+            } catch (InvalidProtocolBufferException e) {
+                fail("Error in parsing error");
+            }
         }
+
         trace.record();
         receiveDomainEvents();
         receiveEvent();

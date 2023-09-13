@@ -29,4 +29,8 @@ public class Error extends java.lang.Exception {
     public scyna.proto.Error toProto() {
         return scyna.proto.Error.newBuilder().setCode(code).setMessage(message).build();
     }
+
+    public int getCode() {
+        return code;
+    }
 }
