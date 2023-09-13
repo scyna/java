@@ -2,30 +2,18 @@ package scyna.testing;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
-import java.time.Duration;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
-import com.google.protobuf.Parser;
-import io.nats.client.api.StreamConfiguration;
 import scyna.DomainEvent;
-import scyna.Engine;
 import scyna.Request;
 import scyna.Trace;
 
-public class EndpointTest {
+public class EndpointTest extends BaseTest<EndpointTest> {
     private int status;
     private String url;
     private Message request = null;
     private Message response = null;
-    private Message event = null;
-    private Message domainEvent = null;
-    private String channel = "";
-    private String streamName = "";
-    private boolean exactEventMatch = true;
-    private boolean exactResponseMatch = true;
 
     private EndpointTest(String url) {
         this.url = url;
@@ -57,34 +45,6 @@ public class EndpointTest {
         return this;
     }
 
-    public EndpointTest matchResponse(Message response) {
-        this.status = 200;
-        this.response = response;
-        this.exactResponseMatch = false;
-        return this;
-    }
-
-    public EndpointTest expectEvent(Message event) {
-        this.event = event;
-        return this;
-    }
-
-    public EndpointTest expectDomainEvent(Message event) {
-        this.domainEvent = event;
-        return this;
-    }
-
-    public EndpointTest matchEvent(Message event) {
-        this.event = event;
-        this.exactEventMatch = false;
-        return this;
-    }
-
-    public EndpointTest publishEventTo(String channel) {
-        this.channel = channel;
-        return this;
-    }
-
     public void run() {
         createStream();
         DomainEvent.Instance().clear();
@@ -97,139 +57,15 @@ public class EndpointTest {
             try {
                 var parser = response.getParserForType();
                 var o = parser.parseFrom(res.getBody());
-                if (exactResponseMatch) {
-                    assertEquals(response, o);
-                } else {
-                    assertTrue("Response not match", partialMatchMessage(response, o));
-                }
+                assertEquals(response, o);
             } catch (InvalidProtocolBufferException e) {
-                assertTrue(false);
                 e.printStackTrace();
+                fail("Error in parsing response");
             }
         }
         trace.record();
         receiveDomainEvents();
         receiveEvent();
         deleteStream();
-    }
-
-    public <T extends Message> T run(Parser<T> parser) {
-        createStream();
-        DomainEvent.Instance().clear();
-        var trace = Trace.Endpoint(url, 0);
-        var res = Request.send(url, request);
-        assertNotNull(res);
-        assertEquals(status, res.getCode());
-        try {
-            trace.record();
-            return parser.parseFrom(res.getBody());
-        } catch (InvalidProtocolBufferException e) {
-            assertTrue(false);
-            e.printStackTrace();
-        }
-        trace.record();
-        receiveDomainEvents();
-        receiveEvent();
-        deleteStream();
-        return null;
-    }
-
-    private void receiveDomainEvents() {
-        if (domainEvent == null) {
-            return;
-        }
-
-        var received = DomainEvent.Instance().nextEvent();
-        if (received == null) {
-            fail("No event received");
-        }
-        assertTrue("DomainEvent not matched", domainEvent.equals(received));
-    }
-
-    private void receiveEvent() {
-        if (event == null) {
-            return;
-        }
-
-        try {
-            var sub = Engine.Stream().subscribe(streamName + "." + channel);
-            var msg = sub.nextMessage(Duration.ofSeconds(1));
-
-            if (msg == null)
-                System.out.println("Timeout");
-
-            assertNotNull(msg);
-
-            var ev = scyna.proto.Event.parseFrom(msg.getData());
-            var parser = event.getParserForType();
-            var received = parser.parseFrom(ev.getBody());
-
-            if (exactEventMatch) {
-                assertEquals(event, received);
-            } else {
-                assertTrue("Event not match", partialMatchMessage(event, received));
-            }
-
-            sub.unsubscribe();
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue("Error in receiving event", false);
-        }
-    }
-
-    private void createStream() {
-        if (channel.length() == 0) {
-            return;
-        }
-        streamName = Engine.Module();
-        try {
-            StreamConfiguration config = StreamConfiguration.builder()
-                    .name(streamName)
-                    .subjects(streamName + ".>")
-                    .build();
-
-            var jsm = Engine.Connection().jetStreamManagement();
-            if (jsm.getStreamNames().contains(streamName)) {
-                jsm.deleteStream(streamName);
-            }
-            jsm.addStream(config);
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue("Error in creating stream", false);
-        }
-    }
-
-    private void deleteStream() {
-        if (channel.length() == 0) {
-            return;
-        }
-
-        try {
-            Engine.Connection().jetStreamManagement().deleteStream(streamName);
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue("Error in deleting stream", false);
-        }
-    }
-
-    private boolean partialMatchMessage(Message x, Message y) {
-        if (x.getDescriptorForType() != y.getDescriptorForType()) {
-            return false;
-        }
-
-        var equal = true;
-        for (var i : y.getAllFields().entrySet()) {
-            var fd = i.getKey();
-
-            if (x.hasField(fd)) {
-                var vx = x.getField(fd);
-                equal = vx.equals(i.getValue());
-            }
-
-            if (!equal) {
-                return false;
-            }
-        }
-        return equal;
     }
 }

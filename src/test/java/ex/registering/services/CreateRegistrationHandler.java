@@ -10,6 +10,8 @@ public class CreateRegistrationHandler extends Endpoint.Handler<CreateRegistrati
     protected void execute() throws Error {
         context.info("Receive CreateRegistrationRequest: " + request.toString());
 
+        /* TODO */
+
         context.raiseDomainEvent(RegistrationCreated.newBuilder()
                 .setEmail(request.getEmail())
                 .setName(request.getName())
