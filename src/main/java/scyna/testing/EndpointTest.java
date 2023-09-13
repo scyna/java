@@ -3,9 +3,6 @@ package scyna.testing;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
-
-import javax.naming.spi.DirStateFactory.Result;
-
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
@@ -102,11 +99,11 @@ public class EndpointTest extends BaseTest<EndpointTest> {
             return null;
         }
 
-        public Message nextDomainEvent() {
+        public <E extends Message> E parseNextDomainEvent(Parser<E> parser) {
             try {
-                return DomainEvent.Instance().nextEvent();
+                return parser.parseFrom(DomainEvent.Instance().nextEvent().toByteArray());
             } catch (Exception e) {
-                fail("Error in parsing event");
+                fail("Error in parsing domain event");
             }
             return null;
         }
