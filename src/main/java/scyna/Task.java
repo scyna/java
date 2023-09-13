@@ -38,11 +38,15 @@ public class Task {
 
         @Override
         public void onMessage(io.nats.client.Message msg) {
+            messageReceived(msg.getData());
+        }
+
+        public void messageReceived(byte[] data) {
             try {
-                var event = scyna.proto.Task.parseFrom(msg.getData());
+                var event = scyna.proto.Event.parseFrom(data);
                 trace.reset(event.getTraceID());
                 context.id = event.getTraceID();
-                this.data = parser.parseFrom(event.getData());
+                this.data = parser.parseFrom(event.getBody());
                 this.execute();
                 trace.record();
             } catch (InvalidProtocolBufferException e) {

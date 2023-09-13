@@ -8,10 +8,8 @@ import ex.registering.proto.CreateRegistrationRequest;
 import ex.registering.proto.RegistrationCreated;
 import ex.registering.services.CreateRegistrationHandler;
 import ex.registering.shared.Path;
-import scyna.DomainEvent;
 import scyna.Endpoint;
 import scyna.Engine;
-import scyna.Error;
 import scyna.testing.Testing;
 
 public class TestCreateRegistration {
