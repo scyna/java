@@ -22,6 +22,10 @@ public class Context extends Logger {
         super(0);
     }
 
+    Context(long trace) {
+        super(trace);
+    }
+
     public void publishEvent(String channel, byte[] data) throws scyna.Error {
         try {
             var event = Event.newBuilder().setTraceID(this.id).setBody(ByteString.copyFrom(data)).build();

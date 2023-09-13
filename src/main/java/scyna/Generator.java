@@ -33,8 +33,9 @@ public class Generator {
             Future<Message> incoming = nats.request(Utils.publishURL(Path.GEN_GET_ID_URL), request.toByteArray());
             var msg = incoming.get(5, TimeUnit.SECONDS);
             var response = Response.parseFrom(msg.getData());
-            if (response.getCode() != 200)
+            if (response.getCode() != 200) {
                 return false;
+            }
             var id = GetIDResponse.parseFrom(response.getBody());
             this.prefix = id.getPrefix();
             this.value = id.getStart();

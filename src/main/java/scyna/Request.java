@@ -7,7 +7,7 @@ import scyna.proto.Response;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-class Request {
+public class Request {
     public static Response send(String url, Message request) {
         try {
             var callID = Engine.ID().next();

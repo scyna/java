@@ -28,9 +28,10 @@ public final class ErrorOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013error.proto\022\005scyna\"&\n\005Error\022\014\n\004Code\030\001 " +
-      "\001(\005\022\017\n\007Message\030\002 \001(\tB/\n\013scyna.protoH\002P\001Z" +
-      "\016./;scyna_proto\252\002\013scyna.protob\006proto3"
+      "\n\013error.proto\022\005scyna\"5\n\005Error\022\014\n\004Code\030\001 " +
+      "\001(\005\022\017\n\007Message\030\002 \001(\t\022\r\n\005Trace\030\003 \001(\003B/\n\013s" +
+      "cyna.protoH\002P\001Z\016./;scyna_proto\252\002\013scyna.p" +
+      "rotob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -49,7 +50,7 @@ public final class ErrorOuterClass {
     internal_static_scyna_Error_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_scyna_Error_descriptor,
-        new java.lang.String[] { "Code", "Message", });
+        new java.lang.String[] { "Code", "Message", "Trace", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

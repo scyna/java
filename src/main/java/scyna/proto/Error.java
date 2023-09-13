@@ -18,6 +18,7 @@ private static final long serialVersionUID = 0L;
   private Error() {
     code_ = 0;
     message_ = "";
+    trace_ = 0L;
   }
 
   @java.lang.Override
@@ -79,6 +80,15 @@ private static final long serialVersionUID = 0L;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
+  }
+
+  public static final int TRACE_FIELD_NUMBER = 3;
+  private long trace_;
+  /**
+   * <code>int64 Trace = 3;</code>
+   */
+  public long getTrace() {
+    return trace_;
   }
 
   public static scyna.proto.Error parseFrom(
@@ -213,6 +223,8 @@ private static final long serialVersionUID = 0L;
 
       message_ = "";
 
+      trace_ = 0L;
+
       return this;
     }
 
@@ -241,6 +253,7 @@ private static final long serialVersionUID = 0L;
       scyna.proto.Error result = new scyna.proto.Error(this);
       result.code_ = code_;
       result.message_ = message_;
+      result.trace_ = trace_;
       onBuilt();
       return result;
     }
@@ -369,6 +382,32 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       message_ = value;
+      onChanged();
+      return this;
+    }
+
+    private long trace_ ;
+    /**
+     * <code>int64 Trace = 3;</code>
+     */
+    public long getTrace() {
+      return trace_;
+    }
+    /**
+     * <code>int64 Trace = 3;</code>
+     */
+    public Builder setTrace(long value) {
+      
+      trace_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int64 Trace = 3;</code>
+     */
+    public Builder clearTrace() {
+      
+      trace_ = 0L;
       onChanged();
       return this;
     }

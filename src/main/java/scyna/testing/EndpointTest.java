@@ -1,4 +1,4 @@
-package scyna;
+package scyna.testing;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -8,6 +8,9 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
 import io.nats.client.api.StreamConfiguration;
+import scyna.Engine;
+import scyna.Request;
+import scyna.Trace;
 
 public class EndpointTest {
     private int status;

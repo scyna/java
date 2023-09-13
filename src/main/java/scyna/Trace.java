@@ -8,6 +8,7 @@ public class Trace {
     public final static int EVENT = 2;
     public final static int SYNC = 4;
     public final static int TASK = 5;
+    public final static int DOMAIN_EVENT = 6;
 
     private long parentID;
     private long id;
@@ -50,6 +51,18 @@ public class Trace {
         ret.path = url;
         ret.id = Engine.ID().next();
         ret.parentID = trace;
+        ret.t1 = System.nanoTime();
+        ret.time = Utils.currentMicroSeconds();
+        ret.source = Engine.Module();
+        return ret;
+    }
+
+    public static Trace newDomainEvent(String name, long parentTrace) {
+        var ret = new Trace();
+        ret.type = ENDPOINT;
+        ret.path = name;
+        ret.id = Engine.ID().next();
+        ret.parentID = parentTrace;
         ret.t1 = System.nanoTime();
         ret.time = Utils.currentMicroSeconds();
         ret.source = Engine.Module();

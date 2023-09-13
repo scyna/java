@@ -64,7 +64,7 @@ public class Engine {
         Signal.RegisterBySession(Path.SETTING_REMOVE_CHANNEL + module, new Settings.RemoveHandler());
     }
 
-    public static Engine instance() {
+    public static Engine Instance() {
         return instance;
     }
 

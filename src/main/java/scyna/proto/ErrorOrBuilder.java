@@ -21,4 +21,9 @@ public interface ErrorOrBuilder extends
    */
   com.google.protobuf.ByteString
       getMessageBytes();
+
+  /**
+   * <code>int64 Trace = 3;</code>
+   */
+  long getTrace();
 }
