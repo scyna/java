@@ -2,7 +2,6 @@ package scyna.testing;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import java.time.Duration;
 import com.google.protobuf.Message;
@@ -16,12 +15,14 @@ public class BaseTest<T extends BaseTest<T>> {
     private String channel = "";
     private String streamName = "";
 
+    @SuppressWarnings("unchecked")
     public T expectEvent(String channel, Message event) {
         this.channel = channel;
         this.event = event;
         return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     public T expectDomainEvent(Message event) {
         this.domainEvent = event;
         return (T) this;
@@ -76,7 +77,7 @@ public class BaseTest<T extends BaseTest<T>> {
             jsm.addStream(config);
         } catch (Exception e) {
             e.printStackTrace();
-            assertTrue("Error in creating stream", false);
+            fail("Error in creating stream");
         }
     }
 
@@ -85,7 +86,7 @@ public class BaseTest<T extends BaseTest<T>> {
             Engine.Connection().jetStreamManagement().deleteStream(streamName);
         } catch (Exception e) {
             e.printStackTrace();
-            assertTrue("Error in deleting stream", false);
+            fail("Error in deleting stream");
         }
     }
 }
