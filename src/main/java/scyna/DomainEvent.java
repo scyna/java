@@ -40,7 +40,7 @@ public class DomainEvent {
         void EventReceived(EventData data);
     }
 
-    public abstract class Handler<T> implements IHandler {
+    public static abstract class Handler<T> implements IHandler {
         protected T data;
         protected Context context;
 
@@ -91,10 +91,10 @@ public class DomainEvent {
         events.add(new EventData(traceID, data));
     }
 
-    public void start() {
-        new Thread(() -> {
-            while (true) {
-                var item = events.poll();
+    private void run() {
+        while (true) {
+            try {
+                var item = events.poll(5, TimeUnit.SECONDS);
                 var type = item.data.getClass();
                 if (handlers.containsKey(type)) {
                     var list = handlers.get(type);
@@ -106,8 +106,14 @@ public class DomainEvent {
                         handler.EventReceived(item);
                     }
                 }
+            } catch (InterruptedException e) {
+                /* do nothing */
             }
-        }).start();
+        }
+    }
+
+    public void start() {
+        new Thread(() -> run()).start();
     }
 
     public Message nextEvent() {

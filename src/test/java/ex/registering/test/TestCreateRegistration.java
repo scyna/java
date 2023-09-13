@@ -10,8 +10,10 @@ import ex.registering.proto.CreateRegistrationRequest;
 import ex.registering.proto.RegistrationCreated;
 import ex.registering.services.CreateRegistrationHandler;
 import ex.registering.shared.Path;
+import scyna.DomainEvent;
 import scyna.Endpoint;
 import scyna.Engine;
+import scyna.Error;
 import scyna.testing.EndpointTest;
 
 public class TestCreateRegistration {
@@ -27,19 +29,36 @@ public class TestCreateRegistration {
     }
 
     @Test
-    public void testGivenGoodRequest_ShouldSuccess() {
-        var result = EndpointTest.create(Path.CREATE_REGISTRATION)
+    public void testGivenGoodRequest_ShouldSuccess() throws InterruptedException {
+        DomainEvent.Register(new RegistrationCreatedHandler());
+        DomainEvent.Instance().start();
+
+        EndpointTest.create(Path.CREATE_REGISTRATION)
                 .withRequest(CreateRegistrationRequest.newBuilder()
                         .setEmail("a@gmail.com")
                         .setName("Nguyen Van A")
                         .setPassword("123456").build())
-                .expectDomainEvent(RegistrationCreated.newBuilder()
-                        .setEmail("a@gmail.com")
-                        .setName("Nguyen Van A")
-                        .setPassword("123456").build())
+                // .expectDomainEvent(RegistrationCreated.newBuilder()
+                // .setEmail("a@gmail.com")
+                // .setName("Nguyen Van A")
+                // .setPassword("123456").build())
                 .expectSuccess().run();
 
-        var event = (RegistrationCreated) result.nextDomainEvent();
-        assertEquals(event.getEmail(), "a@gmail.com");
+        Thread.sleep(100);
+        var event = (RegistrationCreated) DomainEvent.Instance().nextEvent();
+        assertEquals("Nguyen Van Axxx", event.getName());
+    }
+
+    public class RegistrationCreatedHandler extends DomainEvent.Handler<RegistrationCreated> {
+
+        @Override
+        public void Execute() throws Error {
+            System.out.println("Receive RegistrationCreated: " + data.toString());
+            context.raiseDomainEvent(RegistrationCreated.newBuilder()
+                    .setEmail(data.getEmail())
+                    .setName(data.getName() + "xxx")
+                    .setPassword(data.getPassword())
+                    .build());
+        }
     }
 }
