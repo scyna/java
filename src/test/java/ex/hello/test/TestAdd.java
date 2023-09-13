@@ -36,7 +36,6 @@ public class TestAdd {
                 .withRequest(AddRequest.newBuilder().setA(82).setB(18).build())
                 .expectResponse(AddResponse.newBuilder().setSum(100).build())
                 .run();
-
     }
 
     @Test

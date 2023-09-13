@@ -20,7 +20,7 @@ public class Task {
     }
 
     public static abstract class Handler<T extends Message> implements MessageHandler {
-        protected Context context = new Context();
+        protected Context context = new Context(0);
         protected Parser<T> parser;
         protected T data;
         protected Trace trace;

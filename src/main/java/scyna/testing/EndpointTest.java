@@ -3,11 +3,14 @@ package scyna.testing;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import java.time.Duration;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
 import io.nats.client.api.StreamConfiguration;
+import scyna.DomainEvent;
 import scyna.Engine;
 import scyna.Request;
 import scyna.Trace;
@@ -18,6 +21,7 @@ public class EndpointTest {
     private Message request = null;
     private Message response = null;
     private Message event = null;
+    private Message domainEvent = null;
     private String channel = "";
     private String streamName = "";
     private boolean exactEventMatch = true;
@@ -65,6 +69,11 @@ public class EndpointTest {
         return this;
     }
 
+    public EndpointTest expectDomainEvent(Message event) {
+        this.domainEvent = event;
+        return this;
+    }
+
     public EndpointTest matchEvent(Message event) {
         this.event = event;
         this.exactEventMatch = false;
@@ -78,6 +87,7 @@ public class EndpointTest {
 
     public void run() {
         createStream();
+        DomainEvent.Instance().clear();
         var trace = Trace.Endpoint(url, 0);
         var res = Request.send(url, request);
         assertNotNull(res);
@@ -98,12 +108,14 @@ public class EndpointTest {
             }
         }
         trace.record();
+        receiveDomainEvents();
         receiveEvent();
         deleteStream();
     }
 
     public <T extends Message> T run(Parser<T> parser) {
         createStream();
+        DomainEvent.Instance().clear();
         var trace = Trace.Endpoint(url, 0);
         var res = Request.send(url, request);
         assertNotNull(res);
@@ -116,9 +128,22 @@ public class EndpointTest {
             e.printStackTrace();
         }
         trace.record();
+        receiveDomainEvents();
         receiveEvent();
         deleteStream();
         return null;
+    }
+
+    private void receiveDomainEvents() {
+        if (domainEvent == null) {
+            return;
+        }
+
+        var received = DomainEvent.Instance().nextEvent();
+        if (received == null) {
+            fail("No event received");
+        }
+        assertTrue("DomainEvent not matched", domainEvent.equals(received));
     }
 
     private void receiveEvent() {

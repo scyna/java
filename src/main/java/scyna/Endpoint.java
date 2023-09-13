@@ -23,7 +23,7 @@ public abstract class Endpoint {
     }
 
     public static abstract class Handler<T extends Message> implements MessageHandler {
-        protected Context context = new Context();
+        protected Context context = new Context(0);
         protected boolean JSON;
 
         protected String reply;

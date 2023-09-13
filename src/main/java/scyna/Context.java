@@ -14,16 +14,15 @@ import scyna.proto.Request;
 import scyna.proto.Response;
 import scyna.proto.StartTaskRequest;
 import scyna.proto.StartTaskResponse;
-import scyna.proto.TagCreatedSignal;
 
 public class Context extends Logger {
 
-    Context() {
-        super(0);
-    }
-
     Context(long trace) {
         super(trace);
+    }
+
+    public void raiseDomainEvent(Message event) {
+        DomainEvent.Instance().addEvent(id, event);
     }
 
     public void publishEvent(String channel, byte[] data) throws scyna.Error {
@@ -59,18 +58,6 @@ public class Context extends Logger {
         }
         trace.record();
         return ret;
-    }
-
-    public void tag(String key, String value) {
-        if (id == 0) {
-            return;
-        }
-
-        Signal.emit(Path.TRACE_CREATED_CHANNEL, TagCreatedSignal.newBuilder()
-                .setTraceID(id)
-                .setKey(key)
-                .setValue(value)
-                .build());
     }
 
     public long scheduleTask(String channel, long start, long interval, Message data, long loop)
