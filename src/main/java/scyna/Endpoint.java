@@ -23,7 +23,7 @@ public abstract class Endpoint {
     }
 
     public static abstract class Handler<T extends Message> implements MessageHandler {
-        protected Context context = new Context(0);
+        protected Context context;
         protected boolean JSON;
 
         protected String reply;
@@ -78,7 +78,7 @@ public abstract class Endpoint {
         public void onMessage(io.nats.client.Message msg) {
             try {
                 var request = Request.parseFrom(msg.getData());
-                context.id = request.getTraceID();
+                context = new Context(request.getTraceID());
                 reply = msg.getReplyTo();
                 JSON = request.getJSON();
                 flushed = false;
