@@ -1,5 +1,7 @@
 package scyna.registration;
 
+import java.lang.reflect.InvocationTargetException;
+
 import com.google.protobuf.Message;
 
 import scyna.Endpoint;
@@ -17,8 +19,8 @@ public class Command {
     }
 
     public static class Request<R extends Message> {
-        public <H extends Endpoint.Handler<R>> Handler When(Class<H> handler) {
-            /* TODO */
+        public <H extends Endpoint.Handler<R>> Handler When(Class<H> handler) throws Exception {
+            Endpoint.Register("", handler.getDeclaredConstructor().newInstance());
             return new Handler();
         }
     }
