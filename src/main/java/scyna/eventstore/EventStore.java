@@ -1,7 +1,10 @@
 package scyna.eventstore;
 
+import java.io.Console;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
+import java.util.Map;
+import java.util.HashMap;
 
 import com.datastax.driver.core.PreparedStatement;
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -21,6 +24,7 @@ public class EventStore<D extends Message> {
     private PreparedStatement getSyncRowQuery;
     private Parser<D> parser;
     private Message.Builder builder;
+    private Map<String, IProjection> projections = new HashMap<String, IProjection>();
 
     @SuppressWarnings("unchecked")
     EventStore(String tableName, Class<D> cls) throws Exception {
@@ -103,7 +107,7 @@ public class EventStore<D extends Message> {
         return new Model<D>(id, 0, data, this);
     }
 
-    void UpdateWriteModel(Model<D> model, Message event) throws scyna.Error {
+    void updateWriteModel(Model<D> model, Message event) throws scyna.Error {
         try {
             model.Version++;
             if (!Engine.DB().getSession().execute(writeModelQuery.bind(
@@ -116,5 +120,92 @@ public class EventStore<D extends Message> {
             Engine.LOG().error(e.getMessage());
             throw scyna.Error.COMMAND_NOT_COMPLETED;
         }
+    }
+
+    void updateReadModel(Object id) {
+        var version = getLastSynced(id);
+        if (version == -1)
+            return;
+        version++;
+        while (sync(id, version)) {
+            version++;
+        }
+    }
+
+    boolean sync(Object id, long version) {
+        if (!tryToLock(id, version)) {
+            if (!lockingLongRow(id, version))
+                return false;
+        }
+        if (!syncRow(id, version))
+            return false;
+        if (!markSynced(id, version))
+            return false;
+        return true;
+    }
+
+    long getLastSynced(Object id) {
+        try {
+            var row = Engine.DB().getSession().execute(getLastSyncedQuery.bind(id)).one();
+            if (row == null)
+                return 0;
+            return row.getLong("version");
+        } catch (Exception e) {
+            Engine.LOG().error(e.getMessage());
+            return -1;
+        }
+    }
+
+    boolean tryToLock(Object id, long version) {
+        try {
+            return Engine.DB().getSession().execute(tryToLockQuery.bind(
+                    java.time.Instant.now(), id, version)).one().getBool("[applied]");
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    boolean lockingLongRow(Object id, long version) {
+        /* TODO */
+        return false;
+    }
+
+    boolean syncRow(Object id, long version) {
+        try {
+            var row = Engine.DB().getSession().execute(getSyncRowQuery.bind(id, version)).one();
+            if (row == null)
+                return false;
+
+            var type = row.getString("type");
+            var data = row.getBytes("data");
+            var event = row.getBytes("event");
+            var p = projections.get(type);
+            if (p != null) {
+                p.Update(event, data);
+                return true;
+            }
+
+            Engine.LOG().error("No projection for type=" + type);
+            return false;
+        } catch (Exception e) {
+            Engine.LOG().error(e.getMessage());
+            return true; /* FIXME: MUST be FALSE or ALERT to ADMIN */
+        }
+    }
+
+    boolean markSynced(Object id, long version) {
+        try {
+            Engine.DB().getSession().execute(markSyncedQuery.bind(id, version));
+            return true;
+        } catch (Exception e) {
+            Engine.LOG().error(e.getMessage());
+            return false;
+        }
+    }
+
+    public void RegisterProjection(IProjection projection) throws Exception {
+        if (projections.containsKey(projection.Type()))
+            throw new RuntimeException("Type '" + projection.Type() + "' is already registered");
+        projections.put(projection.Type(), projection);
     }
 }
