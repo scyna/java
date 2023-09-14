@@ -34,7 +34,7 @@ public class Model<D extends Message> {
         this.data = data;
     }
 
-    public void CommitAndProject(D data, Message event) throws Error {
+    public void commitAndProject(D data, Message event) throws Error {
         this.data = data;
         this.event = event;
         store.updateWriteModel(this, event);

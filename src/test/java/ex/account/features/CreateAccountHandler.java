@@ -20,7 +20,7 @@ public class CreateAccountHandler extends Endpoint.Handler<CreateAccountRequest>
                 .setPassword(request.getPassword())
                 .setName(request.getName());
 
-        model.CommitAndProject(data.build(), AccountCreated.newBuilder()
+        model.commitAndProject(data.build(), AccountCreated.newBuilder()
                 .setEmail(request.getEmail())
                 .setName(request.getName())
                 .setPassword(request.getPassword())
@@ -30,8 +30,7 @@ public class CreateAccountHandler extends Endpoint.Handler<CreateAccountRequest>
     public static class ProjectAccountCreated extends Projection<AccountCreated, AccountModel> {
         @Override
         protected void execute(AccountCreated event, AccountModel data) throws Error {
-            Engine.DB().execute("INSERT INTO accounts (email, password, name) VALUES (?, ?, ?)",
-                    data.getEmail(), data.getPassword(), data.getName());
+            /* do nothing */
         }
     }
 }
