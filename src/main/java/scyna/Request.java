@@ -6,16 +6,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 public class Request {
-
-    // public static <T extends Message> T send2(String url, Message request) {
-    // var response = send(url, request);
-    // if (response != null && response.getCode() == 200) {
-    // var parser = new MessageParser<T>();
-    // return parser.parseFrom(response.getBody());
-    // }
-    // return null;
-    // }
-
     public static Response send(String url, Message request) {
         try {
             var callID = Engine.ID().next();

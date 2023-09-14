@@ -16,6 +16,10 @@ public class Error extends java.lang.Exception {
     public static final Error OBJECT_NOT_FOUND = New(9, "Object Not Found");
     public static final Error OBJECT_EXISTS = New(10, "Object Exists");
 
+    public static final Error COMMAND_NOT_COMPLETED = New(11, "Command Not Completed");
+    public static final Error EVENT_STORE_NULL = New(12, "EventStore Is Null");
+    public static final Error API_CALL_ERROR = New(13, "Api Call Error");
+
     private Error(int code, String message) {
         super(message);
         this.code = code;
