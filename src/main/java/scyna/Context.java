@@ -3,11 +3,8 @@ package scyna;
 import java.io.IOException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-
-import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
-
 import io.nats.client.JetStreamApiException;
 import scyna.proto.Event;
 import scyna.proto.Request;
@@ -25,9 +22,9 @@ public class Context extends Logger {
         DomainEvent.Instance().addEvent(id, event);
     }
 
-    public void publishEvent(String channel, byte[] data) throws scyna.Error {
+    public void publishEvent(String channel, Message data) throws scyna.Error {
         try {
-            var event = Event.newBuilder().setTraceID(this.id).setBody(ByteString.copyFrom(data)).build();
+            var event = Event.newBuilder().setTraceID(this.id).setBody(data.toByteString()).build();
             var subject = Engine.Module() + "." + channel;
             Engine.Stream().publish(subject, event.toByteArray());
         } catch (IOException e) {

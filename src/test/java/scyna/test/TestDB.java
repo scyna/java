@@ -5,6 +5,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import scyna.Engine;
+import scyna.Error;
 
 public class TestDB {
     @BeforeClass
@@ -18,7 +19,10 @@ public class TestDB {
     }
 
     @Test
-    public void GivenGoodRequest_ShouldSuccess() throws InterruptedException {
-        Thread.sleep(100);
+    public void TestExecute() throws Error {
+        Engine.DB().execute("INSERT INTO scyna_test.test_table(key, value) VALUES ('key1', 'value1')");
+        Engine.DB().execute("INSERT INTO scyna_test.test_table(key, value) VALUES ('key2', 'value2')");
+        Engine.DB().assureExists("SELECT * FROM scyna_test.test_table WHERE key = 'key1'");
+        Engine.DB().assureNotExists("SELECT * FROM scyna_test.test_table WHERE key = 'key3'");
     }
 }

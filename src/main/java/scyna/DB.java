@@ -12,7 +12,7 @@ public class DB {
     public void assureExists(String query, Object... args) throws Error {
         try {
             var result = session.execute(addLimitOne(query), args);
-            if (!result.isExhausted()) {
+            if (result.isExhausted()) {
                 throw Error.OBJECT_NOT_FOUND;
             }
         } catch (scyna.Error e) {
@@ -26,7 +26,7 @@ public class DB {
     public void assureNotExists(String query, Object... args) throws Error {
         try {
             var result = session.execute(addLimitOne(query), args);
-            if (result.isExhausted()) {
+            if (!result.isExhausted()) {
                 throw Error.OBJECT_EXISTS;
             }
         } catch (scyna.Error e) {
