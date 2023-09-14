@@ -6,3 +6,8 @@ message EventReceived
 {
   string Text = 1;
 }
+
+message DomainEventActivated
+{
+  string Text = 1;
+}

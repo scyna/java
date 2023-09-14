@@ -19,6 +19,11 @@ public final class Domainevent {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_EventReceived_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DomainEventActivated_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_DomainEventActivated_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -29,7 +34,8 @@ public final class Domainevent {
   static {
     java.lang.String[] descriptorData = {
       "\n\021domainevent.proto\"\035\n\rEventReceived\022\014\n\004" +
-      "Text\030\001 \001(\tB\017\n\013scyna.protoP\001b\006proto3"
+      "Text\030\001 \001(\t\"$\n\024DomainEventActivated\022\014\n\004Te" +
+      "xt\030\001 \001(\tB\017\n\013scyna.protoP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -48,6 +54,12 @@ public final class Domainevent {
     internal_static_EventReceived_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EventReceived_descriptor,
+        new java.lang.String[] { "Text", });
+    internal_static_DomainEventActivated_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_DomainEventActivated_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_DomainEventActivated_descriptor,
         new java.lang.String[] { "Text", });
   }
 

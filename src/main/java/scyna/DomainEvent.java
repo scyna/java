@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.TimeUnit;
-
 import com.google.protobuf.Message;
 
 public class DomainEvent {
@@ -111,19 +110,12 @@ public class DomainEvent {
     private void run() {
         while (true) {
             try {
-                System.out.println("DomainEvent: waiting for event");
                 var item = events.poll(5, TimeUnit.SECONDS);
                 if (item == null)
                     continue;
-                System.out.println("DomainEvent: received event");
                 var type = item.data.getClass();
                 if (handlers.containsKey(type)) {
-                    System.out.println("DomainEvent: found handler for " + type.getName());
                     var list = handlers.get(type);
-                    if (list == null) {
-                        System.out.println("DomainEvent: no handler for " + type.getName());
-                        continue;
-                    }
                     for (var handler : list) {
                         handler.EventReceived(item);
                     }

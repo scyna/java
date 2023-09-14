@@ -1,11 +1,14 @@
 package scyna.test;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import scyna.DomainEvent;
 import scyna.Engine;
 import scyna.Error;
+import scyna.proto.DomainEventActivated;
 
 public class TestDomainEvent {
     @BeforeClass
@@ -21,7 +24,7 @@ public class TestDomainEvent {
     }
 
     @Test
-    public void testGivenGoodRequest_ShouldSuccess() throws InterruptedException {
+    public void GivenGoodRequest_ShouldSuccess() throws InterruptedException {
         DomainEvent.Instance().addEvent(0, scyna.proto.EventReceived.newBuilder().setText("Hello").build());
         Thread.sleep(100);
     }
@@ -30,6 +33,7 @@ public class TestDomainEvent {
         @Override
         public void Execute() throws Error {
             context.info("Receive EventReceived: " + data.toString());
+            context.raiseDomainEvent(DomainEventActivated.newBuilder().setText(data.getText() + "xxx").build());
         }
     }
 }

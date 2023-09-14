@@ -2,6 +2,8 @@ package scyna.test;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Test;
+
 import scyna.Engine;
 
 public class TestDB {
@@ -13,5 +15,10 @@ public class TestDB {
     @AfterClass
     public static void teardown() {
         Engine.Release();
+    }
+
+    @Test
+    public void GivenGoodRequest_ShouldSuccess() throws InterruptedException {
+        Thread.sleep(100);
     }
 }
