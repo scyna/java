@@ -210,7 +210,13 @@ public class EventStore<D extends Message> {
         }
     }
 
-    public void RegisterProjection(IProjection projection) throws Exception {
+    public static void RegisterProjection(IProjection projection) throws Exception {
+        if (instance == null)
+            throw new RuntimeException("Event store not initlized");
+        instance.registerProjection(projection);
+    }
+
+    public void registerProjection(IProjection projection) throws Exception {
         if (projections.containsKey(projection.getType()))
             throw new RuntimeException("Type '" + projection.getType() + "' is already registered");
         projections.put(projection.getType(), projection);

@@ -9,7 +9,7 @@ import scyna.Error;
 import scyna.eventstore.EventStore;
 import scyna.eventstore.Projection;
 
-public class CreateAccountHandler extends Endpoint.Handler<CreateAccountRequest> {
+public class CreateAccount extends Endpoint.Handler<CreateAccountRequest> {
     @Override
     protected void execute() throws Error {
 
@@ -25,6 +25,7 @@ public class CreateAccountHandler extends Endpoint.Handler<CreateAccountRequest>
                 .setName(request.getName())
                 .setPassword(request.getPassword())
                 .build());
+        context.raiseDomainEvent(model.getEvent());
     }
 
     public static class ProjectAccountCreated extends Projection<AccountCreated, AccountModel> {
