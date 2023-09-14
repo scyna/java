@@ -57,24 +57,18 @@ public class Event {
             var sub = Engine.Stream().subscribe(sender + ".>", opt);
             Engine.Connection().flush(Duration.ofSeconds(1));
 
-            var runable = new Runnable() {
-                @Override
-                public void run() {
-                    while (true) {
-                        var messages = sub.fetch(1, Duration.ofSeconds(1));
-                        for (io.nats.client.Message m : messages) {
-                            var executor = executors.get(m.getSubject());
-                            if (executor != null) {
-                                executor.onMessage(m);
-                            }
-                            m.ack();
+            new Thread(() -> {
+                while (true) {
+                    var messages = sub.fetch(1, Duration.ofSeconds(1));
+                    for (io.nats.client.Message m : messages) {
+                        var executor = executors.get(m.getSubject());
+                        if (executor != null) {
+                            executor.onMessage(m);
                         }
+                        m.ack();
                     }
                 }
-            };
-
-            Thread thread = new Thread(runable);
-            thread.start();
+            }).start();
         }
     }
 

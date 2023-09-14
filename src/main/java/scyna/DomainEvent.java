@@ -77,7 +77,7 @@ public class DomainEvent {
         }
 
         @SuppressWarnings("unchecked")
-        public Class<T> getEventType() {
+        Class<T> getEventType() {
             return (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
                     .getActualTypeArguments()[0];
         }

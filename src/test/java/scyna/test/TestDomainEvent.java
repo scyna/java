@@ -3,7 +3,6 @@ package scyna.test;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import scyna.DomainEvent;
 import scyna.Engine;
 import scyna.Error;
@@ -33,5 +32,4 @@ public class TestDomainEvent {
             context.info("Receive EventReceived: " + data.toString());
         }
     }
-
 }
