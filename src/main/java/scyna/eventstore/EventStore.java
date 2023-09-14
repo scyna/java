@@ -1,6 +1,8 @@
 package scyna.eventstore;
 
 import java.lang.reflect.Method;
+import java.nio.ByteBuffer;
+
 import com.datastax.driver.core.PreparedStatement;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
@@ -104,9 +106,11 @@ public class EventStore<D extends Message> {
     void UpdateWriteModel(Model<D> model, Message event) throws scyna.Error {
         try {
             model.Version++;
-            if (!Engine.DB().getSession().execute(writeModelQuery.bind(model.ID, event.getClass().getName(),
-                    model.data.toByteArray(), event.toByteArray(), java.time.Instant.now(), model.Version))
-                    .one().getBool("[applied]"))
+            if (!Engine.DB().getSession().execute(writeModelQuery.bind(
+                    model.ID, event.getClass().getName(),
+                    ByteBuffer.wrap(model.data.toByteArray()),
+                    ByteBuffer.wrap(event.toByteArray()),
+                    java.time.Instant.now(), model.Version)).one().getBool("[applied]"))
                 throw scyna.Error.COMMAND_NOT_COMPLETED;
         } catch (Exception e) {
             Engine.LOG().error(e.getMessage());
