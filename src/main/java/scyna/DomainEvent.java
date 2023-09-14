@@ -1,5 +1,6 @@
 package scyna;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class DomainEvent {
         return instance;
     }
 
-    public static <T> void Register(Handler<T> handler) {
+    public static <T extends Message> void Register(Handler<T> handler) {
         Instance().register(handler);
     }
 
@@ -40,7 +41,7 @@ public class DomainEvent {
         void EventReceived(EventData data);
     }
 
-    public static abstract class Handler<T> implements IHandler {
+    public static abstract class Handler<T extends Message> implements IHandler {
         protected T data;
         protected Context context;
 
@@ -74,18 +75,25 @@ public class DomainEvent {
             Execute();
             trace.record();
         }
+
+        @SuppressWarnings("unchecked")
+        public Class<T> getEventType() {
+            return (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
+                    .getActualTypeArguments()[0];
+        }
     }
 
     private final BlockingQueue<EventData> events = new LinkedBlockingDeque<EventData>();
     private final Map<Class, List<IHandler>> handlers = new HashMap<Class, List<IHandler>>();
 
-    public <T> void register(Handler<T> handler) {
-        var type = handler.getClass();
+    public <T extends Message> void register(Handler<T> handler) {
+        var type = handler.getEventType();
         System.out.println("Register DomainEvent:" + type.getName());
         if (handlers.containsKey(type)) {
             var list = handlers.get(type);
             list.add(handler);
         } else {
+            System.out.println("Register DomainEvent:" + type.getName());
             var list = new LinkedList<IHandler>();
             list.add(handler);
             handlers.put(type, list);
@@ -103,9 +111,14 @@ public class DomainEvent {
     private void run() {
         while (true) {
             try {
+                System.out.println("DomainEvent: waiting for event");
                 var item = events.poll(5, TimeUnit.SECONDS);
+                if (item == null)
+                    continue;
+                System.out.println("DomainEvent: received event");
                 var type = item.data.getClass();
                 if (handlers.containsKey(type)) {
+                    System.out.println("DomainEvent: found handler for " + type.getName());
                     var list = handlers.get(type);
                     if (list == null) {
                         System.out.println("DomainEvent: no handler for " + type.getName());
@@ -114,7 +127,8 @@ public class DomainEvent {
                     for (var handler : list) {
                         handler.EventReceived(item);
                     }
-                }
+                } else
+                    System.out.println("DomainEvent: no handler for " + type.getName());
             } catch (InterruptedException e) {
                 /* do nothing */
             }
