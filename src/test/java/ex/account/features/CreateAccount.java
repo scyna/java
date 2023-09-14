@@ -3,10 +3,10 @@ package ex.account.features;
 import ex.account.proto.AccountCreated;
 import ex.account.proto.AccountModel;
 import ex.account.proto.CreateAccountRequest;
+import ex.account.shared.AccountStore;
 import scyna.Endpoint;
 import scyna.Engine;
 import scyna.Error;
-import scyna.eventstore.EventStore;
 import scyna.eventstore.Projection;
 
 public class CreateAccount extends Endpoint.Handler<CreateAccountRequest> {
@@ -14,7 +14,7 @@ public class CreateAccount extends Endpoint.Handler<CreateAccountRequest> {
     protected void execute() throws Error {
 
         Engine.DB().assureNotExists("SELECT * FROM accounts WHERE email = ?");
-        var model = EventStore.<AccountModel>CreateModel(request.getEmail());
+        var model = AccountStore.Create(request.getEmail());
         var data = model.getData().toBuilder()
                 .setEmail(request.getEmail())
                 .setPassword(request.getPassword())

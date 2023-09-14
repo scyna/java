@@ -8,19 +8,20 @@ import ex.account.features.CreateAccount;
 import ex.account.proto.AccountCreated;
 import ex.account.proto.AccountModel;
 import ex.account.proto.CreateAccountRequest;
+import ex.account.shared.AccountStore;
 import ex.account.shared.Path;
 import scyna.Endpoint;
 import scyna.Engine;
-import scyna.eventstore.EventStore;
 import scyna.testing.Testing;
 
 public class TestCreateAccount {
+
     @BeforeClass
     public static void setup() throws Exception {
         Engine.Init("http://127.0.0.1:8081", "scyna_test", "123456");
-        EventStore.Init("account_events", AccountModel.class);
+        AccountStore.Init();
         Endpoint.Register(Path.CREATE_ACCOUNT, new CreateAccount());
-        EventStore.RegisterProjection(new CreateAccount.ProjectAccountCreated());
+        AccountStore.RegisterProjection(new CreateAccount.ProjectAccountCreated());
     }
 
     @AfterClass

@@ -11,7 +11,6 @@ import com.google.protobuf.Parser;
 import scyna.Engine;
 
 public class EventStore<D extends Message> {
-    private static EventStore instance;
     private String tableName;
     private PreparedStatement getModelQuery;
     private PreparedStatement writeModelQuery;
@@ -44,42 +43,15 @@ public class EventStore<D extends Message> {
                 .prepare("SELECT type,data,event FROM " + tableName + " WHERE id=? AND version=? LIMIT 1");
     }
 
-    public static <D extends Message> void Init(String tableName, Class<D> cls) throws Exception {
-        if (instance != null)
-            throw new RuntimeException("Event store already initlized");
-        instance = new EventStore<D>(tableName, cls);
-    }
-
-    @SuppressWarnings("unchecked")
-    public static <D extends Message> EventStore<D> Instance() throws scyna.Error {
-        if (instance == null)
-            throw scyna.Error.EVENT_STORE_NULL;
-        return instance;
-    }
-
-    public static void Reset() {
-        instance = null;
+    public static <D extends Message> EventStore<D> Create(String tableName, Class<D> cls) throws Exception {
+        return new EventStore<D>(tableName, cls);
     }
 
     public String getTableName() {
         return tableName;
     }
 
-    @SuppressWarnings("unchecked")
-    public static <D extends Message> Model<D> ReadModel(Object id) throws scyna.Error {
-        if (instance == null)
-            throw scyna.Error.EVENT_STORE_NULL;
-        return instance.readModel(id);
-    }
-
-    @SuppressWarnings("unchecked")
-    public static <D extends Message> Model<D> CreateModel(Object id) throws scyna.Error {
-        if (instance == null)
-            throw scyna.Error.EVENT_STORE_NULL;
-        return instance.createModel(id);
-    }
-
-    private Model<D> readModel(Object id) throws scyna.Error {
+    public Model<D> readModel(Object id) throws scyna.Error {
         try {
             var row = Engine.DB().getSession().execute(getModelQuery.bind(id)).one();
             if (row == null)
@@ -100,7 +72,7 @@ public class EventStore<D extends Message> {
     }
 
     @SuppressWarnings("unchecked")
-    private Model<D> createModel(Object id) throws scyna.Error {
+    public Model<D> createModel(Object id) throws scyna.Error {
         try {
             var rs = Engine.DB().getSession().execute(getModelQuery.bind(id));
             if (rs.one() != null)
@@ -208,12 +180,6 @@ public class EventStore<D extends Message> {
             Engine.LOG().error(e.getMessage());
             return false;
         }
-    }
-
-    public static void RegisterProjection(IProjection projection) throws Exception {
-        if (instance == null)
-            throw new RuntimeException("Event store not initlized");
-        instance.registerProjection(projection);
     }
 
     public void registerProjection(IProjection projection) throws Exception {
