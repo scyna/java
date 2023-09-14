@@ -5,12 +5,10 @@ import scyna.eventstore.EventStore;
 import scyna.eventstore.IProjection;
 import scyna.eventstore.Model;
 
-public class AccountStore {
+public final class AccountStore {
     private static EventStore<AccountModel> store = null;
 
     public static void Init() throws Exception {
-        if (store != null)
-            return;
         store = scyna.eventstore.EventStore.Create("account_events", AccountModel.class);
     }
 
