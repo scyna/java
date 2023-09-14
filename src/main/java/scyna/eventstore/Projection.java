@@ -11,7 +11,7 @@ import com.google.protobuf.Parser;
 import scyna.Engine;
 
 public abstract class Projection<E extends Message, D extends Message> implements IProjection {
-    protected abstract void Execute(E event, D data);
+    protected abstract void execute(E event, D data) throws scyna.Error;
 
     private Parser<D> dataParser;
     private Parser<E> eventParser;
@@ -34,8 +34,8 @@ public abstract class Projection<E extends Message, D extends Message> implement
         try {
             var dataObject = dataParser.parseFrom(data);
             var eventObject = eventParser.parseFrom(event);
-            Execute(eventObject, dataObject);
-        } catch (InvalidProtocolBufferException e) {
+            execute(eventObject, dataObject);
+        } catch (Exception e) {
             Engine.LOG().error(e.getMessage());
         }
     }

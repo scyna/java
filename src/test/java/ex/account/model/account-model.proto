@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "ex.account.proto";
+option csharp_namespace = "ex.account.PROTO";
+
+message AccountModel
+{
+    uint64 id = 1;
+    string name = 2;
+    string password = 3;
+    string email = 4;
+    string phone = 5;
+    string address = 6;
+    string avatar = 7;
+}
