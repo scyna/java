@@ -1,16 +1,13 @@
 package scyna.eventstore;
 
-import java.io.Console;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.util.Map;
 import java.util.HashMap;
-
 import com.datastax.driver.core.PreparedStatement;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
-
 import scyna.Engine;
 
 public class EventStore<D extends Message> {
@@ -83,38 +80,48 @@ public class EventStore<D extends Message> {
     }
 
     private Model<D> readModel(Object id) throws scyna.Error {
-        var rs = Engine.DB().getSession().execute(getModelQuery.bind(id));
-        var row = rs.one();
-        if (row == null)
-            throw scyna.Error.OBJECT_NOT_FOUND;
-        if (row.isNull("data"))
-            throw scyna.Error.BAD_DATA;
         try {
+            var row = Engine.DB().getSession().execute(getModelQuery.bind(id)).one();
+            if (row == null)
+                throw scyna.Error.OBJECT_NOT_FOUND;
+            if (row.isNull("data"))
+                throw scyna.Error.BAD_DATA;
             var data = parser.parseFrom(row.getBytes("data"));
             return new Model<D>(id, row.getLong("version"), data, this);
+        } catch (scyna.Error e) {
+            throw e;
         } catch (InvalidProtocolBufferException e) {
             e.printStackTrace();
             throw scyna.Error.BAD_DATA;
+        } catch (Exception e) {
+            Engine.LOG().error(e.getMessage());
+            throw scyna.Error.SERVER_ERROR;
         }
     }
 
     @SuppressWarnings("unchecked")
     private Model<D> createModel(Object id) throws scyna.Error {
-        var rs = Engine.DB().getSession().execute(getModelQuery.bind(id));
-        if (rs.one() != null)
-            throw scyna.Error.OBJECT_EXISTS;
-        var data = (D) builder.build();
-        return new Model<D>(id, 0, data, this);
+        try {
+            var rs = Engine.DB().getSession().execute(getModelQuery.bind(id));
+            if (rs.one() != null)
+                throw scyna.Error.OBJECT_EXISTS;
+            return new Model<D>(id, 0, (D) builder.build(), this);
+        } catch (scyna.Error e) {
+            throw e;
+        } catch (Exception e) {
+            Engine.LOG().error(e.getMessage());
+            throw scyna.Error.SERVER_ERROR;
+        }
     }
 
     void updateWriteModel(Model<D> model, Message event) throws scyna.Error {
         try {
-            model.Version++;
+            model.version++;
             if (!Engine.DB().getSession().execute(writeModelQuery.bind(
                     model.ID, event.getClass().getName(),
                     ByteBuffer.wrap(model.data.toByteArray()),
                     ByteBuffer.wrap(event.toByteArray()),
-                    java.time.Instant.now(), model.Version)).one().getBool("[applied]"))
+                    java.time.Instant.now(), model.version)).one().getBool("[applied]"))
                 throw scyna.Error.COMMAND_NOT_COMPLETED;
         } catch (Exception e) {
             Engine.LOG().error(e.getMessage());
@@ -181,7 +188,7 @@ public class EventStore<D extends Message> {
             var event = row.getBytes("event");
             var p = projections.get(type);
             if (p != null) {
-                p.Update(event, data);
+                p.update(event, data);
                 return true;
             }
 
@@ -204,8 +211,8 @@ public class EventStore<D extends Message> {
     }
 
     public void RegisterProjection(IProjection projection) throws Exception {
-        if (projections.containsKey(projection.Type()))
-            throw new RuntimeException("Type '" + projection.Type() + "' is already registered");
-        projections.put(projection.Type(), projection);
+        if (projections.containsKey(projection.getType()))
+            throw new RuntimeException("Type '" + projection.getType() + "' is already registered");
+        projections.put(projection.getType(), projection);
     }
 }

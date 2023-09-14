@@ -8,7 +8,6 @@ import com.google.protobuf.util.JsonFormat;
 import io.nats.client.MessageHandler;
 import scyna.proto.Request;
 import scyna.proto.Response;
-
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 

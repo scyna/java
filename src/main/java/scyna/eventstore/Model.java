@@ -2,10 +2,12 @@ package scyna.eventstore;
 
 import com.google.protobuf.Message;
 
+import scyna.Error;
+
 public class Model<D extends Message> {
     private EventStore<D> store;
     Object ID;
-    long Version;
+    long version;
     D data;
     Message event;
 
@@ -14,7 +16,7 @@ public class Model<D extends Message> {
     }
 
     public long getVersion() {
-        return Version;
+        return version;
     }
 
     public D getData() {
@@ -27,14 +29,14 @@ public class Model<D extends Message> {
 
     public Model(Object id, long version, D data, EventStore<D> store) {
         this.ID = id;
-        this.Version = version;
+        this.version = version;
         this.store = store;
         this.data = data;
     }
 
-    public void CommitAndProject(Message event) {
+    public void CommitAndProject(Message event) throws Error {
         this.event = event;
-        // store.UpdateWriteModel(this, event);
-        // store.UpdateReadModel(ID);
+        store.updateWriteModel(this, event);
+        store.updateReadModel(ID);
     }
 }
