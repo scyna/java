@@ -23,7 +23,7 @@ public class Settings {
                 .setModule(Engine.Module())
                 .setKey(key)
                 .setValue(value).build();
-        var response = Request.send(Path.SETTING_WRITE_URL, request);
+        var response = Request.send(0, Path.SETTING_WRITE_URL, request);
         return response != null && response.getCode() == 200;
     }
 
@@ -37,7 +37,7 @@ public class Settings {
                 .setModule(Engine.Module())
                 .setKey(key)
                 .build();
-        var response = Request.send(Path.SETTING_READ_URL, request);
+        var response = Request.send(0, Path.SETTING_READ_URL, request);
         if (response != null && response.getCode() == 200) {
             try {
                 var r = ReadSettingResponse.parseFrom(response.getBody());

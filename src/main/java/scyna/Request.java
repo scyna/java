@@ -6,8 +6,9 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 public class Request {
-    public static Response send(String url, Message request) {
+    public static Response send(long traceID, String url, Message request) {
         try {
+            var trace = Trace.Endpoint(url, traceID);
             var callID = Engine.ID().next();
             var req = scyna.proto.Request.newBuilder().setTraceID(callID).setJSON(false);
 
@@ -18,6 +19,7 @@ public class Request {
             Future<io.nats.client.Message> incoming = Engine.Connection().request(Utils.publishURL(url),
                     req.build().toByteArray());
             var msg = incoming.get(5, TimeUnit.SECONDS);
+            trace.record();
             return Response.parseFrom(msg.getData());
         } catch (java.lang.Exception e) {
             e.printStackTrace();
