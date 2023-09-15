@@ -6,7 +6,7 @@ import scyna.eventstore.EventStore;
 
 public abstract class BaseRegistration<D extends Message> {
     boolean testMode = false;
-    protected EventStore<D> eventStore;
+    protected EventStore<D> eventStore = null;
 
     protected abstract void setup() throws Exception;
 

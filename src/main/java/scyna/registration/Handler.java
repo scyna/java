@@ -1,9 +1,6 @@
 package scyna.registration;
 
-import java.lang.reflect.InvocationTargetException;
-
 import com.google.protobuf.Message;
-
 import scyna.eventstore.Projection;
 
 public class Handler {
@@ -18,8 +15,9 @@ public class Handler {
     }
 
     public <E extends Message, P extends Projection<E, ?>> void Then(Class<E> event, Class<P> projection)
-            throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException,
-            NoSuchMethodException, SecurityException, Exception {
+            throws Exception {
+        if (registration.eventStore == null)
+            throw new Exception("Event store is not initialized");
         registration.eventStore.registerProjection(projection.getDeclaredConstructor().newInstance());
     }
 }
