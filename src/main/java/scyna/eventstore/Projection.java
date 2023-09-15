@@ -18,7 +18,8 @@ public abstract class Projection<E extends Message, D extends Message> implement
     private String type;
 
     @SuppressWarnings("unchecked")
-    void init() throws Exception {
+    @Override
+    public void init() throws Exception {
         var eventClass = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         Method m = eventClass.getMethod("parser");
         this.eventParser = (Parser<E>) m.invoke(null);
