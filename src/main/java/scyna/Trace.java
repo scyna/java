@@ -25,6 +25,10 @@ public class Trace {
         return id;
     }
 
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     public static Trace Event(String channel) {
         var ret = new Trace();
         ret.type = EVENT;

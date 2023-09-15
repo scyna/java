@@ -6,6 +6,7 @@ import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
 import com.google.protobuf.util.JsonFormat;
 import io.nats.client.MessageHandler;
+import scyna.proto.EndpointDoneSignal;
 import scyna.proto.Request;
 import scyna.proto.Response;
 import java.lang.reflect.Method;
@@ -31,6 +32,7 @@ public abstract class Endpoint {
         protected T request;
         protected Parser<T> parser;
         protected Message.Builder builder;
+        private String requestBody = "";
 
         protected abstract void execute() throws scyna.Error;
 
@@ -51,7 +53,25 @@ public abstract class Endpoint {
                         .setBody(ByteString.copyFrom(body)).build();
                 Engine.Connection().publish(reply, response.toByteArray());
                 flushed = true;
-                /* TODO: update trace */
+                finish(response, response.getCode());
+            } catch (InvalidProtocolBufferException e) {
+                e.printStackTrace();
+            }
+        }
+
+        private void finish(Message response, int status) {
+            if (context.id == 0) {
+                return;
+            }
+
+            try {
+                Signal.emit(scyna.Path.ENDPOINT_DONE_CHANNEL, EndpointDoneSignal.newBuilder()
+                        .setTraceID(context.id)
+                        .setResponse(JsonFormat.printer().print(response))
+                        .setRequest(requestBody)
+                        .setStatus(status)
+                        .setSessionID(Engine.Session().ID())
+                        .build());
             } catch (InvalidProtocolBufferException e) {
                 e.printStackTrace();
             }
@@ -82,13 +102,16 @@ public abstract class Endpoint {
                 JSON = request.getJSON();
                 flushed = false;
                 var requestBody = request.getBody();
+
                 if (JSON) {
+                    this.requestBody = requestBody.toStringUtf8();
                     builder.clear();
                     JsonFormat.parser().merge(requestBody.toStringUtf8(), builder);
                     this.request = (T) builder.build();
                     builder.clear();
                 } else {
                     this.request = parser.parseFrom(requestBody);
+                    this.requestBody = JsonFormat.printer().print(this.request);
                 }
                 this.execute();
                 if (!flushed) {

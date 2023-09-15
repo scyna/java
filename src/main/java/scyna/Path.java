@@ -21,4 +21,6 @@ class Path {
     public static final String TRACE_CREATED_CHANNEL = "scyna2.trace";
     public static final String START_TASK_URL = "/scyna2/task/start";
     public static final String STOP_TASK_URL = "/scyna2/task/stop";
+
+    public static final String ENDPOINT_DONE_CHANNEL = "scyna2.tag.endpoint";
 }
