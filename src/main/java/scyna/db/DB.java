@@ -1,13 +1,29 @@
-package scyna;
+package scyna.db;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
+import com.datastax.driver.core.BatchStatement.Type;
+
+import scyna.Engine;
+import scyna.Error;
 
 public class DB {
     private Cluster cluster = null;
     private Session session = null;
+
+    public Batch newLoggedBatch() {
+        return new Batch(session, Type.LOGGED);
+    }
+
+    public Batch newUnloggedBatch() {
+        return new Batch(session, Type.UNLOGGED);
+    }
+
+    public Batch newCounterBatch() {
+        return new Batch(session, Type.COUNTER);
+    }
 
     public void assureExists(String query, Object... args) throws Error {
         try {
@@ -81,7 +97,7 @@ public class DB {
         session = cluster.connect();
     }
 
-    static DB Init(String[] hosts, String username, String password, String location) {
+    static public DB Init(String[] hosts, String username, String password, String location) {
         return new DB(hosts, username, password);
     }
 

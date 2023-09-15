@@ -9,6 +9,7 @@ import java.net.http.HttpResponse.BodyHandlers;
 import io.nats.client.Connection;
 import io.nats.client.JetStream;
 import io.nats.client.Nats;
+import scyna.db.DB;
 import scyna.proto.Configuration;
 import scyna.proto.CreateSessionRequest;
 import scyna.proto.CreateSessionResponse;
