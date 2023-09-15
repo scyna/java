@@ -1,6 +1,5 @@
 package scyna;
 
-import java.io.Console;
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.LinkedList;
