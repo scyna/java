@@ -10,7 +10,6 @@ import ex.hello.services.AddService;
 import ex.hello.shared.Path;
 import scyna.Endpoint;
 import scyna.Engine;
-import scyna.testing.EndpointTest;
 import scyna.testing.Testing;
 
 public class TestAdd {

@@ -14,9 +14,7 @@ public class Registration extends BaseRegistration<AccountModel> {
 
     @Override
     protected void setup() throws Exception {
-        Command(Path.CREATE_ACCOUNT)
-                .Given(CreateAccountRequest.class)
-                .When(CreateAccountHandler.class)
+        Command(Path.CREATE_ACCOUNT).Given(CreateAccountRequest.class).When(CreateAccountHandler.class)
                 .Then(AccountCreated.class, ProjectAccountCreated.class);
 
         DomainEvent().Given(AccountCreated.class).When(AccountCreatedHandler.class);
