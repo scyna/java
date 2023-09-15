@@ -2,6 +2,7 @@ package scyna.eventstore;
 
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
+import java.time.Instant;
 import java.util.Map;
 import java.util.Date;
 import java.util.HashMap;
@@ -146,8 +147,21 @@ public class EventStore<D extends Message> {
     }
 
     boolean lockingLongRow(Object id, long version) {
-        /* TODO */
-        return false;
+        try {
+            var row = Engine.DB().queryOne("SELECT locked FROM " + tableName + " WHERE id=? AND version=?", id,
+                    version);
+            var locked = row.getTimestamp("locked");
+
+            if (locked.toInstant().plusSeconds(5).isBefore(Instant.now())) {
+                Engine.DB().queryOne("UPDATE " + tableName + " SET locked=? WHERE id=? AND version=? IF state=1",
+                        new Date(), id, version);
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            Engine.LOG().error("LockLongLockingRow:" + e.getMessage());
+            return false;
+        }
     }
 
     boolean syncRow(Object id, long version) {
