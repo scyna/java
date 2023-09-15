@@ -22,12 +22,16 @@ public abstract class BaseRegistration<D extends Message> {
         setup();
     }
 
-    protected Command Command(String url) {
-        return new Command(this, url);
+    protected RCommand Command(String url) {
+        return new RCommand(this, url);
     }
 
-    protected DomainEvent DomainEvent() {
-        return new DomainEvent(this);
+    protected RDomainEvent DomainEvent() {
+        return new RDomainEvent(this);
+    }
+
+    protected REvent Event(String sender, String channel) {
+        return new REvent(this, sender, channel);
     }
 
     protected <R extends Message> void Endpoint(String url, Endpoint.Handler<R> handler) throws Exception {

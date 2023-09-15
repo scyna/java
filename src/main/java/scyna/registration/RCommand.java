@@ -3,11 +3,11 @@ package scyna.registration;
 import com.google.protobuf.Message;
 import scyna.Endpoint;
 
-public class Command {
+public class RCommand {
     String url;
     BaseRegistration<?> registration;
 
-    Command(BaseRegistration<?> registration, String url) {
+    RCommand(BaseRegistration<?> registration, String url) {
         this.registration = registration;
         this.url = url;
     }
@@ -17,9 +17,9 @@ public class Command {
     }
 
     public static class Request<R extends Message> {
-        private Command command;
+        private RCommand command;
 
-        Request(Command command) {
+        Request(RCommand command) {
             this.command = command;
         }
 

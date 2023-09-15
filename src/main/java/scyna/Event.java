@@ -72,7 +72,7 @@ public class Event {
         }
     }
 
-    public static <T extends Message> void register(String sender, String channel, Handler<T> handler)
+    public static <T extends Message> void Register(String sender, String channel, Handler<T> handler)
             throws Exception {
         System.out.println("Register Event:" + channel);
 
