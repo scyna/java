@@ -159,7 +159,7 @@ public class EventStore<D extends Message> {
             }
             return false;
         } catch (Exception e) {
-            Engine.LOG().error("LockLongLockingRow:" + e.getMessage());
+            // Engine.LOG().error("LockLongLockingRow:" + e.getMessage());
             return false;
         }
     }

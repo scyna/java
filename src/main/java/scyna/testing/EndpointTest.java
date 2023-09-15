@@ -45,8 +45,7 @@ public class EndpointTest extends BaseTest<EndpointTest> {
     public Result run() {
         createStream();
         DomainEvent.Instance().clear();
-        var trace = Trace.Endpoint(url, 0);
-        var res = Request.send(trace.ID(), url, request);
+        var res = Request.send(0, url, request);
         assertNotNull(res);
         assertEquals(status, res.getCode());
         responseData = res.getBody();
@@ -68,7 +67,6 @@ public class EndpointTest extends BaseTest<EndpointTest> {
             }
         }
 
-        trace.record();
         receiveDomainEvents();
         receiveEvent();
         deleteStream();

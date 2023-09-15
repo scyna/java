@@ -27,5 +27,6 @@ public class CreateAccountHandler extends Endpoint.Handler<CreateAccountRequest>
                 .build());
 
         context.raiseDomainEvent(model.getEvent());
+        context.publishEvent("AccountCreated", model.getEvent());
     }
 }

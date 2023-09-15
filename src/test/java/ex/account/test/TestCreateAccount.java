@@ -40,6 +40,11 @@ public class TestCreateAccount {
                         .setName("Nguyen Van A")
                         .setPassword("123456")
                         .build())
+                .expectEvent("AccountCreated", AccountCreated.newBuilder()
+                        .setEmail("a@gmail.com")
+                        .setName("Nguyen Van A")
+                        .setPassword("123456")
+                        .build())
                 .run();
     }
 }
