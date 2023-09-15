@@ -9,8 +9,6 @@ import io.nats.client.MessageHandler;
 import scyna.proto.EndpointDoneSignal;
 import scyna.proto.Request;
 import scyna.proto.Response;
-
-import java.io.Console;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 
