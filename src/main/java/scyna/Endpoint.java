@@ -9,6 +9,8 @@ import io.nats.client.MessageHandler;
 import scyna.proto.EndpointDoneSignal;
 import scyna.proto.Request;
 import scyna.proto.Response;
+
+import java.io.Console;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 
@@ -53,7 +55,7 @@ public abstract class Endpoint {
                         .setBody(ByteString.copyFrom(body)).build();
                 Engine.Connection().publish(reply, response.toByteArray());
                 flushed = true;
-                finish(response, response.getCode());
+                finish(response, status);
             } catch (InvalidProtocolBufferException e) {
                 e.printStackTrace();
             }
@@ -118,11 +120,35 @@ public abstract class Endpoint {
                     flush(200, scyna.Error.OK.toProto());
                 }
             } catch (scyna.Error e) {
-                context.error(e.getMessage());
-                flush(400, e.toProto());
+                if (e == Error.COMMAND_NOT_COMPLETED) {
+                    for (int i = 0; i < 5; i++) {
+                        if (retry())
+                            return;
+                    }
+                    flush(400, scyna.Error.SERVER_ERROR.toProto());
+                } else {
+                    context.error(e.getMessage());
+                    flush(400, e.toProto());
+                }
             } catch (InvalidProtocolBufferException e) {
                 flush(400, scyna.Error.BAD_REQUEST.toProto());
             }
+        }
+
+        private boolean retry() {
+            try {
+                this.execute();
+                if (!flushed)
+                    flush(200, scyna.Error.OK.toProto());
+            } catch (scyna.Error e) {
+                if (e == Error.COMMAND_NOT_COMPLETED)
+                    return false;
+                flush(400, e.toProto());
+            } catch (Exception e) {
+                System.out.println("Retry Error:" + e.getMessage());
+                flush(400, scyna.Error.BAD_REQUEST.toProto());
+            }
+            return true;
         }
     }
 }

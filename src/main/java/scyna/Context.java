@@ -50,6 +50,7 @@ public class Context extends Logger {
                     req.build().toByteArray());
             var msg = incoming.get(5, TimeUnit.SECONDS);
             ret = Response.parseFrom(msg.getData());
+            trace.setStatus(ret.getCode());
         } catch (java.lang.Exception e) {
             e.printStackTrace();
         }
