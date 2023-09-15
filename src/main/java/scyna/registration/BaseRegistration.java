@@ -4,13 +4,13 @@ import com.google.protobuf.Message;
 import scyna.Endpoint;
 import scyna.eventstore.EventStore;
 
-public abstract class Registration<D extends Message> {
+public abstract class BaseRegistration<D extends Message> {
     boolean testMode = false;
     protected EventStore<D> eventStore;
 
-    protected abstract void execute() throws Exception;
+    protected abstract void setup() throws Exception;
 
-    protected abstract EventStore<D> initEventStore() throws Exception;
+    protected abstract EventStore<D> setupEventStore() throws Exception;
 
     public void testInit() throws Exception {
         testMode = true;
@@ -18,8 +18,8 @@ public abstract class Registration<D extends Message> {
     }
 
     public void init() throws Exception {
-        eventStore = initEventStore();
-        execute();
+        eventStore = setupEventStore();
+        setup();
     }
 
     protected Command Command(String url) {

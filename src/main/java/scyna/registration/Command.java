@@ -5,9 +5,9 @@ import scyna.Endpoint;
 
 public class Command {
     String url;
-    Registration regitration;
+    BaseRegistration regitration;
 
-    Command(Registration registration, String url) {
+    Command(BaseRegistration registration, String url) {
         this.regitration = registration;
         this.url = url;
     }
