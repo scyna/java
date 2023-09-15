@@ -35,6 +35,6 @@ public class TestCreateRegistration {
                         .setEmail("a@gmail.com")
                         .setName("Nguyen Van A")
                         .setPassword("123456").build())
-                .expectSuccess().run();
+                .run();
     }
 }

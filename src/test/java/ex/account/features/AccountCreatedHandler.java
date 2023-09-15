@@ -8,8 +8,6 @@ public class AccountCreatedHandler extends DomainEvent.Handler<AccountCreated> {
 
     @Override
     public void Execute() throws Error {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Execute'");
+        context.info("Account created: " + data.getEmail());
     }
-
 }

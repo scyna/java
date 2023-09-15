@@ -2,7 +2,9 @@ package scyna.eventstore;
 
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
+import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.Date;
 import java.util.HashMap;
 import com.datastax.driver.core.PreparedStatement;
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -93,7 +95,7 @@ public class EventStore<D extends Message> {
                     model.ID, event.getClass().getName(),
                     ByteBuffer.wrap(model.data.toByteArray()),
                     ByteBuffer.wrap(event.toByteArray()),
-                    java.time.Instant.now(), model.version)).one().getBool("[applied]"))
+                    new Date(), model.version)).one().getBool("[applied]"))
                 throw scyna.Error.COMMAND_NOT_COMPLETED;
         } catch (Exception e) {
             Engine.LOG().error(e.getMessage());

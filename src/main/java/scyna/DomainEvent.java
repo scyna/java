@@ -83,7 +83,7 @@ public class DomainEvent {
     }
 
     private final BlockingQueue<EventData> events = new LinkedBlockingDeque<EventData>();
-    private final Map<Class, List<IHandler>> handlers = new HashMap<Class, List<IHandler>>();
+    private final Map<Class<?>, List<IHandler>> handlers = new HashMap<Class<?>, List<IHandler>>();
 
     public <T extends Message> void register(Handler<T> handler) {
         var type = handler.getEventType();

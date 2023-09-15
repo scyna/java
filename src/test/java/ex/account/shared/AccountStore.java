@@ -9,7 +9,7 @@ public final class AccountStore {
     static EventStore<AccountModel> store = null;
 
     public static void Init() throws Exception {
-        store = scyna.eventstore.EventStore.Create("account_events", AccountModel.class);
+        store = scyna.eventstore.EventStore.Create(Table.ACCOUNT_EVENTS, AccountModel.class);
     }
 
     public static Model<AccountModel> Read(Object id) throws scyna.Error {

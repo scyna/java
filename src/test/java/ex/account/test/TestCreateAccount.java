@@ -8,6 +8,7 @@ import ex.account.proto.AccountCreated;
 import ex.account.proto.CreateAccountRequest;
 import ex.account.shared.Path;
 import ex.account.shared.Registration;
+import ex.account.shared.Table;
 import scyna.Engine;
 import scyna.testing.Testing;
 
@@ -16,6 +17,8 @@ public class TestCreateAccount {
     @BeforeClass
     public static void setup() throws Exception {
         Engine.Init("http://127.0.0.1:8081", "scyna_test", "123456");
+        Engine.DB().execute("TRUNCATE " + Table.ACCOUNT_EVENTS);
+        Engine.DB().execute("TRUNCATE " + Table.ACCOUNT);
         new Registration().testInit();
     }
 

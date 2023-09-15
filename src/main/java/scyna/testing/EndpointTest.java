@@ -14,7 +14,7 @@ import scyna.Request;
 import scyna.Trace;
 
 public class EndpointTest extends BaseTest<EndpointTest> {
-    private int status;
+    private int status = 200;
     private String url;
     private Message request = null;
     private Message response = null;
@@ -27,11 +27,6 @@ public class EndpointTest extends BaseTest<EndpointTest> {
 
     public EndpointTest withRequest(Message request) {
         this.request = request;
-        return this;
-    }
-
-    public EndpointTest expectSuccess() {
-        this.status = 200;
         return this;
     }
 
