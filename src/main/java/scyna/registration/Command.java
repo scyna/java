@@ -5,10 +5,10 @@ import scyna.Endpoint;
 
 public class Command {
     String url;
-    BaseRegistration<?> regitration;
+    BaseRegistration<?> registration;
 
     Command(BaseRegistration<?> registration, String url) {
-        this.regitration = registration;
+        this.registration = registration;
         this.url = url;
     }
 
@@ -25,7 +25,7 @@ public class Command {
 
         public <H extends Endpoint.Handler<R>> Handler When(Class<H> handler) throws Exception {
             Endpoint.Register(command.url, handler.getDeclaredConstructor().newInstance());
-            return new Handler(command.regitration);
+            return new Handler(command.registration);
         }
     }
 }
