@@ -7,7 +7,7 @@ import scyna.Endpoint;
 import scyna.Engine;
 import scyna.Error;
 
-public class CreateAccount extends Endpoint.Handler<CreateAccountRequest> {
+public class CreateAccountHandler extends Endpoint.Handler<CreateAccountRequest> {
     @Override
     protected void execute() throws Error {
         Engine.DB().assureNotExists("SELECT * FROM accounts WHERE email = ?");

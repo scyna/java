@@ -4,7 +4,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import ex.account.features.CreateAccount;
+import ex.account.features.CreateAccountHandler;
 import ex.account.features.ProjectAccountCreated;
 import ex.account.proto.AccountCreated;
 import ex.account.proto.AccountModel;
@@ -21,7 +21,7 @@ public class TestCreateAccount {
     public static void setup() throws Exception {
         Engine.Init("http://127.0.0.1:8081", "scyna_test", "123456");
         AccountStore.Init();
-        Endpoint.Register(Path.CREATE_ACCOUNT, new CreateAccount());
+        Endpoint.Register(Path.CREATE_ACCOUNT, new CreateAccountHandler());
         AccountStore.RegisterProjection(new ProjectAccountCreated());
     }
 
