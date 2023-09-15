@@ -11,7 +11,6 @@ import com.google.protobuf.Parser;
 import scyna.DomainEvent;
 import scyna.Error;
 import scyna.Request;
-import scyna.Trace;
 
 public class EndpointTest extends BaseTest<EndpointTest> {
     private int status = 200;
