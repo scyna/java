@@ -23,7 +23,8 @@ CREATE TABLE account
     id                      bigint PRIMARY KEY,
     name                    text,
     email                   text,
-    data                    blob,
+    password                text,
+    data                    text,
 );
 CREATE INDEX ON account (email);
 
