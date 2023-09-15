@@ -3,9 +3,9 @@ package scyna.registration;
 import com.google.protobuf.Message;
 
 public class DomainEvent {
-    BaseRegistration registration;
+    BaseRegistration<?> registration;
 
-    DomainEvent(BaseRegistration registration) {
+    DomainEvent(BaseRegistration<?> registration) {
         this.registration = registration;
     }
 
@@ -14,9 +14,9 @@ public class DomainEvent {
     }
 
     public static class Event<R extends Message> {
-        BaseRegistration registration;
+        BaseRegistration<?> registration;
 
-        Event(BaseRegistration registration) {
+        Event(BaseRegistration<?> registration) {
             this.registration = registration;
         }
 

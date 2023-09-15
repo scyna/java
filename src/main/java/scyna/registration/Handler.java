@@ -7,9 +7,9 @@ import com.google.protobuf.Message;
 import scyna.eventstore.Projection;
 
 public class Handler {
-    BaseRegistration registration;
+    BaseRegistration<?> registration;
 
-    Handler(BaseRegistration registration) {
+    Handler(BaseRegistration<?> registration) {
         this.registration = registration;
     }
 
