@@ -10,7 +10,7 @@ public abstract class BaseRegistration<D extends Message> {
 
     protected abstract void setup() throws Exception;
 
-    protected abstract EventStore<D> setupEventStore() throws Exception;
+    protected abstract EventStore<D> initEventStore() throws Exception;
 
     public void testInit() throws Exception {
         testMode = true;
@@ -18,7 +18,7 @@ public abstract class BaseRegistration<D extends Message> {
     }
 
     public void init() throws Exception {
-        eventStore = setupEventStore();
+        eventStore = initEventStore();
         setup();
     }
 

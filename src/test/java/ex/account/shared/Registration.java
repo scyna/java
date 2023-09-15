@@ -27,7 +27,7 @@ public class Registration extends BaseRegistration<AccountModel> {
     }
 
     @Override
-    protected EventStore<AccountModel> setupEventStore() throws Exception {
+    protected EventStore<AccountModel> initEventStore() throws Exception {
         AccountStore.Init();
         return AccountStore.store;
     }
