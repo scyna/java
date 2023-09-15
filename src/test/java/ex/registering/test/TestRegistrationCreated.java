@@ -37,7 +37,7 @@ public class TestRegistrationCreated {
     public class RegistrationCreatedHandler extends DomainEvent.Handler<RegistrationCreated> {
 
         @Override
-        public void Execute() throws Error {
+        public void execute() throws Error {
             System.out.println("Receive RegistrationCreated: " + data.toString());
             context.raiseDomainEvent(RegistrationCreated.newBuilder()
                     .setEmail(data.getEmail())

@@ -1,5 +1,6 @@
 package scyna;
 
+import java.io.Console;
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -44,7 +45,7 @@ public class DomainEvent {
         protected T data;
         protected Context context;
 
-        public abstract void Execute() throws scyna.Error;
+        public abstract void execute() throws scyna.Error;
 
         protected void onError(Exception e) {
             context.error(e.getStackTrace().toString());
@@ -56,9 +57,14 @@ public class DomainEvent {
             context = new Context(event.traceID);
             var trace = Trace.DomainEvent(this.getClass().getName(), event.traceID);
             try {
-                Execute();
+                execute();
             } catch (scyna.Error e) {
-                /* TODO: evenstore logic */
+                if (e == Error.COMMAND_NOT_COMPLETED) {
+                    for (int i = 0; i < 5; i++) {
+                        if (retry())
+                            return;
+                    }
+                }
                 onError(e);
             } catch (Exception e) {
                 onError(e);
@@ -66,12 +72,26 @@ public class DomainEvent {
             trace.record();
         }
 
+        private boolean retry() {
+            try {
+                this.execute();
+            } catch (scyna.Error e) {
+                if (e == Error.COMMAND_NOT_COMPLETED)
+                    return false;
+                onError(e);
+            } catch (Exception e) {
+                System.out.println("Retry Error:" + e.getMessage());
+                onError(e);
+            }
+            return true;
+        }
+
         @SuppressWarnings("unchecked")
         public void TestEventReceived(EventData event) throws Error {
             var trace = Trace.DomainEvent(this.getClass().getName(), event.traceID);
             this.data = (T) event.data;
             context = new Context(event.traceID);
-            Execute();
+            execute();
             trace.record();
         }
 

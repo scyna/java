@@ -29,7 +29,7 @@ public class TestDomainEvent {
 
     public static class EventReceivedHandler extends DomainEvent.Handler<scyna.proto.EventReceived> {
         @Override
-        public void Execute() throws Error {
+        public void execute() throws Error {
             context.info("Receive EventReceived: " + data.toString());
             context.raiseDomainEvent(DomainEventActivated.newBuilder().setText(data.getText() + "xxx").build());
         }
