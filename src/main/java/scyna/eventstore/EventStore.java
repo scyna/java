@@ -103,7 +103,6 @@ public class EventStore<D extends Message> {
     }
 
     void updateReadModel(Object id) {
-        System.out.println("Update read model: " + id);
         var version = getLastSynced(id);
         if (version == -1)
             return;
@@ -115,7 +114,6 @@ public class EventStore<D extends Message> {
 
     boolean sync(Object id, long version) {
         if (!tryToLock(id, version)) {
-            System.out.println("Try to lock failed: " + id + " " + version);
             if (!lockingLongRow(id, version))
                 return false;
         }
@@ -127,7 +125,6 @@ public class EventStore<D extends Message> {
     }
 
     long getLastSynced(Object id) {
-        System.out.println("Get last synced: " + id);
         try {
             var row = Engine.DB().getSession().execute(getLastSyncedQuery.bind(id)).one();
             if (row == null)
@@ -140,12 +137,10 @@ public class EventStore<D extends Message> {
     }
 
     boolean tryToLock(Object id, long version) {
-        System.out.println("Try to lock: " + id + " " + version);
         try {
             return Engine.DB().getSession().execute(tryToLockQuery.bind(
                     new Date(), id, version)).one().getBool("[applied]");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             return false;
         }
     }
@@ -156,7 +151,6 @@ public class EventStore<D extends Message> {
     }
 
     boolean syncRow(Object id, long version) {
-        System.out.println("Sync row: " + id + " " + version);
         try {
             var row = Engine.DB().getSession().execute(getSyncRowQuery.bind(id, version)).one();
             if (row == null)
@@ -180,7 +174,6 @@ public class EventStore<D extends Message> {
     }
 
     boolean markSynced(Object id, long version) {
-        System.out.println("Mark synced: " + id + " " + version);
         try {
             Engine.DB().getSession().execute(markSyncedQuery.bind(id, version));
             return true;
